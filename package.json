@@ -4,11 +4,11 @@
     "version": "0.1.0",
     "type": "module",
     "sideEffects": false,
-    "main": "./dist/src/index.js",
+    "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
-            "import": "./dist/src/index.js",
+            "import": "./dist/index.js",
             "types": "./dist/index.d.ts"
         },
         "./icons": {
