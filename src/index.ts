@@ -1,3 +1,1 @@
-export const TestFunction = () => {
-    console.log('hi');
-};
+export { cn } from './utils';
