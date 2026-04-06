@@ -16,6 +16,9 @@
             "@/icons": [
                 "./src/icons"
             ],
+            "@/utils": [
+                "./src/utils"
+            ]
         }
     },
     "include": [
