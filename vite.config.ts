@@ -5,5 +5,4 @@ import solid from 'vite-plugin-solid';
 
 export default defineConfig({
     plugins: [solid(), tailwindcss(), checker({ typescript: true })],
-    base: './src',
 });
