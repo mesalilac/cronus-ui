@@ -18,7 +18,10 @@ export default defineConfig({
     ],
     build: {
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
+            entry: {
+                index: resolve(__dirname, 'src/index.ts'),
+                icons: resolve(__dirname, 'src/icons/index.ts'),
+            },
             name: 'cronus-ui',
             formats: ['es'],
         },
