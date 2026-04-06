@@ -13,5 +13,13 @@ export default defineConfig({
             name: 'CronusUI',
             formats: ['es'],
         },
+        rolldownOptions: {
+            external: ['solid-js', 'gsap'],
+            output: {
+                preserveModules: true,
+                preserveModulesRoot: 'src',
+                entryFileNames: '[name].js',
+            },
+        },
     },
 });
