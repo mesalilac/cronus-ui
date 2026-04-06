@@ -7,6 +7,9 @@ import dts from 'vite-plugin-dts';
 import solid from 'vite-plugin-solid';
 
 export default defineConfig({
+    resolve: {
+        tsconfigPaths: true,
+    },
     plugins: [
         solid(),
         tailwindcss(),

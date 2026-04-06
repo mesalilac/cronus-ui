@@ -8,7 +8,15 @@
         "jsxImportSource": "solid-js",
         "moduleResolution": "bundler",
         "strict": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "paths": {
+            "@/ui": [
+                "./src/ui"
+            ],
+            "@/icons": [
+                "./src/icons"
+            ],
+        }
     },
     "include": [
         "src"
