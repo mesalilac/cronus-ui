@@ -19,7 +19,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "prepare": "pnpm build"
+        "prepare": "pnpm build",
+        "release": "gh release create v$(node -p \"require('./package.json').version\") --generate-notes"
     },
     "dependencies": {
         "clsx": "^2.1.1",
