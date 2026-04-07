@@ -1,4 +1,5 @@
 {
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
         "outDir": "dist",
         "rootDir": "src",
@@ -8,18 +9,7 @@
         "jsxImportSource": "solid-js",
         "moduleResolution": "bundler",
         "strict": true,
-        "skipLibCheck": true,
-        "paths": {
-            "@/ui": [
-                "./src/ui"
-            ],
-            "@/icons": [
-                "./src/icons"
-            ],
-            "@/utils": [
-                "./src/utils"
-            ]
-        }
+        "skipLibCheck": true
     },
     "include": [
         "src"

@@ -21,6 +21,7 @@ export default defineConfig({
             entry: {
                 index: resolve(__dirname, 'src/index.ts'),
                 icons: resolve(__dirname, 'src/icons/index.ts'),
+                ui: resolve(__dirname, 'src/ui/index.ts'),
             },
             name: 'cronus-ui',
             formats: ['es'],
