@@ -13,10 +13,12 @@
         },
         "./icons": {
             "import": "./src/icons/index.ts",
+            "solid": "./src/icons/index.ts",
             "types": "./src/icons/index.ts"
         },
         "./ui": {
             "import": "./src/ui/index.ts",
+            "solid": "./src/ui/index.ts",
             "types": "./src/ui/index.ts"
         }
     },
