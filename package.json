@@ -8,22 +8,23 @@
     "types": "./src/index.ts",
     "exports": {
         ".": {
+            "solid": "./src/index.ts",
             "import": "./src/index.ts",
             "types": "./src/index.ts"
         },
         "./icons": {
-            "import": "./src/icons/index.ts",
             "solid": "./src/icons/index.ts",
+            "import": "./src/icons/index.ts",
             "types": "./src/icons/index.ts"
         },
         "./ui": {
-            "import": "./src/ui/index.ts",
             "solid": "./src/ui/index.ts",
+            "import": "./src/ui/index.ts",
             "types": "./src/ui/index.ts"
         }
     },
     "files": [
-        "dist"
+        "./src"
     ],
     "scripts": {
         "dev": "vite",
