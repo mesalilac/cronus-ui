@@ -1,4 +1,5 @@
 /** biome-ignore-all assist/source/organizeImports: false */
+import '../index.css';
 
 export * from './Button';
 export * from './Badge';
