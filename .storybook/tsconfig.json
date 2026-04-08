@@ -5,18 +5,12 @@
     "jsxImportSource": "solid-js",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
     "types": [
       "node"
     ],
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
-    "skipLibCheck": true,
     "noEmit": true,
     "noUncheckedSideEffectImports": false,
     "allowSyntheticDefaultImports": true,
