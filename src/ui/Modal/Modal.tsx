@@ -149,13 +149,13 @@ Modal.Footer = (props: {
     action?: JSX.Element;
     onAction?: () => void;
 }) => {
-    const { closeModal } = useModalContext();
+    const ctx = useModalContext();
 
     return (
         <>
             <Separator class='-mx-4 mt-auto' />
             <div class='flex flex-row gap-2 self-end'>
-                <Button onClick={closeModal} variant='secondary'>
+                <Button onClick={ctx.closeModal} variant='secondary'>
                     {props.dismiss || (
                         <>
                             <IconMenuCloseMd /> Cancel
