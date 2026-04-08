@@ -24,7 +24,7 @@ export default defineConfig({
         checker({
             root: './playground',
             typescript: true,
-            biome: { command: 'check' },
+            biome: { command: 'lint' },
         }),
     ],
     resolve: {
