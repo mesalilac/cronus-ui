@@ -1,5 +1,11 @@
 import type { Accessor, JSX, Setter } from 'solid-js';
-import { createComputed, createSignal, on } from 'solid-js';
+import {
+    createComputed,
+    createEffect,
+    createSignal,
+    on,
+    onCleanup,
+} from 'solid-js';
 
 import { Content } from './Content';
 import { DropdownMenuContext } from './context';
@@ -44,6 +50,19 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
             { defer: true },
         ),
     );
+
+    createEffect(() => {
+        if (isOpen()) {
+            const originalOverflow = window.getComputedStyle(
+                document.body,
+            ).overflow;
+            document.body.style.overflow = 'hidden';
+
+            onCleanup(() => {
+                document.body.style.overflow = originalOverflow;
+            });
+        }
+    });
 
     const onOpenChange = (isOpen: boolean) => {
         cleanupContextMenuPos(isOpen);
