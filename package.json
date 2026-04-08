@@ -3,34 +3,28 @@
     "private": true,
     "version": "0.2.1",
     "type": "module",
+    "license": "MIT",
     "sideEffects": false,
-    "main": "./src/index.ts",
-    "types": "./src/index.ts",
     "exports": {
         ".": {
-            "solid": "./src/index.ts",
-            "import": "./src/index.ts",
-            "types": "./src/index.ts"
+            "types": "./dist/index.d.ts",
+            "solid": "./dist/index.jsx",
+            "default": "./dist/index.js"
         },
-        "./icons": {
-            "solid": "./src/icons/index.ts",
-            "import": "./src/icons/index.ts",
-            "types": "./src/icons/index.ts"
-        },
-        "./ui": {
-            "solid": "./src/ui/index.ts",
-            "import": "./src/ui/index.ts",
-            "types": "./src/ui/index.ts"
-        }
+        "./package.json": "./package.json"
     },
     "files": [
-        "./src"
+        "dist"
     ],
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
-        "prepare": "pnpm build"
+        "build": "tsdown",
+        "dev": "tsdown --watch",
+        "play": "vite",
+        "test": "vitest",
+        "typecheck": "tsc --noEmit",
+        "release": "./release.sh",
+        "prepublishOnly": "pnpm run build",
+        "prepare": "pnpm run build"
     },
     "dependencies": {
         "clsx": "^2.1.1",
@@ -44,11 +38,15 @@
         "@biomejs/biome": "^2.4.10",
         "@tailwindcss/vite": "^4.2.2",
         "@types/node": "^24.12.2",
+        "@vitest/browser-playwright": "^4.1.2",
         "tailwindcss": "^4.2.2",
         "typescript": "~6.0.2",
         "vite": "^8.0.4",
         "vite-plugin-checker": "^0.12.0",
         "vite-plugin-dts": "^4.5.4",
-        "vite-plugin-solid": "^2.11.12"
-    }
+        "vite-plugin-solid": "^2.11.12",
+        "rolldown-plugin-solid": "^0.2.1",
+        "tsdown": "^0.21.7"
+    },
+    "typesVersions": {}
 }
