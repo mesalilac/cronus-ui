@@ -1,6 +1,13 @@
 import gsap from 'gsap';
 import type { JSX } from 'solid-js';
-import { createEffect, createSignal, onCleanup, Show } from 'solid-js';
+import {
+    createEffect,
+    createSignal,
+    createUniqueId,
+    onCleanup,
+    onMount,
+    Show,
+} from 'solid-js';
 import { Portal } from 'solid-js/web';
 
 import { IconMenuCloseMd, IconSystemSave } from '~/icons';
@@ -24,6 +31,13 @@ export const Modal = (props: {
     let modalContentRef!: HTMLDivElement;
 
     const [shouldRender, setShouldRender] = createSignal(false);
+
+    onMount(() => {
+        console.debug('modal mounted');
+        console.debug('modal modalOverlayRef:', modalOverlayRef);
+        console.debug('modal modalContentRef:', modalContentRef);
+        console.debug('modal id:', createUniqueId());
+    });
 
     const animateOut = () => {
         console.debug('inside animate out');
