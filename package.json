@@ -10,6 +10,11 @@
             "solid": "./dist/index.jsx",
             "default": "./dist/index.js"
         },
+        "./ui": {
+            "types": "./dist/ui/index.d.ts",
+            "solid": "./dist/ui/index.jsx",
+            "default": "./dist/ui/index.jsx"
+        },
         "./package.json": "./package.json"
     },
     "files": [

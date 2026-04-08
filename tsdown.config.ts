@@ -1,20 +1,21 @@
-import solid from 'rolldown-plugin-solid'
-import { defineConfig } from 'tsdown'
+import solid from 'rolldown-plugin-solid';
+import { defineConfig } from 'tsdown';
 
 // export both js and jsx
 export default defineConfig([
-  {
-    platform: 'neutral',
-    // use the solid plugin to handle jsx
-    plugins: [solid()],
-  },
-  {
-    platform: 'neutral',
-    inputOptions: {
-      transform: {
-        jsx: 'preserve',
-      },
+    {
+        platform: 'neutral',
+        // use the solid plugin to handle jsx
+        plugins: [solid()],
     },
-    outExtensions: () => ({ js: '.jsx' }),
-  },
-])
+    {
+        entry: ['./src/index.ts', './src/ui/index.ts'],
+        platform: 'neutral',
+        inputOptions: {
+            transform: {
+                jsx: 'preserve',
+            },
+        },
+        outExtensions: () => ({ js: '.jsx' }),
+    },
+]);
