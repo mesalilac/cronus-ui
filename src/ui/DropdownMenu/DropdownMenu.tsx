@@ -1,8 +1,8 @@
-import type { JSX } from 'solid-js';
+import type { Accessor, JSX, Setter } from 'solid-js';
 import { createComputed, createSignal, on } from 'solid-js';
 
 import { Content } from './Content';
-import { DropdownMenuContext } from './context';
+import { type ContextMenuPos, DropdownMenuContext } from './context';
 import { Item } from './Item';
 import { ItemCheckbox } from './ItemCheckbox';
 import { ItemSwitch } from './ItemSwitch';
@@ -16,6 +16,8 @@ export type DropdownMenuProps = {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
+    contextMenuPos?: Accessor<ContextMenuPos | null>;
+    setContextMenuPos?: Setter<ContextMenuPos | null>;
     children: JSX.Element;
 };
 
@@ -24,11 +26,18 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
         props.open ?? props.defaultOpen ?? false,
     );
 
+    const cleanupContextMenuPos = (isOpen: boolean) => {
+        if (!isOpen && props.contextMenuPos?.() !== null)
+            props.setContextMenuPos?.(null);
+    };
+
     // sync state with props
     createComputed(
         on(
             () => Boolean(props.open),
             (isOpen) => {
+                cleanupContextMenuPos(isOpen);
+
                 setIsOpen(isOpen);
                 props.onOpenChange?.(isOpen);
             },
@@ -36,9 +45,11 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
         ),
     );
 
-    const onOpenChange = (open: boolean) => {
-        setIsOpen(open);
-        props.onOpenChange?.(open);
+    const onOpenChange = (isOpen: boolean) => {
+        cleanupContextMenuPos(isOpen);
+
+        setIsOpen(isOpen);
+        props.onOpenChange?.(isOpen);
     };
 
     const closeMenu = () => onOpenChange(false);
@@ -53,6 +64,8 @@ export const DropdownMenu = (props: DropdownMenuProps) => {
                 isOpen,
                 onOpenChange,
                 closeMenu,
+                contextMenuPos: props.contextMenuPos,
+                setContextMenuPos: props.setContextMenuPos,
                 triggerRef,
                 setTriggerRef,
             }}

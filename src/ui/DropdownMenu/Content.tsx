@@ -1,5 +1,11 @@
 import gsap from 'gsap';
-import { createEffect, type JSX, onCleanup } from 'solid-js';
+import {
+    type Accessor,
+    createEffect,
+    createMemo,
+    type JSX,
+    onCleanup,
+} from 'solid-js';
 
 import {
     Popover,
@@ -36,6 +42,24 @@ export const Content = (props: DropdownMenuContentProps) => {
         }
     });
 
+    const targetPositionArea: Accessor<TargetPositionArea> = createMemo(() => {
+        const contextMenuPos = ctx.contextMenuPos?.();
+
+        if (contextMenuPos !== null && contextMenuPos !== undefined) {
+            const offset = 10;
+
+            const x = contextMenuPos.x + offset;
+            const y = contextMenuPos.y + offset;
+
+            return {
+                top: () => `${y}px`,
+                left: () => `${x}px`,
+            };
+        }
+
+        return props.targetPositionArea ?? 'block-end span-inline-end';
+    });
+
     return (
         <Popover
             onOpenChange={ctx.onOpenChange}
@@ -44,9 +68,7 @@ export const Content = (props: DropdownMenuContentProps) => {
                 props.positionTryFallbacks ??
                 (() => ['block-start span-inline-end'])
             }
-            targetPositionArea={
-                props.targetPositionArea ?? 'block-end span-inline-end'
-            }
+            targetPositionArea={targetPositionArea()}
             triggerElement={ctx.triggerRef()}
         >
             <div
