@@ -17,5 +17,8 @@ export default defineConfig([
             },
         },
         outExtensions: () => ({ js: '.jsx' }),
+        deps: {
+            neverBundle: ['solid-js'],
+        },
     },
 ]);
