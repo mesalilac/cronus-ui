@@ -1,6 +1,7 @@
 import type { JSX } from 'solid-js';
 
 import { IconArrowChevronRight } from '~/icons';
+import type { TimeoutHandle } from '~/types';
 import { Button } from '~/ui/Button';
 import { cn } from '~/utils';
 
@@ -14,7 +15,7 @@ export type DropdownMenuSubTriggerProps = {
 export const Trigger = (props: DropdownMenuSubTriggerProps) => {
     const ctx = useSubMenuContext();
 
-    let openTimer: number | undefined;
+    let openTimer: TimeoutHandle;
 
     const handleMouseEnter = async () => {
         openTimer = await setTimeout(() => ctx.setIsOpen(true), 150);

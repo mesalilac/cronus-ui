@@ -5,14 +5,16 @@ import {
     useContext,
 } from 'solid-js';
 
+import type { TimeoutHandle } from '~/types';
+
 export const SubMenuContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: Setter<boolean>;
     closeMenu: () => void;
     triggerRef: Accessor<HTMLButtonElement | undefined>;
     setTriggerRef: Setter<HTMLButtonElement | undefined>;
-    closeTimer: Accessor<number | undefined>;
-    setCloseTimer: Setter<number | undefined>;
+    closeTimer: Accessor<TimeoutHandle | undefined>;
+    setCloseTimer: Setter<TimeoutHandle | undefined>;
 }>();
 
 export const useSubMenuContext = () => {

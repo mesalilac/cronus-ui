@@ -1,35 +1,38 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ],
-      "~/ui/*": [
-        "./src/ui/*"
-      ],
-      "~/icons": [
-        "./src/icons"
-      ],
-      "~/utils": [
-        "./src/utils"
-      ],
-    },
-    "types": [
-      "node"
-    ],
-    "allowJs": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "noEmit": true,
-    "noUncheckedSideEffectImports": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "isolatedModules": true
-  }
+    "compilerOptions": {
+        "target": "ESNext",
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "module": "ESNext",
+        "lib": [
+            "esnext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "moduleResolution": "bundler",
+        "types": [],
+        "paths": {
+            "~/*": [
+                "./src/*"
+            ],
+            "~/ui/*": [
+                "./src/ui/*"
+            ],
+            "~/icons": [
+                "./src/icons"
+            ],
+            "~/utils": [
+                "./src/utils"
+            ]
+        },
+        "allowJs": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "noUncheckedSideEffectImports": false,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "isolatedModules": true
+    }
 }
