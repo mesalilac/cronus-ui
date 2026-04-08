@@ -1,13 +1,6 @@
 import gsap from 'gsap';
 import type { JSX } from 'solid-js';
-import {
-    createEffect,
-    createSignal,
-    createUniqueId,
-    onCleanup,
-    onMount,
-    Show,
-} from 'solid-js';
+import { createEffect, createSignal, onCleanup, Show } from 'solid-js';
 import { Portal } from 'solid-js/web';
 
 import { IconMenuCloseMd, IconSystemSave } from '~/icons';
@@ -32,24 +25,11 @@ export const Modal = (props: {
 
     const [shouldRender, setShouldRender] = createSignal(false);
 
-    onMount(() => {
-        console.debug('modal mounted');
-        console.debug('modal modalOverlayRef:', modalOverlayRef);
-        console.debug('modal modalContentRef:', modalContentRef);
-        console.debug('modal id:', createUniqueId());
-    });
-
     const animateOut = () => {
-        console.debug('inside animate out');
-
-        if (!modalOverlayRef) console.debug('no modal overlay ref');
-        if (!modalContentRef) console.debug('no modal content ref');
-
         if (!modalOverlayRef || !modalContentRef) return;
 
         const tl = gsap.timeline({
             onComplete: () => {
-                console.debug('animate out complete');
                 setShouldRender(false);
                 props.onOpenChange(false);
             },
@@ -62,8 +42,6 @@ export const Modal = (props: {
             duration: 0.2,
             ease: 'power2.in',
         }).to(modalOverlayRef, { autoAlpha: 0, duration: 0.2 }, '-=0.1');
-
-        console.debug('animate out complete');
     };
 
     const closeModal = () => animateOut();
