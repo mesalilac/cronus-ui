@@ -31,7 +31,6 @@
         "play": "vite",
         "test": "vitest",
         "typecheck": "tsc --noEmit",
-        "release": "sh -c ./release.sh",
         "prepublishOnly": "pnpm run build",
         "prepare": "pnpm run build",
         "storybook": "storybook dev -p 6006",
