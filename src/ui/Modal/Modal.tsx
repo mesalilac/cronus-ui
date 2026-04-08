@@ -44,7 +44,10 @@ export const Modal = (props: {
         }).to(modalOverlayRef, { autoAlpha: 0, duration: 0.2 }, '-=0.1');
     };
 
-    const closeModal = () => animateOut();
+    const closeModal = () => {
+        setShouldRender(false);
+        props.onOpenChange(false);
+    };
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
