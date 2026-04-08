@@ -7,10 +7,7 @@ export default defineConfig([
         platform: 'neutral',
         // use the solid plugin to handle jsx
         plugins: [solid()],
-    },
-    {
         entry: ['./src/index.ts', './src/ui/index.ts', './src/icons/**/*.tsx'],
-        platform: 'neutral',
         inputOptions: {
             transform: {
                 jsx: 'preserve',
