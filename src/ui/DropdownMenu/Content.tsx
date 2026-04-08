@@ -68,6 +68,7 @@ export const Content = (props: DropdownMenuContentProps) => {
                 props.positionTryFallbacks ??
                 (() => ['block-start span-inline-end'])
             }
+            targetPosition='fixed'
             targetPositionArea={targetPositionArea()}
             triggerElement={ctx.triggerRef()}
         >
