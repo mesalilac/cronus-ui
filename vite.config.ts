@@ -27,6 +27,9 @@ export default defineConfig({
             biome: { command: 'check' },
         }),
     ],
+    resolve: {
+        tsconfigPaths: true,
+    },
     test: {
         projects: [
             {
