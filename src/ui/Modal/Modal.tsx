@@ -39,6 +39,10 @@ export const Modal = (props: {
         console.debug('modal id:', createUniqueId());
     });
 
+    createEffect(() => {
+        console.debug('modal modalOverlayRef:', modalOverlayRef);
+    });
+
     const animateOut = () => {
         console.debug('inside animate out');
 
