@@ -34,5 +34,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "isolatedModules": true
-    }
+    },
+    "exclude": [
+        "dist"
+    ]
 }
