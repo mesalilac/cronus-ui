@@ -9,7 +9,7 @@ export default defineConfig([
         plugins: [solid()],
     },
     {
-        entry: ['./src/index.ts', './src/ui/index.ts'],
+        entry: ['./src/index.ts', './src/ui/index.ts', './src/icons/index.ts'],
         platform: 'neutral',
         inputOptions: {
             transform: {

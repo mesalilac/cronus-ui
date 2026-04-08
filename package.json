@@ -15,6 +15,11 @@
             "solid": "./dist/ui/index.jsx",
             "default": "./dist/ui/index.jsx"
         },
+        "./icons": {
+            "types": "./dist/icons/index.d.ts",
+            "solid": "./dist/icons/index.jsx",
+            "default": "./dist/icons/index.jsx"
+        },
         "./package.json": "./package.json"
     },
     "files": [
