@@ -2,7 +2,7 @@ import type { Accessor, JSX, Setter } from 'solid-js';
 import { createComputed, createSignal, on } from 'solid-js';
 
 import { Content } from './Content';
-import { type ContextMenuPos, DropdownMenuContext } from './context';
+import { DropdownMenuContext } from './context';
 import { Item } from './Item';
 import { ItemCheckbox } from './ItemCheckbox';
 import { ItemSwitch } from './ItemSwitch';
@@ -16,8 +16,8 @@ export type DropdownMenuProps = {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
-    contextMenuPos?: Accessor<ContextMenuPos | null>;
-    setContextMenuPos?: Setter<ContextMenuPos | null>;
+    contextMenuPos?: Accessor<{ x: number; y: number } | null>;
+    setContextMenuPos?: Setter<{ x: number; y: number } | null>;
     children: JSX.Element;
 };
 
