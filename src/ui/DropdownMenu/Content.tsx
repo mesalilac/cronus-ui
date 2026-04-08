@@ -46,7 +46,7 @@ export const Content = (props: DropdownMenuContentProps) => {
         const contextMenuPos = ctx.contextMenuPos?.();
 
         if (contextMenuPos !== null && contextMenuPos !== undefined) {
-            const offset = 5;
+            const offset = 2;
 
             const x = contextMenuPos.x + offset;
             const y = contextMenuPos.y + offset;
