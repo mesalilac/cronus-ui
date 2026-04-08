@@ -12,8 +12,11 @@
       "~/ui/*": [
         "./src/ui/*"
       ],
-      "~/icons/*": [
-        "./src/icons/*"
+      "~/icons": [
+        "./src/icons"
+      ],
+      "~/utils": [
+        "./src/utils"
       ],
     },
     "types": [
