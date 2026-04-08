@@ -20,8 +20,8 @@ export const Modal = (props: {
     class?: string;
     children: JSX.Element;
 }) => {
-    let modalOverlayRef: HTMLDivElement | undefined;
-    let modalContentRef: HTMLDivElement | undefined;
+    let modalOverlayRef!: HTMLDivElement;
+    let modalContentRef!: HTMLDivElement;
 
     const [shouldRender, setShouldRender] = createSignal(false);
 
