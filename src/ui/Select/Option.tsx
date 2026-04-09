@@ -17,7 +17,7 @@ export type SelectOptionProps = {
 export const Option = (props: SelectOptionProps) => {
     const ctx = useSelectContext();
 
-    const isSelected = props.selected ?? ctx.value() === props.value;
+    const isSelected = () => props.selected ?? ctx.value() === props.value;
 
     return (
         <Button
@@ -28,10 +28,10 @@ export const Option = (props: SelectOptionProps) => {
 
                 if (ctx.autoClose) ctx.setIsOpen(false);
             }}
-            variant={isSelected ? 'primary' : 'ghost'}
+            variant={isSelected() ? 'primary' : 'ghost'}
         >
             <div class='flex gap-1'>{props.children}</div>
-            <Show when={isSelected}>
+            <Show when={isSelected()}>
                 <IconInterfaceCheck />
             </Show>
         </Button>
