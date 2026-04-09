@@ -1,6 +1,6 @@
 import { createSignal, For } from 'solid-js';
 
-import { Badge, Button, Modal, Select } from '~/ui';
+import { Badge, Button, DropdownMenu, Modal, Select } from '~/ui';
 
 import { Hello } from '../../src';
 
@@ -22,8 +22,20 @@ export function App() {
 
     const [numbers, setNumbers] = createSignal<string[]>([]);
 
+    const [isMenuOpen, setIsMenuOpen] = createSignal(false);
+
     return (
         <div>
+            <Button
+                onClick={() => {
+                    document.documentElement.classList.toggle('dark');
+                }}
+                variant='outline'
+            >
+                theme is
+                <span class='hidden dark:block'>dark</span>
+                <span class='block dark:hidden'>light</span>
+            </Button>
             <Hello />
             <Button
                 onClick={() => setShowModal(true)}
@@ -36,7 +48,6 @@ export function App() {
                 <Modal.Body>hi</Modal.Body>
                 <Modal.Footer />
             </Modal>
-
             <Select
                 autoClose={false}
                 onChange={(v) => {
@@ -64,6 +75,21 @@ export function App() {
                     </For>
                 </Select.Content>
             </Select>
+            <DropdownMenu onOpenChange={setIsMenuOpen} open={isMenuOpen()}>
+                <DropdownMenu.Trigger>Open Menu</DropdownMenu.Trigger>
+                <DropdownMenu.Content>
+                    <DropdownMenu.Item>Item 1</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 2</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 3</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 4</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 5</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 6</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 7</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 8</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 9</DropdownMenu.Item>
+                    <DropdownMenu.Item>Item 10</DropdownMenu.Item>
+                </DropdownMenu.Content>
+            </DropdownMenu>
         </div>
     );
 }
