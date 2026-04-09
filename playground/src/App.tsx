@@ -2,8 +2,6 @@ import { createSignal, For } from 'solid-js';
 
 import { Badge, Button, DropdownMenu, Modal, Select } from '~/ui';
 
-import { Hello } from '../../src';
-
 export function App() {
     const [showModal, setShowModal] = createSignal(false);
 
@@ -36,7 +34,6 @@ export function App() {
                 <span class='hidden dark:block'>dark</span>
                 <span class='block dark:hidden'>light</span>
             </Button>
-            <Hello />
             <Button
                 onClick={() => setShowModal(true)}
                 type='button'
