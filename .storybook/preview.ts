@@ -7,7 +7,7 @@ export const decorators = [
     withThemeByClassName({
         themes: {
             light: 'light',
-            dark: 'dark',
+            dark: 'dark bg-neutral-950',
         },
         defaultTheme: 'dark',
     }),
