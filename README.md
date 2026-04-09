@@ -4,9 +4,7 @@
 
 `$ pnpm version patch`
 
-`$ git push origin main --follow-tags`
-
-`$ pnpm release`
+`$ ./push-tag.sh`
 
 ## Development
 
