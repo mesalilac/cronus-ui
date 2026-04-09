@@ -35,7 +35,6 @@ export const Content = (rawProps: SelectContentProps) => {
                 gsap.from(divRef, {
                     autoAlpha: 0,
                     duration: 0.2,
-                    height: 0,
                     overflow: 'hidden',
                     ease: 'power3.out',
                 });
