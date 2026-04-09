@@ -26,6 +26,7 @@ export const Trigger = (rawProps: SelectTriggerProps) => {
             aria-haspopup='listbox'
             class={cn(
                 'justify-between px-3 text-white capitalize',
+                ctx.isOpen() && 'bg-neutral-700/30 hover:bg-neutral-700/30',
                 props.class,
             )}
             disabled={props.disabled}
