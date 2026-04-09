@@ -32,8 +32,7 @@ export const Content = (props: DropdownMenuContentProps) => {
                 gsap.from(divRef, {
                     autoAlpha: 0,
                     duration: 0.2,
-                    height: 0,
-                    overflow: 'hidden',
+                    scale: 0.98,
                     ease: 'power3.out',
                 });
             });
