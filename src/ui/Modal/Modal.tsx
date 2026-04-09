@@ -103,7 +103,7 @@ export const Modal = (props: {
                 >
                     <div
                         class={cn(
-                            'relative flex size-9/12 flex-col gap-2 rounded-lg bg-neutral-900/80 p-4 shadow-lg backdrop-blur-sm',
+                            'relative flex size-9/12 flex-col gap-2 rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 shadow-lg backdrop-blur-sm',
                             props.class,
                         )}
                         onMouseDown={(e) => e.stopPropagation()}
