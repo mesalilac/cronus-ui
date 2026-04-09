@@ -34,8 +34,9 @@ export const Content = (rawProps: SelectContentProps) => {
             const gsapCtx = gsap.context(() => {
                 gsap.from(divRef, {
                     autoAlpha: 0,
-                    duration: 0.2,
+                    scale: 0.98,
                     overflow: 'hidden',
+                    duration: 0.2,
                     ease: 'power3.out',
                 });
             });
