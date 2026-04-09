@@ -1,22 +1,27 @@
 import { createSignal } from 'solid-js';
 
+import { Button, Modal } from '~/ui';
+
 import { Hello } from '../../src';
-import { Modal } from '../../src/ui/Modal';
 
 export function App() {
     const [showModal, setShowModal] = createSignal(false);
 
     return (
-        <>
+        <div>
             <Hello />
-            <button onClick={() => setShowModal(true)} type='button'>
+            <Button
+                onClick={() => setShowModal(true)}
+                type='button'
+                variant='outline'
+            >
                 Open Modal
-            </button>
+            </Button>
 
             <Modal onOpenChange={setShowModal} open={showModal()}>
                 <Modal.Body>hi</Modal.Body>
                 <Modal.Footer />
             </Modal>
-        </>
+        </div>
     );
 }
