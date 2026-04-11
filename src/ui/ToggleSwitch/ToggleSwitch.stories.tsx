@@ -31,7 +31,7 @@ export const WithLabel: Story = {
         return (
             <ToggleSwitch
                 checked={checked()}
-                label='Checkbox Label'
+                label='Label'
                 onChange={setChecked}
             />
         );
@@ -46,7 +46,7 @@ export const WithHelperText: Story = {
             <ToggleSwitch
                 checked={checked()}
                 helper='Helper Text'
-                label='Checkbox Label'
+                label='Label'
                 onChange={setChecked}
             />
         );
@@ -62,7 +62,7 @@ export const Disabled: Story = {
                 checked={checked()}
                 disabled
                 helper='Helper Text'
-                label='Checkbox Label'
+                label='Label'
                 onChange={setChecked}
             />
         );

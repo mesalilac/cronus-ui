@@ -29,11 +29,7 @@ export const WithLabel: Story = {
         const [checked, setChecked] = createSignal(false);
 
         return (
-            <Checkbox
-                checked={checked()}
-                label='Checkbox Label'
-                onChange={setChecked}
-            />
+            <Checkbox checked={checked()} label='Label' onChange={setChecked} />
         );
     },
 };
@@ -46,7 +42,7 @@ export const WithHelperText: Story = {
             <Checkbox
                 checked={checked()}
                 helper='Helper Text'
-                label='Checkbox Label'
+                label='Label'
                 onChange={setChecked}
             />
         );
