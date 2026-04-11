@@ -117,7 +117,7 @@ export const Textarea = <T = string>(props: TextareaProps<T>) => {
                 </label>
             </Show>
             <textarea
-                aria-describedby={error() ? `${id}-error` : `${id}-helper`}
+                aria-describedby={error() ? `error, ${error()}` : local.label}
                 aria-invalid={Boolean(error())}
                 class={cn(
                     'h-32 max-h-32 resize-none rounded-lg border border-neutral-600 bg-neutral-700/30 px-3 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500',
