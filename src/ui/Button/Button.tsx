@@ -42,36 +42,36 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'box-border flex cursor-pointer items-center gap-2 rounded-lg border border-transparent px-4 py-2 font-medium text-sm text-white leading-5 shadow-xs transition-colors duration-100 focus-visible:outline-none focus-visible:ring-4',
+        'box-border flex cursor-pointer items-center gap-2 rounded-lg border border-current/20 px-4 py-2 font-medium text-sm text-white leading-5 shadow-xs transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-4',
     );
 
     const variantStyles: Record<ButtonVariant, string> = {
         primary: cn(
-            'bg-blue-500/60 hover:bg-blue-600/60 focus-visible:ring-blue-500/50 active:bg-blue-700/60',
+            'bg-blue-500/60 hover:bg-blue-500/70 focus-visible:ring-blue-500/50 active:bg-blue-500/50',
         ),
         secondary: cn(
-            'border-neutral-600/30 bg-neutral-500/30 text-neutral-300 hover:bg-neutral-600/30 focus-visible:ring-neutral-500/50 active:bg-neutral-700/30',
+            'bg-neutral-500/30 text-neutral-300 hover:bg-neutral-500/40 focus-visible:ring-neutral-500/50 active:bg-neutral-500/20',
         ),
         tertiary: cn(
-            'border-neutral-700/30 bg-neutral-600/30 text-neutral-300 hover:bg-neutral-700/30 focus-visible:ring-neutral-500/50 active:bg-neutral-800/30',
+            'bg-neutral-600/30 text-neutral-300 hover:bg-neutral-600/40 focus-visible:ring-neutral-500/50 active:bg-neutral-600/20',
         ),
         success: cn(
-            'border-green-600/30 bg-green-500/30 text-green-400 hover:bg-green-600/30 focus-visible:ring-green-500/50 active:bg-green-700/30',
+            'bg-green-500/30 text-green-400 hover:bg-green-500/40 focus-visible:ring-green-500/50 active:bg-green-500/20',
         ),
         danger: cn(
-            'border-red-600/30 bg-red-500/30 text-red-400 hover:bg-red-600/30 focus-visible:ring-red-500/50 active:bg-red-700/30',
+            'bg-red-500/30 text-red-400 hover:bg-red-500/40 focus-visible:ring-red-500/50 active:bg-red-500/20',
         ),
         warning: cn(
-            'border-yellow-600/60 bg-yellow-500/30 text-yellow-400 hover:bg-yellow-600/30 focus-visible:ring-yellow-500/50 active:bg-yellow-700/30',
+            'bg-yellow-500/30 text-yellow-400 hover:bg-yellow-500/40 focus-visible:ring-yellow-500/50 active:bg-yellow-500/20',
         ),
         ghost: cn(
-            'bg-transparent hover:bg-neutral-600/30 focus-visible:ring-neutral-600/50 active:bg-neutral-700/30',
+            'border-transparent bg-transparent hover:bg-neutral-600/40 focus-visible:ring-neutral-600/50 active:bg-neutral-600/20',
         ),
         icon: cn(
-            'rounded-full bg-transparent p-2 focus-visible:ring-neutral-600/50 active:bg-neutral-700/30',
+            'rounded-full border-transparent bg-transparent p-2 focus-visible:ring-neutral-600/50 active:bg-neutral-600/20',
         ),
         outline: cn(
-            'border-neutral-600/30 text-neutral-300 hover:bg-neutral-600/30 focus-visible:ring-neutral-500/50 active:bg-neutral-700/30',
+            'text-neutral-300 hover:bg-neutral-600/40 focus-visible:ring-neutral-500/50 active:bg-neutral-600/20',
         ),
     };
 
