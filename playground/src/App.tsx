@@ -23,7 +23,7 @@ export function App() {
     const [isMenuOpen, setIsMenuOpen] = createSignal(false);
 
     return (
-        <div>
+        <div class='flex flex-col items-start gap-2'>
             <Button
                 onClick={() => {
                     document.documentElement.classList.toggle('dark');
