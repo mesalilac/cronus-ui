@@ -7,7 +7,7 @@ export type CheckboxProps = {
     checked?: boolean;
     onChange: (checked: boolean) => void;
     helper?: JSX.Element;
-    label: JSX.Element;
+    label?: JSX.Element;
 };
 
 export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
