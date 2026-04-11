@@ -98,3 +98,11 @@ export const Loading: Story = {
         children: 'Text',
     },
 };
+
+export const Disabled: Story = {
+    args: {
+        variant: 'primary',
+        disabled: true,
+        children: 'Text',
+    },
+};
