@@ -31,7 +31,10 @@ export interface ButtonProps
 }
 
 export const Button: ParentComponent<ButtonProps> = (rawProps) => {
-    const props = mergeProps({ variant: 'primary' as ButtonVariant }, rawProps);
+    const props = mergeProps(
+        { variant: 'secondary' as ButtonVariant },
+        rawProps,
+    );
 
     const [local, others] = splitProps(props, [
         'class',
