@@ -31,7 +31,7 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
     };
 
     const baseStyles = cn(
-        'inline-flex select-none items-center justify-center rounded-full border px-2 py-0.5 font-medium text-xs',
+        'inline-flex select-none items-center justify-center gap-1 rounded-full border px-2 py-0.5 font-medium text-xs',
     );
 
     return (
