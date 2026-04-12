@@ -6,8 +6,8 @@ import './index.css';
 export const decorators = [
     withThemeByClassName({
         themes: {
-            light: 'light',
-            dark: 'dark bg-neutral-950',
+            light: 'light text-black',
+            dark: 'dark bg-neutral-950 text-white',
         },
         defaultTheme: 'dark',
     }),
