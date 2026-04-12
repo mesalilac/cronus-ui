@@ -3,10 +3,10 @@ import type { JSX } from 'solid-js';
 import { createEffect, createSignal, onCleanup, Show } from 'solid-js';
 import { Portal } from 'solid-js/web';
 
-import { IconMenuCloseMd, IconSystemSave } from '~/icons';
-import { Button } from '~/ui/Button';
-import { ModalContext, useModalContext } from '~/ui/Modal';
-import { Separator } from '~/ui/Separator';
+import { Content } from '~/ui/Modal/Content';
+import { ModalContext } from '~/ui/Modal/context';
+import { Footer } from '~/ui/Modal/Footer';
+import { Header } from '~/ui/Modal/Header';
 import { cn } from '~/utils';
 
 export type ModalWrapperProps = {
@@ -125,53 +125,6 @@ export const Modal = (props: {
     );
 };
 
-Modal.Title = (props: { title: JSX.Element; class?: string }) => {
-    return (
-        <>
-            <span class={cn('px-2 text-xl capitalize', props.class)}>
-                {props.title}
-            </span>
-            <Separator class='mb-4' />
-        </>
-    );
-};
-
-Modal.Body = (props: { class?: string; children: JSX.Element }) => {
-    return (
-        <div class={cn('flex flex-col gap-4 overflow-y-auto p-2', props.class)}>
-            {props.children}
-        </div>
-    );
-};
-
-Modal.Footer = (props: {
-    dismiss?: JSX.Element;
-    action?: JSX.Element;
-    onAction?: () => void;
-}) => {
-    const ctx = useModalContext();
-
-    return (
-        <>
-            <Separator class='-mx-4 mt-auto' />
-            <div class='flex flex-row gap-2 self-end'>
-                <Button onClick={ctx.closeModal} variant='secondary'>
-                    {props.dismiss || (
-                        <>
-                            <IconMenuCloseMd /> Cancel
-                        </>
-                    )}
-                </Button>
-                <Show when={props.onAction}>
-                    <Button onClick={props.onAction}>
-                        {props.action || (
-                            <>
-                                <IconSystemSave /> Save
-                            </>
-                        )}
-                    </Button>
-                </Show>
-            </div>
-        </>
-    );
-};
+Modal.Header = Header;
+Modal.Content = Content;
+Modal.Footer = Footer;

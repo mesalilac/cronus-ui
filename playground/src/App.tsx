@@ -42,8 +42,10 @@ export function App() {
                 Open Modal
             </Button>
             <Modal onOpenChange={setShowModal} open={showModal()}>
-                <Modal.Body>hi</Modal.Body>
-                <Modal.Footer />
+                <Modal.Content>hi</Modal.Content>
+                <Modal.Footer>
+                    <Modal.Footer.Cancel />
+                </Modal.Footer>
             </Modal>
             <Select
                 autoClose={false}
