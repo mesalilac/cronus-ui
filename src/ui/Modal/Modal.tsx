@@ -28,20 +28,22 @@ export const Modal = (props: {
     const animateOut = () => {
         if (!modalOverlayRef || !modalContentRef) return;
 
-        const tl = gsap.timeline({
-            onComplete: () => {
-                setShouldRender(false);
-                props.onOpenChange(false);
-            },
+        const gsapCtx = gsap.context(() => {
+            gsap.to(modalContentRef, {
+                autoAlpha: 0,
+                scale: 0.95,
+                duration: 0.2,
+                ease: 'power2.in',
+                onComplete: () => {
+                    setShouldRender(false);
+                    props.onOpenChange(false);
+                },
+            });
         });
 
-        tl.to(modalContentRef, {
-            y: 20,
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.2,
-            ease: 'power2.in',
-        }).to(modalOverlayRef, { autoAlpha: 0, duration: 0.2 }, '-=0.1');
+        onCleanup(() => {
+            gsapCtx.revert();
+        });
     };
 
     const closeModal = () => animateOut();
@@ -57,22 +59,18 @@ export const Modal = (props: {
             setShouldRender(true);
             requestAnimationFrame(() => {
                 if (modalOverlayRef && modalContentRef) {
-                    gsap.timeline()
-                        .to(modalOverlayRef, {
-                            autoAlpha: 1,
+                    const gsapCtx = gsap.context(() => {
+                        gsap.from(modalContentRef, {
+                            scale: 0.95,
+                            autoAlpha: 0,
                             duration: 0.2,
                             ease: 'power2.out',
-                        })
-                        .from(
-                            modalContentRef,
-                            {
-                                y: 20,
-                                autoAlpha: 0,
-                                duration: 0.2,
-                                ease: 'back.out(1.7)',
-                            },
-                            '-=0.2',
-                        );
+                        });
+                    });
+
+                    onCleanup(() => {
+                        gsapCtx.revert();
+                    });
                 }
             });
 
@@ -103,7 +101,7 @@ export const Modal = (props: {
                 >
                     <div
                         class={cn(
-                            'relative flex size-9/12 flex-col gap-2 rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 shadow-lg backdrop-blur-sm',
+                            'pointer-events-auto relative flex size-9/12 flex-col gap-2 rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 text-black shadow-lg backdrop-blur-sm dark:text-white',
                             props.class,
                         )}
                         onMouseDown={(e) => e.stopPropagation()}
