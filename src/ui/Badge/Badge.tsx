@@ -22,17 +22,17 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
         rawProps,
     );
 
-    const variantStyles: Record<BadgeVariant, string> = {
-        default: cn('border-neutral-600/30 bg-neutral-600/10 text-neutral-400'),
-        success: cn('border-green-600/30 bg-green-500/10 text-green-400'),
-        warning: cn('border-yellow-600/30 bg-yellow-500/10 text-yellow-400'),
-        danger: cn('border-red-600/30 bg-red-500/10 text-red-400'),
-        outline: cn('border-neutral-600 text-neutral-400'),
-    };
-
     const baseStyles = cn(
-        'inline-flex select-none items-center justify-center gap-1 rounded-full border px-2 py-0.5 font-medium text-xs',
+        'inline-flex select-none items-center justify-center gap-1 rounded-full border border-current/30 px-2 py-0.5 font-medium text-xs',
     );
+
+    const variantStyles: Record<BadgeVariant, string> = {
+        default: cn('bg-neutral-600/10 text-neutral-400'),
+        success: cn('bg-green-500/10 text-green-400'),
+        warning: cn('bg-yellow-500/10 text-yellow-400'),
+        danger: cn('bg-red-500/10 text-red-400'),
+        outline: cn('text-neutral-400'),
+    };
 
     return (
         <span
