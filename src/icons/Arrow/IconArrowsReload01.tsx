@@ -23,13 +23,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *     ▓▓   ░░░░░░
  * ```
  */
-export const IconArrowsReload01: VoidComponent<IconProps> = (props) => {
+export const IconArrowSReload01: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='Arrows Reload01'
+            aria-label='Arrow SReload01'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'
