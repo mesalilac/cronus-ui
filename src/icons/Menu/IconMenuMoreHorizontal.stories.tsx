@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMenuMoreHorizontal } from './IconMenuMoreHorizontal';
+import { IconMenuMoreHorizontal as IconComp } from './IconMenuMoreHorizontal';
 
 const meta = {
     title: 'Icon/Menu/MoreHorizontal',
-    component: IconMenuMoreHorizontal,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMenuMoreHorizontal>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMenuMoreHorizontal>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const MoreHorizontal: Story = {
     args: {
         size: '6rem',
     },

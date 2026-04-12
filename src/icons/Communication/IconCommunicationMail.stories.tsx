@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationMail } from './IconCommunicationMail';
+import { IconCommunicationMail as IconComp } from './IconCommunicationMail';
 
 const meta = {
     title: 'Icon/Communication/Mail',
-    component: IconCommunicationMail,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationMail>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationMail>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Mail: Story = {
     args: {
         size: '6rem',
     },

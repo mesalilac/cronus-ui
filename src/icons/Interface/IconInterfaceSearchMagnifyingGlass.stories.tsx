@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceSearchMagnifyingGlass } from './IconInterfaceSearchMagnifyingGlass';
+import { IconInterfaceSearchMagnifyingGlass as IconComp } from './IconInterfaceSearchMagnifyingGlass';
 
 const meta = {
     title: 'Icon/Interface/SearchMagnifyingGlass',
-    component: IconInterfaceSearchMagnifyingGlass,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceSearchMagnifyingGlass>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceSearchMagnifyingGlass>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SearchMagnifyingGlass: Story = {
     args: {
         size: '6rem',
     },

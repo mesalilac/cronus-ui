@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemDesktopTower } from './IconSystemDesktopTower';
+import { IconSystemDesktopTower as IconComp } from './IconSystemDesktopTower';
 
 const meta = {
     title: 'Icon/System/DesktopTower',
-    component: IconSystemDesktopTower,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemDesktopTower>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemDesktopTower>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DesktopTower: Story = {
     args: {
         size: '6rem',
     },

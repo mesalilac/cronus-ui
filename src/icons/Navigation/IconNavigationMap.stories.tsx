@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconNavigationMap } from './IconNavigationMap';
+import { IconNavigationMap as IconComp } from './IconNavigationMap';
 
 const meta = {
     title: 'Icon/Navigation/Map',
-    component: IconNavigationMap,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconNavigationMap>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconNavigationMap>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Map: Story = {
     args: {
         size: '6rem',
     },

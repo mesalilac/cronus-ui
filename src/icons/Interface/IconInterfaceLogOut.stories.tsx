@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceLogOut } from './IconInterfaceLogOut';
+import { IconInterfaceLogOut as IconComp } from './IconInterfaceLogOut';
 
 const meta = {
     title: 'Icon/Interface/LogOut',
-    component: IconInterfaceLogOut,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceLogOut>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceLogOut>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const LogOut: Story = {
     args: {
         size: '6rem',
     },

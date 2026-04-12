@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditHeadingH2 } from './IconEditHeadingH2';
+import { IconEditHeadingH2 as IconComp } from './IconEditHeadingH2';
 
 const meta = {
     title: 'Icon/Edit/HeadingH2',
-    component: IconEditHeadingH2,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditHeadingH2>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditHeadingH2>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const HeadingH2: Story = {
     args: {
         size: '6rem',
     },

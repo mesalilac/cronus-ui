@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemWifiNone } from './IconSystemWifiNone';
+import { IconSystemWifiNone as IconComp } from './IconSystemWifiNone';
 
 const meta = {
     title: 'Icon/System/WifiNone',
-    component: IconSystemWifiNone,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemWifiNone>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemWifiNone>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const WifiNone: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconFileCloudAdd } from './IconFileCloudAdd';
+import { IconFileCloudAdd as IconComp } from './IconFileCloudAdd';
 
 const meta = {
     title: 'Icon/File/CloudAdd',
-    component: IconFileCloudAdd,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconFileCloudAdd>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconFileCloudAdd>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CloudAdd: Story = {
     args: {
         size: '6rem',
     },

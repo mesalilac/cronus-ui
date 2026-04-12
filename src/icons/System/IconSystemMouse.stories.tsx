@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemMouse } from './IconSystemMouse';
+import { IconSystemMouse as IconComp } from './IconSystemMouse';
 
 const meta = {
     title: 'Icon/System/Mouse',
-    component: IconSystemMouse,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemMouse>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemMouse>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Mouse: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationShareIosExport } from './IconCommunicationShareIosExport';
+import { IconCommunicationShareIosExport as IconComp } from './IconCommunicationShareIosExport';
 
 const meta = {
     title: 'Icon/Communication/ShareIosExport',
-    component: IconCommunicationShareIosExport,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationShareIosExport>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationShareIosExport>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ShareIosExport: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditTextAlignCenter } from './IconEditTextAlignCenter';
+import { IconEditTextAlignCenter as IconComp } from './IconEditTextAlignCenter';
 
 const meta = {
     title: 'Icon/Edit/TextAlignCenter',
-    component: IconEditTextAlignCenter,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditTextAlignCenter>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditTextAlignCenter>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const TextAlignCenter: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconFileCheck } from './IconFileCheck';
+import { IconFileCheck as IconComp } from './IconFileCheck';
 
 const meta = {
     title: 'Icon/File/Check',
-    component: IconFileCheck,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconFileCheck>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconFileCheck>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Check: Story = {
     args: {
         size: '6rem',
     },

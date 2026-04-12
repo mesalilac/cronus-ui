@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaChromecast } from './IconMediaChromecast';
+import { IconMediaChromecast as IconComp } from './IconMediaChromecast';
 
 const meta = {
     title: 'Icon/Media/Chromecast',
-    component: IconMediaChromecast,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaChromecast>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaChromecast>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Chromecast: Story = {
     args: {
         size: '6rem',
     },

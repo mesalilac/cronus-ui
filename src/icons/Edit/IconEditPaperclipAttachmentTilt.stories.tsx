@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditPaperclipAttachmentTilt } from './IconEditPaperclipAttachmentTilt';
+import { IconEditPaperclipAttachmentTilt as IconComp } from './IconEditPaperclipAttachmentTilt';
 
 const meta = {
     title: 'Icon/Edit/PaperclipAttachmentTilt',
-    component: IconEditPaperclipAttachmentTilt,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditPaperclipAttachmentTilt>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditPaperclipAttachmentTilt>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const PaperclipAttachmentTilt: Story = {
     args: {
         size: '6rem',
     },

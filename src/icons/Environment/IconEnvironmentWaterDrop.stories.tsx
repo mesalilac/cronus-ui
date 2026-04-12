@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEnvironmentWaterDrop } from './IconEnvironmentWaterDrop';
+import { IconEnvironmentWaterDrop as IconComp } from './IconEnvironmentWaterDrop';
 
 const meta = {
     title: 'Icon/Environment/WaterDrop',
-    component: IconEnvironmentWaterDrop,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEnvironmentWaterDrop>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEnvironmentWaterDrop>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const WaterDrop: Story = {
     args: {
         size: '6rem',
     },

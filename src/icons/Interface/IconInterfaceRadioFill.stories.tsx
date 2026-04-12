@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceRadioFill } from './IconInterfaceRadioFill';
+import { IconInterfaceRadioFill as IconComp } from './IconInterfaceRadioFill';
 
 const meta = {
     title: 'Icon/Interface/RadioFill',
-    component: IconInterfaceRadioFill,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceRadioFill>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceRadioFill>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const RadioFill: Story = {
     args: {
         size: '6rem',
     },

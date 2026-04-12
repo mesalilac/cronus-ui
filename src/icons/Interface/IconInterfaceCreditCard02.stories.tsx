@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceCreditCard02 } from './IconInterfaceCreditCard02';
+import { IconInterfaceCreditCard02 as IconComp } from './IconInterfaceCreditCard02';
 
 const meta = {
     title: 'Icon/Interface/CreditCard02',
-    component: IconInterfaceCreditCard02,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceCreditCard02>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceCreditCard02>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CreditCard02: Story = {
     args: {
         size: '6rem',
     },

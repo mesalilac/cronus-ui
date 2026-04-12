@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemMobileButton } from './IconSystemMobileButton';
+import { IconSystemMobileButton as IconComp } from './IconSystemMobileButton';
 
 const meta = {
     title: 'Icon/System/MobileButton',
-    component: IconSystemMobileButton,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemMobileButton>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemMobileButton>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const MobileButton: Story = {
     args: {
         size: '6rem',
     },

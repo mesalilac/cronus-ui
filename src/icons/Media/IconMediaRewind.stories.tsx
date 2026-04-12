@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaRewind } from './IconMediaRewind';
+import { IconMediaRewind as IconComp } from './IconMediaRewind';
 
 const meta = {
     title: 'Icon/Media/Rewind',
-    component: IconMediaRewind,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaRewind>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaRewind>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Rewind: Story = {
     args: {
         size: '6rem',
     },

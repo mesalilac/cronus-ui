@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconNavigationFlag } from './IconNavigationFlag';
+import { IconNavigationFlag as IconComp } from './IconNavigationFlag';
 
 const meta = {
     title: 'Icon/Navigation/Flag',
-    component: IconNavigationFlag,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconNavigationFlag>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconNavigationFlag>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Flag: Story = {
     args: {
         size: '6rem',
     },

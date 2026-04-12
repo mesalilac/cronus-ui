@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaVolumeMax } from './IconMediaVolumeMax';
+import { IconMediaVolumeMax as IconComp } from './IconMediaVolumeMax';
 
 const meta = {
     title: 'Icon/Media/VolumeMax',
-    component: IconMediaVolumeMax,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaVolumeMax>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaVolumeMax>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const VolumeMax: Story = {
     args: {
         size: '6rem',
     },

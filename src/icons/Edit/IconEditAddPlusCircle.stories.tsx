@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditAddPlusCircle } from './IconEditAddPlusCircle';
+import { IconEditAddPlusCircle as IconComp } from './IconEditAddPlusCircle';
 
 const meta = {
     title: 'Icon/Edit/AddPlusCircle',
-    component: IconEditAddPlusCircle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditAddPlusCircle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditAddPlusCircle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const AddPlusCircle: Story = {
     args: {
         size: '6rem',
     },

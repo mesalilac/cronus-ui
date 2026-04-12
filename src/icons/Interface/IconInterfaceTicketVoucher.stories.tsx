@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceTicketVoucher } from './IconInterfaceTicketVoucher';
+import { IconInterfaceTicketVoucher as IconComp } from './IconInterfaceTicketVoucher';
 
 const meta = {
     title: 'Icon/Interface/TicketVoucher',
-    component: IconInterfaceTicketVoucher,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceTicketVoucher>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceTicketVoucher>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const TicketVoucher: Story = {
     args: {
         size: '6rem',
     },

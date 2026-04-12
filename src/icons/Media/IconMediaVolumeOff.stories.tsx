@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaVolumeOff } from './IconMediaVolumeOff';
+import { IconMediaVolumeOff as IconComp } from './IconMediaVolumeOff';
 
 const meta = {
     title: 'Icon/Media/VolumeOff',
-    component: IconMediaVolumeOff,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaVolumeOff>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaVolumeOff>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const VolumeOff: Story = {
     args: {
         size: '6rem',
     },

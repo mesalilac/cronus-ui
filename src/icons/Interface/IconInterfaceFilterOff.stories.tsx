@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceFilterOff } from './IconInterfaceFilterOff';
+import { IconInterfaceFilterOff as IconComp } from './IconInterfaceFilterOff';
 
 const meta = {
     title: 'Icon/Interface/FilterOff',
-    component: IconInterfaceFilterOff,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceFilterOff>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceFilterOff>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const FilterOff: Story = {
     args: {
         size: '6rem',
     },

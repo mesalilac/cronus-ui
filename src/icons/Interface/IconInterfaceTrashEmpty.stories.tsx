@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceTrashEmpty } from './IconInterfaceTrashEmpty';
+import { IconInterfaceTrashEmpty as IconComp } from './IconInterfaceTrashEmpty';
 
 const meta = {
     title: 'Icon/Interface/TrashEmpty',
-    component: IconInterfaceTrashEmpty,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceTrashEmpty>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceTrashEmpty>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const TrashEmpty: Story = {
     args: {
         size: '6rem',
     },

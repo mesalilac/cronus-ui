@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemWindowCheck } from './IconSystemWindowCheck';
+import { IconSystemWindowCheck as IconComp } from './IconSystemWindowCheck';
 
 const meta = {
     title: 'Icon/System/WindowCheck',
-    component: IconSystemWindowCheck,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemWindowCheck>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemWindowCheck>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const WindowCheck: Story = {
     args: {
         size: '6rem',
     },

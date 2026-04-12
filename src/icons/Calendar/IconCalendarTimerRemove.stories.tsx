@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCalendarTimerRemove } from './IconCalendarTimerRemove';
+import { IconCalendarTimerRemove as IconComp } from './IconCalendarTimerRemove';
 
 const meta = {
     title: 'Icon/Calendar/TimerRemove',
-    component: IconCalendarTimerRemove,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCalendarTimerRemove>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCalendarTimerRemove>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const TimerRemove: Story = {
     args: {
         size: '6rem',
     },

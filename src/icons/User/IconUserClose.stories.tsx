@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconUserClose } from './IconUserClose';
+import { IconUserClose as IconComp } from './IconUserClose';
 
 const meta = {
     title: 'Icon/User/Close',
-    component: IconUserClose,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconUserClose>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconUserClose>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Close: Story = {
     args: {
         size: '6rem',
     },

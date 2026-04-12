@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconUserGroup } from './IconUserGroup';
+import { IconUserGroup as IconComp } from './IconUserGroup';
 
 const meta = {
     title: 'Icon/User/Group',
-    component: IconUserGroup,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconUserGroup>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconUserGroup>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Group: Story = {
     args: {
         size: '6rem',
     },

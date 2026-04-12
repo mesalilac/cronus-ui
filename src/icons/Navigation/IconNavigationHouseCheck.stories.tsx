@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconNavigationHouseCheck } from './IconNavigationHouseCheck';
+import { IconNavigationHouseCheck as IconComp } from './IconNavigationHouseCheck';
 
 const meta = {
     title: 'Icon/Navigation/HouseCheck',
-    component: IconNavigationHouseCheck,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconNavigationHouseCheck>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconNavigationHouseCheck>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const HouseCheck: Story = {
     args: {
         size: '6rem',
     },

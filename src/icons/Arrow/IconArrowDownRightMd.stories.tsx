@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowDownRightMd } from './IconArrowDownRightMd';
+import { IconArrowDownRightMd as IconComp } from './IconArrowDownRightMd';
 
 const meta = {
     title: 'Icon/Arrow/DownRightMd',
-    component: IconArrowDownRightMd,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconArrowDownRightMd>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconArrowDownRightMd>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DownRightMd: Story = {
     args: {
         size: '6rem',
     },

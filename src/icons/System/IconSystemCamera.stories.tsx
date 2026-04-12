@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemCamera } from './IconSystemCamera';
+import { IconSystemCamera as IconComp } from './IconSystemCamera';
 
 const meta = {
     title: 'Icon/System/Camera',
-    component: IconSystemCamera,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemCamera>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemCamera>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Camera: Story = {
     args: {
         size: '6rem',
     },

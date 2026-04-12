@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCalendarClose } from './IconCalendarClose';
+import { IconCalendarClose as IconComp } from './IconCalendarClose';
 
 const meta = {
     title: 'Icon/Calendar/Close',
-    component: IconCalendarClose,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCalendarClose>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCalendarClose>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Close: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceLock } from './IconInterfaceLock';
+import { IconInterfaceLock as IconComp } from './IconInterfaceLock';
 
 const meta = {
     title: 'Icon/Interface/Lock',
-    component: IconInterfaceLock,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceLock>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceLock>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Lock: Story = {
     args: {
         size: '6rem',
     },

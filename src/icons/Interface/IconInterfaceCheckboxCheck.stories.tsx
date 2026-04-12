@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceCheckboxCheck } from './IconInterfaceCheckboxCheck';
+import { IconInterfaceCheckboxCheck as IconComp } from './IconInterfaceCheckboxCheck';
 
 const meta = {
     title: 'Icon/Interface/CheckboxCheck',
-    component: IconInterfaceCheckboxCheck,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceCheckboxCheck>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceCheckboxCheck>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CheckboxCheck: Story = {
     args: {
         size: '6rem',
     },

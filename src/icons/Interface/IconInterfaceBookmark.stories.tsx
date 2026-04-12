@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceBookmark } from './IconInterfaceBookmark';
+import { IconInterfaceBookmark as IconComp } from './IconInterfaceBookmark';
 
 const meta = {
     title: 'Icon/Interface/Bookmark',
-    component: IconInterfaceBookmark,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceBookmark>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceBookmark>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Bookmark: Story = {
     args: {
         size: '6rem',
     },

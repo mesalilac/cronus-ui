@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemKeyboard } from './IconSystemKeyboard';
+import { IconSystemKeyboard as IconComp } from './IconSystemKeyboard';
 
 const meta = {
     title: 'Icon/System/Keyboard',
-    component: IconSystemKeyboard,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemKeyboard>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemKeyboard>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Keyboard: Story = {
     args: {
         size: '6rem',
     },

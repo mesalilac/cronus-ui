@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaForward } from './IconMediaForward';
+import { IconMediaForward as IconComp } from './IconMediaForward';
 
 const meta = {
     title: 'Icon/Media/Forward',
-    component: IconMediaForward,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaForward>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaForward>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Forward: Story = {
     args: {
         size: '6rem',
     },

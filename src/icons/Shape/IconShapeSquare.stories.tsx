@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconShapeSquare } from './IconShapeSquare';
+import { IconShapeSquare as IconComp } from './IconShapeSquare';
 
 const meta = {
     title: 'Icon/Shape/Square',
-    component: IconShapeSquare,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconShapeSquare>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconShapeSquare>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Square: Story = {
     args: {
         size: '6rem',
     },

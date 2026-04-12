@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditAddToQueue } from './IconEditAddToQueue';
+import { IconEditAddToQueue as IconComp } from './IconEditAddToQueue';
 
 const meta = {
     title: 'Icon/Edit/AddToQueue',
-    component: IconEditAddToQueue,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditAddToQueue>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditAddToQueue>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const AddToQueue: Story = {
     args: {
         size: '6rem',
     },

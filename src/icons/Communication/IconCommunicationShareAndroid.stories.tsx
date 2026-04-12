@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationShareAndroid } from './IconCommunicationShareAndroid';
+import { IconCommunicationShareAndroid as IconComp } from './IconCommunicationShareAndroid';
 
 const meta = {
     title: 'Icon/Communication/ShareAndroid',
-    component: IconCommunicationShareAndroid,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationShareAndroid>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationShareAndroid>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ShareAndroid: Story = {
     args: {
         size: '6rem',
     },

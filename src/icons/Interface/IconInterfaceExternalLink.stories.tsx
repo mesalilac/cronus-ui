@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceExternalLink } from './IconInterfaceExternalLink';
+import { IconInterfaceExternalLink as IconComp } from './IconInterfaceExternalLink';
 
 const meta = {
     title: 'Icon/Interface/ExternalLink',
-    component: IconInterfaceExternalLink,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceExternalLink>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceExternalLink>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ExternalLink: Story = {
     args: {
         size: '6rem',
     },

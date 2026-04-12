@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMenuDuoLg } from './IconMenuDuoLg';
+import { IconMenuDuoLg as IconComp } from './IconMenuDuoLg';
 
 const meta = {
     title: 'Icon/Menu/DuoLg',
-    component: IconMenuDuoLg,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMenuDuoLg>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMenuDuoLg>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DuoLg: Story = {
     args: {
         size: '6rem',
     },

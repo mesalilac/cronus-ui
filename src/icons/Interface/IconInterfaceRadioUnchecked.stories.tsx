@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceRadioUnchecked } from './IconInterfaceRadioUnchecked';
+import { IconInterfaceRadioUnchecked as IconComp } from './IconInterfaceRadioUnchecked';
 
 const meta = {
     title: 'Icon/Interface/RadioUnchecked',
-    component: IconInterfaceRadioUnchecked,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceRadioUnchecked>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceRadioUnchecked>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const RadioUnchecked: Story = {
     args: {
         size: '6rem',
     },

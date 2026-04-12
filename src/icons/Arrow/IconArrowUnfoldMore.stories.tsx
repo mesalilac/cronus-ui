@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowUnfoldMore } from './IconArrowUnfoldMore';
+import { IconArrowUnfoldMore as IconComp } from './IconArrowUnfoldMore';
 
 const meta = {
     title: 'Icon/Arrow/UnfoldMore',
-    component: IconArrowUnfoldMore,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconArrowUnfoldMore>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconArrowUnfoldMore>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const UnfoldMore: Story = {
     args: {
         size: '6rem',
     },

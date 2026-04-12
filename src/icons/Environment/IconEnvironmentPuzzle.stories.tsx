@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEnvironmentPuzzle } from './IconEnvironmentPuzzle';
+import { IconEnvironmentPuzzle as IconComp } from './IconEnvironmentPuzzle';
 
 const meta = {
     title: 'Icon/Environment/Puzzle',
-    component: IconEnvironmentPuzzle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEnvironmentPuzzle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEnvironmentPuzzle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Puzzle: Story = {
     args: {
         size: '6rem',
     },

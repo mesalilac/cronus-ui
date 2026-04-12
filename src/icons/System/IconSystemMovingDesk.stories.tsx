@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemMovingDesk } from './IconSystemMovingDesk';
+import { IconSystemMovingDesk as IconComp } from './IconSystemMovingDesk';
 
 const meta = {
     title: 'Icon/System/MovingDesk',
-    component: IconSystemMovingDesk,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemMovingDesk>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemMovingDesk>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const MovingDesk: Story = {
     args: {
         size: '6rem',
     },

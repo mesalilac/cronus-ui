@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceExit } from './IconInterfaceExit';
+import { IconInterfaceExit as IconComp } from './IconInterfaceExit';
 
 const meta = {
     title: 'Icon/Interface/Exit',
-    component: IconInterfaceExit,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceExit>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceExit>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Exit: Story = {
     args: {
         size: '6rem',
     },

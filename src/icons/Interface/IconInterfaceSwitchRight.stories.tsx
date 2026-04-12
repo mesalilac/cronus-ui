@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceSwitchRight } from './IconInterfaceSwitchRight';
+import { IconInterfaceSwitchRight as IconComp } from './IconInterfaceSwitchRight';
 
 const meta = {
     title: 'Icon/Interface/SwitchRight',
-    component: IconInterfaceSwitchRight,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceSwitchRight>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceSwitchRight>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SwitchRight: Story = {
     args: {
         size: '6rem',
     },

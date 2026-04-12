@@ -24,13 +24,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *        ░▓█▓░
  * ```
  */
-export const IconNavigation: VoidComponent<IconProps> = (props) => {
+export const IconNavigationNavigation: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='Navigation'
+            aria-label='Navigation Navigation'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'

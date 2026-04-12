@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditUnderline } from './IconEditUnderline';
+import { IconEditUnderline as IconComp } from './IconEditUnderline';
 
 const meta = {
     title: 'Icon/Edit/Underline',
-    component: IconEditUnderline,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditUnderline>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditUnderline>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Underline: Story = {
     args: {
         size: '6rem',
     },

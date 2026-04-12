@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemWindowTerminal } from './IconSystemWindowTerminal';
+import { IconSystemWindowTerminal as IconComp } from './IconSystemWindowTerminal';
 
 const meta = {
     title: 'Icon/System/WindowTerminal',
-    component: IconSystemWindowTerminal,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemWindowTerminal>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemWindowTerminal>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const WindowTerminal: Story = {
     args: {
         size: '6rem',
     },

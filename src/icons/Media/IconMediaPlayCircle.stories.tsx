@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaPlayCircle } from './IconMediaPlayCircle';
+import { IconMediaPlayCircle as IconComp } from './IconMediaPlayCircle';
 
 const meta = {
     title: 'Icon/Media/PlayCircle',
-    component: IconMediaPlayCircle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaPlayCircle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaPlayCircle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const PlayCircle: Story = {
     args: {
         size: '6rem',
     },

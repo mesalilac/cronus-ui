@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEnvironmentPlanet } from './IconEnvironmentPlanet';
+import { IconEnvironmentPlanet as IconComp } from './IconEnvironmentPlanet';
 
 const meta = {
     title: 'Icon/Environment/Planet',
-    component: IconEnvironmentPlanet,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEnvironmentPlanet>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEnvironmentPlanet>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Planet: Story = {
     args: {
         size: '6rem',
     },

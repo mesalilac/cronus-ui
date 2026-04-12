@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationChatRemove } from './IconCommunicationChatRemove';
+import { IconCommunicationChatRemove as IconComp } from './IconCommunicationChatRemove';
 
 const meta = {
     title: 'Icon/Communication/ChatRemove',
-    component: IconCommunicationChatRemove,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationChatRemove>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationChatRemove>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ChatRemove: Story = {
     args: {
         size: '6rem',
     },

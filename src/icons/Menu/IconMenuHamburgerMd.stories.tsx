@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMenuHamburgerMd } from './IconMenuHamburgerMd';
+import { IconMenuHamburgerMd as IconComp } from './IconMenuHamburgerMd';
 
 const meta = {
     title: 'Icon/Menu/HamburgerMd',
-    component: IconMenuHamburgerMd,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMenuHamburgerMd>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMenuHamburgerMd>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const HamburgerMd: Story = {
     args: {
         size: '6rem',
     },

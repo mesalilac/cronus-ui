@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditRemoveMinusCircle } from './IconEditRemoveMinusCircle';
+import { IconEditRemoveMinusCircle as IconComp } from './IconEditRemoveMinusCircle';
 
 const meta = {
     title: 'Icon/Edit/RemoveMinusCircle',
-    component: IconEditRemoveMinusCircle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditRemoveMinusCircle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditRemoveMinusCircle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const RemoveMinusCircle: Story = {
     args: {
         size: '6rem',
     },

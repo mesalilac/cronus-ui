@@ -25,13 +25,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *     ░░▒▒▒▒▒▒▒▒▒▒▒▒░░
  * ```
  */
-export const IconCalendar: VoidComponent<IconProps> = (props) => {
+export const IconCalendarCalendar: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='Calendar'
+            aria-label='Calendar Calendar'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'

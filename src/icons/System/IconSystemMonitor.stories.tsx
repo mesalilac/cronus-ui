@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemMonitor } from './IconSystemMonitor';
+import { IconSystemMonitor as IconComp } from './IconSystemMonitor';
 
 const meta = {
     title: 'Icon/System/Monitor',
-    component: IconSystemMonitor,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemMonitor>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemMonitor>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Monitor: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconWarningWavyHelp } from './IconWarningWavyHelp';
+import { IconWarningWavyHelp as IconComp } from './IconWarningWavyHelp';
 
 const meta = {
     title: 'Icon/Warning/WavyHelp',
-    component: IconWarningWavyHelp,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconWarningWavyHelp>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconWarningWavyHelp>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const WavyHelp: Story = {
     args: {
         size: '6rem',
     },

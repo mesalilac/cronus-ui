@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconWarningSquareHelp } from './IconWarningSquareHelp';
+import { IconWarningSquareHelp as IconComp } from './IconWarningSquareHelp';
 
 const meta = {
     title: 'Icon/Warning/SquareHelp',
-    component: IconWarningSquareHelp,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconWarningSquareHelp>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconWarningSquareHelp>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SquareHelp: Story = {
     args: {
         size: '6rem',
     },

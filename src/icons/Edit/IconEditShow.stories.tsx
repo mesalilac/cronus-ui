@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditShow } from './IconEditShow';
+import { IconEditShow as IconComp } from './IconEditShow';
 
 const meta = {
     title: 'Icon/Edit/Show',
-    component: IconEditShow,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditShow>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditShow>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Show: Story = {
     args: {
         size: '6rem',
     },

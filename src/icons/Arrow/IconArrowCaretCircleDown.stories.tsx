@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowCaretCircleDown } from './IconArrowCaretCircleDown';
+import { IconArrowCaretCircleDown as IconComp } from './IconArrowCaretCircleDown';
 
 const meta = {
     title: 'Icon/Arrow/CaretCircleDown',
-    component: IconArrowCaretCircleDown,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconArrowCaretCircleDown>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconArrowCaretCircleDown>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CaretCircleDown: Story = {
     args: {
         size: '6rem',
     },

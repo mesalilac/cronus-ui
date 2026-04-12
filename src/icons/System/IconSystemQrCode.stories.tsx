@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemQrCode } from './IconSystemQrCode';
+import { IconSystemQrCode as IconComp } from './IconSystemQrCode';
 
 const meta = {
     title: 'Icon/System/QrCode',
-    component: IconSystemQrCode,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemQrCode>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemQrCode>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const QrCode: Story = {
     args: {
         size: '6rem',
     },

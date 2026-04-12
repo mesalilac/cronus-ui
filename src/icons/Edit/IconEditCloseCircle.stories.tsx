@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditCloseCircle } from './IconEditCloseCircle';
+import { IconEditCloseCircle as IconComp } from './IconEditCloseCircle';
 
 const meta = {
     title: 'Icon/Edit/CloseCircle',
-    component: IconEditCloseCircle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditCloseCircle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditCloseCircle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CloseCircle: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceDragVertical } from './IconInterfaceDragVertical';
+import { IconInterfaceDragVertical as IconComp } from './IconInterfaceDragVertical';
 
 const meta = {
     title: 'Icon/Interface/DragVertical',
-    component: IconInterfaceDragVertical,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceDragVertical>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceDragVertical>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DragVertical: Story = {
     args: {
         size: '6rem',
     },

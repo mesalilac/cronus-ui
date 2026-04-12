@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditSwatchesPalette } from './IconEditSwatchesPalette';
+import { IconEditSwatchesPalette as IconComp } from './IconEditSwatchesPalette';
 
 const meta = {
     title: 'Icon/Edit/SwatchesPalette',
-    component: IconEditSwatchesPalette,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditSwatchesPalette>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditSwatchesPalette>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SwatchesPalette: Story = {
     args: {
         size: '6rem',
     },

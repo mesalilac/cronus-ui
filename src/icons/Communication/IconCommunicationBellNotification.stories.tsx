@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationBellNotification } from './IconCommunicationBellNotification';
+import { IconCommunicationBellNotification as IconComp } from './IconCommunicationBellNotification';
 
 const meta = {
     title: 'Icon/Communication/BellNotification',
-    component: IconCommunicationBellNotification,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationBellNotification>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationBellNotification>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const BellNotification: Story = {
     args: {
         size: '6rem',
     },

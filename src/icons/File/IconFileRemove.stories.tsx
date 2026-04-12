@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconFileRemove } from './IconFileRemove';
+import { IconFileRemove as IconComp } from './IconFileRemove';
 
 const meta = {
     title: 'Icon/File/Remove',
-    component: IconFileRemove,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconFileRemove>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconFileRemove>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Remove: Story = {
     args: {
         size: '6rem',
     },

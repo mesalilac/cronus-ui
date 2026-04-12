@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditMoveHorizontal } from './IconEditMoveHorizontal';
+import { IconEditMoveHorizontal as IconComp } from './IconEditMoveHorizontal';
 
 const meta = {
     title: 'Icon/Edit/MoveHorizontal',
-    component: IconEditMoveHorizontal,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditMoveHorizontal>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditMoveHorizontal>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const MoveHorizontal: Story = {
     args: {
         size: '6rem',
     },

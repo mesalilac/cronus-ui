@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditRuler } from './IconEditRuler';
+import { IconEditRuler as IconComp } from './IconEditRuler';
 
 const meta = {
     title: 'Icon/Edit/Ruler',
-    component: IconEditRuler,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditRuler>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditRuler>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Ruler: Story = {
     args: {
         size: '6rem',
     },

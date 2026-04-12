@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEnvironmentCookie } from './IconEnvironmentCookie';
+import { IconEnvironmentCookie as IconComp } from './IconEnvironmentCookie';
 
 const meta = {
     title: 'Icon/Environment/Cookie',
-    component: IconEnvironmentCookie,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEnvironmentCookie>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEnvironmentCookie>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Cookie: Story = {
     args: {
         size: '6rem',
     },

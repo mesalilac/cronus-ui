@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCalendarDays } from './IconCalendarDays';
+import { IconCalendarDays as IconComp } from './IconCalendarDays';
 
 const meta = {
     title: 'Icon/Calendar/Days',
-    component: IconCalendarDays,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCalendarDays>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCalendarDays>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Days: Story = {
     args: {
         size: '6rem',
     },

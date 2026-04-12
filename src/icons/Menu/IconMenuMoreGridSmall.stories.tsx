@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMenuMoreGridSmall } from './IconMenuMoreGridSmall';
+import { IconMenuMoreGridSmall as IconComp } from './IconMenuMoreGridSmall';
 
 const meta = {
     title: 'Icon/Menu/MoreGridSmall',
-    component: IconMenuMoreGridSmall,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMenuMoreGridSmall>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMenuMoreGridSmall>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const MoreGridSmall: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconSystemBarBottom } from './IconSystemBarBottom';
+import { IconSystemBarBottom as IconComp } from './IconSystemBarBottom';
 
 const meta = {
     title: 'Icon/System/BarBottom',
-    component: IconSystemBarBottom,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconSystemBarBottom>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconSystemBarBottom>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const BarBottom: Story = {
     args: {
         size: '6rem',
     },

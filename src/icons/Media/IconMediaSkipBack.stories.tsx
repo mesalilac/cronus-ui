@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaSkipBack } from './IconMediaSkipBack';
+import { IconMediaSkipBack as IconComp } from './IconMediaSkipBack';
 
 const meta = {
     title: 'Icon/Media/SkipBack',
-    component: IconMediaSkipBack,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaSkipBack>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaSkipBack>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SkipBack: Story = {
     args: {
         size: '6rem',
     },

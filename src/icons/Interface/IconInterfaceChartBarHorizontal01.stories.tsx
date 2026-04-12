@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceChartBarHorizontal01 } from './IconInterfaceChartBarHorizontal01';
+import { IconInterfaceChartBarHorizontal01 as IconComp } from './IconInterfaceChartBarHorizontal01';
 
 const meta = {
     title: 'Icon/Interface/ChartBarHorizontal01',
-    component: IconInterfaceChartBarHorizontal01,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceChartBarHorizontal01>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceChartBarHorizontal01>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ChartBarHorizontal01: Story = {
     args: {
         size: '6rem',
     },

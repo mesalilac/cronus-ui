@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditFont } from './IconEditFont';
+import { IconEditFont as IconComp } from './IconEditFont';
 
 const meta = {
     title: 'Icon/Edit/Font',
-    component: IconEditFont,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditFont>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditFont>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Font: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconMediaPause } from './IconMediaPause';
+import { IconMediaPause as IconComp } from './IconMediaPause';
 
 const meta = {
     title: 'Icon/Media/Pause',
-    component: IconMediaPause,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconMediaPause>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconMediaPause>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Pause: Story = {
     args: {
         size: '6rem',
     },

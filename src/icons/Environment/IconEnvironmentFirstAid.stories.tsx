@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEnvironmentFirstAid } from './IconEnvironmentFirstAid';
+import { IconEnvironmentFirstAid as IconComp } from './IconEnvironmentFirstAid';
 
 const meta = {
     title: 'Icon/Environment/FirstAid',
-    component: IconEnvironmentFirstAid,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEnvironmentFirstAid>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEnvironmentFirstAid>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const FirstAid: Story = {
     args: {
         size: '6rem',
     },

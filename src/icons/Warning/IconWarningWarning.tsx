@@ -21,13 +21,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *            ░░
  * ```
  */
-export const IconWarning: VoidComponent<IconProps> = (props) => {
+export const IconWarningWarning: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='Warning'
+            aria-label='Warning Warning'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceTrendingUp } from './IconInterfaceTrendingUp';
+import { IconInterfaceTrendingUp as IconComp } from './IconInterfaceTrendingUp';
 
 const meta = {
     title: 'Icon/Interface/TrendingUp',
-    component: IconInterfaceTrendingUp,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceTrendingUp>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceTrendingUp>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const TrendingUp: Story = {
     args: {
         size: '6rem',
     },

@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditDoubleQuotesL } from './IconEditDoubleQuotesL';
+import { IconEditDoubleQuotesL as IconComp } from './IconEditDoubleQuotesL';
 
 const meta = {
     title: 'Icon/Edit/DoubleQuotesL',
-    component: IconEditDoubleQuotesL,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditDoubleQuotesL>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditDoubleQuotesL>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DoubleQuotesL: Story = {
     args: {
         size: '6rem',
     },

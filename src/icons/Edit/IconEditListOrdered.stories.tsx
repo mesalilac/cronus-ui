@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditListOrdered } from './IconEditListOrdered';
+import { IconEditListOrdered as IconComp } from './IconEditListOrdered';
 
 const meta = {
     title: 'Icon/Edit/ListOrdered',
-    component: IconEditListOrdered,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditListOrdered>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditListOrdered>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ListOrdered: Story = {
     args: {
         size: '6rem',
     },

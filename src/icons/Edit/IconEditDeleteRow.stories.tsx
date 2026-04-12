@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditDeleteRow } from './IconEditDeleteRow';
+import { IconEditDeleteRow as IconComp } from './IconEditDeleteRow';
 
 const meta = {
     title: 'Icon/Edit/DeleteRow',
-    component: IconEditDeleteRow,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditDeleteRow>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditDeleteRow>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const DeleteRow: Story = {
     args: {
         size: '6rem',
     },

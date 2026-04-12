@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowShrink } from './IconArrowShrink';
+import { IconArrowShrink as IconComp } from './IconArrowShrink';
 
 const meta = {
     title: 'Icon/Arrow/Shrink',
-    component: IconArrowShrink,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconArrowShrink>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconArrowShrink>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Shrink: Story = {
     args: {
         size: '6rem',
     },

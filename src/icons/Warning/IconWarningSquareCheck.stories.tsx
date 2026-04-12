@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconWarningSquareCheck } from './IconWarningSquareCheck';
+import { IconWarningSquareCheck as IconComp } from './IconWarningSquareCheck';
 
 const meta = {
     title: 'Icon/Warning/SquareCheck',
-    component: IconWarningSquareCheck,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconWarningSquareCheck>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconWarningSquareCheck>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SquareCheck: Story = {
     args: {
         size: '6rem',
     },

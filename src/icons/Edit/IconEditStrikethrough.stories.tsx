@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditStrikethrough } from './IconEditStrikethrough';
+import { IconEditStrikethrough as IconComp } from './IconEditStrikethrough';
 
 const meta = {
     title: 'Icon/Edit/Strikethrough',
-    component: IconEditStrikethrough,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditStrikethrough>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditStrikethrough>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Strikethrough: Story = {
     args: {
         size: '6rem',
     },

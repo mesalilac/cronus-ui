@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceCheckBig } from './IconInterfaceCheckBig';
+import { IconInterfaceCheckBig as IconComp } from './IconInterfaceCheckBig';
 
 const meta = {
     title: 'Icon/Interface/CheckBig',
-    component: IconInterfaceCheckBig,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconInterfaceCheckBig>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconInterfaceCheckBig>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const CheckBig: Story = {
     args: {
         size: '6rem',
     },

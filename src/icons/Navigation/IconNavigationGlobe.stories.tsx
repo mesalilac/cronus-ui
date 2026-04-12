@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconNavigationGlobe } from './IconNavigationGlobe';
+import { IconNavigationGlobe as IconComp } from './IconNavigationGlobe';
 
 const meta = {
     title: 'Icon/Navigation/Globe',
-    component: IconNavigationGlobe,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconNavigationGlobe>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconNavigationGlobe>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const Globe: Story = {
     args: {
         size: '6rem',
     },

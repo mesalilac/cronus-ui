@@ -24,13 +24,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *   ▒▓▓▓▓▓▓▓▓▓▓▓▒
  * ```
  */
-export const IconFileS: VoidComponent<IconProps> = (props) => {
+export const IconFileFiles: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='File S'
+            aria-label='File Files'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'

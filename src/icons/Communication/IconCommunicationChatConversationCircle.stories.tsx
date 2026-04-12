@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconCommunicationChatConversationCircle } from './IconCommunicationChatConversationCircle';
+import { IconCommunicationChatConversationCircle as IconComp } from './IconCommunicationChatConversationCircle';
 
 const meta = {
     title: 'Icon/Communication/ChatConversationCircle',
-    component: IconCommunicationChatConversationCircle,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconCommunicationChatConversationCircle>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconCommunicationChatConversationCircle>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const ChatConversationCircle: Story = {
     args: {
         size: '6rem',
     },

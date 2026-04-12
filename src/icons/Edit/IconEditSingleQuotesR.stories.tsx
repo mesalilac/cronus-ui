@@ -1,19 +1,19 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditSingleQuotesR } from './IconEditSingleQuotesR';
+import { IconEditSingleQuotesR as IconComp } from './IconEditSingleQuotesR';
 
 const meta = {
     title: 'Icon/Edit/SingleQuotesR',
-    component: IconEditSingleQuotesR,
+    component: IconComp,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconEditSingleQuotesR>;
+} satisfies Meta<typeof IconComp>;
 
 export default meta;
-type Story = StoryObj<typeof IconEditSingleQuotesR>;
+type Story = StoryObj<typeof IconComp>;
 
-export const Default: Story = {
+export const SingleQuotesR: Story = {
     args: {
         size: '6rem',
     },
