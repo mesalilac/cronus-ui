@@ -212,9 +212,7 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
 
     createEffect(() => {
         const events = (
-            props.triggerEvents === undefined
-                ? DEFAULT_PROPS.triggerEvents
-                : props.triggerEvents
+            props.triggerEvents ?? DEFAULT_PROPS.triggerEvents
         )?.split('|');
 
         if (events === undefined || events.length === 0) return;
@@ -225,7 +223,7 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
 
         if (!(trigger instanceof HTMLElement)) return;
 
-        events.forEach((event) => {
+        for (const event of events) {
             const [eventName, ...modifiers] = event.split('.');
             if (!eventName) return;
 
@@ -253,7 +251,7 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
                     once: modifiersSet.has('once'),
                 },
             );
-        });
+        }
 
         onCleanup(() => abortController.abort());
     });
