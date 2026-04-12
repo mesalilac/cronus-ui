@@ -36,7 +36,7 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
 
     return (
         <span
-            class={cn(baseStyles, props.class, variantStyles[props.variant])}
+            class={cn(baseStyles, variantStyles[props.variant], props.class)}
             ref={props.ref}
         >
             {props.children}
