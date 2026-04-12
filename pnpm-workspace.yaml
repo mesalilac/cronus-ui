@@ -1,0 +1,2 @@
+patchedDependencies:
+  gh-pages@6.3.0: patches/gh-pages@6.3.0.patch

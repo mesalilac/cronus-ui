@@ -1,5 +1,7 @@
 # Cronus UI
 
+> A simple UI library for my personal projects. [Storybook](https://mesalilac.github.io/cronus-ui)
+
 ## Release
 
 `$ pnpm version patch`
