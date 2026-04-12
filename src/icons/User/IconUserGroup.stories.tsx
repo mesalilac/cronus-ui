@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowSReload01 } from './IconArrowSReload01';
+import { IconUserGroup } from './IconUserGroup';
 
 const meta = {
-    title: 'Icon/Arrow/SReload01',
-    component: IconArrowSReload01,
+    title: 'Icon/User/Group',
+    component: IconUserGroup,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<typeof IconArrowSReload01>;
+} satisfies Meta<typeof IconUserGroup>;
 
 export default meta;
-type Story = StoryObj<typeof IconArrowSReload01>;
+type Story = StoryObj<typeof IconUserGroup>;
 
 export const Default: Story = {
     args: {
