@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { Helper } from './Helper';
+import { HelperText } from './HelperText';
 
-type Component = typeof Helper;
+type Component = typeof HelperText;
 
 const meta = {
-    title: 'Helper',
-    component: Helper,
+    title: 'HelperText',
+    component: HelperText,
     parameters: {
         layout: 'centered',
     },
@@ -17,6 +17,6 @@ type Story = StoryObj<Component>;
 
 export const Default: Story = {
     args: {
-        text: 'Helper Text',
+        text: 'Helper text',
     },
 };

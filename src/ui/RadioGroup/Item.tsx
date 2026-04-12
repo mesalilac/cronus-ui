@@ -1,6 +1,6 @@
 import { type JSX, Show } from 'solid-js';
 
-import { Helper } from '~/ui/Helper';
+import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
 import { useRadioGroupContext } from './context';
@@ -59,7 +59,7 @@ export const Item = (props: RadioGroupItemProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <Helper text={props.helper} />
+                    <HelperText text={props.helper} />
                 </Show>
             </div>
         </div>

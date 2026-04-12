@@ -1,7 +1,7 @@
 import { type JSX, mergeProps, Show } from 'solid-js';
 
 import { Button } from '~/ui/Button';
-import { Helper } from '~/ui/Helper';
+import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
 import { useDropdownMenuContext } from './context';
@@ -45,7 +45,7 @@ export const Item = (rawProps: DropdownMenuItemProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <Helper text={props.helper} />
+                    <HelperText text={props.helper} />
                 </Show>
             </div>
         </Button>

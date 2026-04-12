@@ -10,7 +10,7 @@ import {
     splitProps,
 } from 'solid-js';
 
-import { Helper } from '~/ui/Helper';
+import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
 export interface TextareaProps<T = string>
@@ -142,7 +142,7 @@ export const Textarea = <T = string>(props: TextareaProps<T>) => {
                     <span class='text-red-500 text-sm'>{error()}</span>
                 </Match>
                 <Match when={local.helper}>
-                    <Helper text={local.helper} />
+                    <HelperText text={local.helper} />
                 </Match>
             </Switch>
         </div>

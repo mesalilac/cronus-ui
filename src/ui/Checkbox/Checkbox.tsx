@@ -1,6 +1,6 @@
 import { type JSX, Show, type VoidComponent } from 'solid-js';
 
-import { Helper } from '~/ui/Helper';
+import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
 export type CheckboxProps = {
@@ -48,7 +48,7 @@ export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
                 </Show>
             </div>
             <Show when={props.helper}>
-                <Helper text={props.helper} />
+                <HelperText text={props.helper} />
             </Show>
         </div>
     );
