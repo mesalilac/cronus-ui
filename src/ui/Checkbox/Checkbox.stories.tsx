@@ -3,18 +3,16 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Checkbox } from './Checkbox';
 
-type Component = typeof Checkbox;
-
 const meta = {
-    title: 'Checkbox',
+    title: 'Ui/Checkbox',
     component: Checkbox,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<Component>;
+} satisfies Meta<typeof Checkbox>;
 
 export default meta;
-type Story = StoryObj<Component>;
+type Story = StoryObj<typeof Checkbox>;
 
 export const Default: Story = {
     render: () => {

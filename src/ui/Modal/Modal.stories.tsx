@@ -5,18 +5,16 @@ import { Button } from '~/ui/Button';
 
 import { Modal } from './Modal';
 
-type Component = typeof Modal;
-
 const meta = {
-    title: 'Modal',
+    title: 'Ui/Modal',
     component: Modal,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<Component>;
+} satisfies Meta<typeof Modal>;
 
 export default meta;
-type Story = StoryObj<Component>;
+type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
     render: () => {

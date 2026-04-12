@@ -15,6 +15,12 @@ export const decorators = [
 
 const preview: Preview = {
     parameters: {
+        options: {
+            storySort: {
+                order: ['Ui', ['Overview']],
+            },
+        },
+
         controls: {
             matchers: {
                 color: /(background|color)$/i,

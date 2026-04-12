@@ -2,18 +2,16 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Badge } from './Badge';
 
-type Component = typeof Badge;
-
 const meta = {
-    title: 'Badge',
+    title: 'Ui/Badge',
     component: Badge,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<Component>;
+} satisfies Meta<typeof Badge>;
 
 export default meta;
-type Story = StoryObj<Component>;
+type Story = StoryObj<typeof Badge>;
 
 export const Default: Story = {
     args: {

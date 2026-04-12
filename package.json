@@ -33,7 +33,7 @@
         "typecheck": "tsc --noEmit",
         "prepublishOnly": "pnpm run build",
         "prepare": "pnpm run build",
-        "storybook": "storybook dev -p 6006",
+        "storybook": "storybook dev -p 6006 --initial-path=/story/ui-overview--overview",
         "build-storybook": "storybook build",
         "deploy": "pnpm build-storybook && gh-pages -d storybook-static --no-history"
     },

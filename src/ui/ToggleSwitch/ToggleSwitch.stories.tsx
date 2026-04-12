@@ -3,18 +3,16 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { ToggleSwitch } from './ToggleSwitch';
 
-type Component = typeof ToggleSwitch;
-
 const meta = {
-    title: 'ToggleSwitch',
+    title: 'Ui/ToggleSwitch',
     component: ToggleSwitch,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<Component>;
+} satisfies Meta<typeof ToggleSwitch>;
 
 export default meta;
-type Story = StoryObj<Component>;
+type Story = StoryObj<typeof ToggleSwitch>;
 
 export const Default: Story = {
     render: () => {

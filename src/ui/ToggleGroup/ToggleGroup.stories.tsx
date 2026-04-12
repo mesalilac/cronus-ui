@@ -3,18 +3,16 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { ToggleGroup } from './ToggleGroup';
 
-type Component = typeof ToggleGroup;
-
 const meta = {
-    title: 'ToggleGroup',
+    title: 'Ui/ToggleGroup',
     component: ToggleGroup,
     parameters: {
         layout: 'centered',
     },
-} satisfies Meta<Component>;
+} satisfies Meta<typeof ToggleGroup>;
 
 export default meta;
-type Story = StoryObj<Component>;
+type Story = StoryObj<typeof ToggleGroup>;
 
 export const Simple: Story = {
     render: () => {
