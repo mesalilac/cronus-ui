@@ -37,7 +37,7 @@ export const IconInterfaceHeart01: VoidComponent<IconProps> = (props) => {
             {...others}
         >
             <path
-                d='M12 7.69425C10 2.99982 3 3.49982 3 9.49985C3 15.4999 12 20.5 12 20.5C12 20.5 21 15.4999 21 9.49985C21 3.49982 14 2.99982 12 7.69425Z'
+                d='M12 7.69431C10 2.99988 3 3.49988 3 9.49991C3 15.4999 12 20.5001 12 20.5001C12 20.5001 21 15.4999 21 9.49991C21 3.49988 14 2.99988 12 7.69431Z'
                 stroke='currentColor'
                 stroke-width='2'
                 stroke-linecap='round'

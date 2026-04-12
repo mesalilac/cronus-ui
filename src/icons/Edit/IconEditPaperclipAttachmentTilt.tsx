@@ -24,13 +24,13 @@ interface IconProps extends ComponentProps<'svg'> {
  *      ░▒▓▓▓▒░
  * ```
  */
-export const IconEditPaperclipAttechmentTilt: VoidComponent<IconProps> = (props) => {
+export const IconEditPaperclipAttachmentTilt: VoidComponent<IconProps> = (props) => {
     const [local, others] = splitProps(props, ['size']);
 
     return (
         <svg
             role='img'
-            aria-label='Edit Paperclip Attechment Tilt'
+            aria-label='Edit Paperclip Attachment Tilt'
             width={local.size || '1rem'}
             height={local.size || '1rem'}
             viewBox='0 0 24 24'
