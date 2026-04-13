@@ -68,6 +68,9 @@ export const Textarea = <T = string>(props: TextareaProps<T>) => {
 
         if (touched()) return validationError;
 
+        if (!touched() && local.required && internalValue().length === 0)
+            return 'This field is required';
+
         return local.error ?? validationError;
     });
 

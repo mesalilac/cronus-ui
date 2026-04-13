@@ -69,6 +69,9 @@ export const Input = <T = string>(props: InputProps<T>) => {
 
         if (touched()) return validationError;
 
+        if (!touched() && local.required && internalValue().length === 0)
+            return 'This field is required';
+
         return local.error ?? validationError;
     });
 
