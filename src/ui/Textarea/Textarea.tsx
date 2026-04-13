@@ -125,13 +125,6 @@ export const Textarea = <T = string>(props: TextareaProps<T>) => {
                     local.class,
                 )}
                 id={id}
-                onChange={(e) =>
-                    handleInput(
-                        e as unknown as InputEvent & {
-                            currentTarget: HTMLTextAreaElement;
-                        },
-                    )
-                }
                 onInput={handleInput}
                 required={local.required}
                 value={internalValue()}
