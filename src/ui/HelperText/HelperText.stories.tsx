@@ -13,8 +13,23 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof HelperText>;
 
-export const Default: Story = {
+export const DefaultVariant: Story = {
     args: {
-        text: 'Helper text',
+        variant: 'default',
+        children: 'Helper text',
+    },
+};
+
+export const WarningVariant: Story = {
+    args: {
+        variant: 'warning',
+        children: 'Helper text',
+    },
+};
+
+export const ErrorVariant: Story = {
+    args: {
+        variant: 'error',
+        children: 'Helper text',
     },
 };

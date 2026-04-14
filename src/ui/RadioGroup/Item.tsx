@@ -59,7 +59,7 @@ export const Item = (props: RadioGroupItemProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <HelperText text={props.helper} />
+                    <HelperText>{props.helper}</HelperText>
                 </Show>
             </div>
         </div>

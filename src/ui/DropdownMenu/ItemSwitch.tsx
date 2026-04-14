@@ -38,7 +38,7 @@ export const ItemSwitch = (props: DropdownMenuItemSwitchProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <HelperText text={props.helper} />
+                    <HelperText>{props.helper}</HelperText>
                 </Show>
             </div>
         </Button>

@@ -155,7 +155,7 @@ export const Input = <T = string>(props: InputProps<T>) => {
                     <span class='text-red-500 text-sm'>{error()}</span>
                 </Match>
                 <Match when={local.helper}>
-                    <HelperText text={local.helper} />
+                    <HelperText>{props.helper}</HelperText>
                 </Match>
             </Switch>
         </div>

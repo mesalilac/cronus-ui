@@ -48,7 +48,7 @@ export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
                 </Show>
             </div>
             <Show when={props.helper}>
-                <HelperText text={props.helper} />
+                <HelperText>{props.helper}</HelperText>
             </Show>
         </div>
     );
