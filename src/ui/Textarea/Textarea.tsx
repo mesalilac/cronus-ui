@@ -3,116 +3,61 @@ import {
     createMemo,
     createSignal,
     createUniqueId,
-    type JSX,
     Match,
     Show,
     Switch,
-    splitProps,
 } from 'solid-js';
 
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
-export interface TextareaProps<T = string>
-    extends Omit<
-        JSX.TextareaHTMLAttributes<HTMLTextAreaElement>,
-        'value' | 'onInput'
-    > {
+export type TextareaProps = {
     label?: string;
-    value?: T;
+    value: string;
     required?: boolean;
     helper?: string;
     error?: string;
-    onInput?: (
-        value: T,
-        e: InputEvent & {
-            currentTarget: HTMLTextAreaElement;
-        },
-    ) => void;
-    parse: (raw: string) => T;
-    format?: (value: T) => string;
-    validate?: (value: T, isDirty: boolean) => string | undefined;
-}
+    onInput?: (value: string) => void;
+    validate?: (value: string, isDirty: boolean) => string | undefined;
+    class?: string;
+};
 
-export const Textarea = <T = string>(props: TextareaProps<T>) => {
-    const [local, others] = splitProps(props, [
-        'class',
-        'label',
-        'value',
-        'required',
-        'helper',
-        'error',
-        'onInput',
-        'parse',
-        'format',
-        'validate',
-    ]);
-
+export const Textarea = (props: TextareaProps) => {
     const id = createUniqueId();
 
-    const parse = local.parse ?? ((v: string) => v as unknown as T);
-    const format = local.format ?? ((v: T) => String(v));
-
     const [isDirty, setIsDirty] = createSignal(false);
-    const [touched, setTouched] = createSignal(false);
 
-    const [internalValue, setInternalValue] = createSignal(
-        format(local.value ?? parse('')),
-    );
+    const [internalValue, setInternalValue] = createSignal(props.value);
 
     const error = createMemo(() => {
-        const validationError = local.validate?.(
-            parse(internalValue()),
-            isDirty(),
-        );
+        const validationError = props.validate?.(internalValue(), isDirty());
 
-        if (touched()) return validationError;
-
-        if (!touched() && local.required && internalValue().length === 0)
+        if (props.required && internalValue().length === 0)
             return 'This field is required';
 
-        return local.error ?? validationError;
+        return validationError;
     });
 
-    const handleInput = (
-        e: InputEvent & {
-            currentTarget: HTMLTextAreaElement;
-        },
-    ) => {
+    const handleInput = (value: string) => {
         setIsDirty(true);
-        setTouched(true);
 
-        const raw = e.currentTarget.value;
-        const parsed = parse(raw);
-
-        setInternalValue(raw);
-
-        local.onInput?.(
-            parsed,
-            e as InputEvent & {
-                currentTarget: HTMLTextAreaElement;
-            },
-        );
+        setInternalValue(value);
+        props.onInput?.(value);
     };
 
     createEffect(() => {
-        if (local.value !== undefined)
-            setInternalValue(format(local.value ?? parse('')));
-    });
-
-    createEffect(() => {
-        if (local.error !== undefined) setTouched(false);
+        setInternalValue(props.value);
     });
 
     return (
         <div class='flex w-full flex-col gap-2'>
-            <Show when={local.label}>
+            <Show when={props.label}>
                 <label
                     class='flex gap-1 font-bold text-neutral-200 text-sm capitalize'
                     for={id}
                 >
-                    <span>{local.label}</span>
-                    {local.required && (
+                    <span>{props.label}</span>
+                    {props.required && (
                         <span class='text-red-500' title='required'>
                             *
                         </span>
@@ -120,24 +65,23 @@ export const Textarea = <T = string>(props: TextareaProps<T>) => {
                 </label>
             </Show>
             <textarea
-                aria-describedby={error() ? `error, ${error()}` : local.label}
+                aria-describedby={error() ? `error, ${error()}` : props.label}
                 aria-invalid={Boolean(error())}
                 class={cn(
                     'h-32 max-h-32 resize-none rounded-lg border border-neutral-600 bg-neutral-700/30 px-3 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500',
                     error() && 'bg-red-500/30 focus:ring-red-500',
-                    local.class,
+                    props.class,
                 )}
                 id={id}
-                onInput={handleInput}
-                required={local.required}
+                onInput={(e) => handleInput(e.currentTarget.value)}
+                required={props.required}
                 value={internalValue()}
-                {...others}
             />
             <Switch>
                 <Match when={error()}>
                     <span class='text-red-500 text-sm'>{error()}</span>
                 </Match>
-                <Match when={local.helper}>
+                <Match when={props.helper}>
                     <HelperText>{props.helper}</HelperText>
                 </Match>
             </Switch>

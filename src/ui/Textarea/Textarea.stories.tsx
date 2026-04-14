@@ -18,13 +18,7 @@ export const Default: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Textarea
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
-        );
+        return <Textarea onInput={setValue} value={value()} />;
     },
 };
 
@@ -32,14 +26,7 @@ export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Textarea
-                label='Label'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
-        );
+        return <Textarea label='Label' onInput={setValue} value={value()} />;
     },
 };
 
@@ -50,8 +37,7 @@ export const WithLabelAndRequired: Story = {
         return (
             <Textarea
                 label='Label'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
+                onInput={setValue}
                 required
                 value={value()}
             />
@@ -64,12 +50,7 @@ export const WithHelperText: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Textarea
-                helper='Helper Text'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
+            <Textarea helper='Helper Text' onInput={setValue} value={value()} />
         );
     },
 };
@@ -80,8 +61,7 @@ export const WithError: Story = {
 
         return (
             <Textarea
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
+                onInput={setValue}
                 validate={(v) => {
                     if (v.length < 10)
                         return 'Must be at least 10 characters long';
