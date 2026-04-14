@@ -10,7 +10,7 @@ import {
     splitProps,
 } from 'solid-js';
 
-import { IconInterfaceSearchMagnifyingGlass } from '~/icons';
+import { IconInterfaceSearchMagnifyingGlass, IconMenuCloseMd } from '~/icons';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -146,6 +146,22 @@ export const Input = <T = string>(props: InputProps<T>) => {
                         required={local.required}
                         value={internalValue()}
                         {...others}
+                    />
+                    <IconMenuCloseMd
+                        class='cursor-pointer opacity-50 hover:opacity-100'
+                        onClick={() => {
+                            const raw = '';
+                            const parsed = parse(raw);
+
+                            setInternalValue(raw);
+                            local.onInput?.(parsed);
+                        }}
+                        style={{
+                            visibility:
+                                internalValue().length > 0
+                                    ? 'visible'
+                                    : 'hidden',
+                        }}
                     />
                 </div>
                 {props.children}
