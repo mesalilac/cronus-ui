@@ -1,4 +1,4 @@
-import { createSignal } from 'solid-js';
+import { createEffect, createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { NumberStepper } from './NumberStepper';
@@ -105,6 +105,22 @@ export const WithHelperText: Story = {
             <NumberStepper
                 helperText={args.helperText}
                 onChange={setValue}
+                value={value()}
+            />
+        );
+    },
+};
+
+export const WithError: Story = {
+    render: () => {
+        const [value, setValue] = createSignal(0);
+
+        return (
+            <NumberStepper
+                onChange={setValue}
+                validate={(v) => {
+                    if (v < 10) return 'Must be at least 10';
+                }}
                 value={value()}
             />
         );

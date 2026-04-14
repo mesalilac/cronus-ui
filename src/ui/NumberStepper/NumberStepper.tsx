@@ -1,9 +1,12 @@
 import {
     createEffect,
+    createMemo,
     createSignal,
     createUniqueId,
     type JSX,
+    Match,
     Show,
+    Switch,
     type VoidComponent,
 } from 'solid-js';
 
@@ -22,6 +25,7 @@ export type NumberStepperProps = {
     label?: JSX.Element;
     required?: boolean;
     helperText?: JSX.Element;
+    validate?: (value: number, isDirty: boolean) => string | undefined;
     class?: string;
 };
 
@@ -30,9 +34,27 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
 
     const [input, setInput] = createSignal<string>(props.value.toString());
 
+    const [isDirty, setIsDirty] = createSignal(false);
+
+    const getError = createMemo(() => {
+        const validationError = props.validate?.(Number(input()), isDirty());
+
+        if (props.required && (input() === '' || props.value === undefined))
+            return 'This field is required';
+
+        return validationError;
+    });
+
     createEffect(() => {
         setInput(props.value.toString());
     });
+
+    const handleUpdate = (nextValue: number) => {
+        setIsDirty(true);
+
+        props.onChange(nextValue);
+        setInput(nextValue.toString());
+    };
 
     const normalizeNumber = (value: number): number | undefined => {
         if (Number.isNaN(value)) return;
@@ -49,14 +71,14 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
         const nextValue = normalizeNumber(props.value + getStep());
         if (nextValue === undefined) return;
 
-        props.onChange(nextValue);
+        handleUpdate(nextValue);
     };
 
     const handleDecrement = () => {
         const nextValue = normalizeNumber(props.value - getStep());
         if (nextValue === undefined) return;
 
-        props.onChange(nextValue);
+        handleUpdate(nextValue);
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -111,14 +133,14 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                     max={props.max}
                     min={props.min}
                     onChange={(e) => {
-                        const raw = e.currentTarget.value;
+                        const raw = e.currentTarget.value.trim();
                         setInput(raw);
 
                         const value = Number(raw);
                         const nextValue = normalizeNumber(value);
                         if (nextValue === undefined) return;
 
-                        props.onChange(nextValue);
+                        handleUpdate(nextValue);
                         setInput(nextValue.toString());
                     }}
                     onKeyDown={handleKeyDown}
@@ -138,9 +160,14 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                 </Button>
             </div>
 
-            <Show when={props.helperText}>
-                <HelperText text={props.helperText} />
-            </Show>
+            <Switch>
+                <Match when={getError()}>
+                    <span class='text-red-500 text-sm'>{getError()}</span>
+                </Match>
+                <Match when={props.helperText}>
+                    <HelperText text={props.helperText} />
+                </Match>
+            </Switch>
         </div>
     );
 };
