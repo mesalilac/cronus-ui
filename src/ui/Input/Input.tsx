@@ -23,6 +23,7 @@ export type InputProps = {
     label?: string;
     required?: boolean;
     helper?: JSX.Element;
+    badge?: JSX.Element;
     class?: string;
     children?: JSX.Element;
 };
@@ -109,6 +110,7 @@ export const Input = (rawProps: InputProps) => {
                         type={props.type}
                         value={internalValue()}
                     />
+                    {props.badge}
                     <IconMenuCloseMd
                         class='cursor-pointer opacity-50 hover:opacity-100'
                         onClick={() => {

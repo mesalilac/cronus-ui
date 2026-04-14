@@ -1,6 +1,8 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Badge } from '~/ui/Badge';
+
 import { Input } from './Input';
 
 const meta = {
@@ -27,6 +29,21 @@ export const Search: Story = {
         const [value, setValue] = createSignal('');
 
         return <Input onInput={setValue} type='search' value={value()} />;
+    },
+};
+
+export const WithBadge: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('apple');
+
+        return (
+            <Input
+                badge={<Badge>1</Badge>}
+                onInput={setValue}
+                type='search'
+                value={value()}
+            />
+        );
     },
 };
 
