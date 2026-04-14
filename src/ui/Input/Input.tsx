@@ -79,7 +79,7 @@ export const Input = (rawProps: InputProps) => {
                 <div
                     class={cn(
                         'flex flex-row items-center gap-1 rounded-lg border border-neutral-600 bg-neutral-700/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-blue-500',
-                        error() && 'bg-red-500/30 focus:ring-red-500',
+                        error() && 'bg-red-500/30 focus-within:ring-red-500',
                     )}
                 >
                     <Show when={props.type === 'search'}>
