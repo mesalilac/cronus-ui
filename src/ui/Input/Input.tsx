@@ -101,7 +101,10 @@ export const Input = (rawProps: InputProps) => {
                         )}
                         id={id}
                         onInput={(e) => handleInput(e.currentTarget.value)}
-                        placeholder={props.placeholder}
+                        placeholder={
+                            props.placeholder ??
+                            (props.type === 'search' ? 'Search' : undefined)
+                        }
                         required={props.required}
                         type={props.type}
                         value={internalValue()}
