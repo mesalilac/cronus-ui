@@ -27,7 +27,7 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     return (
         <Input
             class={props.class}
-            onInput={(value, _) => props.setQuery(value)}
+            onInput={props.setQuery}
             parse={(raw) => String(raw)}
             placeholder='Search'
             type='search'

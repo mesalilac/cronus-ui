@@ -24,12 +24,7 @@ export interface InputProps<T = string>
     required?: boolean;
     helper?: JSX.Element;
     error?: string;
-    onInput?: (
-        value: T,
-        e: InputEvent & {
-            currentTarget: HTMLInputElement;
-        },
-    ) => void;
+    onInput?: (value: T) => void;
     parse: (raw: string) => T;
     format?: (value: T) => string;
     validate?: (value: T, isDirty: boolean) => string | undefined;
@@ -76,25 +71,16 @@ export const Input = <T = string>(props: InputProps<T>) => {
         return local.error ?? validationError;
     });
 
-    const handleInput = (
-        e: InputEvent & {
-            currentTarget: HTMLInputElement;
-        },
-    ) => {
+    const handleInput = (value: string) => {
         setIsDirty(true);
         setTouched(true);
 
-        const raw = e.currentTarget.value;
+        const raw = value;
         const parsed = parse(raw);
 
         setInternalValue(raw);
 
-        local.onInput?.(
-            parsed,
-            e as InputEvent & {
-                currentTarget: HTMLInputElement;
-            },
-        );
+        local.onInput?.(parsed);
     };
 
     createEffect(() => {
@@ -154,13 +140,9 @@ export const Input = <T = string>(props: InputProps<T>) => {
                             )
                                 return;
 
-                            handleInput(
-                                e as unknown as InputEvent & {
-                                    currentTarget: HTMLInputElement;
-                                },
-                            );
+                            handleInput(e.currentTarget.value);
                         }}
-                        onInput={handleInput}
+                        onInput={(e) => handleInput(e.currentTarget.value)}
                         required={local.required}
                         value={internalValue()}
                         {...others}
