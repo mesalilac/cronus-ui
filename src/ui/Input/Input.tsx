@@ -100,15 +100,6 @@ export const Input = (rawProps: InputProps) => {
                             props.class,
                         )}
                         id={id}
-                        onChange={(e) => {
-                            if (
-                                props.type === 'text' ||
-                                props.type === 'search'
-                            )
-                                return;
-
-                            handleInput(e.currentTarget.value);
-                        }}
                         onInput={(e) => handleInput(e.currentTarget.value)}
                         placeholder={props.placeholder}
                         required={props.required}
