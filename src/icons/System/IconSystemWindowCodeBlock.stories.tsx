@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconWindowCodeBlock: Story = {
-    name: 'WindowCodeBlock'
+    name: 'WindowCodeBlock',
     args: {
         size: '6rem',
     },

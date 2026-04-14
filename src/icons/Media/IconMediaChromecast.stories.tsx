@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconChromecast: Story = {
-    name: 'Chromecast'
+    name: 'Chromecast',
     args: {
         size: '6rem',
     },

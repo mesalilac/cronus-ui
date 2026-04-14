@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconMobileButton: Story = {
-    name: 'MobileButton'
+    name: 'MobileButton',
     args: {
         size: '6rem',
     },

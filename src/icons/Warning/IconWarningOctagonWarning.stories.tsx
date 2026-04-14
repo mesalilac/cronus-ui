@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconOctagonWarning: Story = {
-    name: 'OctagonWarning'
+    name: 'OctagonWarning',
     args: {
         size: '6rem',
     },

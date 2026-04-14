@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconAirplay: Story = {
-    name: 'Airplay'
+    name: 'Airplay',
     args: {
         size: '6rem',
     },

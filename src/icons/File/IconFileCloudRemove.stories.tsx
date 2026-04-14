@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconCloudRemove: Story = {
-    name: 'CloudRemove'
+    name: 'CloudRemove',
     args: {
         size: '6rem',
     },

@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconCupcake: Story = {
-    name: 'Cupcake'
+    name: 'Cupcake',
     args: {
         size: '6rem',
     },

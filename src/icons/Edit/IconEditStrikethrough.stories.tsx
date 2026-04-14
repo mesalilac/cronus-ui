@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconStrikethrough: Story = {
-    name: 'Strikethrough'
+    name: 'Strikethrough',
     args: {
         size: '6rem',
     },

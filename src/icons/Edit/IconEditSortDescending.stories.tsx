@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconSortDescending: Story = {
-    name: 'SortDescending'
+    name: 'SortDescending',
     args: {
         size: '6rem',
     },

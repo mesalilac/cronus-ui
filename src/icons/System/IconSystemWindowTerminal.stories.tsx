@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconWindowTerminal: Story = {
-    name: 'WindowTerminal'
+    name: 'WindowTerminal',
     args: {
         size: '6rem',
     },

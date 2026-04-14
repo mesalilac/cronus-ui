@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconCheckboxFill: Story = {
-    name: 'CheckboxFill'
+    name: 'CheckboxFill',
     args: {
         size: '6rem',
     },

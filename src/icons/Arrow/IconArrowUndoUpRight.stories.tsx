@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconUndoUpRight: Story = {
-    name: 'UndoUpRight'
+    name: 'UndoUpRight',
     args: {
         size: '6rem',
     },

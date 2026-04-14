@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconMoreGridSmall: Story = {
-    name: 'MoreGridSmall'
+    name: 'MoreGridSmall',
     args: {
         size: '6rem',
     },

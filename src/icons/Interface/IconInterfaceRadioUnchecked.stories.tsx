@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconRadioUnchecked: Story = {
-    name: 'RadioUnchecked'
+    name: 'RadioUnchecked',
     args: {
         size: '6rem',
     },

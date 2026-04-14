@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconLink: Story = {
-    name: 'Link'
+    name: 'Link',
     args: {
         size: '6rem',
     },

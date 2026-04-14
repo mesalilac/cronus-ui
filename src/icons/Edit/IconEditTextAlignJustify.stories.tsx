@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconTextAlignJustify: Story = {
-    name: 'TextAlignJustify'
+    name: 'TextAlignJustify',
     args: {
         size: '6rem',
     },

@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconFolder: Story = {
-    name: 'Folder'
+    name: 'Folder',
     args: {
         size: '6rem',
     },

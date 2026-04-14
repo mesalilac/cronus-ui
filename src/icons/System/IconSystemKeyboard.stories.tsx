@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconKeyboard: Story = {
-    name: 'Keyboard'
+    name: 'Keyboard',
     args: {
         size: '6rem',
     },

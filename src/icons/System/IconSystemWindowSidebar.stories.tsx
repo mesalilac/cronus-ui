@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconWindowSidebar: Story = {
-    name: 'WindowSidebar'
+    name: 'WindowSidebar',
     args: {
         size: '6rem',
     },

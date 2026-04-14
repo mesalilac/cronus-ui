@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconCloudUpload: Story = {
-    name: 'CloudUpload'
+    name: 'CloudUpload',
     args: {
         size: '6rem',
     },

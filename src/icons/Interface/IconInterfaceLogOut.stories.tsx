@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconLogOut: Story = {
-    name: 'LogOut'
+    name: 'LogOut',
     args: {
         size: '6rem',
     },

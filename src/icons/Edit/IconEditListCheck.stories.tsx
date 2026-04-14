@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconListCheck: Story = {
-    name: 'ListCheck'
+    name: 'ListCheck',
     args: {
         size: '6rem',
     },

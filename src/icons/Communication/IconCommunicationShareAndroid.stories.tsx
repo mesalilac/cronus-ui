@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconShareAndroid: Story = {
-    name: 'ShareAndroid'
+    name: 'ShareAndroid',
     args: {
         size: '6rem',
     },

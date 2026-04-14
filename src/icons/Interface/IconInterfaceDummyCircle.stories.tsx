@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconDummyCircle: Story = {
-    name: 'DummyCircle'
+    name: 'DummyCircle',
     args: {
         size: '6rem',
     },

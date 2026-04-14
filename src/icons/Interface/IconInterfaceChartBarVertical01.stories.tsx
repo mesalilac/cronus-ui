@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconChartBarVertical01: Story = {
-    name: 'ChartBarVertical01'
+    name: 'ChartBarVertical01',
     args: {
         size: '6rem',
     },

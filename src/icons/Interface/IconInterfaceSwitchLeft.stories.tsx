@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconSwitchLeft: Story = {
-    name: 'SwitchLeft'
+    name: 'SwitchLeft',
     args: {
         size: '6rem',
     },

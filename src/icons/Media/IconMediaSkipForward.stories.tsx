@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconSkipForward: Story = {
-    name: 'SkipForward'
+    name: 'SkipForward',
     args: {
         size: '6rem',
     },

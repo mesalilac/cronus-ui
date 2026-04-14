@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconBellNotification: Story = {
-    name: 'BellNotification'
+    name: 'BellNotification',
     args: {
         size: '6rem',
     },

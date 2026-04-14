@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconMoveHorizontal: Story = {
-    name: 'MoveHorizontal'
+    name: 'MoveHorizontal',
     args: {
         size: '6rem',
     },

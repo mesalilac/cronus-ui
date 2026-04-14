@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconUnfoldLess: Story = {
-    name: 'UnfoldLess'
+    name: 'UnfoldLess',
     args: {
         size: '6rem',
     },

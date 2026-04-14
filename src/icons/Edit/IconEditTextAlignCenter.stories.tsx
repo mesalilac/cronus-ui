@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconTextAlignCenter: Story = {
-    name: 'TextAlignCenter'
+    name: 'TextAlignCenter',
     args: {
         size: '6rem',
     },

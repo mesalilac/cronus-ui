@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconSearchMagnifyingGlass: Story = {
-    name: 'SearchMagnifyingGlass'
+    name: 'SearchMagnifyingGlass',
     args: {
         size: '6rem',
     },

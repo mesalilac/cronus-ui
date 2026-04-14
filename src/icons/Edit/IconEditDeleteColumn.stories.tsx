@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconDeleteColumn: Story = {
-    name: 'DeleteColumn'
+    name: 'DeleteColumn',
     args: {
         size: '6rem',
     },

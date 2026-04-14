@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconLinkVertical: Story = {
-    name: 'LinkVertical'
+    name: 'LinkVertical',
     args: {
         size: '6rem',
     },

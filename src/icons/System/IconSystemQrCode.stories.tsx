@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconQrCode: Story = {
-    name: 'QrCode'
+    name: 'QrCode',
     args: {
         size: '6rem',
     },

@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconCalendar: Story = {
-    name: 'Calendar'
+    name: 'Calendar',
     args: {
         size: '6rem',
     },

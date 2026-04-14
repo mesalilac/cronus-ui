@@ -14,7 +14,7 @@ export default meta;
 type Story = StoryObj<typeof IconComp>;
 
 export const IconMapPin: Story = {
-    name: 'MapPin'
+    name: 'MapPin',
     args: {
         size: '6rem',
     },
