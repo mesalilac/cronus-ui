@@ -116,7 +116,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                 <Button
                     class='disabled:bg-transparent'
                     data-slot='decrement-button'
-                    disabled={props.disabled}
+                    disabled={props.disabled || props.min === props.value}
                     onClick={handleDecrement}
                     variant='icon'
                 >
@@ -152,7 +152,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                 <Button
                     class='disabled:bg-transparent'
                     data-slot='increment-button'
-                    disabled={props.disabled}
+                    disabled={props.disabled || props.max === props.value}
                     onClick={handleIncrement}
                     variant='icon'
                 >
