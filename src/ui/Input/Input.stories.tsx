@@ -2,6 +2,7 @@ import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Badge } from '~/ui/Badge';
+import { Button } from '~/ui/Button';
 
 import { Input } from './Input';
 
@@ -43,6 +44,18 @@ export const WithBadge: Story = {
                 type='search'
                 value={value()}
             />
+        );
+    },
+};
+
+export const WithSiblingButton: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return (
+            <Input onInput={setValue} value={value()}>
+                <Button>Button</Button>
+            </Input>
         );
     },
 };
