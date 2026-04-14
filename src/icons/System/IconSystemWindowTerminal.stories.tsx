@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const WindowTerminal: Story = {
+export const IconWindowTerminal: Story = {
+    name: 'WindowTerminal'
     args: {
         size: '6rem',
     },

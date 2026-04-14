@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const Keyboard: Story = {
+export const IconKeyboard: Story = {
+    name: 'Keyboard'
     args: {
         size: '6rem',
     },

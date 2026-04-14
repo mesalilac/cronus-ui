@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const VolumeMin: Story = {
+export const IconVolumeMin: Story = {
+    name: 'VolumeMin'
     args: {
         size: '6rem',
     },

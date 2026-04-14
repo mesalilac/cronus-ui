@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const TextAlignRight: Story = {
+export const IconTextAlignRight: Story = {
+    name: 'TextAlignRight'
     args: {
         size: '6rem',
     },

@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const SkipForward: Story = {
+export const IconSkipForward: Story = {
+    name: 'SkipForward'
     args: {
         size: '6rem',
     },

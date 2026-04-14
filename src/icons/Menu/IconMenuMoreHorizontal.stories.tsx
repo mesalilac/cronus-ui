@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const MoreHorizontal: Story = {
+export const IconMoreHorizontal: Story = {
+    name: 'MoreHorizontal'
     args: {
         size: '6rem',
     },

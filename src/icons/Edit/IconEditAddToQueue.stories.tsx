@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const AddToQueue: Story = {
+export const IconAddToQueue: Story = {
+    name: 'AddToQueue'
     args: {
         size: '6rem',
     },

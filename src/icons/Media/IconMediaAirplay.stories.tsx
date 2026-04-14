@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const Airplay: Story = {
+export const IconAirplay: Story = {
+    name: 'Airplay'
     args: {
         size: '6rem',
     },

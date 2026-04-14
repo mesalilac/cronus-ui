@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const CombineCells: Story = {
+export const IconCombineCells: Story = {
+    name: 'CombineCells'
     args: {
         size: '6rem',
     },

@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const Save: Story = {
+export const IconSave: Story = {
+    name: 'Save'
     args: {
         size: '6rem',
     },

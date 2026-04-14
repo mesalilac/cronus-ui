@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const CaretCircleDown: Story = {
+export const IconCaretCircleDown: Story = {
+    name: 'CaretCircleDown'
     args: {
         size: '6rem',
     },

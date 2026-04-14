@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const SortAscending: Story = {
+export const IconSortAscending: Story = {
+    name: 'SortAscending'
     args: {
         size: '6rem',
     },

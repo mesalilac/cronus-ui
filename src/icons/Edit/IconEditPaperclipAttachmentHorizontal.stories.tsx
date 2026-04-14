@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const PaperclipAttachmentHorizontal: Story = {
+export const IconPaperclipAttachmentHorizontal: Story = {
+    name: 'PaperclipAttachmentHorizontal'
     args: {
         size: '6rem',
     },

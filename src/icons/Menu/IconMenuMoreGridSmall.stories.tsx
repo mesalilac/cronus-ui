@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const MoreGridSmall: Story = {
+export const IconMoreGridSmall: Story = {
+    name: 'MoreGridSmall'
     args: {
         size: '6rem',
     },

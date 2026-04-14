@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const VolumeMax: Story = {
+export const IconVolumeMax: Story = {
+    name: 'VolumeMax'
     args: {
         size: '6rem',
     },

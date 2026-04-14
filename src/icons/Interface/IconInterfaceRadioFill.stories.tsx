@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const RadioFill: Story = {
+export const IconRadioFill: Story = {
+    name: 'RadioFill'
     args: {
         size: '6rem',
     },

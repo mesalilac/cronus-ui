@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const FolderCheck: Story = {
+export const IconFolderCheck: Story = {
+    name: 'FolderCheck'
     args: {
         size: '6rem',
     },

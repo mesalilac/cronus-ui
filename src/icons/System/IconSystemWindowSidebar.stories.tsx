@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const WindowSidebar: Story = {
+export const IconWindowSidebar: Story = {
+    name: 'WindowSidebar'
     args: {
         size: '6rem',
     },

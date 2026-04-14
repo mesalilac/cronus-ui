@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const MoreGridBig: Story = {
+export const IconMoreGridBig: Story = {
+    name: 'MoreGridBig'
     args: {
         size: '6rem',
     },

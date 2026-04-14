@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const Underline: Story = {
+export const IconUnderline: Story = {
+    name: 'Underline'
     args: {
         size: '6rem',
     },

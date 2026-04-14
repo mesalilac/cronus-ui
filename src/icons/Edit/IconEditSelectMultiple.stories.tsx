@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const SelectMultiple: Story = {
+export const IconSelectMultiple: Story = {
+    name: 'SelectMultiple'
     args: {
         size: '6rem',
     },

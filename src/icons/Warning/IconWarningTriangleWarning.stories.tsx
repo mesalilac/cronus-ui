@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const TriangleWarning: Story = {
+export const IconTriangleWarning: Story = {
+    name: 'TriangleWarning'
     args: {
         size: '6rem',
     },

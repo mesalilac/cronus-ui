@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const ListUnordered: Story = {
+export const IconListUnordered: Story = {
+    name: 'ListUnordered'
     args: {
         size: '6rem',
     },

@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const SkipBack: Story = {
+export const IconSkipBack: Story = {
+    name: 'SkipBack'
     args: {
         size: '6rem',
     },

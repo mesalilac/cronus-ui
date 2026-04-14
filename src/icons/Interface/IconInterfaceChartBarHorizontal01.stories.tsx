@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const ChartBarHorizontal01: Story = {
+export const IconChartBarHorizontal01: Story = {
+    name: 'ChartBarHorizontal01'
     args: {
         size: '6rem',
     },

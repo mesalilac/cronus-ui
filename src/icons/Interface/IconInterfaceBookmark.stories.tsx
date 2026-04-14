@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const Bookmark: Story = {
+export const IconBookmark: Story = {
+    name: 'Bookmark'
     args: {
         size: '6rem',
     },

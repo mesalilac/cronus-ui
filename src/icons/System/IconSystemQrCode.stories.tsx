@@ -13,7 +13,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof IconComp>;
 
-export const QrCode: Story = {
+export const IconQrCode: Story = {
+    name: 'QrCode'
     args: {
         size: '6rem',
     },
