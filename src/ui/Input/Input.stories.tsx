@@ -28,6 +28,21 @@ export const Default: Story = {
     },
 };
 
+export const Search: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return (
+            <Input
+                onInput={(v) => setValue(v)}
+                parse={(raw) => raw}
+                type='search'
+                value={value()}
+            />
+        );
+    },
+};
+
 export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = createSignal('');

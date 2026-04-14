@@ -10,6 +10,7 @@ import {
     splitProps,
 } from 'solid-js';
 
+import { IconInterfaceSearchMagnifyingGlass } from '~/icons';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -121,33 +122,50 @@ export const Input = <T = string>(props: InputProps<T>) => {
                 </label>
             </Show>
             <div class='flex flex-row gap-2'>
-                <input
-                    aria-describedby={
-                        error() ? `error, ${error()}` : local.label
-                    }
-                    aria-invalid={Boolean(error())}
-                    autocomplete='off'
+                <div
                     class={cn(
-                        'grow rounded-lg border border-neutral-600 bg-neutral-700/30 px-3 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500',
+                        'flex flex-row items-center gap-1 rounded-lg border border-neutral-600 bg-neutral-700/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-blue-500',
                         error() && 'bg-red-500/30 focus:ring-red-500',
-                        local.class,
                     )}
-                    id={id}
-                    onChange={(e) => {
-                        if (others.type === 'text' || others.type === 'search')
-                            return;
+                >
+                    <Show when={others.type === 'search'}>
+                        <label for={id}>
+                            <IconInterfaceSearchMagnifyingGlass
+                                class='pointer-events-none opacity-50'
+                                size='1.3rem'
+                            />
+                        </label>
+                    </Show>
+                    <input
+                        aria-describedby={
+                            error() ? `error, ${error()}` : local.label
+                        }
+                        aria-invalid={Boolean(error())}
+                        autocomplete='off'
+                        class={cn(
+                            'grow text-sm placeholder:text-neutral-500 focus:outline-none',
+                            local.class,
+                        )}
+                        id={id}
+                        onChange={(e) => {
+                            if (
+                                others.type === 'text' ||
+                                others.type === 'search'
+                            )
+                                return;
 
-                        handleInput(
-                            e as unknown as InputEvent & {
-                                currentTarget: HTMLInputElement;
-                            },
-                        );
-                    }}
-                    onInput={handleInput}
-                    required={local.required}
-                    value={internalValue()}
-                    {...others}
-                />
+                            handleInput(
+                                e as unknown as InputEvent & {
+                                    currentTarget: HTMLInputElement;
+                                },
+                            );
+                        }}
+                        onInput={handleInput}
+                        required={local.required}
+                        value={internalValue()}
+                        {...others}
+                    />
+                </div>
                 {props.children}
             </div>
             <Switch>
