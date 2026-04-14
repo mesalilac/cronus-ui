@@ -5,102 +5,69 @@ import {
     createUniqueId,
     type JSX,
     Match,
+    mergeProps,
     Show,
     Switch,
-    splitProps,
 } from 'solid-js';
 
 import { IconInterfaceSearchMagnifyingGlass, IconMenuCloseMd } from '~/icons';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
-export interface InputProps<T = string>
-    extends Omit<
-        JSX.InputHTMLAttributes<HTMLInputElement>,
-        'value' | 'onInput'
-    > {
+export type InputProps = {
+    type?: 'text' | 'search';
+    value: string;
+    onInput?: (value: string) => void;
+    validate?: (value: string, isDirty: boolean) => string | undefined;
+    placeholder?: string;
     label?: string;
-    value?: T;
     required?: boolean;
     helper?: JSX.Element;
-    error?: string;
-    onInput?: (value: T) => void;
-    parse: (raw: string) => T;
-    format?: (value: T) => string;
-    validate?: (value: T, isDirty: boolean) => string | undefined;
+    class?: string;
     children?: JSX.Element;
-}
+};
 
-export const Input = <T = string>(props: InputProps<T>) => {
-    const [local, others] = splitProps(props, [
-        'class',
-        'label',
-        'value',
-        'required',
-        'helper',
-        'error',
-        'onInput',
-        'parse',
-        'format',
-        'validate',
-    ]);
+export const Input = (rawProps: InputProps) => {
+    const props = mergeProps(
+        { type: 'text' } satisfies Partial<InputProps>,
+        rawProps,
+    );
 
     const id = createUniqueId();
 
-    const parse = local.parse ?? ((v: string) => v as unknown as T);
-    const format = local.format ?? ((v: T) => String(v));
-
     const [isDirty, setIsDirty] = createSignal(false);
-    const [touched, setTouched] = createSignal(false);
 
-    const [internalValue, setInternalValue] = createSignal(
-        format(local.value ?? parse('')),
-    );
+    const [internalValue, setInternalValue] = createSignal(props.value);
 
     const error = createMemo(() => {
-        const validationError = local.validate?.(
-            parse(internalValue()),
-            isDirty(),
-        );
+        const validationError = props.validate?.(internalValue(), isDirty());
 
-        if (touched()) return validationError;
-
-        if (!touched() && local.required && internalValue().length === 0)
+        if (props.required && internalValue().length === 0)
             return 'This field is required';
 
-        return local.error ?? validationError;
+        return validationError;
     });
 
     const handleInput = (value: string) => {
         setIsDirty(true);
-        setTouched(true);
 
-        const raw = value;
-        const parsed = parse(raw);
-
-        setInternalValue(raw);
-
-        local.onInput?.(parsed);
+        setInternalValue(value);
+        props.onInput?.(value);
     };
 
     createEffect(() => {
-        if (local.value !== undefined)
-            setInternalValue(format(local.value ?? parse('')));
-    });
-
-    createEffect(() => {
-        if (local.error !== undefined) setTouched(false);
+        setInternalValue(props.value);
     });
 
     return (
         <div class='flex w-full flex-col gap-2'>
-            <Show when={local.label}>
+            <Show when={props.label}>
                 <label
                     class='flex gap-1 font-bold text-neutral-200 text-sm capitalize'
                     for={id}
                 >
-                    <span>{local.label}</span>
-                    {local.required && (
+                    <span>{props.label}</span>
+                    {props.required && (
                         <span class='text-red-500' title='required'>
                             *
                         </span>
@@ -114,7 +81,7 @@ export const Input = <T = string>(props: InputProps<T>) => {
                         error() && 'bg-red-500/30 focus:ring-red-500',
                     )}
                 >
-                    <Show when={others.type === 'search'}>
+                    <Show when={props.type === 'search'}>
                         <label for={id}>
                             <IconInterfaceSearchMagnifyingGlass
                                 class='pointer-events-none opacity-50'
@@ -124,37 +91,37 @@ export const Input = <T = string>(props: InputProps<T>) => {
                     </Show>
                     <input
                         aria-describedby={
-                            error() ? `error, ${error()}` : local.label
+                            error() ? `error, ${error()}` : props.label
                         }
                         aria-invalid={Boolean(error())}
                         autocomplete='off'
                         class={cn(
-                            'grow text-sm placeholder:text-neutral-500 focus:outline-none',
-                            local.class,
+                            'grow pl-2 text-sm placeholder:text-neutral-500 focus:outline-none',
+                            props.class,
                         )}
                         id={id}
                         onChange={(e) => {
                             if (
-                                others.type === 'text' ||
-                                others.type === 'search'
+                                props.type === 'text' ||
+                                props.type === 'search'
                             )
                                 return;
 
                             handleInput(e.currentTarget.value);
                         }}
                         onInput={(e) => handleInput(e.currentTarget.value)}
-                        required={local.required}
+                        placeholder={props.placeholder}
+                        required={props.required}
+                        type='text'
                         value={internalValue()}
-                        {...others}
                     />
                     <IconMenuCloseMd
                         class='cursor-pointer opacity-50 hover:opacity-100'
                         onClick={() => {
-                            const raw = '';
-                            const parsed = parse(raw);
+                            const value = '';
 
-                            setInternalValue(raw);
-                            local.onInput?.(parsed);
+                            setInternalValue(value);
+                            props.onInput?.(value);
                         }}
                         style={{
                             visibility:
@@ -170,7 +137,7 @@ export const Input = <T = string>(props: InputProps<T>) => {
                 <Match when={error()}>
                     <span class='text-red-500 text-sm'>{error()}</span>
                 </Match>
-                <Match when={local.helper}>
+                <Match when={props.helper}>
                     <HelperText>{props.helper}</HelperText>
                 </Match>
             </Switch>

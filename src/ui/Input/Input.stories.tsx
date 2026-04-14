@@ -18,13 +18,7 @@ export const Default: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Input
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
-        );
+        return <Input onInput={setValue} value={value()} />;
     },
 };
 
@@ -32,14 +26,7 @@ export const Search: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Input
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                type='search'
-                value={value()}
-            />
-        );
+        return <Input onInput={setValue} type='search' value={value()} />;
     },
 };
 
@@ -47,14 +34,7 @@ export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Input
-                label='Label'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
-        );
+        return <Input label='Label' onInput={setValue} value={value()} />;
     },
 };
 
@@ -63,13 +43,7 @@ export const WithLabelAndRequired: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Input
-                label='Label'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                required
-                value={value()}
-            />
+            <Input label='Label' onInput={setValue} required value={value()} />
         );
     },
 };
@@ -79,12 +53,7 @@ export const WithHelperText: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Input
-                helper='Helper Text'
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
-                value={value()}
-            />
+            <Input helper='Helper Text' onInput={setValue} value={value()} />
         );
     },
 };
@@ -95,8 +64,7 @@ export const WithError: Story = {
 
         return (
             <Input
-                onInput={(v) => setValue(v)}
-                parse={(raw) => raw}
+                onInput={setValue}
                 validate={(v) => {
                     if (v.length < 10)
                         return 'Must be at least 10 characters long';
