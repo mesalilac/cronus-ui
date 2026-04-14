@@ -96,14 +96,14 @@ export const Input = (rawProps: InputProps) => {
                         aria-invalid={Boolean(error())}
                         autocomplete='off'
                         class={cn(
-                            'grow pl-2 text-sm placeholder:text-neutral-500 focus:outline-none',
+                            'grow pl-2 text-sm placeholder:text-neutral-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.class,
                         )}
                         id={id}
                         onInput={(e) => handleInput(e.currentTarget.value)}
                         placeholder={props.placeholder}
                         required={props.required}
-                        type='text'
+                        type={props.type}
                         value={internalValue()}
                     />
                     <IconMenuCloseMd
