@@ -162,7 +162,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
 
             <Switch>
                 <Match when={getError()}>
-                    <span class='text-red-500 text-sm'>{getError()}</span>
+                    <HelperText variant='error'>{getError()}</HelperText>
                 </Match>
                 <Match when={props.helperText}>
                     <HelperText>{props.helperText}</HelperText>

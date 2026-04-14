@@ -131,7 +131,7 @@ export const Input = (rawProps: InputProps) => {
             </div>
             <Switch>
                 <Match when={error()}>
-                    <span class='text-red-500 text-sm'>{error()}</span>
+                    <HelperText variant='error'>{error()}</HelperText>
                 </Match>
                 <Match when={props.helper}>
                     <HelperText>{props.helper}</HelperText>
