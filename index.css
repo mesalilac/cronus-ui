@@ -1,7 +1,77 @@
 @import "tailwindcss";
 @source "./src";
 
+@theme {
+	--color-surface-base: var(--color-neutral-50);
+	--color-surface-1: var(--color-neutral-100);
+	--color-surface-2: var(--color-neutral-200);
+	--color-surface-3: var(--color-neutral-300);
+
+	--color-text-primary: var(--color-neutral-950);
+	--color-text-secondary: var(--color-neutral-700);
+	--color-text-muted: var(--color-neutral-600);
+
+	--color-border: var(--color-neutral-300);
+	--color-border-subtle: var(--color-neutral-200);
+	--color-border-strong: var(--color-neutral-400);
+
+	--color-accent: var(--color-blue-500);
+	--color-accent-text: var(--color-blue-400);
+
+	--color-success: var(--color-green-500);
+	--color-success-text: var(--color-green-400);
+	--color-success-border: color-mix(
+		in oklab,
+		var(--color-success-text) 30%,
+		transparent
+	);
+
+	--color-warning: var(--color-yellow-500);
+	--color-warning-text: var(--color-yellow-400);
+	--color-warning-border: color-mix(
+		in oklab,
+		var(--color-warning-text) 30%,
+		transparent
+	);
+
+	--color-danger: var(--color-red-500);
+	--color-danger-text: var(--color-red-400);
+	--color-danger-border: color-mix(
+		in oklab,
+		var(--color-danger-text) 30%,
+		transparent
+	);
+
+	--color-info: var(--color-cyan-500);
+	--color-info-text: var(--color-cyan-400);
+	--color-info-border: color-mix(
+		in oklab,
+		var(--color-info-text) 30%,
+		transparent
+	);
+}
+
+@variant dark {
+	--color-surface-base: var(--color-neutral-950);
+	--color-surface-1: var(--color-neutral-900);
+	--color-surface-2: var(--color-neutral-800);
+	--color-surface-3: var(--color-neutral-700);
+
+	--color-text-primary: var(--color-neutral-50);
+	--color-text-secondary: var(--color-neutral-300);
+	--color-text-muted: var(--color-neutral-400);
+
+	--color-border: var(--color-neutral-700);
+	--color-border-subtle: var(--color-neutral-800);
+	--color-border-strong: var(--color-neutral-600);
+}
+
 @layer base {
+	:root {
+		color: var(--color-text-primary);
+		background: var(--color-surface-base);
+	}
+
 	* {
 		box-sizing: border-box;
 		min-width: 0;
