@@ -2,7 +2,7 @@ import { render } from 'solid-js/web';
 
 import { App } from './App';
 import './style.css';
-import './index.css';
+import '../../index.css';
 
 // biome-ignore lint/style/noNonNullAssertion: #app always exists in index.html
 render(() => <App />, document.querySelector('#app')!);

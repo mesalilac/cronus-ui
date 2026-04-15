@@ -1,7 +1,7 @@
 import { withThemeByClassName } from '@storybook/addon-themes';
 import type { Preview } from 'storybook-solidjs-vite';
 
-import './index.css';
+import '../index.css';
 
 export const decorators = [
     withThemeByClassName({
