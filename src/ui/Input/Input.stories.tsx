@@ -1,12 +1,11 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconEditAddPlus, IconNavigationCompass } from '~/icons';
+import { IconNavigationCompass } from '~/icons';
 import { Badge } from '~/ui/Badge';
 import { Button } from '~/ui/Button';
 
 import { Input } from './Input';
-import { IconAdd } from '~/icons/Calendar/IconCalendarAdd.stories';
 
 const meta = {
     title: 'Ui/Input',
