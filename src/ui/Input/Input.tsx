@@ -76,6 +76,12 @@ export const Input = (rawProps: InputProps) => {
         setInternalValue(props.value);
     });
 
+    const getIcon = () =>
+        props.icon ??
+        (props.type === 'search' ? (
+            <IconInterfaceSearchMagnifyingGlass />
+        ) : null);
+
     return (
         <div class='flex w-full flex-col gap-2'>
             <Show when={props.label}>
@@ -98,16 +104,11 @@ export const Input = (rawProps: InputProps) => {
                         error() && 'bg-red-500/30 focus-within:ring-red-500',
                     )}
                 >
-                    <div class='pointer-events-none flex items-center opacity-50 **:size-5'>
-                        <label for={id}>
-                            <Switch>
-                                <Match when={props.icon}>{props.icon}</Match>
-                                <Match when={props.type === 'search'}>
-                                    <IconInterfaceSearchMagnifyingGlass />
-                                </Match>
-                            </Switch>
-                        </label>
-                    </div>
+                    <Show when={getIcon()}>
+                        <div class='pointer-events-none flex items-center opacity-50 **:size-5'>
+                            <label for={id}>{getIcon()}</label>
+                        </div>
+                    </Show>
                     <input
                         aria-describedby={
                             error() ? `error, ${error()}` : props.label
