@@ -23,6 +23,8 @@ export type InputProps = {
     label?: string;
     required?: boolean;
     helper?: JSX.Element;
+    minLength?: number;
+    maxLength?: number;
     badge?: JSX.Element;
     class?: string;
     children?: JSX.Element;
@@ -45,6 +47,18 @@ export const Input = (rawProps: InputProps) => {
 
         if (props.required && internalValue().length === 0)
             return 'This field is required';
+
+        if (
+            props.minLength !== undefined &&
+            internalValue().length < props.minLength
+        )
+            return `This field must be at least ${props.minLength} characters long`;
+
+        if (
+            props.maxLength !== undefined &&
+            internalValue().length > props.maxLength
+        )
+            return `This field must be at most ${props.maxLength} characters long`;
 
         return validationError;
     });
@@ -101,6 +115,8 @@ export const Input = (rawProps: InputProps) => {
                             props.class,
                         )}
                         id={id}
+                        maxLength={props.maxLength}
+                        minLength={props.minLength}
                         onInput={(e) => handleInput(e.currentTarget.value)}
                         placeholder={
                             props.placeholder ??

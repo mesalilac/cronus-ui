@@ -60,6 +60,22 @@ export const WithSiblingButton: Story = {
     },
 };
 
+export const WithMinLength: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return <Input minLength={8} onInput={setValue} value={value()} />;
+    },
+};
+
+export const WithMaxLength: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return <Input maxLength={8} onInput={setValue} value={value()} />;
+    },
+};
+
 export const WithLabel: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
