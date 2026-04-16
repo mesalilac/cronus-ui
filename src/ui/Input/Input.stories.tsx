@@ -37,6 +37,39 @@ export const Search: Story = {
     },
 };
 
+export const Email: Story = {
+    args: {
+        type: 'email',
+    },
+    render: (args) => {
+        const [value, setValue] = createSignal('example@domain.com');
+
+        return <Input {...args} onInput={setValue} value={value()} />;
+    },
+};
+
+export const Password: Story = {
+    args: {
+        type: 'password',
+    },
+    render: (args) => {
+        const [value, setValue] = createSignal('password');
+
+        return <Input {...args} onInput={setValue} value={value()} />;
+    },
+};
+
+export const Url: Story = {
+    args: {
+        type: 'url',
+    },
+    render: (args) => {
+        const [value, setValue] = createSignal('https://example.com');
+
+        return <Input {...args} onInput={setValue} value={value()} />;
+    },
+};
+
 export const WithBadge: Story = {
     args: {
         type: 'search',

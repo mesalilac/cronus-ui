@@ -15,7 +15,7 @@ import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
 export type InputProps = {
-    type?: 'text' | 'search';
+    type?: 'text' | 'search' | 'email' | 'password' | 'url';
     value: string;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
