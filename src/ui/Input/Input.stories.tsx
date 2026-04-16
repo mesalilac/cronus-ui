@@ -53,7 +53,13 @@ export const WithCustomIcon: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return <Input  icon={<IconNavigationCompass />} onInput={setValue} value={value()} />;
+        return (
+            <Input
+                icon={<IconNavigationCompass />}
+                onInput={setValue}
+                value={value()}
+            />
+        );
     },
 };
 
