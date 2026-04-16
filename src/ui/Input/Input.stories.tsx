@@ -49,6 +49,14 @@ export const WithBadge: Story = {
     },
 };
 
+export const WithAutoFocus: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return <Input autoFocus onInput={setValue} value={value()} />;
+    },
+};
+
 export const WithCustomIcon: Story = {
     render: () => {
         const [value, setValue] = createSignal('');

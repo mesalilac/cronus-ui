@@ -22,6 +22,7 @@ export type InputProps = {
     placeholder?: string;
     label?: string;
     required?: boolean;
+    autoFocus?: boolean;
     helper?: JSX.Element;
     minLength?: number;
     maxLength?: number;
@@ -113,6 +114,7 @@ export const Input = (rawProps: InputProps) => {
                         }
                         aria-invalid={Boolean(error())}
                         autocomplete='off'
+                        autofocus={props.autoFocus}
                         class={cn(
                             'grow pl-2 text-sm placeholder:text-neutral-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.class,
