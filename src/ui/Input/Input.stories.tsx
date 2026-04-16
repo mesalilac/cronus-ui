@@ -26,25 +26,25 @@ export const Default: Story = {
 };
 
 export const Search: Story = {
-    render: () => {
+    args: {
+        type: 'search',
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input onInput={setValue} type='search' value={value()} />;
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
 export const WithBadge: Story = {
-    render: () => {
+    args: {
+        type: 'search',
+        badge: <Badge>1</Badge>,
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('apple');
 
-        return (
-            <Input
-                badge={<Badge>1</Badge>}
-                onInput={setValue}
-                type='search'
-                value={value()}
-            />
-        );
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
@@ -61,46 +61,58 @@ export const WithSiblingButton: Story = {
 };
 
 export const WithMinLength: Story = {
-    render: () => {
+    args: {
+        minLength: 8,
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input minLength={8} onInput={setValue} value={value()} />;
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
 export const WithMaxLength: Story = {
-    render: () => {
+    args: {
+        maxLength: 8,
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input maxLength={8} onInput={setValue} value={value()} />;
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
 export const WithLabel: Story = {
-    render: () => {
+    args: {
+        label: 'Label',
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input label='Label' onInput={setValue} value={value()} />;
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
 export const WithLabelAndRequired: Story = {
-    render: () => {
+    args: {
+        label: 'Label',
+        required: true,
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Input label='Label' onInput={setValue} required value={value()} />
-        );
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
 export const WithHelperText: Story = {
-    render: () => {
+    args: {
+        helper: 'Helper Text',
+    },
+    render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return (
-            <Input helper='Helper Text' onInput={setValue} value={value()} />
-        );
+        return <Input {...args} onInput={setValue} value={value()} />;
     },
 };
 
