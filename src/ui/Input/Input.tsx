@@ -26,6 +26,7 @@ export type InputProps = {
     minLength?: number;
     maxLength?: number;
     badge?: JSX.Element;
+    icon?: JSX.Element;
     class?: string;
     children?: JSX.Element;
 };
@@ -96,14 +97,16 @@ export const Input = (rawProps: InputProps) => {
                         error() && 'bg-red-500/30 focus-within:ring-red-500',
                     )}
                 >
-                    <Show when={props.type === 'search'}>
+                    <div class='pointer-events-none flex items-center opacity-50 **:size-5'>
                         <label for={id}>
-                            <IconInterfaceSearchMagnifyingGlass
-                                class='pointer-events-none opacity-50'
-                                size='1.3rem'
-                            />
+                            <Switch>
+                                <Match when={props.icon}>{props.icon}</Match>
+                                <Match when={props.type === 'search'}>
+                                    <IconInterfaceSearchMagnifyingGlass />
+                                </Match>
+                            </Switch>
                         </label>
-                    </Show>
+                    </div>
                     <input
                         aria-describedby={
                             error() ? `error, ${error()}` : props.label

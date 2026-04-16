@@ -1,10 +1,12 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { IconEditAddPlus, IconNavigationCompass } from '~/icons';
 import { Badge } from '~/ui/Badge';
 import { Button } from '~/ui/Button';
 
 import { Input } from './Input';
+import { IconAdd } from '~/icons/Calendar/IconCalendarAdd.stories';
 
 const meta = {
     title: 'Ui/Input',
@@ -45,6 +47,14 @@ export const WithBadge: Story = {
         const [value, setValue] = createSignal('apple');
 
         return <Input {...args} onInput={setValue} value={value()} />;
+    },
+};
+
+export const WithCustomIcon: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return <Input  icon={<IconNavigationCompass />} onInput={setValue} value={value()} />;
     },
 };
 
