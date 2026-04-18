@@ -100,14 +100,17 @@ export const Input = (rawProps: InputProps) => {
             <div class='flex flex-row gap-2'>
                 <div
                     class={cn(
-                        'flex flex-row items-center gap-1 rounded-lg border border-neutral-600 bg-neutral-700/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-blue-500',
+                        'flex flex-row items-center gap-2 rounded-lg border border-neutral-600 bg-neutral-700/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-blue-500',
                         error() && 'bg-red-500/30 focus-within:ring-red-500',
                     )}
                 >
                     <Show when={getIcon()}>
-                        <div class='pointer-events-none flex items-center opacity-50 **:size-5'>
-                            <label for={id}>{getIcon()}</label>
-                        </div>
+                        <label
+                            class='flex items-center opacity-50 *:size-5'
+                            for={id}
+                        >
+                            {getIcon()}
+                        </label>
                     </Show>
                     <input
                         aria-describedby={
@@ -117,7 +120,7 @@ export const Input = (rawProps: InputProps) => {
                         autocomplete='off'
                         autofocus={props.autoFocus}
                         class={cn(
-                            'grow pl-2 text-sm placeholder:text-neutral-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
+                            'grow text-sm placeholder:text-neutral-500 focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.class,
                         )}
                         id={id}
