@@ -32,7 +32,11 @@ export const Searchbar = (props: SelectSearchbarProps) => {
             type='search'
             value={props.query}
         >
-            <Show when={props.query.trim()}>
+            <Show
+                when={
+                    props.query.trim() && props.onCreateNewOption !== undefined
+                }
+            >
                 <Button
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
