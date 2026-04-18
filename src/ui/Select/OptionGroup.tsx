@@ -15,32 +15,22 @@ export const OptionGroup = (props: SelectOptionGroupProps) => {
     const [isOpen, setIsOpen] = createSignal(props.open ?? true);
 
     const onEnterAnim = (el: Element, done: () => void) => {
-        const gsapCtx = gsap.context(() => {
-            gsap.from(el, {
-                autoAlpha: 0,
-                height: 0,
-                duration: 0.2,
-                ease: 'power3.out',
-                onComplete: () => {
-                    gsapCtx.revert();
-                    done();
-                },
-            });
+        gsap.from(el, {
+            autoAlpha: 0,
+            height: 0,
+            duration: 0.2,
+            ease: 'power3.out',
+            onComplete: done,
         });
     };
 
     const onExitAnim = (el: Element, done: () => void) => {
-        const gsapCtx = gsap.context(() => {
-            gsap.to(el, {
-                autoAlpha: 0,
-                height: 0,
-                duration: 0.2,
-                ease: 'power3.out',
-                onComplete: () => {
-                    gsapCtx.revert();
-                    done();
-                },
-            });
+        gsap.to(el, {
+            autoAlpha: 0,
+            height: 0,
+            duration: 0.2,
+            ease: 'power3.out',
+            onComplete: done,
         });
     };
 
