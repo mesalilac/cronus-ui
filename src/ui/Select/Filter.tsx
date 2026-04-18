@@ -19,7 +19,7 @@ export const Filter = (props: SelectFilterProps) => {
             >
                 {props.children}
             </div>
-            <Separator class='my-2 border-neutral-700' />
+            <Separator class='my-2' />
         </>
     );
 };
