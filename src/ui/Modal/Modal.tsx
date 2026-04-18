@@ -1,7 +1,8 @@
 import gsap from 'gsap';
 import type { JSX } from 'solid-js';
-import { createEffect, createSignal, onCleanup, Show } from 'solid-js';
+import { createEffect, onCleanup, Show } from 'solid-js';
 import { Portal } from 'solid-js/web';
+import { Transition } from 'solid-transition-group';
 
 import { Content } from '~/ui/Modal/Content';
 import { ModalContext } from '~/ui/Modal/context';
@@ -20,33 +21,64 @@ export const Modal = (props: {
     class?: string;
     children: JSX.Element;
 }) => {
-    let modalOverlayRef!: HTMLDivElement;
-    let modalContentRef!: HTMLDivElement;
+    const onEnterAnim = (el: Element, done: () => void) => {
+        const overlay = el;
+        const modalWindow = overlay.querySelector('[data-slot="modal-window"]');
 
-    const [shouldRender, setShouldRender] = createSignal(false);
+        const tl = gsap.timeline({ onComplete: done });
 
-    const animateOut = () => {
-        if (!modalOverlayRef || !modalContentRef) return;
-
-        const gsapCtx = gsap.context(() => {
-            gsap.to(modalContentRef, {
+        tl.fromTo(
+            overlay,
+            {
                 autoAlpha: 0,
-                scale: 0.95,
+            },
+            {
+                autoAlpha: 1,
+                duration: 0.15,
+                ease: 'power1.out',
+            },
+        ).fromTo(
+            modalWindow,
+            {
+                autoAlpha: 0,
+                y: 16,
+                scale: 0.96,
+            },
+            {
+                autoAlpha: 1,
+                y: 0,
+                scale: 1,
                 duration: 0.2,
-                ease: 'power2.in',
-                onComplete: () => {
-                    setShouldRender(false);
-                    props.onOpenChange(false);
-                },
-            });
-        });
-
-        onCleanup(() => {
-            gsapCtx.revert();
-        });
+                ease: 'power1.out',
+            },
+            '<',
+        );
     };
 
-    const closeModal = () => animateOut();
+    const onExitAnim = (el: Element, done: () => void) => {
+        const overlay = el;
+        const modalWindow = overlay.querySelector('[data-slot="modal-window"]');
+
+        const tl = gsap.timeline({ onComplete: done });
+
+        tl.to(modalWindow, {
+            autoAlpha: 0,
+            scale: 0.96,
+            y: 12,
+            duration: 0.18,
+            ease: 'power1.in',
+        }).to(
+            overlay,
+            {
+                autoAlpha: 0,
+                duration: 0.12,
+                ease: 'power1.in',
+            },
+            '<',
+        );
+    };
+
+    const closeModal = () => props.onOpenChange(false);
 
     const handleKeydown = (e: KeyboardEvent) => {
         if (e.key === 'Escape') {
@@ -56,24 +88,6 @@ export const Modal = (props: {
 
     createEffect(() => {
         if (props.open) {
-            setShouldRender(true);
-            requestAnimationFrame(() => {
-                if (modalOverlayRef && modalContentRef) {
-                    const gsapCtx = gsap.context(() => {
-                        gsap.from(modalContentRef, {
-                            scale: 0.95,
-                            autoAlpha: 0,
-                            duration: 0.2,
-                            ease: 'power2.out',
-                        });
-                    });
-
-                    onCleanup(() => {
-                        gsapCtx.revert();
-                    });
-                }
-            });
-
             const originalOverflow = window.getComputedStyle(
                 document.body,
             ).overflow;
@@ -85,40 +99,40 @@ export const Modal = (props: {
                 document.body.style.overflow = originalOverflow;
                 document.removeEventListener('keydown', handleKeydown);
             });
-        } else {
-            if (shouldRender()) animateOut();
         }
     });
 
     return (
         <Portal>
-            <Show when={shouldRender()}>
-                <div
-                    class='fixed inset-0 z-50 flex items-center justify-center bg-black/60'
-                    onMouseDown={closeModal}
-                    ref={modalOverlayRef}
-                    role='none'
-                >
+            <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
+                <Show when={props.open}>
                     <div
-                        class={cn(
-                            'pointer-events-auto relative flex size-9/12 flex-col gap-2 rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 text-black shadow-lg backdrop-blur-sm dark:text-white',
-                            props.class,
-                        )}
-                        onMouseDown={(e) => e.stopPropagation()}
-                        ref={modalContentRef}
+                        class='fixed inset-0 z-50 flex items-center justify-center rounded bg-black/30'
+                        data-slot='modal-overlay'
+                        onMouseDown={closeModal}
                         role='none'
                     >
-                        <ModalContext.Provider
-                            value={{
-                                open: props.open,
-                                closeModal: closeModal,
-                            }}
+                        <div
+                            class={cn(
+                                'pointer-events-auto relative flex size-9/12 flex-col gap-2 rounded-lg border border-neutral-700 bg-neutral-900/80 p-4 text-black shadow-lg backdrop-blur-sm will-change-transform dark:text-white',
+                                props.class,
+                            )}
+                            data-slot='modal-window'
+                            onMouseDown={(e) => e.stopPropagation()}
+                            role='none'
                         >
-                            {props.children}
-                        </ModalContext.Provider>
+                            <ModalContext.Provider
+                                value={{
+                                    open: props.open,
+                                    closeModal: closeModal,
+                                }}
+                            >
+                                {props.children}
+                            </ModalContext.Provider>
+                        </div>
                     </div>
-                </div>
-            </Show>
+                </Show>
+            </Transition>
         </Portal>
     );
 };
