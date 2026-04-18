@@ -53,12 +53,12 @@ export const Textarea = (props: TextareaProps) => {
         <div class='flex w-full flex-col gap-2'>
             <Show when={props.label}>
                 <label
-                    class='flex gap-1 font-bold text-neutral-200 text-sm capitalize'
+                    class='flex gap-1 font-bold text-sm text-text-secondary capitalize'
                     for={id}
                 >
                     <span>{props.label}</span>
                     {props.required && (
-                        <span class='text-red-500' title='required'>
+                        <span class='text-danger' title='required'>
                             *
                         </span>
                     )}
@@ -68,8 +68,8 @@ export const Textarea = (props: TextareaProps) => {
                 aria-describedby={error() ? `error, ${error()}` : props.label}
                 aria-invalid={Boolean(error())}
                 class={cn(
-                    'h-32 max-h-32 resize-none rounded-lg border border-neutral-600 bg-neutral-700/30 px-3 py-2.5 text-sm placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-500',
-                    error() && 'bg-red-500/30 focus:ring-red-500',
+                    'h-32 max-h-32 resize-none rounded-lg border border-border bg-surface-3/30 px-3 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent',
+                    error() && 'bg-danger/30 focus:ring-danger',
                     props.class,
                 )}
                 id={id}
@@ -79,7 +79,7 @@ export const Textarea = (props: TextareaProps) => {
             />
             <Switch>
                 <Match when={error()}>
-                    <HelperText variant='error'>{error()}</HelperText>
+                    <HelperText variant='danger'>{error()}</HelperText>
                 </Match>
                 <Match when={props.helper}>
                     <HelperText>{props.helper}</HelperText>

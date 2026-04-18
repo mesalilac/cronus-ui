@@ -36,9 +36,9 @@ export const Trigger = (props: DropdownMenuSubTriggerProps) => {
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(
-                'w-full select-none justify-between text-nowrap text-neutral-200 capitalize',
+                'w-full select-none justify-between text-nowrap text-text-secondary capitalize',
                 props.class,
-                ctx.isOpen() && 'bg-neutral-700/30',
+                ctx.isOpen() && 'bg-surface-3/30',
             )}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

@@ -20,9 +20,9 @@ export const Item: FlowComponent<ToggleGroupItemProps> = (props) => {
     return (
         <Button
             class={cn(
-                'rounded-none first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
+                'rounded-none border-border-subtle first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
                 props.class,
-                isSelected() && 'bg-neutral-500/30',
+                isSelected() && 'bg-accent/60',
             )}
             disabled={isDisabled()}
             onClick={() => ctx.toggle(props.value)}

@@ -33,7 +33,7 @@ export const RadioGroup = (rawProps: RadioGroupProps) => {
         >
             <div class='flex flex-col gap-1'>
                 <Show when={props.label}>
-                    <div class='flex gap-1 font-bold text-neutral-200 text-sm capitalize'>
+                    <div class='flex gap-1 font-bold text-sm text-text-secondary capitalize'>
                         {props.label}
                     </div>
                 </Show>

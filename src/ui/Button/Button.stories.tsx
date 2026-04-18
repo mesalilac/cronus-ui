@@ -34,13 +34,6 @@ export const Secondary: Story = {
     },
 };
 
-export const Tertiary: Story = {
-    args: {
-        variant: 'tertiary',
-        children: 'Text',
-    },
-};
-
 export const Success: Story = {
     args: {
         variant: 'success',

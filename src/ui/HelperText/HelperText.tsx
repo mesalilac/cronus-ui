@@ -2,7 +2,7 @@ import { type JSX, mergeProps } from 'solid-js';
 
 import { cn } from '~/utils';
 
-export type HelperTextVariant = 'default' | 'warning' | 'error';
+export type HelperTextVariant = 'default' | 'warning' | 'danger';
 
 export type HelperTextProps = {
     variant?: HelperTextVariant;
@@ -17,9 +17,9 @@ export const HelperText = (rawProps: HelperTextProps) => {
     );
 
     const variantStyles: Record<HelperTextVariant, string> = {
-        default: 'text-neutral-400/80',
-        warning: 'text-yellow-400/80',
-        error: 'text-red-400/80',
+        default: cn('text-text-muted/80'),
+        warning: cn('text-warning-text/80'),
+        danger: cn('text-danger-text/80'),
     };
 
     return (

@@ -31,7 +31,7 @@ export const Item = (props: DropdownMenuRadioGroupItemProps) => {
     return (
         <Button
             class={cn(
-                'w-full select-none text-nowrap text-neutral-200 capitalize disabled:bg-transparent',
+                'w-full select-none text-nowrap text-text-secondary capitalize disabled:bg-transparent',
                 props.class,
             )}
             disabled={isDisabled()}
@@ -40,10 +40,8 @@ export const Item = (props: DropdownMenuRadioGroupItemProps) => {
         >
             <div
                 class={cn(
-                    'flex size-4 items-center justify-center rounded-full border bg-neutral-600 transition-colors duration-200 ease-in-out',
-                    isSelected()
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-neutral-600',
+                    'flex size-4 items-center justify-center rounded-full border bg-surface-3 transition-colors duration-200 ease-in-out',
+                    isSelected() ? 'border-accent bg-accent' : 'border-border',
                 )}
             >
                 <div

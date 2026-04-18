@@ -32,7 +32,7 @@ export const Item = (rawProps: DropdownMenuItemProps) => {
     return (
         <Button
             class={cn(
-                'w-full select-none text-nowrap text-neutral-200 capitalize disabled:bg-transparent',
+                'w-full select-none text-nowrap text-text-secondary capitalize disabled:bg-transparent',
                 props.class,
             )}
             disabled={props.disabled}

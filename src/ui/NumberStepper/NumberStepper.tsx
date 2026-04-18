@@ -109,7 +109,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
             </Show>
             <div
                 class={cn(
-                    'flex items-center gap-1 rounded-lg bg-neutral-700/30 p-1 focus-within:ring-2 focus-within:ring-blue-500 has-invalid:ring-2 has-invalid:ring-red-500',
+                    'flex items-center gap-1 rounded-lg bg-surface-3/30 p-1 focus-within:ring-2 focus-within:ring-accent has-invalid:ring-2 has-invalid:ring-danger',
                     props.class,
                 )}
             >
@@ -124,7 +124,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                 </Button>
                 <input
                     class={cn(
-                        'min-w-24 max-w-24 border-neutral-600/30 border-x text-center outline-none [appearance:textfield] focus:outline-none disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+                        'min-w-24 max-w-24 border-border/30 border-x text-center outline-none [appearance:textfield] focus:outline-none disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
                     )}
                     data-slot='number-input'
                     disabled={props.disabled}
@@ -162,7 +162,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
 
             <Switch>
                 <Match when={getError()}>
-                    <HelperText variant='error'>{getError()}</HelperText>
+                    <HelperText variant='danger'>{getError()}</HelperText>
                 </Match>
                 <Match when={props.helperText}>
                     <HelperText>{props.helperText}</HelperText>

@@ -64,7 +64,7 @@ export const Content = (rawProps: SelectContentProps) => {
         >
             <div
                 class={cn(
-                    'mt-1 mb-1 flex max-h-80 flex-col gap-1 overflow-y-auto overscroll-contain rounded-lg border border-neutral-600 bg-neutral-800 p-2 text-white shadow-2xl shadow-black',
+                    'mt-1 mb-1 flex max-h-80 flex-col gap-1 overflow-y-auto overscroll-contain rounded-lg border border-border bg-surface-2 p-2 text-text-primary shadow-2xl shadow-black',
                     props.class,
                 )}
                 ref={divRef}

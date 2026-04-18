@@ -14,7 +14,6 @@ import { cn } from '~/utils';
 export type ButtonVariant =
     | 'primary'
     | 'secondary'
-    | 'tertiary'
     | 'success'
     | 'danger'
     | 'warning'
@@ -45,41 +44,21 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'box-border flex cursor-pointer items-center gap-2 rounded-lg border border-current/20 px-4 py-2 font-medium text-sm text-white leading-5 shadow-xs transition-colors duration-150 ease-out focus-visible:outline-none focus-visible:ring-4',
+        'box-border flex cursor-pointer items-center gap-2 rounded-lg border border-border-strong px-4 py-2 font-medium text-sm text-text-primary leading-5 shadow-xs transition-all duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
     );
 
     const variantStyles: Record<ButtonVariant, string> = {
-        primary: cn(
-            'bg-blue-500/60 hover:bg-blue-500/70 focus-visible:ring-blue-500/50 active:bg-blue-500/50',
-        ),
-        secondary: cn(
-            'bg-neutral-500/30 text-neutral-300 hover:bg-neutral-500/40 focus-visible:ring-neutral-500/50 active:bg-neutral-500/20',
-        ),
-        tertiary: cn(
-            'bg-neutral-600/30 text-neutral-300 hover:bg-neutral-600/40 focus-visible:ring-neutral-500/50 active:bg-neutral-600/20',
-        ),
-        success: cn(
-            'bg-green-500/30 text-green-400 hover:bg-green-500/40 focus-visible:ring-green-500/50 active:bg-green-500/20',
-        ),
-        danger: cn(
-            'bg-red-500/30 text-red-400 hover:bg-red-500/40 focus-visible:ring-red-500/50 active:bg-red-500/20',
-        ),
-        warning: cn(
-            'bg-yellow-500/30 text-yellow-400 hover:bg-yellow-500/40 focus-visible:ring-yellow-500/50 active:bg-yellow-500/20',
-        ),
-        ghost: cn(
-            'border-transparent bg-transparent hover:bg-neutral-600/40 focus-visible:ring-neutral-600/50 active:bg-neutral-600/20',
-        ),
+        primary: cn('border-transparent bg-accent/60'),
+        secondary: cn('bg-surface-3'),
+        success: cn('border-current/30 bg-success/30 text-success-text'),
+        danger: cn('border-current/30 bg-danger/30 text-danger-text'),
+        warning: cn('border-current/30 bg-warning/30 text-warning-text'),
+        ghost: cn('border-transparent bg-transparent'),
         icon: cn(
-            'rounded-full border-transparent bg-transparent p-2 focus-visible:ring-neutral-600/50 active:bg-neutral-600/20',
+            'rounded-full border-transparent bg-transparent p-2 active:bg-surface-3',
         ),
-        outline: cn(
-            'text-neutral-300 hover:bg-neutral-600/40 focus-visible:ring-neutral-500/50 active:bg-neutral-600/20',
-        ),
+        outline: cn('active:bg-surface-3'),
     };
-
-    const disabledButtonStyles =
-        ' bg-neutral-500/50 text-neutral-300 opacity-60 pointer-events-none';
 
     return (
         <Switch>
@@ -88,7 +67,6 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                     class={cn(
                         baseStyles,
                         variantStyles[local.variant],
-                        disabledButtonStyles,
                         local.class,
                     )}
                     disabled
@@ -120,7 +98,6 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                     class={cn(
                         baseStyles,
                         variantStyles[local.variant],
-                        local.disabled && disabledButtonStyles,
                         local.class,
                     )}
                     disabled={local.disabled}

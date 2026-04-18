@@ -30,7 +30,7 @@ export const Item = (props: RadioGroupItemProps) => {
     return (
         <div
             class={cn(
-                'flex select-none flex-row items-center gap-1 text-nowrap text-neutral-200 capitalize disabled:bg-transparent',
+                'flex select-none flex-row items-center gap-1 text-nowrap text-text-secondary capitalize disabled:bg-transparent',
                 props.class,
                 isDisabled() && 'opacity-50',
             )}
@@ -39,10 +39,8 @@ export const Item = (props: RadioGroupItemProps) => {
         >
             <div
                 class={cn(
-                    'flex size-4 items-center justify-center rounded-full border bg-neutral-600 transition-colors duration-200 ease-in-out',
-                    isSelected()
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-neutral-600',
+                    'flex size-4 items-center justify-center rounded-full border bg-surface-3 transition-colors duration-200 ease-in-out',
+                    isSelected() ? 'border-accent bg-accent' : 'border-border',
                 )}
             >
                 <div

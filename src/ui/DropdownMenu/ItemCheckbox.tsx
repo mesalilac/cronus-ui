@@ -23,7 +23,7 @@ export const ItemCheckbox = (props: DropdownMenuItemCheckboxProps) => {
     return (
         <Button
             class={cn(
-                'w-full select-none text-nowrap text-neutral-200 capitalize disabled:bg-transparent',
+                'w-full select-none text-nowrap text-text-secondary capitalize disabled:bg-transparent',
                 props.class,
             )}
             disabled={props.disabled}
@@ -33,9 +33,7 @@ export const ItemCheckbox = (props: DropdownMenuItemCheckboxProps) => {
             <div
                 class={cn(
                     'flex size-4 cursor-pointer items-center rounded-sm border transition-colors duration-200 ease-out',
-                    props.checked
-                        ? 'border-blue-500 bg-blue-500'
-                        : 'border-neutral-600',
+                    props.checked ? 'border-accent bg-accent' : 'border-border',
                 )}
             >
                 <svg

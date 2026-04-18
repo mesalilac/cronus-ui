@@ -22,8 +22,8 @@ export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
                     class={cn(
                         'flex size-4 cursor-pointer items-center rounded-sm border transition-colors duration-200 ease-out',
                         props.checked
-                            ? 'border-blue-500 bg-blue-500'
-                            : 'border-neutral-600',
+                            ? 'border-accent bg-accent'
+                            : 'border-border',
                     )}
                 >
                     <svg

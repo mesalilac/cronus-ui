@@ -27,11 +27,11 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
     );
 
     const variantStyles: Record<BadgeVariant, string> = {
-        default: cn('bg-neutral-600/10 text-neutral-400'),
-        success: cn('bg-green-500/10 text-green-400'),
-        warning: cn('bg-yellow-500/10 text-yellow-400'),
-        danger: cn('bg-red-500/10 text-red-400'),
-        outline: cn('text-neutral-400'),
+        default: cn('bg-surface-3/20 text-text-muted'),
+        success: cn('bg-success/20 text-success-text'),
+        warning: cn('bg-warning/20 text-warning-text'),
+        danger: cn('bg-danger/20 text-danger-text'),
+        outline: cn('text-text-muted'),
     };
 
     return (

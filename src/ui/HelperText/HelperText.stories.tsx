@@ -27,9 +27,9 @@ export const WarningVariant: Story = {
     },
 };
 
-export const ErrorVariant: Story = {
+export const DangerVariant: Story = {
     args: {
-        variant: 'error',
+        variant: 'danger',
         children: 'Helper text',
     },
 };
