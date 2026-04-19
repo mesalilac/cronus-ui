@@ -10,7 +10,12 @@ import {
     Switch,
 } from 'solid-js';
 
-import { IconInterfaceSearchMagnifyingGlass, IconMenuCloseMd } from '~/icons';
+import {
+    IconEditHide,
+    IconEditShow,
+    IconInterfaceSearchMagnifyingGlass,
+    IconMenuCloseMd,
+} from '~/icons';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -42,6 +47,7 @@ export const Input = (rawProps: InputProps) => {
 
     const [isDirty, setIsDirty] = createSignal(false);
 
+    const [internalInputType, setInternalInputType] = createSignal(props.type);
     const [internalValue, setInternalValue] = createSignal(props.value);
 
     const error = createMemo(() => {
@@ -132,10 +138,30 @@ export const Input = (rawProps: InputProps) => {
                             (props.type === 'search' ? 'Search' : undefined)
                         }
                         required={props.required}
-                        type={props.type}
+                        type={internalInputType()}
                         value={internalValue()}
                     />
                     {props.badge}
+                    <Show when={props.type === 'password'}>
+                        <Show
+                            fallback={
+                                <IconEditShow
+                                    aria-label='Show password'
+                                    class='cursor-pointer opacity-50 hover:opacity-100'
+                                    onClick={() =>
+                                        setInternalInputType('password')
+                                    }
+                                />
+                            }
+                            when={internalInputType() === 'password'}
+                        >
+                            <IconEditHide
+                                aria-label='Hide password'
+                                class='cursor-pointer opacity-50 hover:opacity-100'
+                                onClick={() => setInternalInputType('text')}
+                            />
+                        </Show>
+                    </Show>
                     <IconMenuCloseMd
                         class='cursor-pointer opacity-50 hover:opacity-100'
                         onClick={() => {
