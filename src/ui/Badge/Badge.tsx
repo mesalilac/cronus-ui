@@ -28,9 +28,9 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
 
     const variantStyles: Record<BadgeVariant, string> = {
         default: cn('bg-surface-3/20 text-text-muted'),
-        success: cn('bg-success/20 text-success-text'),
-        warning: cn('bg-warning/20 text-warning-text'),
-        danger: cn('bg-danger/20 text-danger-text'),
+        success: cn('bg-success/20 text-text-success'),
+        warning: cn('bg-warning/20 text-text-warning'),
+        danger: cn('bg-danger/20 text-text-danger'),
         outline: cn('text-text-muted'),
     };
 

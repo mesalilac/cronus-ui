@@ -18,8 +18,8 @@ export const HelperText = (rawProps: HelperTextProps) => {
 
     const variantStyles: Record<HelperTextVariant, string> = {
         default: cn('text-text-muted/80'),
-        warning: cn('text-warning-text/80'),
-        danger: cn('text-danger-text/80'),
+        warning: cn('text-text-warning/80'),
+        danger: cn('text-text-danger/80'),
     };
 
     return (

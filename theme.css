@@ -14,17 +14,15 @@
 
 	--color-accent: var(--color-indigo-500);
 
-	--color-success: var(--color-green-500);
-	--color-success-text: var(--color-green-400);
+	--color-success: var(--color-green-400);
+	--color-warning: var(--color-yellow-400);
+	--color-danger: var(--color-red-400);
+	--color-info: var(--color-cyan-400);
 
-	--color-warning: var(--color-yellow-500);
-	--color-warning-text: var(--color-yellow-400);
-
-	--color-danger: var(--color-red-500);
-	--color-danger-text: var(--color-red-400);
-
-	--color-info: var(--color-cyan-500);
-	--color-info-text: var(--color-cyan-400);
+	--color-text-success: var(--color-green-500);
+	--color-text-warning: var(--color-yellow-500);
+	--color-text-danger: var(--color-red-500);
+	--color-text-info: var(--color-cyan-500);
 
 	--shadow-default: var(--shadow-2xl);
 	--radius-default: var(--radius-lg);
@@ -43,4 +41,14 @@
 	--color-border: var(--color-neutral-700);
 	--color-border-subtle: var(--color-neutral-800);
 	--color-border-strong: var(--color-neutral-600);
+
+	--color-success: var(--color-green-500);
+	--color-warning: var(--color-yellow-500);
+	--color-danger: var(--color-red-500);
+	--color-info: var(--color-cyan-500);
+
+	--color-text-success: var(--color-green-400);
+	--color-text-warning: var(--color-yellow-400);
+	--color-text-danger: var(--color-red-400);
+	--color-text-info: var(--color-cyan-400);
 }

@@ -50,9 +50,9 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     const variantStyles: Record<ButtonVariant, string> = {
         primary: cn('border-transparent bg-accent'),
         secondary: cn('bg-surface-3'),
-        success: cn('border-current/30 bg-success/30 text-success-text'),
-        danger: cn('border-current/30 bg-danger/30 text-danger-text'),
-        warning: cn('border-current/30 bg-warning/30 text-warning-text'),
+        success: cn('border-current/30 bg-success/30 text-text-success'),
+        danger: cn('border-current/30 bg-danger/30 text-text-danger'),
+        warning: cn('border-current/30 bg-warning/30 text-text-warning'),
         ghost: cn('border-transparent bg-transparent hover:bg-surface-3/30'),
         icon: cn(
             'rounded-full border-transparent bg-transparent p-2 active:bg-surface-3',
