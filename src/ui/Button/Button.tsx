@@ -48,7 +48,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     );
 
     const variantStyles: Record<ButtonVariant, string> = {
-        primary: cn('border-transparent bg-accent/60'),
+        primary: cn('border-transparent bg-accent'),
         secondary: cn('bg-surface-3'),
         success: cn('border-current/30 bg-success/30 text-success-text'),
         danger: cn('border-current/30 bg-danger/30 text-danger-text'),
