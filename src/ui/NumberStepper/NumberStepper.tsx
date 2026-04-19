@@ -109,7 +109,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
             </Show>
             <div
                 class={cn(
-                    'flex items-center gap-1 rounded-lg bg-surface-3/30 p-1 focus-within:ring-2 focus-within:ring-accent has-invalid:ring-2 has-invalid:ring-danger',
+                    'flex items-center gap-1 rounded-default bg-surface-3/30 p-1 focus-within:ring-2 focus-within:ring-accent has-invalid:ring-2 has-invalid:ring-danger',
                     props.class,
                 )}
             >

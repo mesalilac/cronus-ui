@@ -27,6 +27,7 @@
 	--color-info-text: var(--color-cyan-400);
 
 	--shadow-default: var(--shadow-2xl);
+	--radius-default: var(--rounded-lg);
 }
 
 @variant dark {

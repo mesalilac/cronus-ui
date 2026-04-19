@@ -106,7 +106,7 @@ export const Input = (rawProps: InputProps) => {
             <div class='flex flex-row gap-2'>
                 <div
                     class={cn(
-                        'flex flex-row items-center gap-2 rounded-lg border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-accent',
+                        'flex flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:ring-2 focus-within:ring-accent',
                         error() && 'bg-danger/30 focus-within:ring-danger',
                     )}
                 >

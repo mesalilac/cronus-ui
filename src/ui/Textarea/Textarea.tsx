@@ -68,7 +68,7 @@ export const Textarea = (props: TextareaProps) => {
                 aria-describedby={error() ? `error, ${error()}` : props.label}
                 aria-invalid={Boolean(error())}
                 class={cn(
-                    'h-32 max-h-32 resize-none rounded-lg border border-border bg-surface-3/30 px-3 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent',
+                    'h-32 max-h-32 resize-none rounded-default border border-border bg-surface-3/30 px-3 py-2.5 text-sm placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent',
                     error() && 'bg-danger/30 focus:ring-danger',
                     props.class,
                 )}

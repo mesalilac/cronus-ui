@@ -137,7 +137,7 @@ export const ContextMenu: Story = {
 
         return (
             <div
-                class='flex size-80 items-center justify-center rounded-lg outline-dashed outline-4 outline-accent/80'
+                class='flex size-80 items-center justify-center rounded-default outline-dashed outline-4 outline-accent/80'
                 onContextMenu={(e) => {
                     e.preventDefault();
 
