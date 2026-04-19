@@ -57,7 +57,7 @@ export const Content = (props: DropdownMenuSubContentProps) => {
             triggerElement={ctx.triggerRef()}
         >
             <div
-                class='mr-2.5 ml-2.5 min-w-30 rounded-lg border border-neutral-600 bg-surface-2 p-2 text-text-primary shadow-2xl shadow-black'
+                class='mr-2.5 ml-2.5 min-w-30 rounded-lg border border-neutral-600 bg-surface-2 p-2 text-text-primary shadow-2xl'
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 ref={divRef}

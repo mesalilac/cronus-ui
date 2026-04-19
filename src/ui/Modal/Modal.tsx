@@ -114,7 +114,7 @@ export const Modal = (props: {
                     >
                         <div
                             class={cn(
-                                'pointer-events-auto relative flex size-9/12 flex-col gap-2 rounded-lg border border-border bg-surface-1/80 p-4 text-text-primary shadow-lg backdrop-blur-sm will-change-transform',
+                                'pointer-events-auto relative flex size-9/12 flex-col gap-2 rounded-lg border border-border bg-surface-1/80 p-4 text-text-primary shadow-2xl backdrop-blur-sm will-change-transform',
                                 props.class,
                             )}
                             data-slot='modal-window'
