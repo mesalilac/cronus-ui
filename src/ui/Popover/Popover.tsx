@@ -16,6 +16,8 @@ import {
     untrack,
 } from 'solid-js';
 
+import type { TimeoutHandle } from '~/types';
+
 type SpanBlock =
     | 'span-top'
     | 'span-bottom'
@@ -85,6 +87,16 @@ export type PopoverProps = {
      * Note: if your trigger element has `disabled` state (like button or input), popover also won't be triggered
      */
     disabled?: boolean;
+    /**
+     * Delay in ms before opening popover (mouseenter|mouseleave)
+     * @default 150
+     */
+    openDelay?: number;
+    /**
+     * Delay in ms before closing popover (mouseenter|mouseleave)
+     * @default 150
+     */
+    closeDelay?: number;
     /**
      * @default "pointerdown"
      * If set to null no event would trigger popover,
@@ -183,6 +195,8 @@ const DEFAULT_PROPS = Object.freeze({
     dataAttributeName: 'data-popover-open',
     closeOnEscape: true,
     closeOnOutsideInteraction: true,
+    openDelay: 150,
+    closeDelay: 150,
     targetPosition: 'fixed',
     computePositionOptions: {
         /**
@@ -198,6 +212,27 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
     const [open, setOpen] = createSignal(
         props.open ?? props.defaultOpen ?? false,
     );
+
+    let openTimer: TimeoutHandle;
+
+    const handleOpenChange = (open: boolean) => {
+        if (props.open === undefined) setOpen(open);
+        props.onOpenChange?.(open);
+    };
+
+    const startOpenTimer = () => {
+        clearTimeout(openTimer);
+        openTimer = setTimeout(() => {
+            handleOpenChange(true);
+        }, props.openDelay);
+    };
+
+    const startCloseTimer = () => {
+        clearTimeout(openTimer);
+        openTimer = setTimeout(() => {
+            handleOpenChange(false);
+        }, props.closeDelay);
+    };
 
     // sync state with props
     createComputed(
@@ -240,10 +275,14 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
                     if (e.target && 'disabled' in e.target && e.target.disabled)
                         return;
 
-                    const newOpenValue = !open();
-                    // if uncontrolled, set open state
-                    if (props.open === undefined) setOpen(newOpenValue);
-                    props.onOpenChange?.(newOpenValue);
+                    if (eventName === 'mouseenter') {
+                        startOpenTimer();
+                    } else if (eventName === 'mouseleave') {
+                        startCloseTimer();
+                    } else {
+                        const newOpenValue = !open();
+                        handleOpenChange(newOpenValue);
+                    }
                 },
                 {
                     signal: abortController.signal,
@@ -291,6 +330,27 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
 
                     if (!(anchorElement instanceof HTMLElement))
                         throw new Error('Unable to find anchor element');
+
+                    if (openTimer) {
+                        const contentAbortController = new AbortController();
+
+                        content.addEventListener(
+                            'mouseenter',
+                            () => {
+                                clearTimeout(openTimer);
+                            },
+                            contentAbortController,
+                        );
+                        content.addEventListener(
+                            'mouseleave',
+                            () => {
+                                startCloseTimer();
+                            },
+                            contentAbortController,
+                        );
+
+                        onCleanup(() => contentAbortController.abort());
+                    }
 
                     const anchorName = `--anchor-${String(Math.random()).slice(2, 6)}`;
 
@@ -443,8 +503,7 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
                                 return;
 
                             // if uncontrolled, close popover
-                            if (props.open === undefined) setOpen(false);
-                            props.onOpenChange?.(false);
+                            handleOpenChange(false);
                         };
 
                         document.addEventListener('keydown', handleKeydown);

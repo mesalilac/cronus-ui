@@ -30,18 +30,6 @@ export const Content = (props: DropdownMenuSubContentProps) => {
         }
     });
 
-    const handleMouseEnter = async () => {
-        clearTimeout(ctx.closeTimer());
-    };
-
-    const handleMouseLeave = async () => {
-        const timer = await setTimeout(() => {
-            ctx.setIsOpen(false);
-        }, 150);
-
-        ctx.setCloseTimer(timer);
-    };
-
     return (
         <Popover
             onOpenChange={ctx.setIsOpen}
@@ -55,11 +43,10 @@ export const Content = (props: DropdownMenuSubContentProps) => {
             ]}
             targetPositionArea='span-block-end inline-end' // right bottom
             triggerElement={ctx.triggerRef()}
+            triggerEvents='mouseenter|mouseleave|click'
         >
             <div
                 class='mr-2.5 ml-2.5 min-w-30 rounded-default border border-neutral-600 bg-surface-2 p-2 text-text-primary shadow-default'
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
                 ref={divRef}
                 role='none'
             >
