@@ -183,12 +183,13 @@ const DEFAULT_PROPS = Object.freeze({
     dataAttributeName: 'data-popover-open',
     closeOnEscape: true,
     closeOnOutsideInteraction: true,
+    targetPosition: 'fixed',
     computePositionOptions: {
         /**
          * Default position here is absolute, because there might be some bugs in safari with "fixed" position
          * @see https://stackoverflow.com/questions/65764243/position-fixed-within-a-display-grid-on-safari
          */
-        strategy: 'absolute' as const,
+        strategy: 'fixed' as const,
     },
 }) satisfies Partial<PopoverProps>;
 
