@@ -25,6 +25,8 @@
 
 	--color-info: var(--color-cyan-500);
 	--color-info-text: var(--color-cyan-400);
+
+	--shadow-default: var(--shadow-2xl);
 }
 
 @variant dark {

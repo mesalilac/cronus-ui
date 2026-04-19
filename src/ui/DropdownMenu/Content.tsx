@@ -72,7 +72,7 @@ export const Content = (props: DropdownMenuContentProps) => {
             triggerElement={ctx.triggerRef()}
         >
             <div
-                class='mt-1 mb-1 max-h-[85vh] min-w-30 overflow-y-auto rounded-lg border border-border bg-surface-2 p-2 text-text-primary shadow-2xl'
+                class='mt-1 mb-1 max-h-[85vh] min-w-30 overflow-y-auto rounded-lg border border-border bg-surface-2 p-2 text-text-primary shadow-default'
                 ref={divRef}
             >
                 {props.children}
