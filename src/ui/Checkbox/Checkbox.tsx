@@ -1,5 +1,6 @@
 import { type JSX, Show, type VoidComponent } from 'solid-js';
 
+import { IconInterfaceCheck } from '~/icons';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -26,22 +27,12 @@ export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
                             : 'border-border',
                     )}
                 >
-                    <svg
-                        class='size-4 transition-opacity duration-100 ease-in-out'
-                        fill='none'
-                        stroke='currentColor'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        stroke-width='2'
-                        style={{
-                            opacity: props.checked ? '1' : '0',
-                        }}
-                        viewBox='0 0 24 24'
-                        xmlns='http://www.w3.org/2000/svg'
-                    >
-                        <title>Check</title>
-                        <path d='M5 12l5 5l10 -10' />
-                    </svg>
+                    <IconInterfaceCheck
+                        class={cn(
+                            'invisible size-4 text-white transition-opacity duration-100 ease-in-out',
+                            props.checked && 'visible',
+                        )}
+                    />
                 </div>
                 <Show when={props.label}>
                     <span class='select-none text-sm'>{props.label}</span>
