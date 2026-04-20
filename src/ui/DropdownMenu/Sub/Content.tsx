@@ -46,7 +46,7 @@ export const Content = (props: DropdownMenuSubContentProps) => {
             triggerEvents='mouseenter|mouseleave|click'
         >
             <div
-                class='mr-2.5 ml-2.5 min-w-30 rounded-default border border-neutral-600 bg-surface-2 p-2 text-text-primary shadow-default'
+                class='mr-2.5 ml-2.5 min-w-30 rounded-default border border-border bg-surface-2 p-2 text-text-primary shadow-default'
                 ref={divRef}
                 role='none'
             >
