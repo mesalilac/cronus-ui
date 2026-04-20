@@ -25,6 +25,13 @@ export type InputProps = {
     value: string;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
+    onKeyDown?:
+        | JSX.EventHandlerUnion<
+              HTMLInputElement,
+              KeyboardEvent,
+              JSX.EventHandler<HTMLInputElement, KeyboardEvent>
+          >
+        | undefined;
     placeholder?: string;
     label?: JSX.Element;
     required?: boolean;
@@ -129,6 +136,7 @@ export const Input = (rawProps: InputProps) => {
                         maxLength={props.maxLength}
                         minLength={props.minLength}
                         onInput={(e) => handleInput(e.currentTarget.value)}
+                        onKeyDown={props.onKeyDown}
                         placeholder={
                             props.placeholder ??
                             (props.type === 'search' ? 'Search' : undefined)
