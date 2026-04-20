@@ -72,7 +72,7 @@ export const Alert = (rawProps: AlertProps) => {
             <AlertContext.Provider value={{ variant: props.variant, dismiss }}>
                 <div
                     class={cn(
-                        'flex w-full min-w-64 flex-row gap-4 rounded-default border-current border-l-4 p-4',
+                        'flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
                         variantStyles[props.variant],
                         props.class,
                     )}
