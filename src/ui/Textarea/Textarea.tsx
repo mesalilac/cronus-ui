@@ -19,6 +19,8 @@ export type TextareaProps = {
     required?: boolean;
     helper?: string;
     autoFocus?: boolean;
+    minLength?: number;
+    maxLength?: number;
     error?: string;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
@@ -37,6 +39,18 @@ export const Textarea = (props: TextareaProps) => {
 
         if (props.required && internalValue().length === 0)
             return 'This field is required';
+
+        if (
+            props.minLength !== undefined &&
+            internalValue().length < props.minLength
+        )
+            return `This field must be at least ${props.minLength} characters long`;
+
+        if (
+            props.maxLength !== undefined &&
+            internalValue().length > props.maxLength
+        )
+            return `This field must be at most ${props.maxLength} characters long`;
 
         return validationError;
     });
@@ -72,6 +86,8 @@ export const Textarea = (props: TextareaProps) => {
                     props.class,
                 )}
                 id={id}
+                maxLength={props.maxLength}
+                minLength={props.minLength}
                 onInput={(e) => handleInput(e.currentTarget.value)}
                 placeholder={props.placeholder}
                 required={props.required}
