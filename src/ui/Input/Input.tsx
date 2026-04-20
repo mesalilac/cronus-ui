@@ -32,6 +32,7 @@ export type InputProps = {
     helper?: JSX.Element;
     minLength?: number;
     maxLength?: number;
+    disabled?: boolean;
     badge?: JSX.Element;
     icon?: JSX.Element;
     class?: string;
@@ -123,6 +124,7 @@ export const Input = (rawProps: InputProps) => {
                             'grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.class,
                         )}
+                        disabled={props.disabled}
                         id={id}
                         maxLength={props.maxLength}
                         minLength={props.minLength}

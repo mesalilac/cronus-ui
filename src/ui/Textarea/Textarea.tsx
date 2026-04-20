@@ -21,6 +21,7 @@ export type TextareaProps = {
     autoFocus?: boolean;
     minLength?: number;
     maxLength?: number;
+    disabled?: boolean;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     class?: string;
@@ -84,6 +85,7 @@ export const Textarea = (props: TextareaProps) => {
                     error() && 'bg-danger/30 focus:ring-danger',
                     props.class,
                 )}
+                disabled={props.disabled}
                 id={id}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
