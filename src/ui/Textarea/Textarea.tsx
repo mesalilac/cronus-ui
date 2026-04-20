@@ -22,6 +22,8 @@ export type TextareaProps = {
     minLength?: number;
     maxLength?: number;
     disabled?: boolean;
+    rows?: string | number;
+    cols?: string | number;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     class?: string;
@@ -85,6 +87,7 @@ export const Textarea = (props: TextareaProps) => {
                     error() && 'bg-danger/30 focus:ring-danger',
                     props.class,
                 )}
+                cols={props.cols}
                 disabled={props.disabled}
                 id={id}
                 maxLength={props.maxLength}
@@ -92,6 +95,7 @@ export const Textarea = (props: TextareaProps) => {
                 onInput={(e) => handleInput(e.currentTarget.value)}
                 placeholder={props.placeholder}
                 required={props.required}
+                rows={props.rows}
                 value={internalValue()}
             />
             <Switch>
