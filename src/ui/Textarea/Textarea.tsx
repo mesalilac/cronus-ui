@@ -25,6 +25,7 @@ export type TextareaProps = {
     rows?: string | number;
     cols?: string | number;
     spellcheck?: boolean | 'false' | 'true';
+    wrap?: 'hard' | 'soft' | 'off';
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     class?: string;
@@ -99,6 +100,7 @@ export const Textarea = (props: TextareaProps) => {
                 rows={props.rows}
                 spellcheck={props.spellcheck}
                 value={internalValue()}
+                wrap={props.wrap}
             />
             <Switch>
                 <Match when={error()}>
