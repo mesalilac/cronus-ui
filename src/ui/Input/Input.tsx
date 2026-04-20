@@ -120,7 +120,7 @@ export const Input = (rawProps: InputProps) => {
                         autocomplete='off'
                         autofocus={props.autoFocus}
                         class={cn(
-                            'grow text-sm placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
+                            'grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.class,
                         )}
                         id={id}

@@ -121,7 +121,7 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
                 </Button>
                 <input
                     class={cn(
-                        'min-w-24 max-w-24 border-border/30 border-x text-center outline-none [appearance:textfield] focus:outline-none disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+                        'min-w-24 max-w-24 border-border/30 border-x text-center caret-accent outline-none [appearance:textfield] focus:outline-none disabled:opacity-50 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
                     )}
                     data-slot='number-input'
                     disabled={props.disabled}
