@@ -28,6 +28,8 @@ export type InputProps = {
     validate?: (value: string, isDirty: boolean) => string | undefined;
     onKeyDown?: JSX.EventHandlerUnion<HTMLInputElement, KeyboardEvent>;
     onBlur?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
+    onFocusIn?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
+    onFocusOut?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     placeholder?: string;
     label?: JSX.Element;
     required?: boolean;
@@ -133,6 +135,8 @@ export const Input = (rawProps: InputProps) => {
                         maxLength={props.maxLength}
                         minLength={props.minLength}
                         onBlur={props.onBlur}
+                        onFocusIn={props.onFocusIn}
+                        onFocusOut={props.onFocusOut}
                         onInput={(e) => handleInput(e.currentTarget.value)}
                         onKeyDown={props.onKeyDown}
                         placeholder={
