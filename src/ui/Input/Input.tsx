@@ -6,6 +6,7 @@ import {
     type JSX,
     Match,
     mergeProps,
+    type Ref,
     Show,
     Switch,
 } from 'solid-js';
@@ -43,6 +44,7 @@ export type InputProps = {
     badge?: JSX.Element;
     icon?: JSX.Element;
     class?: string;
+    ref?: Ref<HTMLInputElement>;
     children?: JSX.Element;
 };
 
@@ -141,6 +143,7 @@ export const Input = (rawProps: InputProps) => {
                             props.placeholder ??
                             (props.type === 'search' ? 'Search' : undefined)
                         }
+                        ref={props.ref}
                         required={props.required}
                         type={internalInputType()}
                         value={internalValue()}
