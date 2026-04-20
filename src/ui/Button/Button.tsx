@@ -17,6 +17,7 @@ export type ButtonVariant =
     | 'success'
     | 'danger'
     | 'warning'
+    | 'info'
     | 'ghost'
     | 'icon'
     | 'outline';
@@ -53,6 +54,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         success: cn('border-current/30 bg-success/30 text-text-success'),
         danger: cn('border-current/30 bg-danger/30 text-text-danger'),
         warning: cn('border-current/30 bg-warning/30 text-text-warning'),
+        info: cn('border-current/30 bg-info/30 text-text-info'),
         ghost: cn('border-transparent bg-transparent hover:bg-surface-3/30'),
         icon: cn('border-transparent bg-transparent p-2 active:bg-surface-3'),
         outline: cn('active:bg-surface-3'),
