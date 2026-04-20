@@ -54,9 +54,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         danger: cn('border-current/30 bg-danger/30 text-text-danger'),
         warning: cn('border-current/30 bg-warning/30 text-text-warning'),
         ghost: cn('border-transparent bg-transparent hover:bg-surface-3/30'),
-        icon: cn(
-            'rounded-full border-transparent bg-transparent p-2 active:bg-surface-3',
-        ),
+        icon: cn('border-transparent bg-transparent p-2 active:bg-surface-3'),
         outline: cn('active:bg-surface-3'),
     };
 
