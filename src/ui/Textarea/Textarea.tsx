@@ -21,6 +21,7 @@ export type TextareaProps = {
     autoFocus?: boolean;
     minLength?: number;
     maxLength?: number;
+    readOnly?: boolean;
     disabled?: boolean;
     rows?: string | number;
     cols?: string | number;
@@ -96,6 +97,7 @@ export const Textarea = (props: TextareaProps) => {
                 minLength={props.minLength}
                 onInput={(e) => handleInput(e.currentTarget.value)}
                 placeholder={props.placeholder}
+                readOnly={props.readOnly}
                 required={props.required}
                 rows={props.rows}
                 spellcheck={props.spellcheck}
