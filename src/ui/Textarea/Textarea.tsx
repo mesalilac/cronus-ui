@@ -15,6 +15,7 @@ import { cn } from '~/utils';
 export type TextareaProps = {
     label?: string;
     value: string;
+    placeholder?: string;
     required?: boolean;
     helper?: string;
     error?: string;
@@ -70,6 +71,7 @@ export const Textarea = (props: TextareaProps) => {
                 )}
                 id={id}
                 onInput={(e) => handleInput(e.currentTarget.value)}
+                placeholder={props.placeholder}
                 required={props.required}
                 value={internalValue()}
             />
