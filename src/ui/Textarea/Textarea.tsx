@@ -24,6 +24,7 @@ export type TextareaProps = {
     disabled?: boolean;
     rows?: string | number;
     cols?: string | number;
+    autocorrect?: 'on' | 'off';
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     class?: string;
@@ -81,6 +82,7 @@ export const Textarea = (props: TextareaProps) => {
             </Show>
             <textarea
                 aria-invalid={Boolean(error())}
+                autocorrect={props.autocorrect}
                 autofocus={props.autoFocus}
                 class={cn(
                     'h-32 max-h-32 resize-none rounded-default border border-border bg-surface-3/30 px-3 py-2.5 text-sm caret-accent placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent',
