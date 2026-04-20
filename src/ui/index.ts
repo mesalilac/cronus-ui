@@ -1,3 +1,5 @@
+/** biome-ignore-all assist/source/organizeImports: false */
+
 export * from './Alert';
 export * from './Badge';
 export * from './Button';
@@ -14,3 +16,4 @@ export * from './Separator';
 export * from './Textarea';
 export * from './ToggleGroup';
 export * from './ToggleSwitch';
+export * from './EditableText';
