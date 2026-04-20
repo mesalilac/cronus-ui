@@ -3,6 +3,7 @@ export * from './Badge';
 export * from './Button';
 export * from './Checkbox';
 export * from './DropdownMenu';
+export * from './FieldLabel';
 export * from './HelperText';
 export * from './Input';
 export * from './Modal';

@@ -16,6 +16,7 @@ import {
     IconInterfaceSearchMagnifyingGlass,
     IconMenuCloseMd,
 } from '~/icons';
+import { FieldLabel } from '~/ui/FieldLabel';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -25,7 +26,7 @@ export type InputProps = {
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     placeholder?: string;
-    label?: string;
+    label?: JSX.Element;
     required?: boolean;
     autoFocus?: boolean;
     helper?: JSX.Element;
@@ -91,17 +92,13 @@ export const Input = (rawProps: InputProps) => {
     return (
         <div class='flex w-full flex-col gap-2'>
             <Show when={props.label}>
-                <label
-                    class='flex gap-1 font-bold text-sm text-text-secondary capitalize'
-                    for={id}
-                >
-                    <span>{props.label}</span>
-                    {props.required && (
-                        <span class='text-red-500' title='required'>
-                            *
-                        </span>
-                    )}
-                </label>
+                {(label) => (
+                    <FieldLabel
+                        id={id}
+                        label={label()}
+                        required={props.required}
+                    />
+                )}
             </Show>
             <div class='flex flex-row gap-2'>
                 <div
@@ -119,9 +116,6 @@ export const Input = (rawProps: InputProps) => {
                         </label>
                     </Show>
                     <input
-                        aria-describedby={
-                            error() ? `error, ${error()}` : props.label
-                        }
                         aria-invalid={Boolean(error())}
                         autocomplete='off'
                         autofocus={props.autoFocus}

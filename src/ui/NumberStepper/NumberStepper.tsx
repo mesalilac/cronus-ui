@@ -12,6 +12,7 @@ import {
 
 import { IconEditAddPlus, IconEditRemoveMinus } from '~/icons';
 import { Button } from '~/ui/Button';
+import { FieldLabel } from '~/ui/FieldLabel';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
@@ -95,17 +96,13 @@ export const NumberStepper: VoidComponent<NumberStepperProps> = (props) => {
     return (
         <div class='flex flex-col gap-2'>
             <Show when={props.label}>
-                <label
-                    class='flex gap-1 font-bold text-neutral-200 text-sm capitalize'
-                    for={id}
-                >
-                    <span>{props.label}</span>
-                    <Show when={props.required}>
-                        <span class='text-red-500' title='required'>
-                            *
-                        </span>
-                    </Show>
-                </label>
+                {(label) => (
+                    <FieldLabel
+                        id={id}
+                        label={label()}
+                        required={props.required}
+                    />
+                )}
             </Show>
             <div
                 class={cn(
