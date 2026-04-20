@@ -21,7 +21,6 @@ export type TextareaProps = {
     autoFocus?: boolean;
     minLength?: number;
     maxLength?: number;
-    error?: string;
     onInput?: (value: string) => void;
     validate?: (value: string, isDirty: boolean) => string | undefined;
     class?: string;
