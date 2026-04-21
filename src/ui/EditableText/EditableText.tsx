@@ -6,7 +6,12 @@ import {
     Show,
 } from 'solid-js';
 
-import { IconEditPencilLine01, IconMenuCloseMd, IconSystemSave } from '~/icons';
+import {
+    IconEditPencilLine01,
+    IconInterfaceCheck,
+    IconMenuCloseMd,
+    IconSystemSave,
+} from '~/icons';
 import { Button } from '~/ui/Button';
 import { Input } from '~/ui/Input';
 import { cn } from '~/utils';
@@ -84,16 +89,18 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
                     value={internalInput()}
                 >
                     <Button
+                        class='p-2'
                         data-slot='save'
                         onClick={handleSave}
-                        variant='icon'
+                        variant='success'
                     >
-                        <IconSystemSave />
+                        <IconInterfaceCheck />
                     </Button>
                     <Button
+                        class='p-2'
                         data-slot='cancel'
                         onClick={handleCancel}
-                        variant='icon'
+                        variant='secondary'
                     >
                         <IconMenuCloseMd />
                     </Button>
