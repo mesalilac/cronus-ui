@@ -8,6 +8,11 @@
 		background: var(--color-surface-base);
 	}
 
+	::selection {
+		color: var(--color-neutral-200);
+		background-color: var(--color-accent);
+	}
+
 	* {
 		box-sizing: border-box;
 		min-width: 0;
