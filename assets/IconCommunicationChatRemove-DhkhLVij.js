@@ -1,0 +1,14 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{L as t,M as n,N as r,a as i,d as a,f as o}from"./web-C_www37z.js";var s,c,l=e((()=>{i(),n(),s=o(`<svg role=img aria-label="Communication Chat Remove"viewBox="0 0 24 24"fill=none><path d="M9 11H15M7.12357 18.7012L5.59961 19.9203C4.76744 20.5861 4.35115 20.9191 4.00098 20.9195C3.69644 20.9198 3.40845 20.7813 3.21846 20.5433C3 20.2696 3 19.7369 3 18.6712V7.2002C3 6.08009 3 5.51962 3.21799 5.0918C3.40973 4.71547 3.71547 4.40973 4.0918 4.21799C4.51962 4 5.08009 4 6.2002 4H17.8002C18.9203 4 19.4796 4 19.9074 4.21799C20.2837 4.40973 20.5905 4.71547 20.7822 5.0918C21 5.5192 21 6.07899 21 7.19691V14.8036C21 15.9215 21 16.4805 20.7822 16.9079C20.5905 17.2842 20.2843 17.5905 19.908 17.7822C19.4806 18 18.921 18 17.8031 18H9.12207C8.70603 18 8.49877 18 8.2998 18.0408C8.12328 18.0771 7.95216 18.1368 7.79168 18.2188C7.61281 18.3101 7.45249 18.4384 7.13478 18.6926L7.12357 18.7012Z"stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round>`),c=e=>{let[n,i]=t(e,[`size`]);return(()=>{var e=s();return a(e,r({get width(){return n.size||`1rem`},get height(){return n.size||`1rem`}},i),!0,!0),e})()};try{c.displayName=`IconCommunicationChatRemove`,c.__docgenInfo={description:`Communication
+\`\`\`
+   ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░
+  ▒█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▒
+  ██                ██
+  ██                ██
+  ██    ▒▒▒▒▒▒▒▒    ██
+  ██    ▒▒▒▒▒▒▒▒    ██
+  ██                ██
+  ██                ██
+  ██  ░▒▓▓▓▓▓▓▓▓▓▓▓▓█▒
+  ██▒▓█▒░░░░░░░░░░░░
+  ▒▓▓▒░
+\`\`\``,displayName:`IconCommunicationChatRemove`,filePath:`C:/Users/bmjfd/Documents/Dev/cronus-ui/src/icons/Communication/IconCommunicationChatRemove.tsx`,methods:[],props:{size:{defaultValue:null,declarations:[{fileName:`cronus-ui/src/icons/Communication/IconCommunicationChatRemove.tsx`,name:`IconProps`}],description:``,name:`size`,parent:{fileName:`cronus-ui/src/icons/Communication/IconCommunicationChatRemove.tsx`,name:`IconProps`},required:!1,tags:{},type:{name:`string | undefined`}}},tags:{}}}catch{}}));export{l as n,c as t};

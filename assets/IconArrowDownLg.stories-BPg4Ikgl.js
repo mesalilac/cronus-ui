@@ -1,0 +1,6 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{n as t,t as n}from"./IconArrowDownLg-FinW2Iua.js";var r,i,a;e((()=>{t(),r={title:`Icon/Arrow/DownLg`,component:n,parameters:{layout:`centered`}},i={name:`DownLg`,args:{size:`6rem`}},i.parameters={...i.parameters,docs:{...i.parameters?.docs,source:{originalSource:`{
+  name: 'DownLg',
+  args: {
+    size: '6rem'
+  }
+}`,...i.parameters?.docs?.source}}},a=[`IconDownLg`]}))();export{i as IconDownLg,a as __namedExportsOrder,r as default};

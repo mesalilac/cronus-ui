@@ -1,0 +1,11 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{L as t,M as n,N as r,a as i,d as a,f as o}from"./web-C_www37z.js";var s,c,l=e((()=>{i(),n(),s=o(`<svg role=img aria-label="Environment Rainbow"viewBox="0 0 24 24"fill=none><path d="M3 17V15C3 10.0294 7.02944 6 12 6C16.9706 6 21 10.0294 21 15V17M6 17V15C6 11.6863 8.68629 9 12 9C15.3137 9 18 11.6863 18 15V17M9 17V15C9 13.3431 10.3431 12 12 12C13.6569 12 15 13.3431 15 15V17"stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round>`),c=e=>{let[n,i]=t(e,[`size`]);return(()=>{var e=s();return a(e,r({get width(){return n.size||`1rem`},get height(){return n.size||`1rem`}},i),!0,!0),e})()};try{c.displayName=`IconEnvironmentRainbow`,c.__docgenInfo={description:`Environment
+\`\`\`
+         ░░░░░░
+      ▒▓▓▓▓▓▓▓▓▓▓▒
+    ▒▓▓▒▒▒▒▒▒▒▒▒▒▓▓▒
+   ▒█▒░▓█▓▒▒▒▒▓█▓░▒█▒
+  ▒█▒░█▓░▒▓▓▓▓▒░▓█░▒█▒
+  ▓█ ▓█░▒█▒░░▒█▒░█▓ █▓
+  ██ ██ ██    ██ ██ ██
+  ▒▒ ▒▒ ▒▒    ▒▒ ▒▒ ▒▒
+\`\`\``,displayName:`IconEnvironmentRainbow`,filePath:`C:/Users/bmjfd/Documents/Dev/cronus-ui/src/icons/Environment/IconEnvironmentRainbow.tsx`,methods:[],props:{size:{defaultValue:null,declarations:[{fileName:`cronus-ui/src/icons/Environment/IconEnvironmentRainbow.tsx`,name:`IconProps`}],description:``,name:`size`,parent:{fileName:`cronus-ui/src/icons/Environment/IconEnvironmentRainbow.tsx`,name:`IconProps`},required:!1,tags:{},type:{name:`string | undefined`}}},tags:{}}}catch{}}));export{l as n,c as t};
