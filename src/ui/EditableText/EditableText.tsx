@@ -10,7 +10,6 @@ import {
     IconEditPencilLine01,
     IconInterfaceCheck,
     IconMenuCloseMd,
-    IconSystemSave,
 } from '~/icons';
 import { Button } from '~/ui/Button';
 import { Input } from '~/ui/Input';
