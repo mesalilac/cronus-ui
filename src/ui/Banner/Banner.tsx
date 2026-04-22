@@ -9,6 +9,7 @@ import {
     onCleanup,
     Show,
 } from 'solid-js';
+import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
 
 import { IconMenuCloseMd } from '~/icons';
@@ -92,98 +93,104 @@ export const Banner: Component<BannerProps> = (rawProps) => {
     onCleanup(() => killDismissTimeline());
 
     return (
-        <Transition
-            onEnter={(el, done) => {
-                killDismissTimeline();
+        <Portal>
+            <Transition
+                onEnter={(el, done) => {
+                    killDismissTimeline();
 
-                if (
-                    props.autoDismissMs !== undefined &&
-                    !Number.isNaN(props.autoDismissMs)
-                ) {
-                    gsap.set(dismissProgressbarRef, { scaleX: 1 });
+                    if (
+                        props.autoDismissMs !== undefined &&
+                        !Number.isNaN(props.autoDismissMs)
+                    ) {
+                        gsap.set(dismissProgressbarRef, { scaleX: 1 });
 
-                    dismissTimeline = gsap.timeline({
-                        onComplete: dismiss,
+                        dismissTimeline = gsap.timeline({
+                            onComplete: dismiss,
+                        });
+
+                        dismissTimeline.fromTo(
+                            dismissProgressbarRef,
+                            { scaleX: 1 },
+                            {
+                                scaleX: 0,
+                                duration: props.autoDismissMs / 1000,
+                                ease: 'linear',
+                                transformOrigin: 'left',
+                            },
+                        );
+                    }
+
+                    gsap.from(el, {
+                        autoAlpha: 0,
+                        y: props.placement === 'top' ? -12 : 12,
+                        duration: 0.2,
+                        ease: 'power3.out',
+                        onComplete: done,
                     });
+                }}
+                onExit={(el, done) => {
+                    killDismissTimeline();
 
-                    dismissTimeline.fromTo(
-                        dismissProgressbarRef,
-                        { scaleX: 1 },
-                        {
-                            scaleX: 0,
-                            duration: props.autoDismissMs / 1000,
-                            ease: 'linear',
-                            transformOrigin: 'left',
-                        },
-                    );
-                }
-
-                gsap.from(el, {
-                    autoAlpha: 0,
-                    y: props.placement === 'top' ? -12 : 12,
-                    duration: 0.2,
-                    ease: 'power3.out',
-                    onComplete: done,
-                });
-            }}
-            onExit={(el, done) => {
-                killDismissTimeline();
-
-                gsap.to(el, {
-                    autoAlpha: 0,
-                    y: props.placement === 'top' ? -12 : 12,
-                    duration: 0.2,
-                    ease: 'power3.in',
-                    onComplete: done,
-                });
-            }}
-        >
-            <Show when={open()}>
-                <div
-                    class={cn(
-                        'fixed flex min-h-12 w-full items-center justify-center border p-2 shadow-default backdrop-blur-sm',
-                        props.placement === 'top' ? 'top-0' : 'bottom-0',
-                        variantStyles[props.variant],
-                        props.class,
-                    )}
-                    onMouseEnter={() =>
-                        canPauseAutoDismiss() && dismissTimeline?.pause()
-                    }
-                    onMouseLeave={() =>
-                        canPauseAutoDismiss() && dismissTimeline?.resume()
-                    }
-                    role='none'
-                >
-                    {props.children}
-                    <Show when={props.dismissible}>
-                        <div class='absolute right-2' data-slot='dismiss-icon'>
-                            <Button
-                                class='text-inherit opacity-60'
-                                onClick={dismiss}
-                                variant='icon'
-                            >
-                                <IconMenuCloseMd class='size-5' />
-                            </Button>
-                        </div>
-                    </Show>
-                    <Show
-                        when={
-                            props.autoDismissMs !== undefined &&
-                            !Number.isNaN(props.autoDismissMs)
+                    gsap.to(el, {
+                        autoAlpha: 0,
+                        y: props.placement === 'top' ? -12 : 12,
+                        duration: 0.2,
+                        ease: 'power3.in',
+                        onComplete: done,
+                    });
+                }}
+            >
+                <Show when={open()}>
+                    <div
+                        class={cn(
+                            'fixed z-50 flex min-h-12 w-full items-center justify-center border p-2 shadow-default backdrop-blur-sm',
+                            props.placement === 'top' ? 'top-0' : 'bottom-0',
+                            variantStyles[props.variant],
+                            props.class,
+                        )}
+                        onMouseEnter={() =>
+                            canPauseAutoDismiss() && dismissTimeline?.pause()
                         }
+                        onMouseLeave={() =>
+                            canPauseAutoDismiss() && dismissTimeline?.resume()
+                        }
+                        role='none'
                     >
-                        <div class='absolute bottom-0 left-0 h-1 w-full overflow-hidden'>
+                        {props.children}
+                        <Show when={props.dismissible}>
                             <div
-                                class={cn(
-                                    'h-full origin-left bg-current',
-                                    props.variant === 'default' && 'bg-accent',
-                                )}
-                                ref={dismissProgressbarRef}
-                            />
-                        </div>
-                    </Show>
-                </div>
-            </Show>
-        </Transition>
+                                class='absolute right-2'
+                                data-slot='dismiss-icon'
+                            >
+                                <Button
+                                    class='text-inherit opacity-60'
+                                    onClick={dismiss}
+                                    variant='icon'
+                                >
+                                    <IconMenuCloseMd class='size-5' />
+                                </Button>
+                            </div>
+                        </Show>
+                        <Show
+                            when={
+                                props.autoDismissMs !== undefined &&
+                                !Number.isNaN(props.autoDismissMs)
+                            }
+                        >
+                            <div class='absolute bottom-0 left-0 h-1 w-full overflow-hidden'>
+                                <div
+                                    class={cn(
+                                        'h-full origin-left bg-current',
+                                        props.variant === 'default' &&
+                                            'bg-accent',
+                                    )}
+                                    ref={dismissProgressbarRef}
+                                />
+                            </div>
+                        </Show>
+                    </div>
+                </Show>
+            </Transition>
+        </Portal>
     );
 };
