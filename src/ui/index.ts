@@ -19,3 +19,4 @@ export * from './ToggleSwitch';
 export * from './EditableText';
 export * from './Slider';
 export * from './Banner';
+export * from './Link';
