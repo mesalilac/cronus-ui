@@ -48,13 +48,13 @@ export const Info: Story = {
 
 export const Top: Story = {
     render: () => {
-        return <Banner position='top'>Banner Content</Banner>;
+        return <Banner placement='top'>Banner Content</Banner>;
     },
 };
 
 export const Bottom: Story = {
     render: () => {
-        return <Banner position='bottom'>Banner Content</Banner>;
+        return <Banner placement='bottom'>Banner Content</Banner>;
     },
 };
 
@@ -66,24 +66,24 @@ export const NotDismissible: Story = {
 
 export const ExternalControl: Story = {
     render: () => {
-        const [showBanner, setShowBanner] = createSignal(false);
+        const [open, setOpen] = createSignal(false);
         const [position, setPosition] = createSignal<'top' | 'bottom'>('top');
 
         return (
             <div class='flex h-screen items-center justify-center align-middle'>
                 <Banner
-                    onShowChange={setShowBanner}
-                    position={position()}
-                    show={showBanner()}
+                    onOpenChange={setOpen}
+                    open={open()}
+                    placement={position()}
                 >
                     Banner Content
                 </Banner>
                 <div class='flex items-center gap-1'>
                     <Button
-                        onClick={() => setShowBanner((prev) => !prev)}
-                        variant={showBanner() ? 'secondary' : 'primary'}
+                        onClick={() => setOpen((prev) => !prev)}
+                        variant={open() ? 'secondary' : 'primary'}
                     >
-                        Show Banner ({showBanner() ? 'Hide' : 'Show'})
+                        Show Banner ({open() ? 'Hide' : 'Open'})
                     </Button>
                     <Button
                         onClick={() =>
@@ -93,6 +93,32 @@ export const ExternalControl: Story = {
                         }
                     >
                         Position ({position()})
+                    </Button>
+                </div>
+            </div>
+        );
+    },
+};
+
+export const AutoDismiss: Story = {
+    render: () => {
+        const [open, setOpen] = createSignal(false);
+
+        return (
+            <div class='flex h-screen items-center justify-center align-middle'>
+                <Banner
+                    autoDismissMs={6000}
+                    onOpenChange={setOpen}
+                    open={open()}
+                >
+                    Auto Dismiss in 6s
+                </Banner>
+                <div class='flex items-center gap-1'>
+                    <Button
+                        onClick={() => setOpen((prev) => !prev)}
+                        variant={open() ? 'secondary' : 'primary'}
+                    >
+                        Show Banner ({open() ? 'Hide' : 'Open'})
                     </Button>
                 </div>
             </div>
