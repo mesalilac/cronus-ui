@@ -72,9 +72,7 @@ export const Menu: MenuCompound = (props) => {
 
     const closeMenu = () => setIsOpen(false);
 
-    const [triggerRef, setTriggerRef] = createSignal<
-        HTMLButtonElement | undefined
-    >();
+    const [triggerRef, setTriggerRef] = createSignal<HTMLElement | undefined>();
 
     return (
         <MenuContext.Provider
