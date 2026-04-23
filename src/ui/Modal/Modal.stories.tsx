@@ -17,7 +17,7 @@ export const Default: Story = {
     render: () => {
         return (
             <Modal>
-                <Modal.Trigger>Open Modal Trigger</Modal.Trigger>
+                <Modal.Trigger>Open Modal</Modal.Trigger>
                 <Modal.Content>
                     <Modal.Content.Header>
                         <Modal.Content.Header.Title>
@@ -29,29 +29,8 @@ export const Default: Story = {
                     </Modal.Content.Header>
                     <Modal.Content.Body>
                         <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
-                        <p>Modal Content</p>
                     </Modal.Content.Body>
-                    <Modal.Content.Footer>x</Modal.Content.Footer>
+                    <Modal.Content.Footer>Footer</Modal.Content.Footer>
                 </Modal.Content>
             </Modal>
         );
