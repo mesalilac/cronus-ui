@@ -1,4 +1,5 @@
-import { createEffect, type JSX, onCleanup } from 'solid-js';
+import { gsap } from 'gsap';
+import { createEffect, type JSX, onCleanup, onMount } from 'solid-js';
 import { Portal } from 'solid-js/web';
 
 import { IconMenuCloseMd } from '~/icons';
@@ -16,29 +17,77 @@ export const Content = (props: ModalContentProps) => {
 
     const ctx = useModalContext();
 
+    const onEnterAnim = () => {
+        const gsapCtx = gsap.context(() => {
+            gsap.timeline().fromTo(
+                dialogRef,
+                {
+                    autoAlpha: 0,
+                    y: 16,
+                    scale: 0.96,
+                },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.2,
+                    ease: 'power1.out',
+                    onComplete: () => gsapCtx.kill(),
+                },
+                '<',
+            );
+        });
+    };
+
+    const onExitAnim = () => {
+        const gsapCtx = gsap.context(() => {
+            gsap.to(dialogRef, {
+                autoAlpha: 0,
+                scale: 0.96,
+                y: 12,
+                duration: 0.18,
+                ease: 'power1.in',
+                onComplete: () => {
+                    gsapCtx.kill();
+                    dialogRef.close();
+                },
+            });
+        });
+    };
+
+    onMount(() => {
+        const abortController = new AbortController();
+
+        dialogRef.addEventListener(
+            'cancel',
+            (e) => {
+                e.preventDefault();
+                ctx.setIsOpen(false);
+            },
+            abortController,
+        );
+
+        onCleanup(() => {
+            abortController.abort();
+        });
+    });
+
     createEffect(() => {
         if (ctx.isOpen()) {
             dialogRef.showModal();
 
-            const abortController = new AbortController();
+            onEnterAnim();
 
             const originalOverflow = window.getComputedStyle(
                 document.body,
             ).overflow;
             document.body.style.overflow = 'hidden';
 
-            dialogRef.addEventListener(
-                'close',
-                () => ctx.setIsOpen(false),
-                abortController,
-            );
-
             onCleanup(() => {
                 document.body.style.overflow = originalOverflow;
-                abortController.abort();
             });
         } else {
-            dialogRef.close();
+            onExitAnim();
         }
     });
 
