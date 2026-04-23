@@ -46,7 +46,7 @@ export function App() {
                     <Modal.Content.Body>
                         <p>Modal Content</p>
                     </Modal.Content.Body>
-                    <Modal.Content.Footer>x</Modal.Content.Footer>
+                    <Modal.Content.Footer>Footer</Modal.Content.Footer>
                 </Modal.Content>
             </Modal>
             <Select
