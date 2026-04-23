@@ -78,13 +78,9 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
             ).overflow;
             document.body.style.overflow = 'hidden';
 
-            document.addEventListener(
-                'keydown',
-                (e: KeyboardEvent) => {
-                    if (e.key === 'Escape') {
-                        ctx.closeModal();
-                    }
-                },
+            dialogRef.addEventListener(
+                'close',
+                () => ctx.setIsOpen(false),
                 abortController,
             );
 
@@ -100,7 +96,14 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
     return (
         <Portal>
             <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
-                <dialog class={cn(props.class)} ref={dialogRef}>
+                <dialog
+                    class={cn(
+                        'm-auto size-9/12 rounded-default bg-surface-1/80 p-4 text-text-primary',
+                        props.class,
+                    )}
+                    closedby='any'
+                    ref={dialogRef}
+                >
                     {props.children}
                 </dialog>
             </Transition>
