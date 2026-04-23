@@ -2,6 +2,8 @@ import { createEffect, type JSX, onCleanup } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
 
+import { IconMenuCloseMd } from '~/icons';
+import { Button } from '~/ui/Button';
 import { useModalContext } from '~/ui/Modal/context';
 import { cn } from '~/utils';
 
@@ -104,6 +106,13 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
                     closedby='any'
                     ref={dialogRef}
                 >
+                    <Button
+                        class='absolute top-1 right-1'
+                        onClick={() => ctx.closeModal()}
+                        variant='icon'
+                    >
+                        <IconMenuCloseMd />
+                    </Button>
                     {props.children}
                 </dialog>
             </Transition>
