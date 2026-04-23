@@ -8,7 +8,7 @@ type DropdownMenuCompound = MenuCompound & {
 };
 
 export const DropdownMenu = ((props) => {
-    <Menu {...props} />;
+    return <Menu {...props} />;
 }) as DropdownMenuCompound;
 
 DropdownMenu.Trigger = Trigger;
