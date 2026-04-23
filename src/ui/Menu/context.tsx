@@ -9,8 +9,8 @@ export const MenuContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
     closeMenu: () => void;
-    triggerRef: Accessor<HTMLButtonElement | undefined>;
-    setTriggerRef: Setter<HTMLButtonElement | undefined>;
+    triggerRef: Accessor<HTMLElement | undefined>;
+    setTriggerRef: Setter<HTMLElement | undefined>;
 }>();
 
 export const useMenuContext = () => {
