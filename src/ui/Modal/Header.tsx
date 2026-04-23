@@ -17,12 +17,12 @@ export const Header = (props: ModalHeaderProps) => {
     );
 };
 
-export type ModalHeaderTitleProps = {
+export type ModalTitleProps = {
     class?: string;
     children: JSX.Element;
 };
 
-export const Title = (props: ModalHeaderTitleProps) => {
+export const Title = (props: ModalTitleProps) => {
     return (
         <h1 class={cn('font-semibold text-lg', props.class)}>
             {props.children}
@@ -30,12 +30,12 @@ export const Title = (props: ModalHeaderTitleProps) => {
     );
 };
 
-export type ModalHeaderDescriptionProps = {
+export type ModalDescriptionProps = {
     class?: string;
     children: JSX.Element;
 };
 
-export const Description = (props: ModalHeaderDescriptionProps) => {
+export const Description = (props: ModalDescriptionProps) => {
     return (
         <p class={cn('text-sm text-text-muted', props.class)}>
             {props.children}

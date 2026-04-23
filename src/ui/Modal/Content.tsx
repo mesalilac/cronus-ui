@@ -6,7 +6,12 @@ import { Button } from '~/ui/Button';
 import { useModalContext } from '~/ui/Modal/context';
 import { cn } from '~/utils';
 
-export const Content = (props: { class?: string; children: JSX.Element }) => {
+export type ModalContentProps = {
+    class?: string;
+    children: JSX.Element;
+};
+
+export const Content = (props: ModalContentProps) => {
     let dialogRef!: HTMLDialogElement;
 
     const ctx = useModalContext();
@@ -62,12 +67,12 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
     );
 };
 
-export type ModalContentBodyProps = {
+export type ModalBodyProps = {
     class?: string;
     children: JSX.Element;
 };
 
-export const Body = (props: ModalContentBodyProps) => {
+export const Body = (props: ModalBodyProps) => {
     return (
         <div class={cn('flex flex-col gap-2 overflow-y-auto', props.class)}>
             {props.children}

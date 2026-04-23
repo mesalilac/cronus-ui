@@ -5,12 +5,11 @@ import { cn } from '~/utils';
 
 import { useModalContext } from './context';
 
-export interface ModalTriggerProps
-    extends Pick<ButtonProps, 'variant' | 'label'> {
+export type ModalTriggerProps = {
     class?: string;
     disabled?: boolean;
     children: JSX.Element;
-}
+} & Pick<ButtonProps, 'variant' | 'label'>;
 
 export const Trigger = (rawProps: ModalTriggerProps) => {
     const props = mergeProps(

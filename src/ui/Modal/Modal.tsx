@@ -7,16 +7,13 @@ import { Footer } from '~/ui/Modal/Footer';
 import { Description, Header, Title } from '~/ui/Modal/Header';
 import { Trigger } from '~/ui/Modal/Trigger';
 
-export type ModalWrapperProps = {
-    open?: boolean;
-    onOpenChange?: (open: boolean) => void;
-};
-
-export const Modal = (props: {
+export type ModalProps = {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
     children: JSX.Element;
-}) => {
+};
+
+export const Modal = (props: ModalProps) => {
     const [isOpen, setInternalIsOpen] = createSignal(props.open ?? false);
 
     createComputed(
