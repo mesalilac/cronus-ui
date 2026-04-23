@@ -19,6 +19,7 @@ export const Default: Story = {
             <Modal>
                 <Modal.Trigger>Open Modal</Modal.Trigger>
                 <Modal.Content>
+                    <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
                         <Modal.Description>Modal Description</Modal.Description>

@@ -1,7 +1,7 @@
 import type { JSX } from 'solid-js';
 import { createComputed, createSignal, on } from 'solid-js';
 
-import { Body, Content } from '~/ui/Modal/Content';
+import { Body, CloseButton, Content } from '~/ui/Modal/Content';
 import { ModalContext } from '~/ui/Modal/context';
 import { Footer } from '~/ui/Modal/Footer';
 import { Description, Header, Title } from '~/ui/Modal/Header';
@@ -48,6 +48,7 @@ export const Modal = (props: ModalProps) => {
 
 Modal.Trigger = Trigger;
 Modal.Content = Content;
+Modal.CloseButton = CloseButton;
 Modal.Header = Header;
 Modal.Title = Title;
 Modal.Description = Description;
