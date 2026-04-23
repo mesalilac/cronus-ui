@@ -3,13 +3,45 @@ import type { JSX } from 'solid-js';
 import { Separator } from '~/ui/Separator';
 import { cn } from '~/utils';
 
-export const Header = (props: { title: JSX.Element; class?: string }) => {
+export type ModalHeaderProps = {
+    class?: string;
+    children: JSX.Element;
+};
+
+export const Header = (props: ModalHeaderProps) => {
     return (
-        <>
-            <span class={cn('px-2 text-xl capitalize', props.class)}>
-                {props.title}
-            </span>
-            <Separator class='mb-4' />
-        </>
+        <div class='flex flex-col gap-4'>
+            <div class={cn('flex flex-col', props.class)}>{props.children}</div>
+            <Separator class='-mx-4' />
+        </div>
     );
 };
+
+export type ModalHeaderTitleProps = {
+    class?: string;
+    children: JSX.Element;
+};
+
+const Title = (props: ModalHeaderTitleProps) => {
+    return (
+        <h1 class={cn('font-semibold text-lg', props.class)}>
+            {props.children}
+        </h1>
+    );
+};
+
+export type ModalHeaderDescriptionProps = {
+    class?: string;
+    children: JSX.Element;
+};
+
+const Description = (props: ModalHeaderDescriptionProps) => {
+    return (
+        <p class={cn('text-sm text-text-muted', props.class)}>
+            {props.children}
+        </p>
+    );
+};
+
+Header.Title = Title;
+Header.Description = Description;

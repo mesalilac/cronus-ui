@@ -31,7 +31,12 @@ export const Default: Story = {
                 </Button>
                 <Modal onOpenChange={setIsOpen} open={isOpen()}>
                     <Modal.Content>
-                        awdawdaw
+                        <Modal.Header>
+                            <Modal.Header.Title>Modal Title</Modal.Header.Title>
+                            <Modal.Header.Description>
+                                Modal Description
+                            </Modal.Header.Description>
+                        </Modal.Header>
                         <Modal.Content.Body>
                             <p>Modal Content</p>
                             <p>Modal Content</p>
