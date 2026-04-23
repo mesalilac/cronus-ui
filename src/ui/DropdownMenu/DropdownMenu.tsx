@@ -7,7 +7,9 @@ type DropdownMenuCompound = MenuCompound & {
     Content: typeof Content;
 };
 
-export const DropdownMenu = Menu as DropdownMenuCompound;
+export const DropdownMenu = ((props) => {
+    <Menu {...props} />;
+}) as DropdownMenuCompound;
 
 DropdownMenu.Trigger = Trigger;
 DropdownMenu.Content = Content;
