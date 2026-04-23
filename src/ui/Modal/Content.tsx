@@ -56,7 +56,9 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
                 >
                     <IconMenuCloseMd />
                 </Button>
-                <div class='flex flex-col gap-2'>{props.children}</div>
+                <div class='flex h-full w-full flex-col gap-2'>
+                    {props.children}
+                </div>
             </dialog>
         </Portal>
     );
