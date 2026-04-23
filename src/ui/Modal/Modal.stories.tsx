@@ -19,18 +19,14 @@ export const Default: Story = {
             <Modal>
                 <Modal.Trigger>Open Modal</Modal.Trigger>
                 <Modal.Content>
-                    <Modal.Content.Header>
-                        <Modal.Content.Header.Title>
-                            Modal Title
-                        </Modal.Content.Header.Title>
-                        <Modal.Content.Header.Description>
-                            Modal Description
-                        </Modal.Content.Header.Description>
-                    </Modal.Content.Header>
-                    <Modal.Content.Body>
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
                         <p>Modal Content</p>
-                    </Modal.Content.Body>
-                    <Modal.Content.Footer>Footer</Modal.Content.Footer>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
                 </Modal.Content>
             </Modal>
         );

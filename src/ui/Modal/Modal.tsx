@@ -1,8 +1,10 @@
 import type { JSX } from 'solid-js';
 import { createComputed, createSignal, on } from 'solid-js';
 
-import { Content } from '~/ui/Modal/Content';
+import { Body, Content } from '~/ui/Modal/Content';
 import { ModalContext } from '~/ui/Modal/context';
+import { Footer } from '~/ui/Modal/Footer';
+import { Description, Header, Title } from '~/ui/Modal/Header';
 import { Trigger } from '~/ui/Modal/Trigger';
 
 export type ModalWrapperProps = {
@@ -49,3 +51,8 @@ export const Modal = (props: {
 
 Modal.Trigger = Trigger;
 Modal.Content = Content;
+Modal.Header = Header;
+Modal.Title = Title;
+Modal.Description = Description;
+Modal.Body = Body;
+Modal.Footer = Footer;
