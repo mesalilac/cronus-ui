@@ -19,12 +19,14 @@ export const Default: Story = {
             <Modal>
                 <Modal.Trigger>Open Modal Trigger</Modal.Trigger>
                 <Modal.Content>
-                    <Modal.Header>
-                        <Modal.Header.Title>Modal Title</Modal.Header.Title>
-                        <Modal.Header.Description>
+                    <Modal.Content.Header>
+                        <Modal.Content.Header.Title>
+                            Modal Title
+                        </Modal.Content.Header.Title>
+                        <Modal.Content.Header.Description>
                             Modal Description
-                        </Modal.Header.Description>
-                    </Modal.Header>
+                        </Modal.Content.Header.Description>
+                    </Modal.Content.Header>
                     <Modal.Content.Body>
                         <p>Modal Content</p>
                         <p>Modal Content</p>
@@ -49,7 +51,7 @@ export const Default: Story = {
                         <p>Modal Content</p>
                         <p>Modal Content</p>
                     </Modal.Content.Body>
-                    <Modal.Footer>x</Modal.Footer>
+                    <Modal.Content.Footer>x</Modal.Content.Footer>
                 </Modal.Content>
             </Modal>
         );

@@ -4,6 +4,8 @@ import { Portal } from 'solid-js/web';
 import { IconMenuCloseMd } from '~/icons';
 import { Button } from '~/ui/Button';
 import { useModalContext } from '~/ui/Modal/context';
+import { Footer } from '~/ui/Modal/Footer';
+import { Header } from '~/ui/Modal/Header';
 import { cn } from '~/utils';
 
 export const Content = (props: { class?: string; children: JSX.Element }) => {
@@ -75,4 +77,6 @@ const Body = (props: ModalContentBodyProps) => {
     );
 };
 
+Content.Header = Header;
 Content.Body = Body;
+Content.Footer = Footer;
