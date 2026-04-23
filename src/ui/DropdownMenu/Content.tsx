@@ -7,13 +7,12 @@ import {
     onCleanup,
 } from 'solid-js';
 
+import { useMenuContext } from '~/ui/Menu/context';
 import {
     Popover,
     type PositionArea,
     type TargetPositionArea,
 } from '~/ui/Popover';
-
-import { useDropdownMenuContext } from './context';
 
 export type DropdownMenuContentProps = {
     targetPositionArea?: TargetPositionArea;
@@ -24,7 +23,7 @@ export type DropdownMenuContentProps = {
 export const Content = (props: DropdownMenuContentProps) => {
     let divRef!: HTMLDivElement;
 
-    const ctx = useDropdownMenuContext();
+    const ctx = useMenuContext();
 
     createEffect(() => {
         if (ctx.isOpen() && divRef) {
@@ -41,27 +40,13 @@ export const Content = (props: DropdownMenuContentProps) => {
         }
     });
 
-    const targetPositionArea: Accessor<TargetPositionArea> = createMemo(() => {
-        const contextMenuPos = ctx.contextMenuPos?.();
-
-        if (contextMenuPos !== null && contextMenuPos !== undefined) {
-            const offset = 2;
-
-            const x = contextMenuPos.x + offset;
-            const y = contextMenuPos.y + offset;
-
-            return {
-                top: () => `${y}px`,
-                left: () => `${x}px`,
-            };
-        }
-
-        return props.targetPositionArea ?? 'block-end span-inline-end';
-    });
+    const targetPositionArea: Accessor<TargetPositionArea> = createMemo(
+        () => props.targetPositionArea ?? 'block-end span-inline-end',
+    );
 
     return (
         <Popover
-            onOpenChange={ctx.onOpenChange}
+            onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
             positionTryFallbacks={
                 props.positionTryFallbacks ??

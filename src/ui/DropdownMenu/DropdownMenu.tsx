@@ -1,106 +1,13 @@
-import type { Accessor, JSX, Setter } from 'solid-js';
-import {
-    createComputed,
-    createEffect,
-    createSignal,
-    on,
-    onCleanup,
-} from 'solid-js';
+import { Content } from '~/ui/DropdownMenu/Content';
+import { Trigger } from '~/ui/DropdownMenu/Trigger';
+import { Menu, type MenuCompound } from '~/ui/Menu';
 
-import { Content } from './Content';
-import { DropdownMenuContext } from './context';
-import { Item } from './Item';
-import { ItemCheckbox } from './ItemCheckbox';
-import { ItemSwitch } from './ItemSwitch';
-import { Label } from './Label';
-import { RadioGroup } from './RadioGroup';
-import { MenuSeparator } from './Separator';
-import { Sub } from './Sub';
-import { Trigger } from './Trigger';
-
-export type DropdownMenuProps = {
-    open?: boolean;
-    defaultOpen?: boolean;
-    onOpenChange?: (open: boolean) => void;
-    contextMenuPos?: Accessor<{ x: number; y: number } | null>;
-    setContextMenuPos?: Setter<{ x: number; y: number } | null>;
-    children: JSX.Element;
+type DropdownMenuCompound = MenuCompound & {
+    Trigger: typeof Trigger;
+    Content: typeof Content;
 };
 
-export const DropdownMenu = (props: DropdownMenuProps) => {
-    const [isOpen, setIsOpen] = createSignal(
-        props.open ?? props.defaultOpen ?? false,
-    );
-
-    const cleanupContextMenuPos = (isOpen: boolean) => {
-        if (!isOpen && props.contextMenuPos?.() !== null)
-            props.setContextMenuPos?.(null);
-    };
-
-    // sync state with props
-    createComputed(
-        on(
-            () => Boolean(props.open),
-            (isOpen) => {
-                cleanupContextMenuPos(isOpen);
-
-                setIsOpen(isOpen);
-                props.onOpenChange?.(isOpen);
-            },
-            { defer: true },
-        ),
-    );
-
-    createEffect(() => {
-        if (isOpen()) {
-            const originalOverflow = window.getComputedStyle(
-                document.body,
-            ).overflow;
-            document.body.style.overflow = 'hidden';
-
-            onCleanup(() => {
-                document.body.style.overflow = originalOverflow;
-            });
-        }
-    });
-
-    const onOpenChange = (isOpen: boolean) => {
-        cleanupContextMenuPos(isOpen);
-
-        setIsOpen(isOpen);
-        props.onOpenChange?.(isOpen);
-    };
-
-    const closeMenu = () => onOpenChange(false);
-
-    const [triggerRef, setTriggerRef] = createSignal<
-        HTMLButtonElement | undefined
-    >();
-
-    return (
-        <DropdownMenuContext.Provider
-            value={{
-                isOpen,
-                onOpenChange,
-                closeMenu,
-                contextMenuPos: props.contextMenuPos,
-                setContextMenuPos: props.setContextMenuPos,
-                triggerRef,
-                setTriggerRef,
-            }}
-        >
-            {props.children}
-        </DropdownMenuContext.Provider>
-    );
-};
+export const DropdownMenu = Menu as DropdownMenuCompound;
 
 DropdownMenu.Trigger = Trigger;
 DropdownMenu.Content = Content;
-DropdownMenu.Item = Item;
-DropdownMenu.ItemSwitch = ItemSwitch;
-DropdownMenu.ItemCheckbox = ItemCheckbox;
-DropdownMenu.Label = Label;
-DropdownMenu.Separator = MenuSeparator;
-
-DropdownMenu.Sub = Sub;
-DropdownMenu.RadioGroup = RadioGroup;

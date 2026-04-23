@@ -4,7 +4,7 @@ import { Button } from '~/ui/Button';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
 
-import { useDropdownMenuContext } from './context';
+import { useMenuContext } from './context';
 
 export type DropdownMenuItemProps = {
     onClick?: () => void;
@@ -21,7 +21,7 @@ export const Item = (rawProps: DropdownMenuItemProps) => {
         rawProps,
     );
 
-    const ctx = useDropdownMenuContext();
+    const ctx = useMenuContext();
 
     const handleClick = () => {
         if (props.autoClose) ctx.closeMenu();
