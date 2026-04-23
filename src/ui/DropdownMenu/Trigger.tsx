@@ -1,9 +1,8 @@
 import { type JSX, mergeProps } from 'solid-js';
 
 import { Button, type ButtonProps } from '~/ui/Button';
+import { useMenuContext } from '~/ui/Menu/context';
 import { cn } from '~/utils';
-
-import { useDropdownMenuContext } from './context';
 
 export interface DropdownMenuTriggerProps
     extends Pick<ButtonProps, 'variant' | 'label'> {
@@ -18,7 +17,7 @@ export const Trigger = (rawProps: DropdownMenuTriggerProps) => {
         rawProps,
     );
 
-    const ctx = useDropdownMenuContext();
+    const ctx = useMenuContext();
 
     return (
         <Button
