@@ -1,7 +1,5 @@
-import { gsap } from 'gsap';
-import { createEffect, type JSX, onCleanup, Show } from 'solid-js';
+import { createEffect, type JSX, onCleanup } from 'solid-js';
 import { Portal } from 'solid-js/web';
-import { Transition } from 'solid-transition-group';
 
 import { IconMenuCloseMd } from '~/icons';
 import { Button } from '~/ui/Button';
@@ -63,3 +61,18 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
         </Portal>
     );
 };
+
+export type ModalContentBodyProps = {
+    class?: string;
+    children: JSX.Element;
+};
+
+const Body = (props: ModalContentBodyProps) => {
+    return (
+        <div class={cn('flex flex-col gap-2 overflow-y-auto', props.class)}>
+            {props.children}
+        </div>
+    );
+};
+
+Content.Body = Body;

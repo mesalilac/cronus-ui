@@ -32,7 +32,7 @@ export const Default: Story = {
                 <Modal onOpenChange={setIsOpen} open={isOpen()}>
                     <Modal.Content>
                         awdawdaw
-                        <div class='overflow-y-auto'>
+                        <Modal.Content.Body>
                             <p>Modal Content</p>
                             <p>Modal Content</p>
                             <p>Modal Content</p>
@@ -55,7 +55,7 @@ export const Default: Story = {
                             <p>Modal Content</p>
                             <p>Modal Content</p>
                             <p>Modal Content</p>
-                        </div>
+                        </Modal.Content.Body>
                         <Modal.Footer>x</Modal.Footer>
                     </Modal.Content>
                 </Modal>
