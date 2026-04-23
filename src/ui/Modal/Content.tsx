@@ -1,4 +1,5 @@
-import { createEffect, type JSX, onCleanup } from 'solid-js';
+import { gsap } from 'gsap';
+import { createEffect, type JSX, onCleanup, Show } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
 
@@ -11,63 +12,6 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
     let dialogRef!: HTMLDialogElement;
 
     const ctx = useModalContext();
-
-    const onEnterAnim = (el: Element, done: () => void) => {
-        const overlay = el;
-        const modalWindow = overlay.querySelector('[data-slot="modal-window"]');
-
-        const tl = gsap.timeline({ onComplete: done });
-
-        tl.fromTo(
-            overlay,
-            {
-                autoAlpha: 0,
-            },
-            {
-                autoAlpha: 1,
-                duration: 0.15,
-                ease: 'power1.out',
-            },
-        ).fromTo(
-            modalWindow,
-            {
-                autoAlpha: 0,
-                y: 16,
-                scale: 0.96,
-            },
-            {
-                autoAlpha: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.2,
-                ease: 'power1.out',
-            },
-            '<',
-        );
-    };
-
-    const onExitAnim = (el: Element, done: () => void) => {
-        const overlay = el;
-        const modalWindow = overlay.querySelector('[data-slot="modal-window"]');
-
-        const tl = gsap.timeline({ onComplete: done });
-
-        tl.to(modalWindow, {
-            autoAlpha: 0,
-            scale: 0.96,
-            y: 12,
-            duration: 0.18,
-            ease: 'power1.in',
-        }).to(
-            overlay,
-            {
-                autoAlpha: 0,
-                duration: 0.12,
-                ease: 'power1.in',
-            },
-            '<',
-        );
-    };
 
     createEffect(() => {
         if (ctx.isOpen()) {
@@ -97,25 +41,23 @@ export const Content = (props: { class?: string; children: JSX.Element }) => {
 
     return (
         <Portal>
-            <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
-                <dialog
-                    class={cn(
-                        'm-auto size-9/12 rounded-default bg-surface-1/80 p-4 text-text-primary',
-                        props.class,
-                    )}
-                    closedby='any'
-                    ref={dialogRef}
+            <dialog
+                class={cn(
+                    'm-auto size-9/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-sm',
+                    props.class,
+                )}
+                closedby='any'
+                ref={dialogRef}
+            >
+                <Button
+                    class='absolute top-1 right-1'
+                    onClick={() => ctx.closeModal()}
+                    variant='icon'
                 >
-                    <Button
-                        class='absolute top-1 right-1'
-                        onClick={() => ctx.closeModal()}
-                        variant='icon'
-                    >
-                        <IconMenuCloseMd />
-                    </Button>
-                    {props.children}
-                </dialog>
-            </Transition>
+                    <IconMenuCloseMd />
+                </Button>
+                <div class='flex flex-col gap-2'>{props.children}</div>
+            </dialog>
         </Portal>
     );
 };
