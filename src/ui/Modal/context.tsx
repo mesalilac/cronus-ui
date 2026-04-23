@@ -1,7 +1,9 @@
-import { createContext, useContext } from 'solid-js';
+import { type Accessor, createContext, useContext } from 'solid-js';
 
 export type ModalContextData = {
-    open?: boolean;
+    isOpen: Accessor<boolean>;
+    setIsOpen: (open: boolean) => void;
+
     closeModal: () => void;
 };
 
