@@ -3,8 +3,6 @@ import { createSignal, For } from 'solid-js';
 import { Badge, Button, DropdownMenu, Modal, Select } from '~/ui';
 
 export function App() {
-    const [showModal, setShowModal] = createSignal(false);
-
     const NumbersList = [
         '1',
         '2',
@@ -34,18 +32,19 @@ export function App() {
                 <span class='hidden dark:block'>dark</span>
                 <span class='block dark:hidden'>light</span>
             </Button>
-            <Button
-                onClick={() => setShowModal(true)}
-                type='button'
-                variant='outline'
-            >
-                Open Modal
-            </Button>
-            <Modal onOpenChange={setShowModal} open={showModal()}>
-                <Modal.Content>hi</Modal.Content>
-                <Modal.Footer>
-                    <Modal.Footer.Cancel />
-                </Modal.Footer>
+            <Modal>
+                <Modal.Trigger>Open Modal</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
             </Modal>
             <Select
                 autoClose={false}

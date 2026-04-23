@@ -1,7 +1,4 @@
-import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
-
-import { Button } from '~/ui/Button';
 
 import { Modal } from './Modal';
 
@@ -18,24 +15,21 @@ type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
     render: () => {
-        const [open, isOpen] = createSignal(false);
-
         return (
-            <>
-                <Button
-                    onClick={() => isOpen(true)}
-                    type='button'
-                    variant='outline'
-                >
-                    Open Modal
-                </Button>
-                <Modal onOpenChange={isOpen} open={open()}>
-                    <Modal.Content>hi</Modal.Content>
-                    <Modal.Footer>
-                        <Modal.Footer.Cancel />
-                    </Modal.Footer>
-                </Modal>
-            </>
+            <Modal>
+                <Modal.Trigger>Open Modal</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
+            </Modal>
         );
     },
 };
