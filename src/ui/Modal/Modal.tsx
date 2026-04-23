@@ -5,6 +5,7 @@ import { Content } from '~/ui/Modal/Content';
 import { ModalContext } from '~/ui/Modal/context';
 import { Footer } from '~/ui/Modal/Footer';
 import { Header } from '~/ui/Modal/Header';
+import { Trigger } from '~/ui/Modal/Trigger';
 
 export type ModalWrapperProps = {
     open?: boolean;
@@ -48,6 +49,7 @@ export const Modal = (props: {
     );
 };
 
+Modal.Trigger = Trigger;
 Modal.Header = Header;
 Modal.Content = Content;
 Modal.Footer = Footer;
