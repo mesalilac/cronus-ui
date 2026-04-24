@@ -1,10 +1,12 @@
 import { gsap } from 'gsap';
 import {
+    createComputed,
     createContext,
     createSignal,
     type JSX,
     Match,
     mergeProps,
+    on,
     Show,
     Switch,
     useContext,
@@ -45,6 +47,8 @@ const useAlertContext = () => {
 };
 
 export type AlertProps = {
+    open?: boolean;
+    onOpenChange?: (value: boolean) => void;
     variant?: AlertVariant;
     title: string;
     description: string;
@@ -57,7 +61,24 @@ export const Alert = (rawProps: AlertProps) => {
         { variant: 'default' } satisfies Partial<AlertProps>,
         rawProps,
     );
-    const [show, setShow] = createSignal(true);
+    const [isOpen, setInternalIsOpen] = createSignal(props.open ?? true);
+
+    createComputed(
+        on(
+            () => Boolean(props.open),
+            (open) => {
+                setInternalIsOpen(open);
+            },
+            { defer: true },
+        ),
+    );
+
+    const setIsOpen = (value: boolean) => {
+        if (props.open === undefined) setInternalIsOpen(value);
+        props.onOpenChange?.(value);
+    };
+
+    const dismiss = () => setIsOpen(false);
 
     const variantStyles: Record<AlertVariant, string> = {
         default: cn('bg-surface-3/60 text-text-muted'),
@@ -66,8 +87,6 @@ export const Alert = (rawProps: AlertProps) => {
         danger: cn('bg-danger/20 text-text-danger'),
         info: cn('bg-info/20 text-text-info'),
     };
-
-    const dismiss = () => setShow(false);
 
     return (
         <Transition
@@ -90,7 +109,7 @@ export const Alert = (rawProps: AlertProps) => {
                 });
             }}
         >
-            <Show when={show()}>
+            <Show when={isOpen()}>
                 <AlertContext.Provider
                     value={{ variant: props.variant, dismiss }}
                 >
