@@ -7,7 +7,6 @@ import { cn } from '~/utils';
 export interface DropdownMenuTriggerProps
     extends Pick<ButtonProps, 'variant' | 'label'> {
     class?: string;
-    disabled?: boolean;
     children: JSX.Element;
 }
 
@@ -24,6 +23,7 @@ export const Trigger = (rawProps: DropdownMenuTriggerProps) => {
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn('px-3 capitalize', props.class)}
+            disabled={ctx.disabled()}
             ref={ctx.setTriggerRef}
             role='combobox'
             {...props}

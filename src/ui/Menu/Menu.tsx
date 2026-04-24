@@ -20,6 +20,7 @@ export type MenuProps = {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
+    disabled?: boolean;
     children: JSX.Element;
 };
 
@@ -74,11 +75,14 @@ export const Menu: MenuCompound = (props) => {
 
     const [triggerRef, setTriggerRef] = createSignal<HTMLElement | undefined>();
 
+    const disabled = () => props.disabled;
+
     return (
         <MenuContext.Provider
             value={{
                 isOpen,
                 setIsOpen,
+                disabled,
                 closeMenu,
                 triggerRef,
                 setTriggerRef,

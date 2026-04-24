@@ -8,6 +8,7 @@ import {
 export const MenuContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
+    disabled: Accessor<boolean | undefined>;
     closeMenu: () => void;
     triggerRef: Accessor<HTMLElement | undefined>;
     setTriggerRef: Setter<HTMLElement | undefined>;
