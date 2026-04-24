@@ -1,3 +1,4 @@
+import { gsap } from 'gsap';
 import {
     createContext,
     createSignal,
@@ -8,6 +9,7 @@ import {
     Switch,
     useContext,
 } from 'solid-js';
+import { Transition } from 'solid-transition-group';
 
 import {
     IconInterfaceCheck,
@@ -68,48 +70,71 @@ export const Alert = (rawProps: AlertProps) => {
     const dismiss = () => setShow(false);
 
     return (
-        <Show when={show()}>
-            <AlertContext.Provider value={{ variant: props.variant, dismiss }}>
-                <div
-                    class={cn(
-                        'flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
-                        variantStyles[props.variant],
-                        props.class,
-                    )}
+        <Transition
+            onEnter={(el, done) => {
+                gsap.from(el, {
+                    autoAlpha: 0,
+                    scale: 0.98,
+                    duration: 0.2,
+                    ease: 'power3.out',
+                    onComplete: done,
+                });
+            }}
+            onExit={(el, done) => {
+                gsap.to(el, {
+                    autoAlpha: 0,
+                    scale: 0.98,
+                    duration: 0.2,
+                    ease: 'power3.out',
+                    onComplete: done,
+                });
+            }}
+        >
+            <Show when={show()}>
+                <AlertContext.Provider
+                    value={{ variant: props.variant, dismiss }}
                 >
-                    <Switch>
-                        <Match when={props.variant === 'default'}>
-                            <IconWarningInfo class='size-6' />
-                        </Match>
-                        <Match when={props.variant === 'success'}>
-                            <IconInterfaceCheck class='size-6' />
-                        </Match>
-                        <Match when={props.variant === 'warning'}>
-                            <IconWarningCircleWarning class='size-6' />
-                        </Match>
-                        <Match when={props.variant === 'danger'}>
-                            <IconWarningCircleWarning class='size-6' />
-                        </Match>
-                        <Match when={props.variant === 'info'}>
-                            <IconWarningInfo class='size-6' />
-                        </Match>
-                    </Switch>
-                    <div class='flex w-full flex-col gap-2'>
-                        <h1 class='font-medium'>{props.title}</h1>
-                        <p>{props.description}</p>
-                        <Show when={props.children}>
-                            <div class='mt-2 flex flex-row items-center gap-2'>
-                                {props.children}
-                            </div>
-                        </Show>
+                    <div
+                        class={cn(
+                            'flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
+                            variantStyles[props.variant],
+                            props.class,
+                        )}
+                    >
+                        <Switch>
+                            <Match when={props.variant === 'default'}>
+                                <IconWarningInfo class='size-6' />
+                            </Match>
+                            <Match when={props.variant === 'success'}>
+                                <IconInterfaceCheck class='size-6' />
+                            </Match>
+                            <Match when={props.variant === 'warning'}>
+                                <IconWarningCircleWarning class='size-6' />
+                            </Match>
+                            <Match when={props.variant === 'danger'}>
+                                <IconWarningCircleWarning class='size-6' />
+                            </Match>
+                            <Match when={props.variant === 'info'}>
+                                <IconWarningInfo class='size-6' />
+                            </Match>
+                        </Switch>
+                        <div class='flex w-full flex-col gap-2'>
+                            <h1 class='font-medium'>{props.title}</h1>
+                            <p>{props.description}</p>
+                            <Show when={props.children}>
+                                <div class='mt-2 flex flex-row items-center gap-2'>
+                                    {props.children}
+                                </div>
+                            </Show>
+                        </div>
+                        <IconMenuCloseMd
+                            class='size-6 cursor-pointer'
+                            onClick={dismiss}
+                        />
                     </div>
-                    <IconMenuCloseMd
-                        class='size-6 cursor-pointer'
-                        onClick={dismiss}
-                    />
-                </div>
-            </AlertContext.Provider>
-        </Show>
+                </AlertContext.Provider>
+            </Show>
+        </Transition>
     );
 };
 
