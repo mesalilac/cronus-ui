@@ -58,7 +58,7 @@ export const Alert = (rawProps: AlertProps) => {
     const [show, setShow] = createSignal(true);
 
     const variantStyles: Record<AlertVariant, string> = {
-        default: cn('bg-surface-3/20 text-text-muted'),
+        default: cn('bg-surface-3/60 text-text-muted'),
         success: cn('bg-success/20 text-text-success'),
         warning: cn('bg-warning/20 text-text-warning'),
         danger: cn('bg-danger/20 text-text-danger'),
