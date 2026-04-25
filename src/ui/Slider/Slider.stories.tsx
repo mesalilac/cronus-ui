@@ -5,7 +5,6 @@ import {
     IconMediaVolumeMax,
     IconMediaVolumeMin,
     IconMediaVolumeOff,
-    IconMediaVolumeOff02,
 } from '~/icons';
 import { Button } from '~/ui/Button';
 
