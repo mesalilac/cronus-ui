@@ -14,19 +14,34 @@ export type SliderProps = {
     onChange?: (value: number) => void;
     onInput?: (value: number) => void;
     /**
+     * The lowest value in the range of permitted values.
+     *
      * @default 0
      */
     min?: number;
     /**
+     * The greatest value in the range of permitted values.
+     *
      * @default 100
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range#min}
      */
     max?: number;
     /**
+     * The `step` attribute is a number that specifies the granularity that the value must adhere to.
+     *
      * @default 1
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range#max}
      */
     step?: number;
-    disabled?: boolean;
+    /**
+     * The value of the `list` attribute is the id of a `<datalist>` element located in the same document.
+     *
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/range#list}
+     */
     list?: string;
+    disabled?: boolean;
     class?: string;
     children: JSX.Element;
 };
