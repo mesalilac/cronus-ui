@@ -3,6 +3,7 @@ export * from './Badge';
 export * from './Banner';
 export * from './Button';
 export * from './Checkbox';
+export * from './Collapsible';
 export * from './ContextMenu';
 export * from './DropdownMenu';
 export * from './EditableText';
