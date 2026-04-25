@@ -45,7 +45,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'box-border flex cursor-pointer items-center gap-2 rounded-default border border-border-strong px-4 py-2 font-medium text-sm text-text-primary leading-5 transition-all duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
+        'box-border flex cursor-pointer items-center gap-2 rounded-default border border-border-strong px-4 py-2 font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
     );
 
     const variantStyles: Record<ButtonVariant, string> = {
