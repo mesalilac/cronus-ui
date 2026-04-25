@@ -48,7 +48,7 @@ export const useSliderContext = () => {
 
     if (!context) {
         throw new Error(
-            'useMenuContext must be used within the MenuContext provider',
+            'useSliderContext must be used within the SliderContext provider',
         );
     }
 
