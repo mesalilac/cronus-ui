@@ -96,12 +96,12 @@ export const WithExternalButton: Story = {
         };
 
         return (
-            <div class='flex flex-col gap-2'>
-                <Slider onInput={setValue} value={value()}>
-                    <Slider.Label>
-                        <span>Volume</span>
-                    </Slider.Label>
-                    <div class='flex gap-1'>
+            <Slider onInput={setValue} value={value()}>
+                <Slider.Label>
+                    <span>Volume</span>
+                </Slider.Label>
+                <div class='flex items-center gap-1'>
+                    <Button onClick={toggleMute} variant='icon'>
                         <Switch>
                             <Match when={value() === 0}>
                                 <IconMediaVolumeOff class='size-5' />
@@ -113,20 +113,14 @@ export const WithExternalButton: Story = {
                                 <IconMediaVolumeMin class='size-5' />
                             </Match>
                         </Switch>
-                        <Slider.Input class='flex-1' />
-                        <span class='w-8 text-right text-sm tabular-nums'>
-                            {value()}%
-                        </span>
-                    </div>
-                </Slider>
-                <Button
-                    class='self-start'
-                    onClick={toggleMute}
-                    variant='primary'
-                >
-                    <IconMediaVolumeOff02 /> Mute
-                </Button>
-            </div>
+                    </Button>
+
+                    <Slider.Input class='flex-1' />
+                    <span class='w-8 text-right text-sm tabular-nums'>
+                        {value()}%
+                    </span>
+                </div>
+            </Slider>
         );
     },
 };
