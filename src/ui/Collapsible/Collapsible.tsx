@@ -1,9 +1,7 @@
-import { gsap } from 'gsap';
 import {
     type Accessor,
     createComputed,
     createContext,
-    createEffect,
     createSignal,
     type JSX,
     on,
