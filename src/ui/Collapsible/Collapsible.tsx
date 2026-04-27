@@ -92,7 +92,7 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
     return (
         <Button
             class={cn(
-                'justify-between gap-0 rounded-default border-transparent border-x-transparent outline outline-border-strong',
+                'justify-between rounded-default border-transparent border-x-transparent outline outline-border-strong',
                 ctx.isOpen() && 'rounded-b-none',
                 props.class,
             )}
@@ -104,13 +104,13 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
             onClick={() => ctx.setIsOpen(!ctx.isOpen())}
             variant='outline'
         >
+            {props.children}
             <IconArrowCaretDownMd
                 class={cn(
                     'size-5 transition-transform',
                     !ctx.isOpen() && '-rotate-90',
                 )}
             />
-            {props.children}
         </Button>
     );
 };
