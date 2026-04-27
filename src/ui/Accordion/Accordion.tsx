@@ -1,11 +1,12 @@
 import {
     type Accessor,
+    createComputed,
     createContext,
     createEffect,
     createSignal,
     createUniqueId,
     type JSX,
-    type Setter,
+    on,
     useContext,
 } from 'solid-js';
 
@@ -13,14 +14,17 @@ import { Collapsible } from '~/ui/Collapsible';
 import { cn } from '~/utils';
 
 export type AccordionProps = {
+    value?: string | null;
+    onChange?: (value: string | null) => void;
+    defaultValue?: string;
     disabled?: boolean;
     class?: string;
     children: JSX.Element;
 };
 
 export const AccordionContext = createContext<{
-    activeCollapsible: Accessor<string | null>;
-    setActiveCollapsible: Setter<string | null>;
+    expandedItem: Accessor<string | null>;
+    setExpandedItem: (value: string | null) => void;
     disabled: Accessor<boolean | undefined>;
 }>();
 
@@ -37,15 +41,33 @@ export const useAccordionContext = () => {
 };
 
 export const Accordion = (props: AccordionProps) => {
-    const [activeCollapsible, setActiveCollapsible] = createSignal<
-        string | null
-    >(null);
+    const [expandedItem, setInternalExpandedItem] = createSignal<string | null>(
+        props.value ?? props.defaultValue ?? null,
+    );
+
+    createComputed(
+        on(
+            () => props.value,
+            (value) => {
+                const newVal = value ?? null;
+
+                setInternalExpandedItem(newVal);
+                props.onChange?.(newVal);
+            },
+            { defer: true },
+        ),
+    );
+
+    const setExpandedItem = (value: string | null) => {
+        if (props.value === undefined) setInternalExpandedItem(value);
+        props.onChange?.(value);
+    };
 
     return (
         <AccordionContext.Provider
             value={{
-                activeCollapsible,
-                setActiveCollapsible,
+                expandedItem,
+                setExpandedItem,
                 disabled: () => props.disabled,
             }}
         >
@@ -55,6 +77,7 @@ export const Accordion = (props: AccordionProps) => {
 };
 
 type AccordionItemProps = {
+    value?: string;
     disabled?: boolean;
     class?: string;
     children: JSX.Element;
@@ -65,14 +88,22 @@ const AccordionItem = (props: AccordionItemProps) => {
 
     const id = createUniqueId();
 
+    const getId = () => props.value ?? id;
+
     const [isOpen, setIsOpen] = createSignal(false);
 
     createEffect(() => {
-        if (ctx.activeCollapsible() !== id && isOpen()) setIsOpen(false);
+        if (ctx.expandedItem() === getId()) setIsOpen(true);
+        else setIsOpen(false);
+    });
+
+    createEffect(() => {
+        if (!isOpen() && ctx.expandedItem() === getId())
+            ctx.setExpandedItem(null);
     });
 
     const onOpenChange = (open: boolean) => {
-        if (open) ctx.setActiveCollapsible(id);
+        if (open) ctx.setExpandedItem(getId());
 
         setIsOpen(open);
     };

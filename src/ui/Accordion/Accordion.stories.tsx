@@ -1,5 +1,7 @@
-import type { VoidComponent } from 'solid-js';
+import { createSignal, type VoidComponent } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
+
+import { Button } from '~/ui/Button';
 
 import { Accordion } from './Accordion';
 
@@ -51,6 +53,55 @@ export const Default: Story = {
                         </Accordion.Content>
                     </Accordion.Item>
                     <Accordion.Item>
+                        <Accordion.Trigger>Accordion 4</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
+            </div>
+        );
+    },
+};
+
+export const ExternalControl: Story = {
+    render: () => {
+        const [expandedItem, setExpandedItem] = createSignal<string | null>(
+            null,
+        );
+
+        const toggleExpandedItem = (id: string) => {
+            setExpandedItem(expandedItem() === id ? null : id);
+        };
+
+        return (
+            <div class='flex size-96 flex-col gap-2'>
+                <Button onClick={() => toggleExpandedItem('accordion-1')}>
+                    Toggle Accordion 1
+                </Button>
+                <Button onClick={() => toggleExpandedItem('accordion-2')}>
+                    Toggle Accordion 2
+                </Button>
+                <Accordion onChange={setExpandedItem} value={expandedItem()}>
+                    <Accordion.Item value='accordion-1'>
+                        <Accordion.Trigger>Accordion 1</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item value='accordion-2'>
+                        <Accordion.Trigger>Accordion 2</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item value='accordion-3'>
+                        <Accordion.Trigger>Accordion 3</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item value='accordion-4'>
                         <Accordion.Trigger>Accordion 4</Accordion.Trigger>
                         <Accordion.Content>
                             <PlaceholderContent />
