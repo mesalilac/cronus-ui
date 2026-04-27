@@ -14,8 +14,6 @@ import { Collapsible } from '~/ui/Collapsible';
 import { cn } from '~/utils';
 
 export type AccordionProps = {
-    value?: string[];
-    onChange?: (value: string[]) => void;
     defaultValue?: string[];
     multiple?: boolean;
     disabled?: boolean;
@@ -43,27 +41,9 @@ export const useAccordionContext = () => {
 };
 
 export const Accordion = (props: AccordionProps) => {
-    const [expandedItem, setInternalExpandedItem] = createSignal<string[]>(
-        props.value ?? props.defaultValue ?? [],
+    const [expandedItem, setExpandedItem] = createSignal<string[]>(
+        props.defaultValue ?? [],
     );
-
-    createComputed(
-        on(
-            () => props.value,
-            (value) => {
-                const newVal = value ?? [];
-
-                setInternalExpandedItem(newVal);
-                props.onChange?.(newVal);
-            },
-            { defer: true },
-        ),
-    );
-
-    const setExpandedItem = (value: string[]) => {
-        if (props.value === undefined) setInternalExpandedItem(value);
-        props.onChange?.(value);
-    };
 
     return (
         <AccordionContext.Provider
