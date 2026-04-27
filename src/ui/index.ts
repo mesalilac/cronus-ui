@@ -22,3 +22,4 @@ export * from './Slider';
 export * from './Textarea';
 export * from './ToggleGroup';
 export * from './ToggleSwitch';
+export * from './Accordion';
