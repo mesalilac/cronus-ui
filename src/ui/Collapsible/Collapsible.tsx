@@ -74,6 +74,7 @@ export const Collapsible = (props: CollapsibleProps) => {
                     'flex flex-col rounded-default border border-border-strong',
                     props.class,
                 )}
+                data-slot='collapsible'
             >
                 {props.children}
             </div>
@@ -92,8 +93,8 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
     return (
         <Button
             class={cn(
-                'justify-between rounded-default border-transparent border-x-transparent outline outline-border-strong',
-                ctx.isOpen() && 'rounded-b-none',
+                'justify-between rounded-none border-x-transparent border-y-transparent outline-none active:bg-transparent active:text-accent',
+                ctx.isOpen() && 'border-b border-b-accent text-accent',
                 props.class,
             )}
             data-slot='trigger'
