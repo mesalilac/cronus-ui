@@ -1,12 +1,10 @@
 import {
     type Accessor,
-    createComputed,
     createContext,
     createEffect,
     createSignal,
     createUniqueId,
     type JSX,
-    on,
     useContext,
 } from 'solid-js';
 
