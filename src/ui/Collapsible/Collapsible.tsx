@@ -71,7 +71,7 @@ export const Collapsible = (props: CollapsibleProps) => {
         >
             <div
                 class={cn(
-                    'flex flex-col rounded-default border border-border',
+                    'flex flex-col rounded-default border border-border-strong',
                     props.class,
                 )}
             >
@@ -92,7 +92,7 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
     return (
         <Button
             class={cn(
-                'justify-between gap-0 rounded-default border-transparent border-x-transparent outline outline-border',
+                'justify-between gap-0 rounded-default border-transparent border-x-transparent outline outline-border-strong',
                 ctx.isOpen() && 'rounded-b-none',
                 props.class,
             )}
