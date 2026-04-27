@@ -1,7 +1,9 @@
 import {
     type Accessor,
     createContext,
+    createEffect,
     createSignal,
+    createUniqueId,
     type JSX,
     type Setter,
     useContext,
@@ -61,6 +63,20 @@ type AccordionItemProps = {
 const AccordionItem = (props: AccordionItemProps) => {
     const ctx = useAccordionContext();
 
+    const id = createUniqueId();
+
+    const [isOpen, setIsOpen] = createSignal(false);
+
+    createEffect(() => {
+        if (ctx.activeCollapsible() !== id && isOpen()) setIsOpen(false);
+    });
+
+    const onOpenChange = (open: boolean) => {
+        if (open) ctx.setActiveCollapsible(id);
+
+        setIsOpen(open);
+    };
+
     return (
         <Collapsible
             class={cn(
@@ -68,6 +84,8 @@ const AccordionItem = (props: AccordionItemProps) => {
                 props.class,
             )}
             disabled={ctx.disabled() ?? props.disabled}
+            onOpenChange={onOpenChange}
+            open={isOpen()}
         >
             {props.children}
         </Collapsible>
