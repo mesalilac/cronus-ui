@@ -11,6 +11,7 @@ import {
 
 import { IconArrowCaretDownMd } from '~/icons';
 import { Button } from '~/ui/Button';
+import { Separator } from '~/ui/Separator';
 import { cn } from '~/utils';
 
 export type CollapsibleProps = {
@@ -93,8 +94,8 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
     return (
         <Button
             class={cn(
-                'justify-between rounded-none border-x-transparent border-y-transparent outline-none active:bg-transparent active:text-accent',
-                ctx.isOpen() && 'border-b border-b-accent text-accent',
+                'justify-between rounded-none border-transparent outline-none active:bg-transparent active:text-accent',
+                ctx.isOpen() && 'text-accent',
                 props.class,
             )}
             data-slot='trigger'
@@ -107,7 +108,7 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
             {props.children}
             <IconArrowCaretDownMd
                 class={cn(
-                    'size-5 transition-transform',
+                    'size-5 transition-transform duration-200',
                     !ctx.isOpen() && '-rotate-90',
                 )}
             />
@@ -125,6 +126,7 @@ const CollapsibleContent = (props: CollapsibleContentProps) => {
 
     return (
         <Show when={ctx.isOpen()}>
+            <Separator class='starting:w-0 w-full border-accent transition-[width] duration-200' />
             <div
                 class={cn(
                     'rounded-b-default px-4 py-2 text-sm text-text-secondary',
