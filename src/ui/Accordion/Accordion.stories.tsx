@@ -64,14 +64,51 @@ export const Default: Story = {
     },
 };
 
+export const Multiple: Story = {
+    render: () => {
+        return (
+            <div class='size-96'>
+                <Accordion multiple>
+                    <Accordion.Item>
+                        <Accordion.Trigger>Accordion 1</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Trigger>Accordion 2</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Trigger>Accordion 3</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                    <Accordion.Item>
+                        <Accordion.Trigger>Accordion 4</Accordion.Trigger>
+                        <Accordion.Content>
+                            <PlaceholderContent />
+                        </Accordion.Content>
+                    </Accordion.Item>
+                </Accordion>
+            </div>
+        );
+    },
+};
+
 export const ExternalControl: Story = {
     render: () => {
-        const [expandedItem, setExpandedItem] = createSignal<string | null>(
-            null,
-        );
+        const [expandedItem, setExpandedItem] = createSignal<string[]>([]);
 
         const toggleExpandedItem = (id: string) => {
-            setExpandedItem(expandedItem() === id ? null : id);
+            const list = expandedItem();
+
+            if (list.includes(id))
+                setExpandedItem(list.filter((i) => i !== id));
+            else setExpandedItem([...list, id]);
         };
 
         return (

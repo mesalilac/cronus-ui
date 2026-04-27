@@ -14,17 +14,19 @@ import { Collapsible } from '~/ui/Collapsible';
 import { cn } from '~/utils';
 
 export type AccordionProps = {
-    value?: string | null;
-    onChange?: (value: string | null) => void;
-    defaultValue?: string;
+    value?: string[];
+    onChange?: (value: string[]) => void;
+    defaultValue?: string[];
+    multiple?: boolean;
     disabled?: boolean;
     class?: string;
     children: JSX.Element;
 };
 
 export const AccordionContext = createContext<{
-    expandedItem: Accessor<string | null>;
-    setExpandedItem: (value: string | null) => void;
+    expandedItem: Accessor<string[]>;
+    setExpandedItem: (value: string[]) => void;
+    multiple: Accessor<boolean | undefined>;
     disabled: Accessor<boolean | undefined>;
 }>();
 
@@ -41,15 +43,15 @@ export const useAccordionContext = () => {
 };
 
 export const Accordion = (props: AccordionProps) => {
-    const [expandedItem, setInternalExpandedItem] = createSignal<string | null>(
-        props.value ?? props.defaultValue ?? null,
+    const [expandedItem, setInternalExpandedItem] = createSignal<string[]>(
+        props.value ?? props.defaultValue ?? [],
     );
 
     createComputed(
         on(
             () => props.value,
             (value) => {
-                const newVal = value ?? null;
+                const newVal = value ?? [];
 
                 setInternalExpandedItem(newVal);
                 props.onChange?.(newVal);
@@ -58,7 +60,7 @@ export const Accordion = (props: AccordionProps) => {
         ),
     );
 
-    const setExpandedItem = (value: string | null) => {
+    const setExpandedItem = (value: string[]) => {
         if (props.value === undefined) setInternalExpandedItem(value);
         props.onChange?.(value);
     };
@@ -68,6 +70,7 @@ export const Accordion = (props: AccordionProps) => {
             value={{
                 expandedItem,
                 setExpandedItem,
+                multiple: () => props.multiple,
                 disabled: () => props.disabled,
             }}
         >
@@ -90,20 +93,35 @@ const AccordionItem = (props: AccordionItemProps) => {
 
     const getId = () => props.value ?? id;
 
+    const isExpanded = () => ctx.expandedItem().includes(getId());
+
     const [isOpen, setIsOpen] = createSignal(false);
 
     createEffect(() => {
-        if (ctx.expandedItem() === getId()) setIsOpen(true);
+        if (isExpanded()) setIsOpen(true);
         else setIsOpen(false);
     });
 
     createEffect(() => {
-        if (!isOpen() && ctx.expandedItem() === getId())
-            ctx.setExpandedItem(null);
+        if (!isOpen() && isExpanded()) {
+            const list = ctx.expandedItem();
+
+            ctx.setExpandedItem(list.filter((id) => id !== getId()));
+        }
     });
 
     const onOpenChange = (open: boolean) => {
-        if (open) ctx.setExpandedItem(getId());
+        if (open) {
+            const list = ctx.expandedItem();
+
+            ctx.setExpandedItem(
+                isExpanded()
+                    ? list.filter((id) => id !== getId())
+                    : ctx.multiple()
+                      ? [...list, getId()]
+                      : [getId()],
+            );
+        }
 
         setIsOpen(open);
     };
