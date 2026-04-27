@@ -72,7 +72,8 @@ export const Collapsible = (props: CollapsibleProps) => {
         >
             <div
                 class={cn(
-                    'flex flex-col rounded-default border border-border-strong',
+                    'flex flex-col rounded-default outline outline-border-strong',
+                    isOpen() && 'outline-accent',
                     props.class,
                 )}
                 data-slot='collapsible'
