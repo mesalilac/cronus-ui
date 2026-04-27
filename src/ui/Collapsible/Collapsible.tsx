@@ -96,10 +96,9 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
                 ctx.isOpen() && 'rounded-b-none',
                 props.class,
             )}
-            data-closed={!ctx.isOpen()}
-            data-disabled={ctx.disabled()}
-            data-expanded={ctx.isOpen()}
             data-slot='trigger'
+            data-state={ctx.isOpen() ? 'expanded' : 'closed'}
+            data-state-disabled={ctx.disabled()}
             disabled={ctx.disabled()}
             onClick={() => ctx.setIsOpen(!ctx.isOpen())}
             variant='outline'
@@ -130,10 +129,9 @@ const CollapsibleContent = (props: CollapsibleContentProps) => {
                     'rounded-b-default px-4 py-2 text-sm text-text-secondary',
                     props.class,
                 )}
-                data-closed={!ctx.isOpen()}
-                data-disabled={ctx.disabled()}
-                data-expanded={ctx.isOpen()}
                 data-slot='content'
+                data-state={ctx.isOpen() ? 'expanded' : 'closed'}
+                data-state-disabled={ctx.disabled()}
             >
                 {props.children}
             </div>
