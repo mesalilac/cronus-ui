@@ -1,7 +1,5 @@
-import { createEffect, createSignal, type VoidComponent } from 'solid-js';
+import type { VoidComponent } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
-
-import { Button } from '~/ui/Button';
 
 import { Accordion } from './Accordion';
 
