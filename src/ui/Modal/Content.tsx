@@ -95,7 +95,7 @@ export const Content = (props: ModalContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto size-9/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-sm',
+                    'm-auto size-9/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
                     props.class,
                 )}
                 closedby='any'
