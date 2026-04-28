@@ -52,3 +52,5 @@
 	--color-text-danger: var(--color-red-400);
 	--color-text-info: var(--color-cyan-400);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
