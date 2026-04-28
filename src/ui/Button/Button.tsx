@@ -45,18 +45,18 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'box-border flex cursor-pointer items-center gap-2 rounded-default border border-border-strong px-4 py-2 font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
+        'flex cursor-pointer items-center gap-2 rounded-default px-4 py-2 font-medium text-sm text-text-primary leading-5 outline outline-border-strong transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
     );
 
     const variantStyles: Record<ButtonVariant, string> = {
-        primary: cn('border-transparent bg-accent'),
+        primary: cn('bg-accent outline-none'),
         secondary: cn('bg-surface-3'),
-        success: cn('border-current/30 bg-success/30 text-text-success'),
-        danger: cn('border-current/30 bg-danger/30 text-text-danger'),
-        warning: cn('border-current/30 bg-warning/30 text-text-warning'),
-        info: cn('border-current/30 bg-info/30 text-text-info'),
-        ghost: cn('border-transparent bg-transparent hover:bg-surface-3/30'),
-        icon: cn('border-transparent bg-transparent p-2 active:bg-surface-3'),
+        success: cn('bg-success/30 text-text-success outline-current/30'),
+        danger: cn('bg-danger/30 text-text-danger outline-current/30'),
+        warning: cn('bg-warning/30 text-text-warning outline-current/30'),
+        info: cn('bg-info/30 text-text-info outline-current/30'),
+        ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
+        icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
         outline: cn('active:bg-surface-3'),
     };
 

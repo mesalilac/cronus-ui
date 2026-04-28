@@ -20,7 +20,7 @@ export const Item: FlowComponent<ToggleGroupItemProps> = (props) => {
     return (
         <Button
             class={cn(
-                'rounded-none border-border-subtle first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
+                'rounded-none first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
                 props.class,
                 isSelected() && 'bg-accent/60',
             )}
