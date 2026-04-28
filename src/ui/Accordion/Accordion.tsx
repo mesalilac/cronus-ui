@@ -5,6 +5,7 @@ import {
     createSignal,
     createUniqueId,
     type JSX,
+    type Setter,
     useContext,
 } from 'solid-js';
 
@@ -21,7 +22,7 @@ export type AccordionProps = {
 
 export const AccordionContext = createContext<{
     expandedItem: Accessor<string[]>;
-    setExpandedItem: (value: string[]) => void;
+    setExpandedItem: Setter<string[]>;
     multiple: Accessor<boolean | undefined>;
     disabled: Accessor<boolean | undefined>;
 }>();
