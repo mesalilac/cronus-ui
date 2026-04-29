@@ -117,7 +117,7 @@ export const customTrigger: Story = {
                             >
                                 <Show
                                     fallback={<>Read More</>}
-                                    when={ctx.isExpanded()}
+                                    when={isExpanded}
                                 >
                                     Read Less
                                 </Show>
