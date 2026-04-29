@@ -50,7 +50,7 @@ export const Banner: Component<BannerProps> = (rawProps) => {
     );
 
     const variantStyles: Record<BannerVariant, string> = {
-        default: cn('border-border-strong bg-surface-3/80'),
+        default: cn('bg-surface-3/80 text-text-primary'),
         success: cn('bg-success/20 text-text-success'),
         warning: cn('bg-warning/20 text-text-warning'),
         danger: cn('bg-danger/20 text-text-danger'),
@@ -143,7 +143,7 @@ export const Banner: Component<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'fixed z-50 flex min-h-12 w-full items-center justify-center border p-2 shadow-default backdrop-blur-sm',
+                            'fixed z-50 flex min-h-12 w-full items-center justify-center border border-current/30 p-2 shadow-default backdrop-blur-xs',
                             props.placement === 'top' ? 'top-0' : 'bottom-0',
                             variantStyles[props.variant],
                             props.class,
