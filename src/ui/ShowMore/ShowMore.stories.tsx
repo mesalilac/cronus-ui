@@ -2,7 +2,6 @@ import { Show } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Button } from '~/ui/Button';
-import { cn } from '~/utils';
 
 import { ShowMore } from './ShowMore';
 
