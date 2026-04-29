@@ -5,11 +5,10 @@ import {
     createSignal,
     type FlowComponent,
     type JSX,
-    Match,
     onCleanup,
     onMount,
     type Setter,
-    Switch,
+    Show,
     useContext,
 } from 'solid-js';
 
@@ -42,7 +41,8 @@ export type ShowMoreProps = {
 type ShowMoreCompound = {
     (props: ShowMoreProps): JSX.Element;
 
-    Button: typeof ShowMoreButton;
+    Trigger: typeof ShowMoreTrigger;
+    ReadMore: typeof ShowMoreReadMoreTrigger;
     Content: typeof ShowMoreContent;
 };
 
@@ -123,30 +123,57 @@ const ShowMoreContent: FlowComponent<ShowMoreContentProps> = (props) => {
     );
 };
 
-type ShowMoreButtonProps = {
+type ShowMoreTriggerProps = {
     class?: string;
-    children?: (isExpanded: boolean) => JSX.Element;
+    children?: (
+        isExpanded: boolean,
+        setIsExpanded: Setter<boolean>,
+    ) => JSX.Element;
 };
 
-const ShowMoreButton = (props: ShowMoreButtonProps) => {
+const ShowMoreTrigger = (props: ShowMoreTriggerProps) => {
     const ctx = useShowMoreContext();
 
     return (
-        <Button
-            class={cn('justify-center', props.class)}
-            onClick={() => ctx.setIsExpanded((prev) => !prev)}
-            variant={ctx.isExpanded() ? 'outline' : 'secondary'}
+        <Show
+            fallback={props.children?.(ctx.isExpanded(), ctx.setIsExpanded)}
+            when={!props.children}
         >
-            <Switch>
-                <Match when={props.children}>
-                    {props.children?.(ctx.isExpanded())}
-                </Match>
-                <Match when={!ctx.isExpanded()}>Show More</Match>
-                <Match when={ctx.isExpanded()}>Show less</Match>
-            </Switch>
-        </Button>
+            <Button
+                class={cn('justify-center', props.class)}
+                onClick={() => ctx.setIsExpanded((prev) => !prev)}
+                variant={ctx.isExpanded() ? 'outline' : 'secondary'}
+            >
+                <Show fallback={<>Show More</>} when={ctx.isExpanded()}>
+                    Show less
+                </Show>
+            </Button>
+        </Show>
     );
 };
 
-ShowMore.Button = ShowMoreButton;
+/** Custom Trigger for text */
+const ShowMoreReadMoreTrigger = (props: ShowMoreTriggerProps) => {
+    const ctx = useShowMoreContext();
+
+    return (
+        <Show
+            fallback={props.children?.(ctx.isExpanded(), ctx.setIsExpanded)}
+            when={!props.children}
+        >
+            <span
+                class='cursor-pointer text-accent underline'
+                onClick={() => ctx.setIsExpanded((prev) => !prev)}
+                role='none'
+            >
+                <Show fallback={<>Read More</>} when={ctx.isExpanded()}>
+                    Read Less
+                </Show>
+            </span>
+        </Show>
+    );
+};
+
+ShowMore.Trigger = ShowMoreTrigger;
+ShowMore.ReadMore = ShowMoreReadMoreTrigger;
 ShowMore.Content = ShowMoreContent;

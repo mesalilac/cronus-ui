@@ -1,4 +1,8 @@
+import { Show } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
+
+import { Button } from '~/ui/Button';
+import { cn } from '~/utils';
 
 import { ShowMore } from './ShowMore';
 
@@ -57,7 +61,7 @@ export const Default: Story = {
                     <ShowMore.Content class='max-h-32 text-text-secondary'>
                         <LoremIpsum />
                     </ShowMore.Content>
-                    <ShowMore.Button />
+                    <ShowMore.Trigger />
                 </ShowMore>
             </div>
         );
@@ -73,7 +77,53 @@ export const ExpandedByDefault: Story = {
                     <ShowMore.Content class='max-h-32 text-text-secondary'>
                         <LoremIpsum />
                     </ShowMore.Content>
-                    <ShowMore.Button />
+                    <ShowMore.Trigger />
+                </ShowMore>
+            </div>
+        );
+    },
+};
+
+export const ReadMoreTrigger: Story = {
+    render: () => {
+        return (
+            <div class='flex size-96 flex-col gap-2 overflow-y-auto p-2'>
+                <h1 class='font-semibold text-xl'>Message</h1>
+                <ShowMore>
+                    <ShowMore.Content class='max-h-32 text-text-secondary'>
+                        <LoremIpsum />
+                    </ShowMore.Content>
+                    <ShowMore.ReadMore />
+                </ShowMore>
+            </div>
+        );
+    },
+};
+
+export const customTrigger: Story = {
+    render: () => {
+        return (
+            <div class='flex size-96 flex-col gap-2 overflow-y-auto p-2'>
+                <h1 class='font-semibold text-xl'>Message</h1>
+                <ShowMore>
+                    <ShowMore.Content class='max-h-32 text-text-secondary'>
+                        <LoremIpsum />
+                    </ShowMore.Content>
+                    <ShowMore.Trigger>
+                        {(isExpanded, setIsExpanded) => (
+                            <Button
+                                onClick={() => setIsExpanded((prev) => !prev)}
+                                variant={isExpanded ? 'outline' : 'primary'}
+                            >
+                                <Show
+                                    fallback={<>Read More</>}
+                                    when={ctx.isExpanded()}
+                                >
+                                    Read Less
+                                </Show>
+                            </Button>
+                        )}
+                    </ShowMore.Trigger>
                 </ShowMore>
             </div>
         );
