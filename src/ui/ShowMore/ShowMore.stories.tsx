@@ -63,3 +63,19 @@ export const Default: Story = {
         );
     },
 };
+
+export const ExpandedByDefault: Story = {
+    render: () => {
+        return (
+            <div class='flex size-96 flex-col gap-2 overflow-y-auto p-2'>
+                <h1 class='font-semibold text-xl'>Message</h1>
+                <ShowMore defaultExpanded>
+                    <ShowMore.Content class='max-h-32 text-text-secondary'>
+                        <LoremIpsum />
+                    </ShowMore.Content>
+                    <ShowMore.Button />
+                </ShowMore>
+            </div>
+        );
+    },
+};
