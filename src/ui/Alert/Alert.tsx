@@ -184,7 +184,7 @@ Alert.Action = (props: AlertActionProps) => {
     return (
         <Button
             class={cn(
-                'border-current text-current hover:bg-current/10 active:bg-current/20',
+                'text-current outline-current hover:bg-current/10 active:bg-current/20',
                 props.class,
             )}
             onClick={() => props.onClick?.(ctx.dismiss)}
