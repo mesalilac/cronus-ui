@@ -6,6 +6,7 @@ import {
     useContext,
 } from 'solid-js';
 
+import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
 export type SliderProps = {
@@ -103,15 +104,9 @@ const SliderLabel = (props: SliderLabelProps) => {
     const ctx = useSliderContext();
 
     return (
-        <label
-            class={cn(
-                'font-bold text-sm text-text-primary capitalize',
-                props.class,
-            )}
-            for={ctx.id()}
-        >
+        <Label class={props.class} for={ctx.id()}>
             {props.children}
-        </label>
+        </Label>
     );
 };
 

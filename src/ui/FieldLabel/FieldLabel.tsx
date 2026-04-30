@@ -1,5 +1,7 @@
 import { type JSX, Show, type VoidComponent } from 'solid-js';
 
+import { Label } from '~/ui/Label';
+
 export type FieldLabelProps = {
     id?: string;
     label: JSX.Element;
@@ -8,16 +10,13 @@ export type FieldLabelProps = {
 
 export const FieldLabel: VoidComponent<FieldLabelProps> = (props) => {
     return (
-        <label
-            class='flex gap-1 font-bold text-sm text-text-primary capitalize'
-            for={props.id}
-        >
+        <Label for={props.id}>
             <span>{props.label}</span>
             <Show when={props.required}>
                 <span class='text-text-danger' title='required'>
                     *
                 </span>
             </Show>
-        </label>
+        </Label>
     );
 };

@@ -19,6 +19,7 @@ import {
 } from '~/icons';
 import { FieldLabel } from '~/ui/FieldLabel';
 import { HelperText } from '~/ui/HelperText';
+import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
 export type InputProps = {
@@ -115,12 +116,9 @@ export const Input = (rawProps: InputProps) => {
                     )}
                 >
                     <Show when={getIcon()}>
-                        <label
-                            class='flex items-center opacity-50 *:size-5'
-                            for={id}
-                        >
+                        <Label class='opacity-50 *:size-5' for={id}>
                             {getIcon()}
-                        </label>
+                        </Label>
                     </Show>
                     <input
                         aria-invalid={Boolean(error())}
