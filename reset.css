@@ -2,6 +2,7 @@
 	:root {
 		color: var(--color-text-primary);
 		background: var(--color-surface-base);
+		accent-color: var(--color-accent);
 	}
 
 	::selection {
