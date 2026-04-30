@@ -99,6 +99,22 @@ export const Info: Story = {
     },
 };
 
+export const Dismissible: Story = {
+    render: () => {
+        return (
+            <Alert
+                description='Alert Description'
+                dismissible
+                title='Alert Title'
+            >
+                <Alert.Action onClick={(dismiss) => dismiss()}>
+                    <IconEditShow /> Show more
+                </Alert.Action>
+            </Alert>
+        );
+    },
+};
+
 export const ExternalTrigger: Story = {
     render: () => {
         const [isOpen, setIsOpen] = createSignal(false);

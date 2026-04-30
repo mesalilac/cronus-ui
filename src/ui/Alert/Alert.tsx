@@ -53,12 +53,16 @@ export type AlertProps = {
     title: string;
     description: string;
     class?: string;
+    dismissible?: boolean;
     children?: JSX.Element;
 };
 
 export const Alert = (rawProps: AlertProps) => {
     const props = mergeProps(
-        { variant: 'default' } satisfies Partial<AlertProps>,
+        {
+            variant: 'default',
+            dismissible: false,
+        } satisfies Partial<AlertProps>,
         rawProps,
     );
     const [isOpen, setInternalIsOpen] = createSignal(props.open ?? true);
@@ -111,11 +115,14 @@ export const Alert = (rawProps: AlertProps) => {
         >
             <Show when={isOpen()}>
                 <AlertContext.Provider
-                    value={{ variant: props.variant, dismiss }}
+                    value={{
+                        variant: props.variant,
+                        dismiss,
+                    }}
                 >
                     <div
                         class={cn(
-                            'flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
+                            'relative flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
                             variantStyles[props.variant],
                             props.class,
                         )}
@@ -146,10 +153,18 @@ export const Alert = (rawProps: AlertProps) => {
                                 </div>
                             </Show>
                         </div>
-                        <IconMenuCloseMd
-                            class='size-6 cursor-pointer'
-                            onClick={dismiss}
-                        />
+                        <Show when={props.dismissible}>
+                            <Button
+                                class={cn(
+                                    'absolute top-1 right-1 text-text-muted',
+                                    props.class,
+                                )}
+                                onClick={() => dismiss()}
+                                variant={'icon'}
+                            >
+                                <IconMenuCloseMd />
+                            </Button>
+                        </Show>
                     </div>
                 </AlertContext.Provider>
             </Show>
