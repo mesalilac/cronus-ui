@@ -33,7 +33,7 @@ export type ProgressbarProps = {
     value: number;
     max?: number;
     class?: string;
-    children: JSX.Element;
+    children?: JSX.Element;
 };
 
 type ProgressbarCompound = {
@@ -64,7 +64,7 @@ export const Progressbar: ProgressbarCompound = (props) => {
             }}
         >
             <div class={cn('flex flex-col gap-2', props.class)}>
-                {props.children}
+                {props.children ?? <ProgressbarBar />}
             </div>
         </ProgressbarContext.Provider>
     );

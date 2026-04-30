@@ -22,6 +22,16 @@ export const Default: Story = {
     render: () => {
         return (
             <div class='size-96'>
+                <Progressbar max={100} value={80} />
+            </div>
+        );
+    },
+};
+
+export const withLabel: Story = {
+    render: () => {
+        return (
+            <div class='size-96'>
                 <Progressbar max={100} value={80}>
                     <Progressbar.Label>Label</Progressbar.Label>
                     <Progressbar.Bar />
