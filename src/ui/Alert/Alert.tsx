@@ -143,7 +143,7 @@ export const Alert = (rawProps: AlertProps) => {
                             </Match>
                         </Switch>
                         <div class='flex w-full flex-col gap-2'>
-                            <h1 class='font-medium'>{props.title}</h1>
+                            <h1 class='font-semibold text-lg'>{props.title}</h1>
                             <p>{props.description}</p>
                             <Show when={props.children}>
                                 <div class='mt-2 flex flex-row items-center gap-2'>
