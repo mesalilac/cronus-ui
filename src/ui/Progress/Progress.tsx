@@ -8,6 +8,7 @@ import {
     useContext,
 } from 'solid-js';
 
+import { Label } from '~/ui/Label';
 import { clamp, cn } from '~/utils';
 
 export const ProgressContext = createContext<{
@@ -79,17 +80,11 @@ const ProgressLabel = (props: ProgressLabelProps) => {
     const ctx = useProgressContext();
 
     return (
-        <label
-            class={cn(
-                'font-bold text-sm text-text-primary capitalize',
-                props.class,
-            )}
-            for={ctx.id()}
-        >
+        <Label class={props.class} for={ctx.id()}>
             {typeof props.children === 'function'
                 ? props.children(ctx.getPercent())
                 : props.children}
-        </label>
+        </Label>
     );
 };
 

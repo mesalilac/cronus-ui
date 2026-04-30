@@ -20,9 +20,17 @@ type Story = StoryObj<StoryComponent>;
 
 export const Default: Story = {
     render: () => {
+        const [value, setValue] = createSignal(0);
+
+        const interval = setInterval(() => {
+            if (value() === 100) clearInterval(interval);
+
+            setValue((prev) => prev + 1);
+        }, 20);
+
         return (
             <div class='size-96'>
-                <Progress max={100} value={80} />
+                <Progress max={100} value={value()} />
             </div>
         );
     },
