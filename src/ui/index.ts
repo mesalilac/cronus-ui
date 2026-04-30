@@ -25,3 +25,4 @@ export * from './ToggleSwitch';
 export * from './Accordion';
 export * from './ShowMore';
 export * from './Progressbar';
+export * from './Skeleton';
