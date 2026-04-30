@@ -85,11 +85,11 @@ export const Alert = (rawProps: AlertProps) => {
     const dismiss = () => setIsOpen(false);
 
     const variantStyles: Record<AlertVariant, string> = {
-        default: cn('bg-surface-3/60 text-text-muted'),
-        success: cn('bg-success/20 text-text-success'),
-        warning: cn('bg-warning/20 text-text-warning'),
-        danger: cn('bg-danger/20 text-text-danger'),
-        info: cn('bg-info/20 text-text-info'),
+        default: cn('bg-surface-3/20 text-text-muted'),
+        success: cn('bg-success/10 text-text-success'),
+        warning: cn('bg-warning/10 text-text-warning'),
+        danger: cn('bg-danger/10 text-text-danger'),
+        info: cn('bg-info/10 text-text-info'),
     };
 
     return (
