@@ -120,7 +120,7 @@ export const Alert = (rawProps: AlertProps) => {
                 >
                     <div
                         class={cn(
-                            'relative flex w-full min-w-80 flex-row gap-4 rounded-default border-current border-l-4 p-4',
+                            'relative flex w-full min-w-80 flex-row gap-4 rounded-r-default border-current border-l-2 p-4',
                             variantStyles[props.variant],
                             props.class,
                         )}
