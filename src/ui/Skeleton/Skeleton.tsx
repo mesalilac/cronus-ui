@@ -9,7 +9,10 @@ export const Skeleton: VoidComponent<SkeletonProps> = (props) => {
 
     return (
         <div
-            class={cn('animate-pulse rounded-md bg-surface-3/80', local.class)}
+            class={cn(
+                'animate-pulse rounded-default bg-surface-3/80',
+                local.class,
+            )}
             data-slot='skeleton'
             {...others}
         />
