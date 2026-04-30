@@ -3,13 +3,13 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Slider } from '~/ui/Slider';
 
-import { Progressbar } from './Progressbar';
+import { Progress } from './Progress';
 
-type StoryComponent = typeof Progressbar;
+type StoryComponent = typeof Progress;
 
 const meta = {
-    title: 'Ui/Progressbar',
-    component: Progressbar,
+    title: 'Ui/Progress',
+    component: Progress,
     parameters: {
         layout: 'centered',
     },
@@ -22,7 +22,7 @@ export const Default: Story = {
     render: () => {
         return (
             <div class='size-96'>
-                <Progressbar max={100} value={80} />
+                <Progress max={100} value={80} />
             </div>
         );
     },
@@ -32,10 +32,10 @@ export const withLabel: Story = {
     render: () => {
         return (
             <div class='size-96'>
-                <Progressbar max={100} value={80}>
-                    <Progressbar.Label>Label</Progressbar.Label>
-                    <Progressbar.Bar />
-                </Progressbar>
+                <Progress max={100} value={80}>
+                    <Progress.Label>Label</Progress.Label>
+                    <Progress.Bar />
+                </Progress>
             </div>
         );
     },
@@ -47,10 +47,10 @@ export const ExternalControl: Story = {
 
         return (
             <div class='flex size-96 flex-col gap-4'>
-                <Progressbar max={100} value={value()}>
-                    <Progressbar.Label>Label</Progressbar.Label>
-                    <Progressbar.Bar />
-                </Progressbar>
+                <Progress max={100} value={value()}>
+                    <Progress.Label>Label</Progress.Label>
+                    <Progress.Bar />
+                </Progress>
                 <Slider max={100} onInput={setValue} value={value()}>
                     <Slider.Input />
                 </Slider>

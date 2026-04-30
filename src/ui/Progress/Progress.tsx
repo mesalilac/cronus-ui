@@ -10,7 +10,7 @@ import {
 
 import { clamp, cn } from '~/utils';
 
-export const ProgressbarContext = createContext<{
+export const ProgressContext = createContext<{
     id: Accessor<string>;
     value: Accessor<number>;
     max: Accessor<number>;
@@ -18,17 +18,17 @@ export const ProgressbarContext = createContext<{
     getPercent: Accessor<number>;
 }>();
 
-export const useProgressbarContext = () => {
-    const context = useContext(ProgressbarContext);
+export const useProgressContext = () => {
+    const context = useContext(ProgressContext);
     if (!context) {
         throw new Error(
-            'useProgressbarContext must be used within the ProgressbarContext provider',
+            'useProgressContext must be used within the ProgressContext provider',
         );
     }
     return context;
 };
 
-export type ProgressbarProps = {
+export type ProgressProps = {
     id?: string;
     value: number;
     max?: number;
@@ -36,14 +36,14 @@ export type ProgressbarProps = {
     children?: JSX.Element;
 };
 
-type ProgressbarCompound = {
-    (props: ProgressbarProps): JSX.Element;
+type ProgressCompound = {
+    (props: ProgressProps): JSX.Element;
 
-    Label: typeof ProgressbarLabel;
-    Bar: typeof ProgressbarBar;
+    Label: typeof ProgressLabel;
+    Bar: typeof ProgressBar;
 };
 
-export const Progressbar: ProgressbarCompound = (props) => {
+export const Progress: ProgressCompound = (props) => {
     const id = createUniqueId();
 
     const getMax = () => props.max ?? 100;
@@ -55,7 +55,7 @@ export const Progressbar: ProgressbarCompound = (props) => {
     });
 
     return (
-        <ProgressbarContext.Provider
+        <ProgressContext.Provider
             value={{
                 id: () => props.id ?? id,
                 value: () => props.value,
@@ -64,19 +64,19 @@ export const Progressbar: ProgressbarCompound = (props) => {
             }}
         >
             <div class={cn('flex flex-col gap-2', props.class)}>
-                {props.children ?? <ProgressbarBar />}
+                {props.children ?? <ProgressBar />}
             </div>
-        </ProgressbarContext.Provider>
+        </ProgressContext.Provider>
     );
 };
 
-type ProgressbarLabelProps = {
+type ProgressLabelProps = {
     class?: string;
     children: JSX.Element | ((percent: number) => JSX.Element);
 };
 
-const ProgressbarLabel = (props: ProgressbarLabelProps) => {
-    const ctx = useProgressbarContext();
+const ProgressLabel = (props: ProgressLabelProps) => {
+    const ctx = useProgressContext();
 
     return (
         <label
@@ -93,12 +93,12 @@ const ProgressbarLabel = (props: ProgressbarLabelProps) => {
     );
 };
 
-type ProgressbarBarProps = {
+type ProgressBarProps = {
     class?: string;
 };
 
-const ProgressbarBar = (props: ProgressbarBarProps) => {
-    const ctx = useProgressbarContext();
+const ProgressBar = (props: ProgressBarProps) => {
+    const ctx = useProgressContext();
 
     return (
         <div class='relative w-full'>
@@ -127,5 +127,5 @@ const ProgressbarBar = (props: ProgressbarBarProps) => {
     );
 };
 
-Progressbar.Label = ProgressbarLabel;
-Progressbar.Bar = ProgressbarBar;
+Progress.Label = ProgressLabel;
+Progress.Bar = ProgressBar;
