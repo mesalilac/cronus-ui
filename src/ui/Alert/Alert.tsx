@@ -30,7 +30,6 @@ export type AlertVariant =
     | 'info';
 
 const AlertContext = createContext<{
-    variant: AlertVariant;
     dismiss: () => void;
 }>();
 
@@ -116,7 +115,6 @@ export const Alert = (rawProps: AlertProps) => {
             <Show when={isOpen()}>
                 <AlertContext.Provider
                     value={{
-                        variant: props.variant,
                         dismiss,
                     }}
                 >
