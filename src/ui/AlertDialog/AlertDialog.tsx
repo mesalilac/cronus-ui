@@ -217,6 +217,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
                     variantStyles[ctx.variant()],
                     props.class,
                 )}
+                closedby='none'
                 ref={dialogRef}
             >
                 {props.children}
