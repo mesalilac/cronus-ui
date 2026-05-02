@@ -3,7 +3,6 @@
 		color: var(--color-text-primary);
 		background: var(--color-surface-base);
 		accent-color: var(--color-accent);
-		scrollbar-gutter: stable;
 	}
 
 	::-webkit-scrollbar {
