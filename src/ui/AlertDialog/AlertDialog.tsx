@@ -204,11 +204,18 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
         }
     });
 
+    const variantStyles: Record<AlertDialogVariant, string> = {
+        default: cn('border-border'),
+        warning: cn('border-warning/40'),
+        danger: cn('border-danger/40'),
+    };
+
     return (
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto w-4/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
+                    'm-auto w-4/12 rounded-default border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
+                    variantStyles[ctx.variant()],
                     props.class,
                 )}
                 ref={dialogRef}
@@ -331,8 +338,14 @@ type AlertDialogCancelProps = {
 };
 
 const AlertDialogCancel = (props: AlertDialogCancelProps) => {
+    const ctx = useAlertDialogContext();
+
     return (
-        <Button class={props.class} variant='ghost'>
+        <Button
+            class={props.class}
+            onClick={() => ctx.closeDialog()}
+            variant='ghost'
+        >
             {props.children ?? 'Cancel'}
         </Button>
     );
@@ -340,12 +353,33 @@ const AlertDialogCancel = (props: AlertDialogCancelProps) => {
 
 type AlertDialogActionProps = {
     class?: string;
+    onClick?: () => void;
     children?: JSX.Element;
 };
 
 const AlertDialogAction = (props: AlertDialogActionProps) => {
+    const ctx = useAlertDialogContext();
+
+    const getVariant: () => ButtonVariant = () => {
+        switch (ctx.variant()) {
+            case 'warning':
+                return 'warning';
+            case 'danger':
+                return 'danger';
+            default:
+                return 'primary';
+        }
+    };
+
     return (
-        <Button class={props.class} variant='outline'>
+        <Button
+            class={props.class}
+            onClick={() => {
+                ctx.closeDialog();
+                props.onClick?.();
+            }}
+            variant={getVariant()}
+        >
             {props.children ?? 'Confirm'}
         </Button>
     );
