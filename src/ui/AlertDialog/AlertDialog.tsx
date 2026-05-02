@@ -208,7 +208,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto size-4/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
+                    'm-auto w-4/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
                     props.class,
                 )}
                 ref={dialogRef}
@@ -246,7 +246,7 @@ const AlertDialogBody = (props: AlertDialogBodyProps) => {
     return (
         <div
             class={cn(
-                'flex flex-col gap-2 overflow-y-auto text-sm text-text-muted',
+                'flex max-h-64 flex-col gap-2 overflow-y-auto text-sm text-text-muted',
                 props.class,
             )}
         >
