@@ -313,7 +313,12 @@ const AlertDialogFooter = (props: AlertDialogFooterProps) => {
     return (
         <div class='mt-auto flex flex-col gap-4'>
             <Separator class='-mx-4 mt-2' />
-            <div class={cn('flex flex-row items-center gap-2', props.class)}>
+            <div
+                class={cn(
+                    'flex flex-row items-center justify-end gap-2',
+                    props.class,
+                )}
+            >
                 {props.children}
             </div>
         </div>
