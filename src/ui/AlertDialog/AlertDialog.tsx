@@ -219,7 +219,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto flex w-4/12 flex-col gap-4 rounded-default border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs',
+                    'm-auto flex w-10/12 flex-col gap-4 rounded-default border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs sm:w-4/12',
                     variantStyles[ctx.variant()],
                     props.class,
                 )}
@@ -239,10 +239,8 @@ type AlertDialogHeaderProps = {
 
 const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
     return (
-        <div class='flex flex-col gap-4'>
-            <div class={cn('flex flex-row items-center gap-2', props.class)}>
-                {props.children}
-            </div>
+        <div class={cn('flex flex-row items-center gap-2', props.class)}>
+            {props.children}
         </div>
     );
 };
@@ -321,15 +319,13 @@ type AlertDialogFooterProps = {
 
 const AlertDialogFooter = (props: AlertDialogFooterProps) => {
     return (
-        <div class='flex flex-col gap-4'>
-            <div
-                class={cn(
-                    'flex flex-row items-center justify-end gap-2',
-                    props.class,
-                )}
-            >
-                {props.children}
-            </div>
+        <div
+            class={cn(
+                'flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end',
+                props.class,
+            )}
+        >
+            {props.children}
         </div>
     );
 };
