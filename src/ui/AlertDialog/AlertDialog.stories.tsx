@@ -25,7 +25,7 @@ export const Default: Story = {
                 <AlertDialog.Content>
                     <AlertDialog.Header>
                         <AlertDialog.Icon />
-                        <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+                        <AlertDialog.Title />
                     </AlertDialog.Header>
                     <AlertDialog.Body>Save Changes</AlertDialog.Body>
                     <AlertDialog.Footer>
@@ -47,7 +47,7 @@ export const Warning: Story = {
                 <AlertDialog.Content>
                     <AlertDialog.Header>
                         <AlertDialog.Icon />
-                        <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+                        <AlertDialog.Title />
                     </AlertDialog.Header>
                     <AlertDialog.Body>
                         Overwrite existing file?
@@ -71,7 +71,7 @@ export const Danger: Story = {
                 <AlertDialog.Content>
                     <AlertDialog.Header>
                         <AlertDialog.Icon />
-                        <AlertDialog.Title>Are you sure?</AlertDialog.Title>
+                        <AlertDialog.Title />
                     </AlertDialog.Header>
                     <AlertDialog.Body>Delete your account?</AlertDialog.Body>
                     <AlertDialog.Footer>

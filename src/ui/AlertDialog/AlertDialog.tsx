@@ -304,7 +304,7 @@ const AlertDialogTitle = (props: AlertDialogTitleProps) => {
                 props.class,
             )}
         >
-            {props.children}
+            {props.children ?? 'Are you sure?'}
         </h1>
     );
 };
