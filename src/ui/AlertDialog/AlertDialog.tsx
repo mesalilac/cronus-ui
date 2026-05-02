@@ -352,6 +352,7 @@ const AlertDialogCancel = (props: AlertDialogCancelProps) => {
 type AlertDialogActionProps = {
     class?: string;
     onClick?: () => void;
+    variant?: ButtonVariant;
     children?: JSX.Element;
 };
 
@@ -359,6 +360,8 @@ const AlertDialogAction = (props: AlertDialogActionProps) => {
     const ctx = useAlertDialogContext();
 
     const getVariant: () => ButtonVariant = () => {
+        if (props.variant) return props.variant;
+
         switch (ctx.variant()) {
             case 'warning':
                 return 'warning';
