@@ -112,8 +112,14 @@ type AlertDialogTriggerProps = {
 };
 
 const AlertDialogTrigger = (props: AlertDialogTriggerProps) => {
+    const ctx = useAlertDialogContext();
+
     return (
-        <Button class={props.class} variant={props.variant}>
+        <Button
+            class={props.class}
+            onClick={() => ctx.setIsOpen(true)}
+            variant={props.variant}
+        >
             {props.children}
         </Button>
     );
