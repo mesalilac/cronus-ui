@@ -220,9 +220,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
                 )}
                 ref={dialogRef}
             >
-                <div class='flex h-full w-full flex-col gap-2'>
-                    {props.children}
-                </div>
+                {props.children}
             </dialog>
         </Portal>
     );
