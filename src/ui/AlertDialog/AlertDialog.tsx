@@ -22,7 +22,6 @@ import {
     IconWarningTriangleWarning,
 } from '~/icons';
 import { Button, type ButtonVariant } from '~/ui/Button';
-import { Separator } from '~/ui/Separator';
 import { cn } from '~/utils';
 
 type AlertDialogVariant = 'default' | 'warning' | 'danger';
