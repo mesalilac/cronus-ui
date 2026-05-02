@@ -296,7 +296,7 @@ const AlertDialogIcon = (props: AlertDialogIconProps) => {
 
 type AlertDialogTitleProps = {
     class?: string;
-    children?: JSX.Element;
+    children: JSX.Element;
 };
 
 const AlertDialogTitle = (props: AlertDialogTitleProps) => {
@@ -307,7 +307,7 @@ const AlertDialogTitle = (props: AlertDialogTitleProps) => {
                 props.class,
             )}
         >
-            {props.children ?? 'Are you sure?'}
+            {props.children}
         </h1>
     );
 };
