@@ -219,7 +219,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto flex w-10/12 flex-col gap-4 rounded-default border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/5 backdrop:backdrop-blur-xs sm:w-4/12',
+                    'm-auto flex w-10/12 flex-col gap-4 rounded-default border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/50 backdrop:backdrop-blur-xs sm:w-4/12',
                     variantStyles[ctx.variant()],
                     props.class,
                 )}
