@@ -27,3 +27,4 @@ export * from './Textarea';
 export * from './ToggleGroup';
 export * from './ToggleSwitch';
 export * from './Label';
+export * from './AlertDialog';
