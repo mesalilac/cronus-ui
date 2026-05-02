@@ -17,12 +17,20 @@ type Story = StoryObj<typeof Accordion>;
 const PlaceholderContent: VoidComponent = () => {
     return (
         <>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut varius
-            tellus vehicula, gravida leo sit amet, interdum arcu. Sed nec nunc
-            in urna vehicula varius vel nec ex. Integer nec imperdiet dolor, id
-            blandit augue. Cras sit amet felis ante. Proin vitae sodales ipsum.
-            Aenean pellentesque lacus turpis, in feugiat enim eleifend eget.
-            Nunc egestas laoreet mi, id venenatis nisl eleifend vel.
+            Id tempor labore tempor in nisi eiusmod laborum veniam enim
+            consectetur cillum sunt eu. Cillum laborum ex irure amet aliquip
+            labore id anim ex dolor magna occaecat amet dolore. Deserunt fugiat
+            duis do nostrud nisi magna non exercitation ad culpa mollit enim
+            labore in. Officia aliquip id non labore minim labore amet velit
+            reprehenderit eu anim ad. Eu non eiusmod aliquip velit officia
+            consequat sunt. Aute reprehenderit exercitation nulla excepteur non
+            irure irure quis nostrud. Sunt eu ullamco eiusmod elit nisi
+            consectetur consectetur cupidatat. Quis consequat laboris labore
+            aliquip dolor velit adipisicing ea officia magna. Qui laboris
+            consectetur voluptate nostrud deserunt voluptate. Quis deserunt ad
+            aliquip incididunt non anim consectetur magna quis adipisicing
+            officia. Eu minim magna sit esse consequat aliqua ut officia
+            reprehenderit incididunt et tempor pariatur.
         </>
     );
 };

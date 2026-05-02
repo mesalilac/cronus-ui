@@ -130,7 +130,7 @@ const CollapsibleContent = (props: CollapsibleContentProps) => {
             <Separator class='starting:w-0 w-full border-accent transition-[width] duration-200' />
             <div
                 class={cn(
-                    'rounded-b-default px-4 py-2 text-sm text-text-secondary',
+                    'max-h-48 overflow-y-auto rounded-b-default px-4 py-2 text-sm text-text-secondary',
                     props.class,
                 )}
                 data-slot='content'
