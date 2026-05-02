@@ -138,8 +138,11 @@
 
 	*,
 	*::before,
-	*::after {
+	*::after,
+	*::backdrop,
+	*::file-selector-button {
 		box-sizing: border-box;
+		border: 0 solid;
 		min-width: 0;
 	}
 
