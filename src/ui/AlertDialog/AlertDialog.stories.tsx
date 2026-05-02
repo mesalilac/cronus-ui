@@ -27,11 +27,7 @@ export const Default: Story = {
                         <AlertDialog.Icon />
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
-                    <AlertDialog.Body>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
-                    </AlertDialog.Body>
+                    <AlertDialog.Body>Save Changes</AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
                         <AlertDialog.Action />
@@ -54,9 +50,7 @@ export const Warning: Story = {
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
                     <AlertDialog.Body>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
+                        Overwrite existing file?
                     </AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
@@ -79,11 +73,7 @@ export const Danger: Story = {
                         <AlertDialog.Icon />
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
-                    <AlertDialog.Body>
-                        This action cannot be undone. This will permanently
-                        delete your account and remove your data from our
-                        servers.
-                    </AlertDialog.Body>
+                    <AlertDialog.Body>Delete your account?</AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
                         <AlertDialog.Action />
