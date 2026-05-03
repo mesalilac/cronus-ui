@@ -22,35 +22,35 @@ type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
     args: {
-        variant: 'primary',
+        appearance: 'primary',
         children: 'Text',
     },
 };
 
 export const Secondary: Story = {
     args: {
-        variant: 'secondary',
+        appearance: 'secondary',
         children: 'Text',
     },
 };
 
 export const Success: Story = {
     args: {
-        variant: 'success',
+        appearance: 'success',
         children: 'Text',
     },
 };
 
 export const Danger: Story = {
     args: {
-        variant: 'danger',
+        appearance: 'danger',
         children: 'Text',
     },
 };
 
 export const Warning: Story = {
     args: {
-        variant: 'warning',
+        appearance: 'warning',
         children: 'Text',
     },
 };
@@ -64,7 +64,8 @@ export const Ghost: Story = {
 
 export const Icon: Story = {
     args: {
-        variant: 'icon',
+        variant: 'ghost',
+        size: 'icon',
         children: <IconInterfaceSettings />,
     },
 };
@@ -78,7 +79,7 @@ export const Outline: Story = {
 
 export const Label: Story = {
     args: {
-        variant: 'secondary',
+        appearance: 'secondary',
         label: 'Label Text',
         children: 'Text',
     },
@@ -86,7 +87,7 @@ export const Label: Story = {
 
 export const Loading: Story = {
     args: {
-        variant: 'primary',
+        appearance: 'primary',
         loading: true,
         children: 'Text',
     },
@@ -94,7 +95,7 @@ export const Loading: Story = {
 
 export const Disabled: Story = {
     args: {
-        variant: 'primary',
+        appearance: 'primary',
         disabled: true,
         children: 'Text',
     },
