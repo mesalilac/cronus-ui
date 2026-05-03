@@ -11,16 +11,16 @@ import {
 import { Badge } from '~/ui/Badge';
 import { cn } from '~/utils';
 
-export type ButtonVariant =
+export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
+
+export type ButtonAppearance =
     | 'primary'
     | 'secondary'
     | 'success'
-    | 'danger'
     | 'warning'
-    | 'info'
-    | 'ghost'
-    | 'icon'
-    | 'outline';
+    | 'danger';
+
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 export interface ButtonProps
     extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -55,9 +55,28 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         danger: cn('bg-danger/30 text-text-danger outline-current/30'),
         warning: cn('bg-warning/30 text-text-warning outline-current/30'),
         info: cn('bg-info/30 text-text-info outline-current/30'),
-        ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
-        icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
-        outline: cn('active:bg-surface-3'),
+        // ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
+        // icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
+        // outline: cn('active:bg-surface-3'),
+    };
+
+    const buttonStyle = (): string => {
+        switch (props.variant) {
+            case 'primary':
+                break;
+            case 'secondary':
+                break;
+            case 'info':
+                break;
+            case 'success':
+                break;
+            case 'warning':
+                break;
+            case 'dangerv':
+                break;
+        }
+
+        return '';
     };
 
     return (
