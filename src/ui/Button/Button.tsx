@@ -28,6 +28,7 @@ export interface ButtonProps
     extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;
+    size?: ButtonSize;
     label?: JSX.Element;
     loading?: boolean;
     children: JSX.Element;
