@@ -64,7 +64,7 @@ export const Content = (rawProps: SelectContentProps) => {
         >
             <div
                 class={cn(
-                    'mt-1 mb-1 flex max-h-80 flex-col gap-1 overflow-y-auto overscroll-contain rounded-default border border-border bg-surface-2 p-2 text-text-primary shadow-default',
+                    'mt-1 mb-1 max-h-80 overflow-y-auto overscroll-contain rounded-default border border-border bg-surface-2 text-text-primary shadow-default',
                     props.class,
                 )}
                 ref={divRef}
@@ -72,7 +72,7 @@ export const Content = (rawProps: SelectContentProps) => {
                     'min-width': triggerWidth(),
                 }}
             >
-                {props.children}
+                <div class='flex flex-col gap-1 p-2'>{props.children}</div>
             </div>
         </Popover>
     );
