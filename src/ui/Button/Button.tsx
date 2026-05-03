@@ -22,9 +22,12 @@ export type ButtonAppearance =
 
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
+type ButtonStyle = Record<ButtonAppearance, Record<ButtonVariant, string>>;
+
 export interface ButtonProps
     extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant;
+    appearance?: ButtonAppearance;
     label?: JSX.Element;
     loading?: boolean;
     children: JSX.Element;
@@ -32,7 +35,10 @@ export interface ButtonProps
 
 export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     const props = mergeProps(
-        { variant: 'secondary' as ButtonVariant },
+        {
+            appearance: 'secondary',
+            variant: 'solid',
+        } satisfies Partial<ButtonProps>,
         rawProps,
     );
 
@@ -40,6 +46,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         'class',
         'disabled',
         'variant',
+        'appearance',
         'label',
         'loading',
     ]);
@@ -48,35 +55,54 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         'flex cursor-pointer items-center gap-2 rounded-default px-4 py-2 font-medium text-sm text-text-primary leading-5 outline outline-border-strong transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
     );
 
-    const variantStyles: Record<ButtonVariant, string> = {
-        primary: cn('bg-accent outline-none'),
-        secondary: cn('bg-surface-3'),
-        success: cn('bg-success/30 text-text-success outline-current/30'),
-        danger: cn('bg-danger/30 text-text-danger outline-current/30'),
-        warning: cn('bg-warning/30 text-text-warning outline-current/30'),
-        info: cn('bg-info/30 text-text-info outline-current/30'),
-        // ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
-        // icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
-        // outline: cn('active:bg-surface-3'),
-    };
+    // const variantStyles: Record<ButtonVariant, string> = {
+    //     primary: cn('bg-accent outline-none'),
+    //     secondary: cn('bg-surface-3'),
+    //     success: cn('bg-success/30 text-text-success outline-current/30'),
+    //     danger: cn('bg-danger/30 text-text-danger outline-current/30'),
+    //     warning: cn('bg-warning/30 text-text-warning outline-current/30'),
+    //     info: cn('bg-info/30 text-text-info outline-current/30'),
+    //     // ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
+    //     // icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
+    //     // outline: cn('active:bg-surface-3'),
+    // };
 
-    const buttonStyle = (): string => {
-        switch (props.variant) {
-            case 'primary':
-                break;
-            case 'secondary':
-                break;
-            case 'info':
-                break;
-            case 'success':
-                break;
-            case 'warning':
-                break;
-            case 'dangerv':
-                break;
-        }
-
-        return '';
+    const buttonStyle: ButtonStyle = {
+        primary: {
+            solid: cn(''),
+            soft: cn(''),
+            outline: cn(''),
+            ghost: cn(''),
+            link: cn(''),
+        },
+        secondary: {
+            solid: cn(''),
+            soft: cn(''),
+            outline: cn(''),
+            ghost: cn(''),
+            link: cn(''),
+        },
+        success: {
+            solid: cn(''),
+            soft: cn(''),
+            outline: cn(''),
+            ghost: cn(''),
+            link: cn(''),
+        },
+        warning: {
+            solid: cn(''),
+            soft: cn(''),
+            outline: cn(''),
+            ghost: cn(''),
+            link: cn(''),
+        },
+        danger: {
+            solid: cn(''),
+            soft: cn(''),
+            outline: cn(''),
+            ghost: cn(''),
+            link: cn(''),
+        },
     };
 
     return (
@@ -85,7 +111,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                 <button
                     class={cn(
                         baseStyles,
-                        variantStyles[local.variant],
+                        buttonStyle[local.appearance][local.variant],
                         local.class,
                     )}
                     disabled
@@ -116,7 +142,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                 <button
                     class={cn(
                         baseStyles,
-                        variantStyles[local.variant],
+                        buttonStyle[local.appearance][local.variant],
                         local.class,
                     )}
                     disabled={local.disabled}
