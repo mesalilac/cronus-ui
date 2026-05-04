@@ -21,7 +21,7 @@ type Story = StoryObj<StoryComponent>;
 export const Default: Story = {
     render: () => {
         return (
-            <div class='flex size-96 flex-col gap-4'>
+            <div class='flex flex-col gap-4'>
                 <ButtonGroup>
                     <Button variant='outline'>Archive</Button>
                     <Button variant='outline'>Report</Button>
