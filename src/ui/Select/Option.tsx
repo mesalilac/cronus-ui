@@ -22,7 +22,10 @@ export const Option = (props: SelectOptionProps) => {
     return (
         <Button
             appearance={isSelected() ? 'primary' : 'secondary'}
-            class={cn('justify-between text-nowrap', props.class)}
+            class={cn(
+                'justify-between text-nowrap text-text-secondary',
+                props.class,
+            )}
             disabled={props.disabled}
             onClick={() => {
                 ctx.onChange(props.value);

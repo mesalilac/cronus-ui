@@ -4,6 +4,7 @@ import { Transition } from 'solid-transition-group';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
 import { Button } from '~/ui/Button';
+import { Label } from '~/ui/Label';
 
 export type SelectOptionGroupProps = {
     label: string;
@@ -43,9 +44,7 @@ export const OptionGroup = (props: SelectOptionGroupProps) => {
                 >
                     <IconArrowCaretUpMd size='1.5em' />
                 </Show>
-                <span class='font-bold text-sm text-text-muted uppercase'>
-                    {props.label}
-                </span>
+                <Label>{props.label}</Label>
             </Button>
             <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
                 <Show when={isOpen()}>
