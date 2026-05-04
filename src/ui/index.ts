@@ -29,3 +29,4 @@ export * from './ToggleSwitch';
 export * from './Label';
 export * from './AlertDialog';
 export * from './Spinner';
+export * from './ButtonGroup';
