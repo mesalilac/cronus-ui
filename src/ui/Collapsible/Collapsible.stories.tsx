@@ -59,8 +59,8 @@ export const ExternalControl: Story = {
         return (
             <div class='flex size-96 flex-col gap-2'>
                 <Button
+                    appearance='primary'
                     onClick={() => setIsOpen((prev) => !prev)}
-                    variant='primary'
                 >
                     External Control
                 </Button>

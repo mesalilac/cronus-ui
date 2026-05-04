@@ -111,8 +111,11 @@ export const customTrigger: Story = {
                     <ShowMore.Trigger>
                         {(isExpanded, setIsExpanded) => (
                             <Button
+                                appearance={
+                                    isExpanded ? 'secondary' : 'primary'
+                                }
                                 onClick={() => setIsExpanded((prev) => !prev)}
-                                variant={isExpanded ? 'outline' : 'primary'}
+                                variant={isExpanded ? 'outline' : 'solid'}
                             >
                                 <Show
                                     fallback={<>Read More</>}

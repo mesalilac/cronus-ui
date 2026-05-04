@@ -80,8 +80,8 @@ export const ExternalControl: Story = {
                 </Banner>
                 <div class='flex items-center gap-1'>
                     <Button
+                        appearance={open() ? 'secondary' : 'primary'}
                         onClick={() => setOpen((prev) => !prev)}
-                        variant={open() ? 'secondary' : 'primary'}
                     >
                         Show Banner ({open() ? 'Hide' : 'Open'})
                     </Button>
@@ -115,8 +115,8 @@ export const AutoDismiss: Story = {
                 </Banner>
                 <div class='flex items-center gap-1'>
                     <Button
+                        appearance={open() ? 'secondary' : 'primary'}
                         onClick={() => setOpen((prev) => !prev)}
-                        variant={open() ? 'secondary' : 'primary'}
                     >
                         Show Banner ({open() ? 'Hide' : 'Open'})
                     </Button>
