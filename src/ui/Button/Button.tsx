@@ -1,10 +1,9 @@
 import {
     createMemo,
     type JSX,
-    Match,
     mergeProps,
     type ParentComponent,
-    Switch,
+    Show,
     splitProps,
 } from 'solid-js';
 
@@ -118,29 +117,16 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     );
 
     return (
-        <Switch>
-            <Match when={local.loading}>
-                <button
-                    class={cn(buttonStyle(), local.class)}
-                    disabled
-                    {...others}
-                    type='button'
-                >
-                    <Spinner />
-                    Loading...
-                </button>
-            </Match>
-
-            <Match when={!local.loading}>
-                <button
-                    class={cn(buttonStyle(), local.class)}
-                    disabled={local.disabled}
-                    type='button'
-                    {...others}
-                >
-                    {props.children}
-                </button>
-            </Match>
-        </Switch>
+        <button
+            class={cn(buttonStyle(), local.class)}
+            disabled={local.loading || local.disabled}
+            type='button'
+            {...others}
+        >
+            <Show fallback={props.children} when={local.loading}>
+                <Spinner />
+                Loading...
+            </Show>
+        </button>
     );
 };
