@@ -66,6 +66,30 @@ export const Secondary: Story = {
     },
 };
 
+export const Info: Story = {
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='info' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='info' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='info' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='info' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='info' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
+    },
+};
+
 export const Success: Story = {
     render: () => {
         return (

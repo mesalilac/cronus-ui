@@ -16,6 +16,7 @@ export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
 export type ButtonAppearance =
     | 'primary'
     | 'secondary'
+    | 'info'
     | 'success'
     | 'warning'
     | 'danger';
@@ -79,6 +80,13 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
             outline: cn('bg-surface-3/10 outline outline-surface-3'),
             ghost: cn('hover:bg-surface-3/10'),
             link: cn('hover:underline'),
+        },
+        info: {
+            solid: cn('bg-info/80'),
+            soft: cn('bg-info/30 text-info'),
+            outline: cn('bg-info/10 text-info outline outline-info'),
+            ghost: cn('text-info hover:bg-info/10'),
+            link: cn('text-info hover:underline'),
         },
         success: {
             solid: cn('bg-success/80'),
