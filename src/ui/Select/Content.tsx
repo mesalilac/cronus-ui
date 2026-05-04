@@ -70,6 +70,7 @@ export const Content = (rawProps: SelectContentProps) => {
                 ref={divRef}
                 style={{
                     'min-width': triggerWidth(),
+                    'max-width': triggerWidth(),
                 }}
             >
                 <div class='flex flex-col gap-1 p-2'>{props.children}</div>
