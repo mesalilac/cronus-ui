@@ -88,18 +88,22 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
                     value={internalInput()}
                 >
                     <Button
+                        appearance='success'
                         class='p-2'
                         data-slot='save'
                         onClick={handleSave}
-                        variant='success'
+                        size='icon'
+                        variant='ghost'
                     >
                         <IconInterfaceCheck />
                     </Button>
                     <Button
+                        appearance='secondary'
                         class='p-2'
                         data-slot='cancel'
                         onClick={handleCancel}
-                        variant='secondary'
+                        size='icon'
+                        variant='ghost'
                     >
                         <IconMenuCloseMd />
                     </Button>

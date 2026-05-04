@@ -37,9 +37,10 @@ export const Searchbar = (props: SelectSearchbarProps) => {
                 }
             >
                 <Button
+                    appearance='primary'
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
-                    variant='primary'
+                    variant='soft'
                 >
                     <IconEditAddPlus />
                 </Button>

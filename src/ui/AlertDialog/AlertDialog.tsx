@@ -21,7 +21,7 @@ import {
     IconWarningInfo,
     IconWarningTriangleWarning,
 } from '~/icons';
-import { Button, type ButtonVariant } from '~/ui/Button';
+import { Button, type ButtonProps } from '~/ui/Button';
 import { cn } from '~/utils';
 
 type AlertDialogVariant = 'default' | 'warning' | 'danger';
@@ -107,15 +107,15 @@ export const AlertDialog: AlertDialogCompound = (rawProps) => {
 
 type AlertDialogTriggerProps = {
     class?: string;
-    variant?: ButtonVariant;
     children: JSX.Element;
-};
+} & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 const AlertDialogTrigger = (props: AlertDialogTriggerProps) => {
     const ctx = useAlertDialogContext();
 
     return (
         <Button
+            appearance={props.appearance}
             class={props.class}
             onClick={() => ctx.setIsOpen(true)}
             variant={props.variant}
@@ -352,34 +352,21 @@ const AlertDialogCancel = (props: AlertDialogCancelProps) => {
 type AlertDialogActionProps = {
     class?: string;
     onClick?: () => void;
-    variant?: ButtonVariant;
     children?: JSX.Element;
-};
+} & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 const AlertDialogAction = (props: AlertDialogActionProps) => {
     const ctx = useAlertDialogContext();
 
-    const getVariant: () => ButtonVariant = () => {
-        if (props.variant) return props.variant;
-
-        switch (ctx.variant()) {
-            case 'warning':
-                return 'warning';
-            case 'danger':
-                return 'danger';
-            default:
-                return 'primary';
-        }
-    };
-
     return (
         <Button
+            appearance={props.appearance}
             class={props.class}
             onClick={() => {
                 ctx.closeDialog();
                 props.onClick?.();
             }}
-            variant={getVariant()}
+            variant={props.variant ?? 'outline'}
         >
             {props.children ?? 'Confirm'}
         </Button>

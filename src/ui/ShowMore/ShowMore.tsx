@@ -142,7 +142,7 @@ const ShowMoreTrigger = (props: ShowMoreTriggerProps) => {
             <Button
                 class={cn('justify-center', props.class)}
                 onClick={() => ctx.setIsExpanded((prev) => !prev)}
-                variant={ctx.isExpanded() ? 'outline' : 'secondary'}
+                variant={ctx.isExpanded() ? 'outline' : 'solid'}
             >
                 <Show fallback={<>Show More</>} when={ctx.isExpanded()}>
                     Show less

@@ -158,7 +158,8 @@ export const Alert = (rawProps: AlertProps) => {
                                     props.class,
                                 )}
                                 onClick={() => dismiss()}
-                                variant={'icon'}
+                                size='icon'
+                                variant='ghost'
                             >
                                 <IconMenuCloseMd />
                             </Button>

@@ -1,4 +1,4 @@
-import { type JSX, mergeProps } from 'solid-js';
+import type { JSX } from 'solid-js';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
 import { Button, type ButtonProps } from '~/ui/Button';
@@ -6,22 +6,18 @@ import { cn } from '~/utils';
 
 import { useSelectContext } from './context';
 
-export interface SelectTriggerProps extends Pick<ButtonProps, 'variant'> {
+export type SelectTriggerProps = {
     class?: string;
     disabled?: boolean;
     children?: JSX.Element;
-}
+} & Pick<ButtonProps, 'variant' | 'appearance'>;
 
-export const Trigger = (rawProps: SelectTriggerProps) => {
-    const props = mergeProps(
-        { variant: 'secondary' } satisfies SelectTriggerProps,
-        rawProps,
-    );
-
+export const Trigger = (props: SelectTriggerProps) => {
     const ctx = useSelectContext();
 
     return (
         <Button
+            appearance={props.appearance}
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(

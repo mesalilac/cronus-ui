@@ -165,7 +165,8 @@ export const Banner: Component<BannerProps> = (rawProps) => {
                                 <Button
                                     class='text-inherit opacity-60'
                                     onClick={dismiss}
-                                    variant='icon'
+                                    size='icon'
+                                    variant='ghost'
                                 >
                                     <IconMenuCloseMd class='size-5' />
                                 </Button>

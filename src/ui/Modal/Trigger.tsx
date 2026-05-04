@@ -1,4 +1,4 @@
-import { type JSX, mergeProps, splitProps } from 'solid-js';
+import { type JSX, splitProps } from 'solid-js';
 
 import { Button, type ButtonProps } from '~/ui/Button';
 import { cn } from '~/utils';
@@ -9,14 +9,9 @@ export type ModalTriggerProps = {
     class?: string;
     disabled?: boolean;
     children: JSX.Element;
-} & Pick<ButtonProps, 'variant' | 'label'>;
+} & Pick<ButtonProps, 'variant' | 'label' | 'appearance'>;
 
-export const Trigger = (rawProps: ModalTriggerProps) => {
-    const props = mergeProps(
-        { variant: 'secondary' } as ModalTriggerProps,
-        rawProps,
-    );
-
+export const Trigger = (props: ModalTriggerProps) => {
     const [local, others] = splitProps(props, ['class', 'children']);
 
     const ctx = useModalContext();

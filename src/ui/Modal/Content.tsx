@@ -3,7 +3,7 @@ import { createEffect, type JSX, onCleanup, onMount } from 'solid-js';
 import { Portal } from 'solid-js/web';
 
 import { IconMenuCloseMd } from '~/icons';
-import { Button, type ButtonProps } from '~/ui/Button';
+import { Button } from '~/ui/Button';
 import { useModalContext } from '~/ui/Modal/context';
 import { cn } from '~/utils';
 
@@ -112,7 +112,7 @@ export const Content = (props: ModalContentProps) => {
 export type ModalCloseButtonProps = {
     class?: string;
     children?: JSX.Element;
-} & Pick<ButtonProps, 'variant'>;
+};
 
 export const CloseButton = (props: ModalCloseButtonProps) => {
     const ctx = useModalContext();
@@ -121,7 +121,8 @@ export const CloseButton = (props: ModalCloseButtonProps) => {
         <Button
             class={cn('absolute top-1 right-1', props.class)}
             onClick={() => ctx.closeModal()}
-            variant={props.variant ?? 'icon'}
+            size='icon'
+            variant={'ghost'}
         >
             {props.children ?? <IconMenuCloseMd />}
         </Button>

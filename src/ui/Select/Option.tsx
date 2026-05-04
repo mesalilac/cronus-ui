@@ -21,6 +21,7 @@ export const Option = (props: SelectOptionProps) => {
 
     return (
         <Button
+            appearance={isSelected() ? 'primary' : 'secondary'}
             class={cn('justify-between text-nowrap', props.class)}
             disabled={props.disabled}
             onClick={() => {
@@ -28,7 +29,7 @@ export const Option = (props: SelectOptionProps) => {
 
                 if (ctx.autoClose) ctx.setIsOpen(false);
             }}
-            variant={isSelected() ? 'primary' : 'ghost'}
+            variant={isSelected() ? 'solid' : 'outline'}
         >
             <div class='flex gap-1'>{props.children}</div>
             <Show when={isSelected()}>

@@ -100,7 +100,7 @@ export const WithExternalButton: Story = {
                     <span>Volume</span>
                 </Slider.Label>
                 <div class='flex items-center gap-1'>
-                    <Button onClick={toggleMute} variant='icon'>
+                    <Button onClick={toggleMute} size='icon' variant='ghost'>
                         <Switch>
                             <Match when={value() === 0}>
                                 <IconMediaVolumeOff class='size-5' />

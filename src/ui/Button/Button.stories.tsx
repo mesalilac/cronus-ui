@@ -1,8 +1,6 @@
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceSettings } from '~/icons';
-
 import { Button } from './Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -21,64 +19,173 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-    args: {
-        variant: 'primary',
-        children: 'Text',
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='primary' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='primary' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='primary' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='primary' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='primary' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
     },
 };
 
 export const Secondary: Story = {
-    args: {
-        variant: 'secondary',
-        children: 'Text',
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='secondary' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='secondary' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='secondary' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='secondary' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='secondary' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
+    },
+};
+
+export const Info: Story = {
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='info' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='info' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='info' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='info' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='info' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
     },
 };
 
 export const Success: Story = {
-    args: {
-        variant: 'success',
-        children: 'Text',
-    },
-};
-
-export const Danger: Story = {
-    args: {
-        variant: 'danger',
-        children: 'Text',
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='success' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='success' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='success' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='success' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='success' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
     },
 };
 
 export const Warning: Story = {
-    args: {
-        variant: 'warning',
-        children: 'Text',
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='warning' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='warning' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='warning' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='warning' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='warning' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
     },
 };
 
-export const Ghost: Story = {
-    args: {
-        variant: 'ghost',
-        children: 'Text',
+export const Danger: Story = {
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='danger' variant='solid'>
+                    Solid
+                </Button>
+                <Button appearance='danger' variant='soft'>
+                    Soft
+                </Button>
+                <Button appearance='danger' variant='outline'>
+                    Outline
+                </Button>
+                <Button appearance='danger' variant='ghost'>
+                    Ghost
+                </Button>
+                <Button appearance='danger' variant='link'>
+                    Link
+                </Button>
+            </div>
+        );
     },
 };
 
-export const Icon: Story = {
-    args: {
-        variant: 'icon',
-        children: <IconInterfaceSettings />,
-    },
-};
-
-export const Outline: Story = {
-    args: {
-        variant: 'outline',
-        children: 'Text',
+export const Size: Story = {
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='secondary' size='sm' variant='solid'>
+                    Sm
+                </Button>
+                <Button appearance='secondary' size='md' variant='solid'>
+                    Md
+                </Button>
+                <Button appearance='secondary' size='lg' variant='solid'>
+                    Lg
+                </Button>
+                <Button appearance='secondary' size='icon' variant='solid'>
+                    Icon
+                </Button>
+            </div>
+        );
     },
 };
 
 export const Label: Story = {
     args: {
-        variant: 'secondary',
+        appearance: 'secondary',
         label: 'Label Text',
         children: 'Text',
     },
@@ -86,7 +193,7 @@ export const Label: Story = {
 
 export const Loading: Story = {
     args: {
-        variant: 'primary',
+        appearance: 'primary',
         loading: true,
         children: 'Text',
     },
@@ -94,7 +201,7 @@ export const Loading: Story = {
 
 export const Disabled: Story = {
     args: {
-        variant: 'primary',
+        appearance: 'primary',
         disabled: true,
         children: 'Text',
     },

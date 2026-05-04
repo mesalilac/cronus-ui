@@ -11,20 +11,25 @@ import {
 import { Badge } from '~/ui/Badge';
 import { cn } from '~/utils';
 
-export type ButtonVariant =
+export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
+
+export type ButtonAppearance =
     | 'primary'
     | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
     | 'info'
-    | 'ghost'
-    | 'icon'
-    | 'outline';
+    | 'success'
+    | 'warning'
+    | 'danger';
+
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
+
+type ButtonStyle = Record<ButtonAppearance, Record<ButtonVariant, string>>;
 
 export interface ButtonProps
     extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ButtonVariant;
+    appearance?: ButtonAppearance;
+    size?: ButtonSize;
     label?: JSX.Element;
     loading?: boolean;
     children: JSX.Element;
@@ -32,7 +37,11 @@ export interface ButtonProps
 
 export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     const props = mergeProps(
-        { variant: 'secondary' as ButtonVariant },
+        {
+            appearance: 'secondary',
+            variant: 'solid',
+            size: 'md',
+        } satisfies Partial<ButtonProps>,
         rawProps,
     );
 
@@ -40,24 +49,66 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         'class',
         'disabled',
         'variant',
+        'appearance',
+        'size',
         'label',
         'loading',
     ]);
 
     const baseStyles = cn(
-        'flex cursor-pointer items-center gap-2 rounded-default px-4 py-2 font-medium text-sm text-text-primary leading-5 outline outline-border-strong transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
+        'flex cursor-pointer items-center gap-2 rounded-default font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-90 disabled:pointer-events-none disabled:opacity-60',
     );
 
-    const variantStyles: Record<ButtonVariant, string> = {
-        primary: cn('bg-accent outline-none'),
-        secondary: cn('bg-surface-3'),
-        success: cn('bg-success/30 text-text-success outline-current/30'),
-        danger: cn('bg-danger/30 text-text-danger outline-current/30'),
-        warning: cn('bg-warning/30 text-text-warning outline-current/30'),
-        info: cn('bg-info/30 text-text-info outline-current/30'),
-        ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
-        icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
-        outline: cn('active:bg-surface-3'),
+    const buttonSize: Record<ButtonSize, string> = {
+        sm: 'p-1',
+        md: 'px-4 py-2',
+        lg: 'px-6 py-2',
+        icon: 'p-2',
+    };
+
+    const buttonStyle: ButtonStyle = {
+        primary: {
+            solid: cn('bg-accent'),
+            soft: cn('bg-accent/30'),
+            outline: cn('bg-accent/10 text-accent outline outline-accent'),
+            ghost: cn('text-accent hover:bg-accent/10'),
+            link: cn('text-accent hover:underline'),
+        },
+        secondary: {
+            solid: cn('bg-surface-3/80'),
+            soft: cn('bg-surface-3/30'),
+            outline: cn('bg-surface-3/10 outline outline-surface-3'),
+            ghost: cn('hover:bg-surface-3/10'),
+            link: cn('hover:underline'),
+        },
+        info: {
+            solid: cn('bg-info/80'),
+            soft: cn('bg-info/30 text-info'),
+            outline: cn('bg-info/10 text-info outline outline-info'),
+            ghost: cn('text-info hover:bg-info/10'),
+            link: cn('text-info hover:underline'),
+        },
+        success: {
+            solid: cn('bg-success/80'),
+            soft: cn('bg-success/30 text-success'),
+            outline: cn('bg-success/10 text-success outline outline-success'),
+            ghost: cn('text-success hover:bg-success/10'),
+            link: cn('text-success hover:underline'),
+        },
+        warning: {
+            solid: cn('bg-warning/80'),
+            soft: cn('bg-warning/30 text-warning'),
+            outline: cn('bg-warning/10 text-warning outline outline-warning'),
+            ghost: cn('text-warning hover:bg-warning/10'),
+            link: cn('text-warning hover:underline'),
+        },
+        danger: {
+            solid: cn('bg-danger/80'),
+            soft: cn('bg-danger/30 text-danger'),
+            outline: cn('bg-danger/10 text-danger outline outline-danger'),
+            ghost: cn('text-danger hover:bg-danger/10'),
+            link: cn('text-danger hover:underline'),
+        },
     };
 
     return (
@@ -66,7 +117,8 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                 <button
                     class={cn(
                         baseStyles,
-                        variantStyles[local.variant],
+                        buttonStyle[local.appearance][local.variant],
+                        buttonSize[local.size],
                         local.class,
                     )}
                     disabled
@@ -97,7 +149,8 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                 <button
                     class={cn(
                         baseStyles,
-                        variantStyles[local.variant],
+                        buttonStyle[local.appearance][local.variant],
+                        buttonSize[local.size],
                         local.class,
                     )}
                     disabled={local.disabled}
