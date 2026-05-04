@@ -69,43 +69,35 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         primary: {
             solid: cn('bg-accent'),
             soft: cn('bg-accent/30'),
-            outline: cn(
-                'text-accent outline outline-accent hover:bg-accent/10',
-            ),
+            outline: cn('bg-accent/10 text-accent outline outline-accent'),
             ghost: cn('text-accent hover:bg-accent/10'),
             link: cn('text-accent hover:underline'),
         },
         secondary: {
             solid: cn('bg-surface-3/80'),
             soft: cn('bg-surface-3/30'),
-            outline: cn('outline outline-surface-3 hover:bg-surface-3/10'),
+            outline: cn('bg-surface-3/10 outline outline-surface-3'),
             ghost: cn('hover:bg-surface-3/10'),
             link: cn('hover:underline'),
         },
         success: {
             solid: cn('bg-success/80'),
             soft: cn('bg-success/30 text-success'),
-            outline: cn(
-                'text-success outline outline-success hover:bg-success/10',
-            ),
+            outline: cn('bg-success/10 text-success outline outline-success'),
             ghost: cn('text-success hover:bg-success/10'),
             link: cn('text-success hover:underline'),
         },
         warning: {
             solid: cn('bg-warning/80'),
             soft: cn('bg-warning/30 text-warning'),
-            outline: cn(
-                'text-warning outline outline-warning hover:bg-warning/10',
-            ),
+            outline: cn('bg-warning/10 text-warning outline outline-warning'),
             ghost: cn('text-warning hover:bg-warning/10'),
             link: cn('text-warning hover:underline'),
         },
         danger: {
             solid: cn('bg-danger/80'),
             soft: cn('bg-danger/30 text-danger'),
-            outline: cn(
-                'text-danger outline outline-danger hover:bg-danger/10',
-            ),
+            outline: cn('bg-danger/10 text-danger outline outline-danger'),
             ghost: cn('text-danger hover:bg-danger/10'),
             link: cn('text-danger hover:underline'),
         },
