@@ -1,4 +1,5 @@
 import {
+    createMemo,
     type JSX,
     Match,
     mergeProps,
@@ -63,7 +64,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         icon: 'p-2',
     };
 
-    const buttonStyle: ButtonStyle = {
+    const buttonAppearanceStyle: ButtonStyle = {
         primary: {
             solid: cn('bg-accent'),
             soft: cn('bg-accent/30'),
@@ -108,16 +109,19 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         },
     };
 
+    const buttonStyle = createMemo(() =>
+        cn(
+            baseStyles,
+            buttonAppearanceStyle[local.appearance][local.variant],
+            buttonSize[local.size],
+        ),
+    );
+
     return (
         <Switch>
             <Match when={local.loading}>
                 <button
-                    class={cn(
-                        baseStyles,
-                        buttonStyle[local.appearance][local.variant],
-                        buttonSize[local.size],
-                        local.class,
-                    )}
+                    class={cn(buttonStyle(), local.class)}
                     disabled
                     {...others}
                     type='button'
@@ -129,12 +133,7 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
 
             <Match when={!local.loading}>
                 <button
-                    class={cn(
-                        baseStyles,
-                        buttonStyle[local.appearance][local.variant],
-                        buttonSize[local.size],
-                        local.class,
-                    )}
+                    class={cn(buttonStyle(), local.class)}
                     disabled={local.disabled}
                     type='button'
                     {...others}
