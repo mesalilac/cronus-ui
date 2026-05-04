@@ -113,12 +113,13 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
             baseStyles,
             buttonAppearanceStyle[local.appearance][local.variant],
             buttonSize[local.size],
+            local.class,
         ),
     );
 
     return (
         <button
-            class={cn(buttonStyle(), local.class)}
+            class={buttonStyle()}
             disabled={local.loading || local.disabled}
             type='button'
             {...others}
