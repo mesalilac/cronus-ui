@@ -34,15 +34,6 @@ export type ButtonProps = {
 export const Button = <T extends ValidComponent = 'button'>(
     props: PolymorphicProps<T, ButtonProps>,
 ) => {
-    // const props = mergeProps(
-    //     {
-    //         appearance: 'secondary',
-    //         variant: 'solid',
-    //         size: 'md',
-    //     } satisfies Partial<ButtonProps>,
-    //     rawProps,
-    // );
-
     const [local, others] = splitProps(props, [
         'class',
         'variant',
