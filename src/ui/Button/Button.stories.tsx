@@ -1,8 +1,6 @@
 import { fn } from 'storybook/test';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconInterfaceSettings } from '~/icons';
-
 import { Button } from './Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -140,11 +138,24 @@ export const Danger: Story = {
     },
 };
 
-export const Icon: Story = {
-    args: {
-        variant: 'ghost',
-        size: 'icon',
-        children: <IconInterfaceSettings />,
+export const Size: Story = {
+    render: () => {
+        return (
+            <div class='*:mb-4'>
+                <Button appearance='secondary' size='sm' variant='solid'>
+                    Sm
+                </Button>
+                <Button appearance='secondary' size='md' variant='solid'>
+                    Md
+                </Button>
+                <Button appearance='secondary' size='lg' variant='solid'>
+                    Lg
+                </Button>
+                <Button appearance='secondary' size='icon' variant='solid'>
+                    Icon
+                </Button>
+            </div>
+        );
     },
 };
 
