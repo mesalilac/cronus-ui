@@ -64,7 +64,7 @@ export const Content = (rawProps: SelectContentProps) => {
         >
             <div
                 class={cn(
-                    'mt-1 mb-1 max-h-80 overflow-y-auto overscroll-contain rounded-default border border-border bg-surface-2 text-text-primary shadow-default [scrollbar-gutter:stable]',
+                    'mt-1 mb-1 max-h-80 overflow-y-auto overscroll-contain rounded-default bg-surface-2 text-text-primary shadow-default outline outline-accent [scrollbar-gutter:stable]',
                     props.class,
                 )}
                 ref={divRef}
