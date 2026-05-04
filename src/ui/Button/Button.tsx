@@ -53,56 +53,44 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'flex cursor-pointer items-center gap-2 rounded-default px-4 py-2 font-medium text-sm text-text-primary leading-5 outline outline-border-strong transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
+        'flex cursor-pointer items-center gap-2 rounded-default px-4 py-2 font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-95 disabled:pointer-events-none disabled:opacity-60 dark:active:brightness-105 dark:hover:brightness-105',
     );
-
-    // const variantStyles: Record<ButtonVariant, string> = {
-    //     primary: cn('bg-accent outline-none'),
-    //     secondary: cn('bg-surface-3'),
-    //     success: cn('bg-success/30 text-text-success outline-current/30'),
-    //     danger: cn('bg-danger/30 text-text-danger outline-current/30'),
-    //     warning: cn('bg-warning/30 text-text-warning outline-current/30'),
-    //     info: cn('bg-info/30 text-text-info outline-current/30'),
-    //     // ghost: cn('bg-transparent outline-transparent hover:bg-surface-3/30'),
-    //     // icon: cn('bg-transparent p-2 outline-transparent active:bg-surface-3'),
-    //     // outline: cn('active:bg-surface-3'),
-    // };
 
     const buttonStyle: ButtonStyle = {
         primary: {
-            solid: cn(''),
-            soft: cn(''),
-            outline: cn(''),
-            ghost: cn(''),
-            link: cn(''),
+            solid: cn('bg-accent'),
+            soft: cn('bg-accent/30'),
+            outline: cn('text-accent outline outline-accent'),
+            ghost: cn('text-accent'),
+            link: cn('text-accent hover:underline'),
         },
         secondary: {
-            solid: cn(''),
-            soft: cn(''),
-            outline: cn(''),
+            solid: cn('bg-surface-3/80'),
+            soft: cn('bg-surface-3/30'),
+            outline: cn('outline outline-surface-3'),
             ghost: cn(''),
-            link: cn(''),
+            link: cn('hover:underline'),
         },
         success: {
-            solid: cn(''),
-            soft: cn(''),
-            outline: cn(''),
-            ghost: cn(''),
-            link: cn(''),
+            solid: cn('bg-success/80'),
+            soft: cn('bg-success/30 text-success'),
+            outline: cn('text-success outline outline-success'),
+            ghost: cn('text-success'),
+            link: cn('text-success hover:underline'),
         },
         warning: {
-            solid: cn(''),
-            soft: cn(''),
-            outline: cn(''),
-            ghost: cn(''),
-            link: cn(''),
+            solid: cn('bg-warning/80'),
+            soft: cn('bg-warning/30 text-warning'),
+            outline: cn('text-warning outline outline-warning'),
+            ghost: cn('text-warning'),
+            link: cn('text-warning hover:underline'),
         },
         danger: {
-            solid: cn(''),
-            soft: cn(''),
-            outline: cn(''),
-            ghost: cn(''),
-            link: cn(''),
+            solid: cn('bg-danger/80'),
+            soft: cn('bg-danger/30 text-danger'),
+            outline: cn('text-danger outline outline-danger'),
+            ghost: cn('text-danger outline-none'),
+            link: cn('text-danger hover:underline'),
         },
     };
 
