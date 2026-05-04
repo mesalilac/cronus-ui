@@ -29,6 +29,7 @@ export const IconEditDeleteColumn: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Delete Column'
             width={local.size || '1rem'}

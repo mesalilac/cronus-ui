@@ -21,6 +21,7 @@ export const IconArrowCaretDownSm: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Arrow Caret Down Sm'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconSystemBarTop: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Bar Top'
             width={local.size || '1rem'}

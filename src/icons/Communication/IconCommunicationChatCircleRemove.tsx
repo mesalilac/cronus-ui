@@ -29,6 +29,7 @@ export const IconCommunicationChatCircleRemove: VoidComponent<IconProps> = (prop
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Communication Chat Circle Remove'
             width={local.size || '1rem'}

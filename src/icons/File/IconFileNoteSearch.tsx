@@ -29,6 +29,7 @@ export const IconFileNoteSearch: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Note Search'
             width={local.size || '1rem'}

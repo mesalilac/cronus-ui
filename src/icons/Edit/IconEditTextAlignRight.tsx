@@ -25,6 +25,7 @@ export const IconEditTextAlignRight: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Text Align Right'
             width={local.size || '1rem'}

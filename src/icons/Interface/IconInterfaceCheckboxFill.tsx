@@ -29,6 +29,7 @@ export const IconInterfaceCheckboxFill: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Checkbox Fill'
             width={local.size || '1rem'}

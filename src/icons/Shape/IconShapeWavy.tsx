@@ -29,6 +29,7 @@ export const IconShapeWavy: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Shape Wavy'
             width={local.size || '1rem'}

@@ -27,6 +27,7 @@ export const IconSystemKeyboard: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Keyboard'
             width={local.size || '1rem'}

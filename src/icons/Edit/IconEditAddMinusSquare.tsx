@@ -29,6 +29,7 @@ export const IconEditAddMinusSquare: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Add Minus Square'
             width={local.size || '1rem'}

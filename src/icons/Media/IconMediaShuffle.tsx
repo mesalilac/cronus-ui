@@ -29,6 +29,7 @@ export const IconMediaShuffle: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Shuffle'
             width={local.size || '1rem'}

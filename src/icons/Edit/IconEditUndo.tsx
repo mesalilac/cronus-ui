@@ -29,6 +29,7 @@ export const IconEditUndo: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Undo'
             width={local.size || '1rem'}

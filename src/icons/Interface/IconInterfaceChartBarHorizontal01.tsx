@@ -29,6 +29,7 @@ export const IconInterfaceChartBarHorizontal01: VoidComponent<IconProps> = (prop
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Chart Bar Horizontal01'
             width={local.size || '1rem'}

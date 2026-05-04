@@ -25,6 +25,7 @@ export const IconInterfaceSlider01: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Slider01'
             width={local.size || '1rem'}

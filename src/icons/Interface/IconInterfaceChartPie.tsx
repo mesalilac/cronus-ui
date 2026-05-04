@@ -29,6 +29,7 @@ export const IconInterfaceChartPie: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Chart Pie'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconEditAddToQueue: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Add To Queue'
             width={local.size || '1rem'}

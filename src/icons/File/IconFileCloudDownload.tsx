@@ -27,6 +27,7 @@ export const IconFileCloudDownload: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Cloud Download'
             width={local.size || '1rem'}

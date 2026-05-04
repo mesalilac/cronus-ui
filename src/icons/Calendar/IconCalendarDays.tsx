@@ -30,6 +30,7 @@ export const IconCalendarDays: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Calendar Days'
             width={local.size || '1rem'}

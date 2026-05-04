@@ -28,6 +28,7 @@ export const IconSystemCamera: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Camera'
             width={local.size || '1rem'}

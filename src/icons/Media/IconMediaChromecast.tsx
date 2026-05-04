@@ -27,6 +27,7 @@ export const IconMediaChromecast: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Chromecast'
             width={local.size || '1rem'}

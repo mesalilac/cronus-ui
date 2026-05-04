@@ -31,6 +31,7 @@ export const IconEnvironmentSun: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Sun'
             width={local.size || '1rem'}

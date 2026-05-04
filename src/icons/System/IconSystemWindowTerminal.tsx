@@ -29,6 +29,7 @@ export const IconSystemWindowTerminal: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Window Terminal'
             width={local.size || '1rem'}

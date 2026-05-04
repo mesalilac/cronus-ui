@@ -29,6 +29,7 @@ export const IconInterfaceRadioFill: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Radio Fill'
             width={local.size || '1rem'}

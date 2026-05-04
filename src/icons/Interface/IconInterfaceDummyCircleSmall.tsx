@@ -25,6 +25,7 @@ export const IconInterfaceDummyCircleSmall: VoidComponent<IconProps> = (props) =
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Dummy Circle Small'
             width={local.size || '1rem'}

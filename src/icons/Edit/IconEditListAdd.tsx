@@ -25,6 +25,7 @@ export const IconEditListAdd: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit List Add'
             width={local.size || '1rem'}

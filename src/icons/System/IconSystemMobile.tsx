@@ -29,6 +29,7 @@ export const IconSystemMobile: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Mobile'
             width={local.size || '1rem'}

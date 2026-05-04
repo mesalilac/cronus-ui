@@ -29,6 +29,7 @@ export const IconEnvironmentBulb: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Bulb'
             width={local.size || '1rem'}

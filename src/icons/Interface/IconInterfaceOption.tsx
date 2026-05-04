@@ -25,6 +25,7 @@ export const IconInterfaceOption: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Option'
             width={local.size || '1rem'}

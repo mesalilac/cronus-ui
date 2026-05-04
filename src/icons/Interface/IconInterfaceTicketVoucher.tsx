@@ -27,6 +27,7 @@ export const IconInterfaceTicketVoucher: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Ticket Voucher'
             width={local.size || '1rem'}

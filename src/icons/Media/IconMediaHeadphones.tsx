@@ -28,6 +28,7 @@ export const IconMediaHeadphones: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Headphones'
             width={local.size || '1rem'}

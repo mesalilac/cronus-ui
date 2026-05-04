@@ -29,6 +29,7 @@ export const IconInterfaceLockOpen: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Lock Open'
             width={local.size || '1rem'}

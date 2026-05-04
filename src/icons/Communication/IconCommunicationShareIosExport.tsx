@@ -29,6 +29,7 @@ export const IconCommunicationShareIosExport: VoidComponent<IconProps> = (props)
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Communication Share Ios Export'
             width={local.size || '1rem'}

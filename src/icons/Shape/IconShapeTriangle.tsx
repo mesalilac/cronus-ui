@@ -29,6 +29,7 @@ export const IconShapeTriangle: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Shape Triangle'
             width={local.size || '1rem'}

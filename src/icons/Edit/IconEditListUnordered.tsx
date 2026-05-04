@@ -23,6 +23,7 @@ export const IconEditListUnordered: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit List Unordered'
             width={local.size || '1rem'}

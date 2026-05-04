@@ -29,6 +29,7 @@ export const IconEnvironmentMoon: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Moon'
             width={local.size || '1rem'}

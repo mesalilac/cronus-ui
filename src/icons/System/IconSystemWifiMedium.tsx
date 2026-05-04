@@ -25,6 +25,7 @@ export const IconSystemWifiMedium: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Wifi Medium'
             width={local.size || '1rem'}

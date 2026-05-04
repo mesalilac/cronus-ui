@@ -27,6 +27,7 @@ export const IconFileCloudRemove: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Cloud Remove'
             width={local.size || '1rem'}

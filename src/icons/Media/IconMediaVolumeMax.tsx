@@ -27,6 +27,7 @@ export const IconMediaVolumeMax: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Volume Max'
             width={local.size || '1rem'}

@@ -30,6 +30,7 @@ export const IconEnvironmentWaterDrop: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Water Drop'
             width={local.size || '1rem'}

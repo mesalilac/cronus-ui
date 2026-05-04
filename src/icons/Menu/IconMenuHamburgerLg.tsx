@@ -23,6 +23,7 @@ export const IconMenuHamburgerLg: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu Hamburger Lg'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconUserCircle: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='User Circle'
             width={local.size || '1rem'}

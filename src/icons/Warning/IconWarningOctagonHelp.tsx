@@ -29,6 +29,7 @@ export const IconWarningOctagonHelp: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Warning Octagon Help'
             width={local.size || '1rem'}

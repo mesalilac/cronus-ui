@@ -29,6 +29,7 @@ export const IconShapeOctagon: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Shape Octagon'
             width={local.size || '1rem'}

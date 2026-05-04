@@ -28,6 +28,7 @@ export const IconSystemMonitor: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Monitor'
             width={local.size || '1rem'}

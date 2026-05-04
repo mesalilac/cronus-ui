@@ -23,6 +23,7 @@ export const IconMenuAlt05: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu Alt05'
             width={local.size || '1rem'}

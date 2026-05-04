@@ -29,6 +29,7 @@ export const IconCommunicationChatCircleCheck: VoidComponent<IconProps> = (props
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Communication Chat Circle Check'
             width={local.size || '1rem'}

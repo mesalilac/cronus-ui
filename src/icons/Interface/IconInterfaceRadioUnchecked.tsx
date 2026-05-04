@@ -29,6 +29,7 @@ export const IconInterfaceRadioUnchecked: VoidComponent<IconProps> = (props) => 
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Radio Unchecked'
             width={local.size || '1rem'}

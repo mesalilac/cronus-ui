@@ -29,6 +29,7 @@ export const IconMediaImage01: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Image01'
             width={local.size || '1rem'}

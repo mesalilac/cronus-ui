@@ -25,6 +25,7 @@ export const IconMediaForward: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Forward'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconArrowCaretCircleDown: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Arrow Caret Circle Down'
             width={local.size || '1rem'}

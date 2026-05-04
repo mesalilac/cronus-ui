@@ -29,6 +29,7 @@ export const IconSystemCylinder: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Cylinder'
             width={local.size || '1rem'}

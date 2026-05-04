@@ -28,6 +28,7 @@ export const IconSystemQrCode: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Qr Code'
             width={local.size || '1rem'}

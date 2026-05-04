@@ -27,6 +27,7 @@ export const IconEditText: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Text'
             width={local.size || '1rem'}

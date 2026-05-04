@@ -26,6 +26,7 @@ export const IconEditAddRow: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Add Row'
             width={local.size || '1rem'}

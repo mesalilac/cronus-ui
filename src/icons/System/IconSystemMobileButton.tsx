@@ -29,6 +29,7 @@ export const IconSystemMobileButton: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Mobile Button'
             width={local.size || '1rem'}

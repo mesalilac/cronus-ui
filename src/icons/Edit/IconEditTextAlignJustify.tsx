@@ -24,6 +24,7 @@ export const IconEditTextAlignJustify: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Text Align Justify'
             width={local.size || '1rem'}

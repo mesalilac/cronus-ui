@@ -29,6 +29,7 @@ export const IconShapeShield: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Shape Shield'
             width={local.size || '1rem'}

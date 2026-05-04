@@ -28,6 +28,7 @@ export const IconSystemMovingDesk: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Moving Desk'
             width={local.size || '1rem'}

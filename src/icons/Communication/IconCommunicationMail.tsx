@@ -27,6 +27,7 @@ export const IconCommunicationMail: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Communication Mail'
             width={local.size || '1rem'}

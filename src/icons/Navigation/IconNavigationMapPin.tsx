@@ -29,6 +29,7 @@ export const IconNavigationMapPin: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Navigation Map Pin'
             width={local.size || '1rem'}

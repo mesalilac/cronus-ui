@@ -28,6 +28,7 @@ export const IconUserVoice: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='User Voice'
             width={local.size || '1rem'}

@@ -28,6 +28,7 @@ export const IconInterfaceChartLine: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Chart Line'
             width={local.size || '1rem'}

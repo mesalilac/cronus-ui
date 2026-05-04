@@ -26,6 +26,7 @@ export const IconEditPaperclipAttachmentHorizontal: VoidComponent<IconProps> = (
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Paperclip Attachment Horizontal'
             width={local.size || '1rem'}

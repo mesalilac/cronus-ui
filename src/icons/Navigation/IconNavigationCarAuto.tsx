@@ -28,6 +28,7 @@ export const IconNavigationCarAuto: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Navigation Car Auto'
             width={local.size || '1rem'}

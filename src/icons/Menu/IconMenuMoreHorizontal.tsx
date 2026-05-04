@@ -21,6 +21,7 @@ export const IconMenuMoreHorizontal: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu More Horizontal'
             width={local.size || '1rem'}

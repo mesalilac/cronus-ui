@@ -30,6 +30,7 @@ export const IconFileNoteEdit: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Note Edit'
             width={local.size || '1rem'}

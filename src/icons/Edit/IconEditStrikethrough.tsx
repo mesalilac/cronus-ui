@@ -29,6 +29,7 @@ export const IconEditStrikethrough: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Strikethrough'
             width={local.size || '1rem'}

@@ -28,6 +28,7 @@ export const IconInterfaceBookOpen: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Book Open'
             width={local.size || '1rem'}

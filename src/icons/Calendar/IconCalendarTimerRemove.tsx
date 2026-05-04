@@ -30,6 +30,7 @@ export const IconCalendarTimerRemove: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Calendar Timer Remove'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconEnvironmentCookie: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Cookie'
             width={local.size || '1rem'}

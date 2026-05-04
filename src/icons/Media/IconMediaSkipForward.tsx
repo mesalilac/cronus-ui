@@ -27,6 +27,7 @@ export const IconMediaSkipForward: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Skip Forward'
             width={local.size || '1rem'}

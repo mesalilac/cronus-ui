@@ -29,6 +29,7 @@ export const IconFileClose: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Close'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconEditMoveVertical: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Move Vertical'
             width={local.size || '1rem'}

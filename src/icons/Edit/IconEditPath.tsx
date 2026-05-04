@@ -29,6 +29,7 @@ export const IconEditPath: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Path'
             width={local.size || '1rem'}

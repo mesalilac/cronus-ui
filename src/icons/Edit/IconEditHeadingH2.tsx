@@ -27,6 +27,7 @@ export const IconEditHeadingH2: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Heading H2'
             width={local.size || '1rem'}

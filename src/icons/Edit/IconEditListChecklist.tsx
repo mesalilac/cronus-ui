@@ -27,6 +27,7 @@ export const IconEditListChecklist: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit List Checklist'
             width={local.size || '1rem'}

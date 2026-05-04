@@ -29,6 +29,7 @@ export const IconCommunicationBellOff: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Communication Bell Off'
             width={local.size || '1rem'}

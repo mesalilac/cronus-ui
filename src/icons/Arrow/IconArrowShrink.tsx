@@ -26,6 +26,7 @@ export const IconArrowShrink: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Arrow Shrink'
             width={local.size || '1rem'}

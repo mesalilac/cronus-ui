@@ -27,6 +27,7 @@ export const IconMenuMoreGridBig: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu More Grid Big'
             width={local.size || '1rem'}

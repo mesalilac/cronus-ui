@@ -29,6 +29,7 @@ export const IconMenuCloseLg: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu Close Lg'
             width={local.size || '1rem'}

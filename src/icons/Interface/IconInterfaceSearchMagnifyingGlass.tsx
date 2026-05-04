@@ -29,6 +29,7 @@ export const IconInterfaceSearchMagnifyingGlass: VoidComponent<IconProps> = (pro
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Search Magnifying Glass'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconNavigationCompass: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Navigation Compass'
             width={local.size || '1rem'}

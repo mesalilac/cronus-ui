@@ -29,6 +29,7 @@ export const IconEditSelectMultiple: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Select Multiple'
             width={local.size || '1rem'}

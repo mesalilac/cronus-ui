@@ -22,6 +22,7 @@ export const IconMenuDuoMd: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Menu Duo Md'
             width={local.size || '1rem'}

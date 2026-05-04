@@ -29,6 +29,7 @@ export const IconSystemWindowCodeBlock: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Window Code Block'
             width={local.size || '1rem'}

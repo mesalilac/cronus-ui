@@ -29,6 +29,7 @@ export const IconEditCloseCircle: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Close Circle'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconFileDownloadPackage: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='File Download Package'
             width={local.size || '1rem'}

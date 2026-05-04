@@ -29,6 +29,7 @@ export const IconUser02: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='User02'
             width={local.size || '1rem'}

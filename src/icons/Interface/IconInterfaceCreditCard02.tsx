@@ -27,6 +27,7 @@ export const IconInterfaceCreditCard02: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Credit Card02'
             width={local.size || '1rem'}

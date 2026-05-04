@@ -25,6 +25,7 @@ export const IconMediaRewind: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Rewind'
             width={local.size || '1rem'}

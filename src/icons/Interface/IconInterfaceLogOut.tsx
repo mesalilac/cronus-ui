@@ -29,6 +29,7 @@ export const IconInterfaceLogOut: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Log Out'
             width={local.size || '1rem'}

@@ -29,6 +29,7 @@ export const IconEditSwatchesPalette: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Swatches Palette'
             width={local.size || '1rem'}

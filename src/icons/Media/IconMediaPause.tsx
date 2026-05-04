@@ -29,6 +29,7 @@ export const IconMediaPause: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Media Pause'
             width={local.size || '1rem'}

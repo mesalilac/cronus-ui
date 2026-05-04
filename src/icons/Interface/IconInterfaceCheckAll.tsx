@@ -24,6 +24,7 @@ export const IconInterfaceCheckAll: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Interface Check All'
             width={local.size || '1rem'}

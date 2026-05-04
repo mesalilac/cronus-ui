@@ -29,6 +29,7 @@ export const IconSystemDesktop: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='System Desktop'
             width={local.size || '1rem'}

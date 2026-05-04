@@ -27,6 +27,7 @@ export const IconEnvironmentLeaf: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Environment Leaf'
             width={local.size || '1rem'}

@@ -26,6 +26,7 @@ export const IconEditSortAscending: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Edit Sort Ascending'
             width={local.size || '1rem'}

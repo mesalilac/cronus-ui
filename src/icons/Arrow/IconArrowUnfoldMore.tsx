@@ -26,6 +26,7 @@ export const IconArrowUnfoldMore: VoidComponent<IconProps> = (props) => {
 
     return (
         <svg
+            class='shrink-0'
             role='img'
             aria-label='Arrow Unfold More'
             width={local.size || '1rem'}
