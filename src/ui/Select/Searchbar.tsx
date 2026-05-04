@@ -38,6 +38,7 @@ export const Searchbar = (props: SelectSearchbarProps) => {
             >
                 <Button
                     appearance='primary'
+                    class='justify-center'
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
                     variant='soft'
