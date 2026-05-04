@@ -5,7 +5,7 @@ import { useMenuContext } from '~/ui/Menu/context';
 import { cn } from '~/utils';
 
 export interface DropdownMenuTriggerProps
-    extends Pick<ButtonProps, 'variant' | 'appearance' | 'label'> {
+    extends Pick<ButtonProps, 'variant' | 'appearance'> {
     class?: string;
     children: JSX.Element;
 }

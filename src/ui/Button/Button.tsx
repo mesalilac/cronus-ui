@@ -3,12 +3,10 @@ import {
     Match,
     mergeProps,
     type ParentComponent,
-    Show,
     Switch,
     splitProps,
 } from 'solid-js';
 
-import { Badge } from '~/ui/Badge';
 import { cn } from '~/utils';
 
 export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
@@ -30,7 +28,6 @@ export interface ButtonProps
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;
     size?: ButtonSize;
-    label?: JSX.Element;
     loading?: boolean;
     children: JSX.Element;
 }
@@ -51,7 +48,6 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
         'variant',
         'appearance',
         'size',
-        'label',
         'loading',
     ]);
 
@@ -158,9 +154,6 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
                     {...others}
                 >
                     {props.children}
-                    <Show when={local.label}>
-                        <Badge>{local.label}</Badge>
-                    </Show>
                 </button>
             </Match>
         </Switch>

@@ -183,14 +183,6 @@ export const Size: Story = {
     },
 };
 
-export const Label: Story = {
-    args: {
-        appearance: 'secondary',
-        label: 'Label Text',
-        children: 'Text',
-    },
-};
-
 export const Loading: Story = {
     args: {
         appearance: 'primary',

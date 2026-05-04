@@ -9,7 +9,7 @@ export type ModalTriggerProps = {
     class?: string;
     disabled?: boolean;
     children: JSX.Element;
-} & Pick<ButtonProps, 'variant' | 'label' | 'appearance'>;
+} & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 export const Trigger = (props: ModalTriggerProps) => {
     const [local, others] = splitProps(props, ['class', 'children']);
