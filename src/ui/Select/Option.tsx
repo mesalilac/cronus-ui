@@ -29,7 +29,7 @@ export const Option = (props: SelectOptionProps) => {
 
                 if (ctx.autoClose) ctx.setIsOpen(false);
             }}
-            variant={isSelected() ? 'solid' : 'outline'}
+            variant={isSelected() ? 'solid' : 'ghost'}
         >
             <div class='flex gap-1'>{props.children}</div>
             <Show when={isSelected()}>
