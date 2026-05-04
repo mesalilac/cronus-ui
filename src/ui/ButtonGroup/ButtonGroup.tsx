@@ -1,7 +1,11 @@
-import type { Component } from 'solid-js';
+import type { FlowComponent } from 'solid-js';
 
-export type ButtonGroupProps = {};
+import { cn } from '~/utils';
 
-export const ButtonGroup: Component<ButtonGroupProps> = (props) => {
-    return <div>ButtonGroup</div>;
+export type ButtonGroupProps = {
+    class?: string;
+};
+
+export const ButtonGroup: FlowComponent<ButtonGroupProps> = (props) => {
+    return <div class={cn('', props.class)}>{props.children}</div>;
 };
