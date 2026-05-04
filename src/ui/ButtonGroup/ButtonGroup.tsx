@@ -7,5 +7,14 @@ export type ButtonGroupProps = {
 };
 
 export const ButtonGroup: FlowComponent<ButtonGroupProps> = (props) => {
-    return <div class={cn('', props.class)}>{props.children}</div>;
+    return (
+        <div
+            class={cn(
+                'flex *:rounded-none *:first:rounded-l-lg *:last:rounded-r-lg',
+                props.class,
+            )}
+        >
+            {props.children}
+        </div>
+    );
 };
