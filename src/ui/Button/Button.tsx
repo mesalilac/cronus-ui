@@ -1,13 +1,11 @@
 import {
     createMemo,
     type JSX,
-    mergeProps,
-    type ParentComponent,
-    Show,
     splitProps,
+    type ValidComponent,
 } from 'solid-js';
 
-import { Spinner } from '~/ui/Spinner';
+import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
 import { cn } from '~/utils';
 
 export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
@@ -24,32 +22,32 @@ export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 type ButtonStyle = Record<ButtonAppearance, Record<ButtonVariant, string>>;
 
-export interface ButtonProps
-    extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = {
     variant?: ButtonVariant;
     appearance?: ButtonAppearance;
     size?: ButtonSize;
-    loading?: boolean;
+    disabled?: boolean;
+    class?: string;
     children: JSX.Element;
-}
+};
 
-export const Button: ParentComponent<ButtonProps> = (rawProps) => {
-    const props = mergeProps(
-        {
-            appearance: 'secondary',
-            variant: 'solid',
-            size: 'md',
-        } satisfies Partial<ButtonProps>,
-        rawProps,
-    );
+export const Button = <T extends ValidComponent = 'button'>(
+    props: PolymorphicProps<T, ButtonProps>,
+) => {
+    // const props = mergeProps(
+    //     {
+    //         appearance: 'secondary',
+    //         variant: 'solid',
+    //         size: 'md',
+    //     } satisfies Partial<ButtonProps>,
+    //     rawProps,
+    // );
 
     const [local, others] = splitProps(props, [
         'class',
-        'disabled',
         'variant',
         'appearance',
         'size',
-        'loading',
     ]);
 
     const baseStyles = cn(
@@ -111,23 +109,13 @@ export const Button: ParentComponent<ButtonProps> = (rawProps) => {
     const buttonStyle = createMemo(() =>
         cn(
             baseStyles,
-            buttonAppearanceStyle[local.appearance][local.variant],
-            buttonSize[local.size],
+            buttonAppearanceStyle[local.appearance ?? 'secondary'][
+                local.variant ?? 'solid'
+            ],
+            buttonSize[local.size ?? 'md'],
             local.class,
         ),
     );
 
-    return (
-        <button
-            class={buttonStyle()}
-            disabled={local.loading || local.disabled}
-            type='button'
-            {...others}
-        >
-            <Show fallback={props.children} when={local.loading}>
-                <Spinner />
-                Loading...
-            </Show>
-        </button>
-    );
+    return <Polymorphic as='button' class={buttonStyle()} {...others} />;
 };

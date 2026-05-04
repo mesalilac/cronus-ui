@@ -34,7 +34,12 @@ export const Primary: Story = {
                 <Button appearance='primary' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='primary' variant='link'>
+                <Button
+                    appearance='primary'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -58,7 +63,12 @@ export const Secondary: Story = {
                 <Button appearance='secondary' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='secondary' variant='link'>
+                <Button
+                    appearance='secondary'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -82,7 +92,12 @@ export const Info: Story = {
                 <Button appearance='info' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='info' variant='link'>
+                <Button
+                    appearance='info'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -106,7 +121,12 @@ export const Success: Story = {
                 <Button appearance='success' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='success' variant='link'>
+                <Button
+                    appearance='success'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -130,7 +150,12 @@ export const Warning: Story = {
                 <Button appearance='warning' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='warning' variant='link'>
+                <Button
+                    appearance='warning'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -154,7 +179,12 @@ export const Danger: Story = {
                 <Button appearance='danger' variant='ghost'>
                     Ghost
                 </Button>
-                <Button appearance='danger' variant='link'>
+                <Button
+                    appearance='danger'
+                    as='a'
+                    href='https://www.google.com'
+                    variant='link'
+                >
                     Link
                 </Button>
             </div>
@@ -180,14 +210,6 @@ export const Size: Story = {
                 </Button>
             </div>
         );
-    },
-};
-
-export const Loading: Story = {
-    args: {
-        appearance: 'primary',
-        loading: true,
-        children: 'Text',
     },
 };
 
