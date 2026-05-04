@@ -49,7 +49,7 @@ export const OptionGroup = (props: SelectOptionGroupProps) => {
             </Button>
             <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
                 <Show when={isOpen()}>
-                    <div class='ml-4 flex flex-col gap-1 rounded-default bg-surface-3/20'>
+                    <div class='flex flex-col gap-1 rounded-default bg-surface-3/20'>
                         {props.children}
                     </div>
                 </Show>
