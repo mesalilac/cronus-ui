@@ -22,7 +22,11 @@ export const Default: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return <Input onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -33,7 +37,11 @@ export const Search: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -44,7 +52,11 @@ export const Email: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('example@domain.com');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -55,7 +67,11 @@ export const Password: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('password');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -66,7 +82,11 @@ export const Url: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('https://example.com');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -78,7 +98,11 @@ export const WithBadge: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('apple');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -86,7 +110,11 @@ export const WithAutoFocus: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
 
-        return <Input autoFocus onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -95,11 +123,13 @@ export const WithCustomIcon: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Input
-                icon={<IconNavigationCompass />}
-                onInput={setValue}
-                value={value()}
-            />
+            <div class='w-96'>
+                <Input
+                    icon={<IconNavigationCompass />}
+                    onInput={setValue}
+                    value={value()}
+                />
+            </div>
         );
     },
 };
@@ -109,9 +139,11 @@ export const WithSiblingButton: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Input onInput={setValue} value={value()}>
-                <Button>Button</Button>
-            </Input>
+            <div class='w-96'>
+                <Input onInput={setValue} value={value()}>
+                    <Button>Button</Button>
+                </Input>
+            </div>
         );
     },
 };
@@ -123,7 +155,11 @@ export const WithMinLength: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -134,7 +170,11 @@ export const WithMaxLength: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -145,7 +185,11 @@ export const WithLabel: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -157,7 +201,11 @@ export const WithLabelAndRequired: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -168,7 +216,11 @@ export const WithHelperText: Story = {
     render: (args) => {
         const [value, setValue] = createSignal('');
 
-        return <Input {...args} onInput={setValue} value={value()} />;
+        return (
+            <div class='w-96'>
+                <Input {...args} onInput={setValue} value={value()} />
+            </div>
+        );
     },
 };
 
@@ -177,14 +229,16 @@ export const WithError: Story = {
         const [value, setValue] = createSignal('');
 
         return (
-            <Input
-                onInput={setValue}
-                validate={(v) => {
-                    if (v.length < 10)
-                        return 'Must be at least 10 characters long';
-                }}
-                value={value()}
-            />
+            <div class='w-96'>
+                <Input
+                    onInput={setValue}
+                    validate={(v) => {
+                        if (v.length < 10)
+                            return 'Must be at least 10 characters long';
+                    }}
+                    value={value()}
+                />
+            </div>
         );
     },
 };
