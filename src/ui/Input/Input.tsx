@@ -98,7 +98,7 @@ export const Input = (rawProps: InputProps) => {
         ) : null);
 
     return (
-        <div class='@container/input flex min-w-32 flex-col gap-2'>
+        <div class='@container/input flex min-w-32 flex-col gap-2 rounded-default'>
             <Show when={props.label}>
                 {(label) => (
                     <FieldLabel
@@ -108,10 +108,10 @@ export const Input = (rawProps: InputProps) => {
                     />
                 )}
             </Show>
-            <div class='flex flex-row @max-3xs/input:flex-col gap-2'>
+            <div class='flex flex-row @max-3xs/input:flex-col gap-2 rounded-[inherit]'>
                 <div
                     class={cn(
-                        'flex flex-1 flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:ring-danger',
+                        'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:ring-danger',
                         error() && 'bg-danger/30 focus-within:ring-danger',
                     )}
                 >
