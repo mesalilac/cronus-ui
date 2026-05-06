@@ -46,10 +46,10 @@ export const Button = <T extends ValidComponent = 'button'>(
     );
 
     const buttonSize: Record<ButtonSize, string> = {
-        sm: 'p-1',
-        md: 'px-4 py-2',
-        lg: 'px-6 py-2',
-        icon: 'p-2',
+        sm: cn('p-1'),
+        md: cn('px-4 py-2'),
+        lg: cn('px-6 py-2'),
+        icon: cn('p-2'),
     };
 
     const buttonAppearanceStyle: ButtonStyle = {
