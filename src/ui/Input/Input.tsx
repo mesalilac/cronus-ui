@@ -98,7 +98,7 @@ export const Input = (rawProps: InputProps) => {
         ) : null);
 
     return (
-        <div class='@container/input flex min-w-32 flex-col gap-2 rounded-default'>
+        <div class='@container/input flex min-w-32 flex-1 flex-col gap-2 rounded-default'>
             <Show when={props.label}>
                 {(label) => (
                     <FieldLabel
