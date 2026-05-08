@@ -3,6 +3,7 @@ import { Show } from 'solid-js';
 import { IconEditAddPlus } from '~/icons';
 import { Button } from '~/ui/Button';
 import { Input } from '~/ui/Input';
+import { cn } from '~/utils';
 
 export type SelectSearchbarProps = {
     query: string;
@@ -27,7 +28,7 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     return (
         <>
             <Input
-                class={props.class}
+                class={cn('px-2 py-1', props.class)}
                 onInput={props.setQuery}
                 type='search'
                 value={props.query}
