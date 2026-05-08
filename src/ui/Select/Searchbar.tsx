@@ -40,7 +40,7 @@ export const Searchbar = (props: SelectSearchbarProps) => {
             >
                 <Button
                     appearance='primary'
-                    class='px-2'
+                    class='px-2 py-1.5'
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
                     title='Create new option'
