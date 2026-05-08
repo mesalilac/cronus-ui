@@ -5,6 +5,7 @@ import { Portal } from 'solid-js/web';
 import { IconMenuCloseMd } from '~/icons';
 import { Button } from '~/ui/Button';
 import { useModalContext } from '~/ui/Modal/context';
+import type { ModalSize } from '~/ui/Modal/Modal';
 import { cn } from '~/utils';
 
 export type ModalContentProps = {
@@ -16,6 +17,13 @@ export const Content = (props: ModalContentProps) => {
     let dialogRef!: HTMLDialogElement;
 
     const ctx = useModalContext();
+
+    const modalSizeStyle: Record<ModalSize, string> = {
+        sm: cn('size-7/12'),
+        md: cn('size-8/12'),
+        lg: cn('size-9/12'),
+        xl: cn('size-11/12'),
+    };
 
     const onEnterAnim = () => {
         const gsapCtx = gsap.context(() => {
@@ -95,7 +103,8 @@ export const Content = (props: ModalContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto size-9/12 rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/50 backdrop:backdrop-blur-xs',
+                    'm-auto rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/50 backdrop:backdrop-blur-xs',
+                    modalSizeStyle[ctx.size()],
                     props.class,
                 )}
                 closedby='any'

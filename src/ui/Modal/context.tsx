@@ -1,8 +1,11 @@
 import { type Accessor, createContext, useContext } from 'solid-js';
 
+import type { ModalSize } from '~/ui/Modal/Modal';
+
 export type ModalContextData = {
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
+    size: Accessor<ModalSize>;
 
     closeModal: () => void;
 };

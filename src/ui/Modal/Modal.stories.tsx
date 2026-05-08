@@ -36,3 +36,95 @@ export const Default: Story = {
         );
     },
 };
+
+export const Sm: Story = {
+    render: () => {
+        const [open, setOpen] = createSignal(true);
+
+        return (
+            <Modal onOpenChange={setOpen} open={open()} size='sm'>
+                <Modal.Trigger>Open al</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
+            </Modal>
+        );
+    },
+};
+
+export const Md: Story = {
+    render: () => {
+        const [open, setOpen] = createSignal(true);
+
+        return (
+            <Modal onOpenChange={setOpen} open={open()} size='md'>
+                <Modal.Trigger>Open al</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
+            </Modal>
+        );
+    },
+};
+
+export const Lg: Story = {
+    render: () => {
+        const [open, setOpen] = createSignal(true);
+
+        return (
+            <Modal onOpenChange={setOpen} open={open()} size='lg'>
+                <Modal.Trigger>Open al</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
+            </Modal>
+        );
+    },
+};
+
+export const Xl: Story = {
+    render: () => {
+        const [open, setOpen] = createSignal(true);
+
+        return (
+            <Modal onOpenChange={setOpen} open={open()} size='xl'>
+                <Modal.Trigger>Open al</Modal.Trigger>
+                <Modal.Content>
+                    <Modal.CloseButton />
+                    <Modal.Header>
+                        <Modal.Title>Modal Title</Modal.Title>
+                        <Modal.Description>Modal Description</Modal.Description>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p>Modal Content</p>
+                    </Modal.Body>
+                    <Modal.Footer>Footer</Modal.Footer>
+                </Modal.Content>
+            </Modal>
+        );
+    },
+};

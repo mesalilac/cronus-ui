@@ -7,9 +7,12 @@ import { Footer } from '~/ui/Modal/Footer';
 import { Description, Header, Title } from '~/ui/Modal/Header';
 import { Trigger } from '~/ui/Modal/Trigger';
 
+export type ModalSize = 'sm' | 'md' | 'lg' | 'xl';
+
 export type ModalProps = {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
+    size?: ModalSize;
     children: JSX.Element;
 };
 
@@ -39,6 +42,7 @@ export const Modal = (props: ModalProps) => {
                 isOpen: isOpen,
                 setIsOpen: setIsOpen,
                 closeModal: closeModal,
+                size: () => props.size ?? 'md',
             }}
         >
             {props.children}
