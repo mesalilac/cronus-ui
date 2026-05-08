@@ -26,9 +26,9 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     };
 
     return (
-        <>
+        <div class='flex flex-1 items-center gap-1'>
             <Input
-                class={cn('px-2 py-1', props.class)}
+                class={cn('px-2 py-0.5', props.class)}
                 onInput={props.setQuery}
                 type='search'
                 value={props.query}
@@ -40,14 +40,14 @@ export const Searchbar = (props: SelectSearchbarProps) => {
             >
                 <Button
                     appearance='primary'
-                    class='justify-center'
+                    class='px-2 py-1'
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
-                    variant='soft'
+                    title='Create new option'
                 >
                     <IconEditAddPlus />
                 </Button>
             </Show>
-        </>
+        </div>
     );
 };
