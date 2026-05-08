@@ -14,7 +14,7 @@ export const Filter = (props: SelectFilterProps) => {
             <div class={cn('flex flex-col gap-2 bg-surface-2', props.class)}>
                 {props.children}
             </div>
-            <Separator class='-mx-2 my-1' />
+            <Separator class='-mx-2 my-0.5' />
         </>
     );
 };
