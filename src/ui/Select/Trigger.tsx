@@ -1,8 +1,7 @@
-import { type JSX, Match, Switch } from 'solid-js';
+import type { JSX } from 'solid-js';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
 import { Button, type ButtonProps } from '~/ui/Button';
-import { Input } from '~/ui/Input';
 import { cn } from '~/utils';
 
 import { useSelectContext } from './context';
