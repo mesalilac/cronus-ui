@@ -25,12 +25,13 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     };
 
     return (
-        <Input
-            class={props.class}
-            onInput={props.setQuery}
-            type='search'
-            value={props.query}
-        >
+        <>
+            <Input
+                class={props.class}
+                onInput={props.setQuery}
+                type='search'
+                value={props.query}
+            />
             <Show
                 when={
                     props.query.trim() && props.onCreateNewOption !== undefined
@@ -46,6 +47,6 @@ export const Searchbar = (props: SelectSearchbarProps) => {
                     <IconEditAddPlus />
                 </Button>
             </Show>
-        </Input>
+        </>
     );
 };
