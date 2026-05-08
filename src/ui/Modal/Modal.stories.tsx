@@ -1,3 +1,4 @@
+import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Modal } from './Modal';
@@ -15,9 +16,11 @@ type Story = StoryObj<typeof Modal>;
 
 export const Default: Story = {
     render: () => {
+        const [open, setOpen] = createSignal(true);
+
         return (
-            <Modal>
-                <Modal.Trigger>Open Modal</Modal.Trigger>
+            <Modal onOpenChange={setOpen} open={open()}>
+                <Modal.Trigger>Open al</Modal.Trigger>
                 <Modal.Content>
                     <Modal.CloseButton />
                     <Modal.Header>
