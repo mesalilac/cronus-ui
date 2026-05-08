@@ -19,10 +19,10 @@ export const Content = (props: ModalContentProps) => {
     const ctx = useModalContext();
 
     const modalSizeStyle: Record<ModalSize, string> = {
-        sm: cn('size-7/12'),
-        md: cn('size-8/12'),
-        lg: cn('size-9/12'),
-        xl: cn('size-11/12'),
+        sm: cn('md:size-7/12'),
+        md: cn('md:size-8/12'),
+        lg: cn('md:size-9/12'),
+        xl: cn('md:size-11/12'),
     };
 
     const onEnterAnim = () => {
@@ -103,7 +103,7 @@ export const Content = (props: ModalContentProps) => {
         <Portal>
             <dialog
                 class={cn(
-                    'm-auto rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/50 backdrop:backdrop-blur-xs',
+                    'm-auto size-full rounded-default border border-border bg-surface-1/80 p-4 text-text-primary shadow-default backdrop:bg-black/50 backdrop:backdrop-blur-xs',
                     modalSizeStyle[ctx.size()],
                     props.class,
                 )}
