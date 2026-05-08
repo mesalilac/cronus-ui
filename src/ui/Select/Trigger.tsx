@@ -1,7 +1,8 @@
-import type { JSX } from 'solid-js';
+import { type JSX, Match, Switch } from 'solid-js';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
 import { Button, type ButtonProps } from '~/ui/Button';
+import { Input } from '~/ui/Input';
 import { cn } from '~/utils';
 
 import { useSelectContext } from './context';
@@ -21,8 +22,8 @@ export const Trigger = (props: SelectTriggerProps) => {
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(
-                'min-w-52 justify-between px-3 capitalize',
-                ctx.isOpen() && 'outline outline-accent',
+                'min-w-52 justify-between bg-surface-3/30 p-1 px-3 py-2.5 capitalize outline outline-border',
+                ctx.isOpen() && 'outline-accent',
                 props.class,
             )}
             disabled={props.disabled}
