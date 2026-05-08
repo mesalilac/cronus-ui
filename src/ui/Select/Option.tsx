@@ -23,7 +23,7 @@ export const Option = (props: SelectOptionProps) => {
         <Button
             appearance={isSelected() ? 'primary' : 'secondary'}
             class={cn(
-                'justify-between text-nowrap px-2 py-1 text-text-secondary',
+                'relative justify-between text-nowrap px-2 py-1 text-text-secondary before:absolute before:inset-x-0 before:inset-y-1 before:size-full before:content-[""]',
                 props.class,
             )}
             disabled={props.disabled}
