@@ -6,7 +6,7 @@ import {
     onMount,
 } from 'solid-js';
 
-import { Content } from './Content';
+import { Content, SelectList } from './Content';
 import { SelectContext } from './context';
 import { Filter } from './Filter';
 import { Option } from './Option';
@@ -85,6 +85,7 @@ export const Select = (rawProps: SelectProps) => {
 
 Select.Trigger = Trigger;
 Select.Content = Content;
+Select.List = SelectList;
 Select.OptionGroup = OptionGroup;
 Select.Option = Option;
 Select.Filter = Filter;
