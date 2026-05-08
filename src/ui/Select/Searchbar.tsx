@@ -28,7 +28,7 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     return (
         <div class='flex flex-1 items-center gap-1'>
             <Input
-                class={cn('px-2 py-0.5', props.class)}
+                class={cn('px-2 py-1', props.class)}
                 onInput={props.setQuery}
                 type='search'
                 value={props.query}
