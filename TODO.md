@@ -2,7 +2,6 @@
 
 ## Refactor
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
-- Select - make the dropdown menu compact (change padding on options and search), add options component as a scrollable container for options
 
 ## New components
 - Fieldset - <https://headlessui.com/react/fieldset>
