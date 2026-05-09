@@ -34,6 +34,9 @@ export const Primary: Story = {
                 <Button appearance='primary' variant='ghost'>
                     Ghost
                 </Button>
+                <Button appearance='primary' variant='transparent'>
+                    Transparent
+                </Button>
                 <Button
                     appearance='primary'
                     as='a'
@@ -62,6 +65,9 @@ export const Secondary: Story = {
                 </Button>
                 <Button appearance='secondary' variant='ghost'>
                     Ghost
+                </Button>
+                <Button appearance='secondary' variant='transparent'>
+                    Transparent
                 </Button>
                 <Button
                     appearance='secondary'
@@ -92,6 +98,9 @@ export const Info: Story = {
                 <Button appearance='info' variant='ghost'>
                     Ghost
                 </Button>
+                <Button appearance='info' variant='transparent'>
+                    Transparent
+                </Button>
                 <Button
                     appearance='info'
                     as='a'
@@ -120,6 +129,9 @@ export const Success: Story = {
                 </Button>
                 <Button appearance='success' variant='ghost'>
                     Ghost
+                </Button>
+                <Button appearance='success' variant='transparent'>
+                    Transparent
                 </Button>
                 <Button
                     appearance='success'
@@ -150,6 +162,9 @@ export const Warning: Story = {
                 <Button appearance='warning' variant='ghost'>
                     Ghost
                 </Button>
+                <Button appearance='warning' variant='transparent'>
+                    Transparent
+                </Button>
                 <Button
                     appearance='warning'
                     as='a'
@@ -178,6 +193,9 @@ export const Danger: Story = {
                 </Button>
                 <Button appearance='danger' variant='ghost'>
                     Ghost
+                </Button>
+                <Button appearance='danger' variant='transparent'>
+                    Transparent
                 </Button>
                 <Button
                     appearance='danger'

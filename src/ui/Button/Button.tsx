@@ -8,7 +8,7 @@ import {
 import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
 import { cn } from '~/utils';
 
-export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | 'link';
+export type ButtonVariant = 'solid' | 'soft' | 'outline' | 'ghost' | "transparent" | 'link';
 
 export type ButtonAppearance =
     | 'primary'
@@ -58,6 +58,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-accent/30'),
             outline: cn('bg-accent/10 text-accent outline outline-accent'),
             ghost: cn('text-accent hover:bg-accent/80'),
+            transparent: cn('bg-transparent  text-accent/85 hover:text-accent'),
             link: cn('text-accent hover:underline'),
         },
         secondary: {
@@ -65,6 +66,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-surface-3/30'),
             outline: cn('bg-surface-3/10 outline outline-surface-3'),
             ghost: cn('hover:bg-surface-3/80'),
+            transparent: cn('bg-transparent text-text-primary/85 hover:text-text-primary'),
             link: cn('hover:underline'),
         },
         info: {
@@ -72,6 +74,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-info/30 text-info'),
             outline: cn('bg-info/10 text-info outline outline-info'),
             ghost: cn('text-info hover:bg-info/80'),
+            transparent: cn('bg-transparent text-info/85 hover:text-info'),
             link: cn('text-info hover:underline'),
         },
         success: {
@@ -79,6 +82,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-success/30 text-success'),
             outline: cn('bg-success/10 text-success outline outline-success'),
             ghost: cn('text-success hover:bg-success/80'),
+            transparent: cn('bg-transparent text-success/85 hover:text-success'),
             link: cn('text-success hover:underline'),
         },
         warning: {
@@ -86,6 +90,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-warning/30 text-warning'),
             outline: cn('bg-warning/10 text-warning outline outline-warning'),
             ghost: cn('text-warning hover:bg-warning/80'),
+            transparent: cn('bg-transparent text-warning/85 hover:text-warning'),
             link: cn('text-warning hover:underline'),
         },
         danger: {
@@ -93,6 +98,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-danger/30 text-danger'),
             outline: cn('bg-danger/10 text-danger outline outline-danger'),
             ghost: cn('text-danger hover:bg-danger/80'),
+            transparent: cn('bg-transparent text-danger/85 hover:text-danger'),
             link: cn('text-danger hover:underline'),
         },
     };
