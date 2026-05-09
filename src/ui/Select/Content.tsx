@@ -96,6 +96,9 @@ export const SelectList: FlowComponent<{ class?: string }, JSX.Element> = (
             )}
         >
             {props.children}
+            <span class='hidden select-none text-center text-text-secondary only:block'>
+                No options found
+            </span>
         </div>
     );
 };
