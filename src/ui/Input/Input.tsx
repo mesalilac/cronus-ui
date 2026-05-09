@@ -98,7 +98,7 @@ export const Input = (rawProps: InputProps) => {
         ) : null);
 
     return (
-        <div class='@container/input flex min-w-32 flex-col gap-2 rounded-default'>
+        <div class='@container/input flex min-w-32 flex-1 flex-col gap-2 rounded-default'>
             <Show when={props.label}>
                 {(label) => (
                     <FieldLabel
@@ -113,6 +113,7 @@ export const Input = (rawProps: InputProps) => {
                     class={cn(
                         'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:ring-danger',
                         error() && 'bg-danger/30 focus-within:ring-danger',
+                        props.class,
                     )}
                 >
                     <Show when={getIcon()}>
@@ -126,7 +127,6 @@ export const Input = (rawProps: InputProps) => {
                         autofocus={props.autoFocus}
                         class={cn(
                             'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
-                            props.class,
                         )}
                         disabled={props.disabled}
                         id={id}

@@ -50,13 +50,15 @@ export const Single: Story = {
             <Select onChange={setValue} value={value()}>
                 <Select.Trigger>{displayOption(value())}</Select.Trigger>
                 <Select.Content>
-                    <For each={OptionsList}>
-                        {(option) => (
-                            <Select.Option value={option}>
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
+                    <Select.List>
+                        <For each={OptionsList}>
+                            {(option) => (
+                                <Select.Option value={option}>
+                                    {displayOption(option)}
+                                </Select.Option>
+                            )}
+                        </For>
+                    </Select.List>
                 </Select.Content>
             </Select>
         );
@@ -71,108 +73,29 @@ export const OptionGroup: Story = {
             <Select onChange={setValue} value={value()}>
                 <Select.Trigger>{displayOption(value())}</Select.Trigger>
                 <Select.Content>
-                    <For each={OptionsList}>
-                        {(option) => (
-                            <Select.Option value={option}>
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
-                    <Select.OptionGroup label='Group 1'>
-                        <For
-                            each={[
-                                'g-1-option-1',
-                                'g-1-option-2',
-                                'g-1-option-3',
-                            ]}
-                        >
+                    <Select.List>
+                        <For each={OptionsList}>
                             {(option) => (
                                 <Select.Option value={option}>
                                     {displayOption(option)}
                                 </Select.Option>
                             )}
                         </For>
-                    </Select.OptionGroup>
-                    <Select.OptionGroup label='Group 2'>
-                        <For
-                            each={[
-                                'g-2-option-1',
-                                'g-2-option-2',
-                                'g-2-option-3',
-                            ]}
-                        >
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                    </Select.OptionGroup>
-                    <Select.OptionGroup label='Group 3'>
-                        <For
-                            each={[
-                                'g-3-option-1',
-                                'g-3-option-2',
-                                'g-3-option-3',
-                            ]}
-                        >
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                    </Select.OptionGroup>
-                    <Select.OptionGroup label='Group 4'>
-                        <For
-                            each={[
-                                'g-4-option-1',
-                                'g-4-option-2',
-                                'g-4-option-3',
-                            ]}
-                        >
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                    </Select.OptionGroup>
-                </Select.Content>
-            </Select>
-        );
-    },
-};
-
-export const NestedOptionGroup: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('option-1');
-
-        return (
-            <Select onChange={setValue} value={value()}>
-                <Select.Trigger>{displayOption(value())}</Select.Trigger>
-                <Select.Content>
-                    <For each={OptionsList}>
-                        {(option) => (
-                            <Select.Option value={option}>
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
-                    <Select.OptionGroup label='Group 1'>
-                        <For
-                            each={[
-                                'g-1-option-1',
-                                'g-1-option-2',
-                                'g-1-option-3',
-                            ]}
-                        >
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
+                        <Select.OptionGroup label='Group 1'>
+                            <For
+                                each={[
+                                    'g-1-option-1',
+                                    'g-1-option-2',
+                                    'g-1-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                        </Select.OptionGroup>
                         <Select.OptionGroup label='Group 2'>
                             <For
                                 each={[
@@ -188,37 +111,120 @@ export const NestedOptionGroup: Story = {
                                 )}
                             </For>
                         </Select.OptionGroup>
-                    </Select.OptionGroup>
-                    <Select.OptionGroup label='Group 3'>
-                        <For
-                            each={[
-                                'g-3-option-1',
-                                'g-3-option-2',
-                                'g-3-option-3',
-                            ]}
-                        >
+                        <Select.OptionGroup label='Group 3'>
+                            <For
+                                each={[
+                                    'g-3-option-1',
+                                    'g-3-option-2',
+                                    'g-3-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                        </Select.OptionGroup>
+                        <Select.OptionGroup label='Group 4'>
+                            <For
+                                each={[
+                                    'g-4-option-1',
+                                    'g-4-option-2',
+                                    'g-4-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                        </Select.OptionGroup>
+                    </Select.List>
+                </Select.Content>
+            </Select>
+        );
+    },
+};
+
+export const NestedOptionGroup: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('option-1');
+
+        return (
+            <Select onChange={setValue} value={value()}>
+                <Select.Trigger>{displayOption(value())}</Select.Trigger>
+                <Select.Content>
+                    <Select.List>
+                        <For each={OptionsList}>
                             {(option) => (
                                 <Select.Option value={option}>
                                     {displayOption(option)}
                                 </Select.Option>
                             )}
                         </For>
-                    </Select.OptionGroup>
-                    <Select.OptionGroup label='Group 4'>
-                        <For
-                            each={[
-                                'g-4-option-1',
-                                'g-4-option-2',
-                                'g-4-option-3',
-                            ]}
-                        >
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                    </Select.OptionGroup>
+                        <Select.OptionGroup label='Group 1'>
+                            <For
+                                each={[
+                                    'g-1-option-1',
+                                    'g-1-option-2',
+                                    'g-1-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                            <Select.OptionGroup label='Group 2'>
+                                <For
+                                    each={[
+                                        'g-2-option-1',
+                                        'g-2-option-2',
+                                        'g-2-option-3',
+                                    ]}
+                                >
+                                    {(option) => (
+                                        <Select.Option value={option}>
+                                            {displayOption(option)}
+                                        </Select.Option>
+                                    )}
+                                </For>
+                            </Select.OptionGroup>
+                        </Select.OptionGroup>
+                        <Select.OptionGroup label='Group 3'>
+                            <For
+                                each={[
+                                    'g-3-option-1',
+                                    'g-3-option-2',
+                                    'g-3-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                        </Select.OptionGroup>
+                        <Select.OptionGroup label='Group 4'>
+                            <For
+                                each={[
+                                    'g-4-option-1',
+                                    'g-4-option-2',
+                                    'g-4-option-3',
+                                ]}
+                            >
+                                {(option) => (
+                                    <Select.Option value={option}>
+                                        {displayOption(option)}
+                                    </Select.Option>
+                                )}
+                            </For>
+                        </Select.OptionGroup>
+                    </Select.List>
                 </Select.Content>
             </Select>
         );
@@ -248,16 +254,18 @@ export const Multiple: Story = {
                     Select Option <Badge>{value().length}</Badge>
                 </Select.Trigger>
                 <Select.Content>
-                    <For each={OptionsList}>
-                        {(option) => (
-                            <Select.Option
-                                selected={value().includes(option)}
-                                value={option}
-                            >
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
+                    <Select.List>
+                        <For each={OptionsList}>
+                            {(option) => (
+                                <Select.Option
+                                    selected={value().includes(option)}
+                                    value={option}
+                                >
+                                    {displayOption(option)}
+                                </Select.Option>
+                            )}
+                        </For>
+                    </Select.List>
                 </Select.Content>
             </Select>
         );
@@ -305,16 +313,18 @@ export const WithSearchbar: Story = {
                             setQuery={setSearchQuery}
                         />
                     </Select.Filter>
-                    <For each={filteredOptions()}>
-                        {(option) => (
-                            <Select.Option
-                                selected={value().includes(option)}
-                                value={option}
-                            >
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
+                    <Select.List>
+                        <For each={filteredOptions()}>
+                            {(option) => (
+                                <Select.Option
+                                    selected={value().includes(option)}
+                                    value={option}
+                                >
+                                    {displayOption(option)}
+                                </Select.Option>
+                            )}
+                        </For>
+                    </Select.List>
                 </Select.Content>
             </Select>
         );
@@ -379,16 +389,18 @@ export const Creatable: Story = {
                             setQuery={setSearchQuery}
                         />
                     </Select.Filter>
-                    <For each={filteredOptions()}>
-                        {(option) => (
-                            <Select.Option
-                                selected={value().includes(option)}
-                                value={option}
-                            >
-                                {displayOption(option)}
-                            </Select.Option>
-                        )}
-                    </For>
+                    <Select.List>
+                        <For each={filteredOptions()}>
+                            {(option) => (
+                                <Select.Option
+                                    selected={value().includes(option)}
+                                    value={option}
+                                >
+                                    {displayOption(option)}
+                                </Select.Option>
+                            )}
+                        </For>
+                    </Select.List>
                 </Select.Content>
             </Select>
         );

@@ -3,6 +3,7 @@ import { Show } from 'solid-js';
 import { IconEditAddPlus } from '~/icons';
 import { Button } from '~/ui/Button';
 import { Input } from '~/ui/Input';
+import { cn } from '~/utils';
 
 export type SelectSearchbarProps = {
     query: string;
@@ -25,12 +26,13 @@ export const Searchbar = (props: SelectSearchbarProps) => {
     };
 
     return (
-        <Input
-            class={props.class}
-            onInput={props.setQuery}
-            type='search'
-            value={props.query}
-        >
+        <div class='flex flex-1 items-center gap-1'>
+            <Input
+                class={cn('px-2 py-1', props.class)}
+                onInput={props.setQuery}
+                type='search'
+                value={props.query}
+            />
             <Show
                 when={
                     props.query.trim() && props.onCreateNewOption !== undefined
@@ -38,14 +40,14 @@ export const Searchbar = (props: SelectSearchbarProps) => {
             >
                 <Button
                     appearance='primary'
-                    class='justify-center'
+                    class='px-2 py-1.5'
                     disabled={!canCreateFromQuery(props.query)}
                     onClick={onCreate}
-                    variant='soft'
+                    title='Create new option'
                 >
                     <IconEditAddPlus />
                 </Button>
             </Show>
-        </Input>
+        </div>
     );
 };

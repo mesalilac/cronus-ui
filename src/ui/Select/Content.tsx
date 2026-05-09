@@ -1,5 +1,11 @@
 import { gsap } from 'gsap';
-import { createEffect, type JSX, mergeProps, onCleanup } from 'solid-js';
+import {
+    createEffect,
+    type FlowComponent,
+    type JSX,
+    mergeProps,
+    onCleanup,
+} from 'solid-js';
 
 import { Popover, type PopoverProps } from '~/ui/Popover';
 import { cn } from '~/utils';
@@ -64,7 +70,7 @@ export const Content = (rawProps: SelectContentProps) => {
         >
             <div
                 class={cn(
-                    'mt-1 mb-1 max-h-80 overflow-y-auto overscroll-contain rounded-default bg-surface-2 text-text-primary shadow-default outline outline-accent [scrollbar-gutter:stable]',
+                    'mt-1 mb-1 flex max-h-80 flex-col gap-2 rounded-default bg-surface-2 p-2 text-text-primary shadow-default outline outline-accent',
                     props.class,
                 )}
                 ref={divRef}
@@ -73,8 +79,26 @@ export const Content = (rawProps: SelectContentProps) => {
                     'max-width': triggerWidth(),
                 }}
             >
-                <div class='flex flex-col gap-1 p-2'>{props.children}</div>
+                {props.children}
             </div>
         </Popover>
+    );
+};
+
+export const SelectList: FlowComponent<{ class?: string }, JSX.Element> = (
+    props,
+) => {
+    return (
+        <div
+            class={cn(
+                'flex flex-1 flex-col gap-1 overflow-y-auto',
+                props.class,
+            )}
+        >
+            {props.children}
+            <span class='hidden select-none text-center text-text-secondary only:block'>
+                No options found
+            </span>
+        </div>
     );
 };

@@ -44,7 +44,7 @@ export const OptionGroup = (props: SelectOptionGroupProps) => {
                 >
                     <IconArrowCaretUpMd size='1.5em' />
                 </Show>
-                <Label>{props.label}</Label>
+                <Label class='text-text-muted'>{props.label}</Label>
             </Button>
             <Transition onEnter={onEnterAnim} onExit={onExitAnim}>
                 <Show when={isOpen()}>
