@@ -17,8 +17,6 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Alert>;
 
-// variant?: 'default' | 'success' | 'warning' | 'danger' | 'info';
-
 export const Default: Story = {
     render: () => {
         return (
@@ -99,12 +97,12 @@ export const Info: Story = {
     },
 };
 
-export const Dismissible: Story = {
+export const NotDismissible: Story = {
     render: () => {
         return (
             <Alert
                 description='Alert Description'
-                dismissible
+                dismissible={false}
                 title='Alert Title'
             >
                 <Alert.Action onClick={(dismiss) => dismiss()}>

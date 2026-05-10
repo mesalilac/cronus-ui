@@ -63,7 +63,7 @@ export const Alert = (rawProps: AlertProps) => {
     const props = mergeProps(
         {
             variant: 'default',
-            dismissible: false,
+            dismissible: true,
         } satisfies Partial<AlertProps>,
         rawProps,
     );
