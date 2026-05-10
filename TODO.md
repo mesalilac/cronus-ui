@@ -2,7 +2,6 @@
 
 ## Feat
 
-- Banner - add mode prop displace or overlay, if displace mount before or after #root, if overlay use position absolute
 - Input/Textarea - display min and max lengths
 
 ## Refactor
