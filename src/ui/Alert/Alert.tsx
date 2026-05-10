@@ -125,7 +125,7 @@ export const Alert = (rawProps: AlertProps) => {
                 >
                     <div
                         class={cn(
-                            'relative flex w-full min-w-80 flex-row gap-4 rounded-r-default border-current border-l-2 p-4 text-text-primary',
+                            'relative flex w-full min-w-80 flex-row gap-4 rounded-r-default border-current border-l-2 p-4 text-text-secondary',
                             variantStyles[props.variant],
                             props.class,
                         )}
@@ -149,9 +149,7 @@ export const Alert = (rawProps: AlertProps) => {
                         </Switch>
                         <div class='flex w-full flex-col gap-2'>
                             <h1 class='font-semibold text-lg'>{props.title}</h1>
-                            <p class='text-text-secondary'>
-                                {props.description}
-                            </p>
+                            <p class='text-text-muted'>{props.description}</p>
                             <Show when={props.children}>
                                 <div class='mt-2 flex flex-row items-center gap-2'>
                                     {props.children}
