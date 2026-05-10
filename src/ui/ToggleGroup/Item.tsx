@@ -19,14 +19,14 @@ export const Item: FlowComponent<ToggleGroupItemProps> = (props) => {
 
     return (
         <Button
-            appearance={isSelected() ? 'primary' : 'secondary'}
+            appearance='secondary'
             class={cn(
                 'rounded-none first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
                 props.class,
             )}
             disabled={isDisabled()}
             onClick={() => ctx.toggle(props.value)}
-            variant='outline'
+            variant={isSelected() ? 'soft' : 'ghost'}
         >
             {props.children}
         </Button>

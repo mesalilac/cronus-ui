@@ -58,7 +58,14 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
                 disabled: disabled(),
             }}
         >
-            <div class={cn('flex flex-row', props.class)}>{props.children}</div>
+            <div
+                class={cn(
+                    'flex flex-row divide-x-2 divide-border rounded-default outline outline-border',
+                    props.class,
+                )}
+            >
+                {props.children}
+            </div>
         </ToggleGroupContext.Provider>
     );
 };
