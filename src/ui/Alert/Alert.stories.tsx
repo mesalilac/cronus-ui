@@ -25,7 +25,7 @@ export const Default: Story = {
                 title='Alert Title'
                 variant='default'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -41,7 +41,7 @@ export const Success: Story = {
                 title='Alert Title'
                 variant='success'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -57,7 +57,7 @@ export const Warning: Story = {
                 title='Alert Title'
                 variant='warning'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -73,7 +73,7 @@ export const Danger: Story = {
                 title='Alert Title'
                 variant='danger'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -89,7 +89,7 @@ export const Info: Story = {
                 title='Alert Title'
                 variant='info'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -105,7 +105,7 @@ export const NotDismissible: Story = {
                 dismissible={false}
                 title='Alert Title'
             >
-                <Alert.Action onClick={(dismiss) => dismiss()}>
+                <Alert.Action onClick={(closeAlert) => closeAlert()}>
                     <IconEditShow /> Show more
                 </Alert.Action>
             </Alert>
@@ -131,7 +131,7 @@ export const ExternalTrigger: Story = {
                     open={isOpen()}
                     title='Alert Title'
                 >
-                    <Alert.Action onClick={(dismiss) => dismiss()}>
+                    <Alert.Action onClick={(closeAlert) => closeAlert()}>
                         <IconEditShow /> Show more
                     </Alert.Action>
                 </Alert>

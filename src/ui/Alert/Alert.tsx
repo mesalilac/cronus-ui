@@ -33,7 +33,7 @@ export type AlertVariant =
 
 const AlertContext = createContext<{
     variant: Accessor<AlertVariant>;
-    dismiss: () => void;
+    closeAlert: () => void;
 }>();
 
 const useAlertContext = () => {
@@ -51,6 +51,7 @@ const useAlertContext = () => {
 export type AlertProps = {
     open?: boolean;
     onOpenChange?: (value: boolean) => void;
+    onDismiss?: () => void;
     variant?: AlertVariant;
     title: string;
     description: string;
@@ -84,7 +85,7 @@ export const Alert = (rawProps: AlertProps) => {
         props.onOpenChange?.(value);
     };
 
-    const dismiss = () => setIsOpen(false);
+    const closeAlert = () => setIsOpen(false);
 
     const variantStyles: Record<AlertVariant, string> = {
         default: cn('border-text-muted bg-surface-3/30'),
@@ -119,7 +120,7 @@ export const Alert = (rawProps: AlertProps) => {
                 <AlertContext.Provider
                     value={{
                         variant: () => props.variant,
-                        dismiss,
+                        closeAlert: closeAlert,
                     }}
                 >
                     <div
@@ -163,7 +164,10 @@ export const Alert = (rawProps: AlertProps) => {
                                     'absolute top-1 right-1 text-text-muted',
                                     props.class,
                                 )}
-                                onClick={() => dismiss()}
+                                onClick={() => {
+                                    closeAlert();
+                                    props.onDismiss?.();
+                                }}
                                 size='icon'
                                 variant='ghost'
                             >
@@ -178,7 +182,7 @@ export const Alert = (rawProps: AlertProps) => {
 };
 
 export type AlertActionProps = {
-    onClick?: (dismiss: () => void) => void;
+    onClick?: (closeAlert: () => void) => void;
     class?: string;
     children: JSX.Element;
 };
@@ -202,7 +206,7 @@ Alert.Action = (props: AlertActionProps) => {
         <Button
             appearance={buttonAppearance()}
             class={cn(props.class)}
-            onClick={() => props.onClick?.(ctx.dismiss)}
+            onClick={() => props.onClick?.(ctx.closeAlert)}
             variant='outline'
         >
             {props.children}
