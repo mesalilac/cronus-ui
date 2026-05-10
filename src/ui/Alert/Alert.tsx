@@ -1,7 +1,9 @@
 import { gsap } from 'gsap';
 import {
+    type Accessor,
     createComputed,
     createContext,
+    createMemo,
     createSignal,
     type JSX,
     Match,
@@ -19,7 +21,7 @@ import {
     IconWarningCircleWarning,
     IconWarningInfo,
 } from '~/icons';
-import { Button } from '~/ui/Button';
+import { Button, type ButtonAppearance } from '~/ui/Button';
 import { cn } from '~/utils';
 
 export type AlertVariant =
@@ -30,6 +32,7 @@ export type AlertVariant =
     | 'info';
 
 const AlertContext = createContext<{
+    variant: Accessor<AlertVariant>;
     dismiss: () => void;
 }>();
 
@@ -84,11 +87,11 @@ export const Alert = (rawProps: AlertProps) => {
     const dismiss = () => setIsOpen(false);
 
     const variantStyles: Record<AlertVariant, string> = {
-        default: cn('bg-surface-3/20 text-text-muted'),
-        success: cn('bg-success/10 text-text-success'),
-        warning: cn('bg-warning/10 text-text-warning'),
-        danger: cn('bg-danger/10 text-text-danger'),
-        info: cn('bg-info/10 text-text-info'),
+        default: cn('border-text-muted bg-surface-3/30'),
+        success: cn('border-text-success bg-success/30'),
+        warning: cn('border-text-warning bg-warning/30'),
+        danger: cn('border-text-danger bg-danger/30'),
+        info: cn('border-text-info bg-info/30'),
     };
 
     return (
@@ -115,12 +118,13 @@ export const Alert = (rawProps: AlertProps) => {
             <Show when={isOpen()}>
                 <AlertContext.Provider
                     value={{
+                        variant: () => props.variant,
                         dismiss,
                     }}
                 >
                     <div
                         class={cn(
-                            'relative flex w-full min-w-80 flex-row gap-4 rounded-r-default border-current border-l-2 p-4',
+                            'relative flex w-full min-w-80 flex-row gap-4 rounded-r-default border-current border-l-2 p-4 text-text-primary',
                             variantStyles[props.variant],
                             props.class,
                         )}
@@ -144,7 +148,9 @@ export const Alert = (rawProps: AlertProps) => {
                         </Switch>
                         <div class='flex w-full flex-col gap-2'>
                             <h1 class='font-semibold text-lg'>{props.title}</h1>
-                            <p>{props.description}</p>
+                            <p class='text-text-secondary'>
+                                {props.description}
+                            </p>
                             <Show when={props.children}>
                                 <div class='mt-2 flex flex-row items-center gap-2'>
                                     {props.children}
@@ -180,12 +186,22 @@ export type AlertActionProps = {
 Alert.Action = (props: AlertActionProps) => {
     const ctx = useAlertContext();
 
+    const buttonAppearance = createMemo((): ButtonAppearance => {
+        const variant = ctx.variant();
+
+        switch (variant) {
+            case 'default':
+                return 'secondary';
+
+            default:
+                return variant;
+        }
+    });
+
     return (
         <Button
-            class={cn(
-                'text-current outline-current hover:bg-current/10 active:bg-current/20',
-                props.class,
-            )}
+            appearance={buttonAppearance()}
+            class={cn(props.class)}
             onClick={() => props.onClick?.(ctx.dismiss)}
             variant='outline'
         >
