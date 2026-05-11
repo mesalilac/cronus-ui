@@ -54,7 +54,7 @@ export type AlertProps = {
     onDismiss?: () => void;
     variant?: AlertVariant;
     title: string;
-    description: string;
+    description?: string;
     class?: string;
     dismissible?: boolean;
     children?: JSX.Element;
