@@ -1,18 +1,24 @@
 import { gsap } from 'gsap';
 import {
-    type Component,
     createComputed,
     createSignal,
-    type JSX,
+    type FlowComponent,
+    Match,
     mergeProps,
     on,
     onCleanup,
     Show,
+    Switch,
 } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
 
-import { IconMenuCloseMd } from '~/icons';
+import {
+    IconInterfaceCheck,
+    IconMenuCloseMd,
+    IconWarningCircleWarning,
+    IconWarningInfo,
+} from '~/icons';
 import { Button } from '~/ui/Button';
 import { cn } from '~/utils';
 
@@ -33,10 +39,9 @@ export type BannerProps = {
     autoDismissMs?: number;
     pauseOnHover?: boolean;
     class?: string;
-    children: JSX.Element;
 };
 
-export const Banner: Component<BannerProps> = (rawProps) => {
+export const Banner: FlowComponent<BannerProps> = (rawProps) => {
     let dismissProgressbarRef!: HTMLDivElement;
 
     const props = mergeProps(
@@ -50,11 +55,11 @@ export const Banner: Component<BannerProps> = (rawProps) => {
     );
 
     const variantStyles: Record<BannerVariant, string> = {
-        default: cn('bg-surface-3/80'),
-        success: cn('bg-success/30'),
-        warning: cn('bg-warning/30'),
-        danger: cn('bg-danger/30'),
-        info: cn('bg-info/30'),
+        default: cn('border-accent'),
+        success: cn('border-success'),
+        warning: cn('border-warning'),
+        danger: cn('border-danger'),
+        info: cn('border-info'),
     };
 
     const [open, setOpen] = createSignal(props.open ?? true);
@@ -143,8 +148,10 @@ export const Banner: Component<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'fixed z-50 flex min-h-12 w-full items-center justify-center border border-current/30 p-2 text-text-primary shadow-default backdrop-blur-xs',
-                            props.placement === 'top' ? 'top-0' : 'bottom-0',
+                            'fixed z-50 flex min-h-12 w-full items-center justify-center gap-2 bg-accent p-2 text-text-primary backdrop-blur-xs',
+                            props.placement === 'top'
+                                ? 'top-0 border-b-2'
+                                : 'bottom-0 border-t-2',
                             variantStyles[props.variant],
                             props.class,
                         )}
@@ -156,6 +163,24 @@ export const Banner: Component<BannerProps> = (rawProps) => {
                         }
                         role='none'
                     >
+                        <Switch
+                            fallback={
+                                <IconWarningInfo class='size-5 text-text-secondary' />
+                            }
+                        >
+                            <Match when={props.variant === 'success'}>
+                                <IconInterfaceCheck class='size-5 text-text-success' />
+                            </Match>
+                            <Match when={props.variant === 'warning'}>
+                                <IconWarningCircleWarning class='size-5 text-text-warning' />
+                            </Match>
+                            <Match when={props.variant === 'danger'}>
+                                <IconWarningCircleWarning class='size-5 text-text-danger' />
+                            </Match>
+                            <Match when={props.variant === 'info'}>
+                                <IconWarningInfo class='size-5 text-text-info' />
+                            </Match>
+                        </Switch>
                         {props.children}
                         <Show when={props.dismissible}>
                             <div
@@ -183,7 +208,7 @@ export const Banner: Component<BannerProps> = (rawProps) => {
                                     class={cn(
                                         'h-full origin-left bg-current',
                                         props.variant === 'default' &&
-                                            'bg-accent',
+                                            'bg-white/60',
                                     )}
                                     ref={dismissProgressbarRef}
                                 />
