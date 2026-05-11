@@ -37,6 +37,78 @@ export type ButtonProps = {
     children: JSX.Element;
 };
 
+const baseStyles = cn(
+    'flex cursor-pointer items-center gap-2 rounded-default font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-90 disabled:pointer-events-none disabled:opacity-60',
+);
+
+const buttonSize: Record<ButtonSize, string> = {
+    sm: cn('p-1'),
+    md: cn('px-4 py-2'),
+    lg: cn('px-6 py-2'),
+    icon: cn('p-2'),
+};
+
+const buttonAppearanceStyle: ButtonStyle = {
+    primary: {
+        solid: cn('bg-accent'),
+        soft: cn('bg-accent/30'),
+        outline: cn('bg-accent/10 text-accent outline outline-accent'),
+        ghost: cn('text-accent hover:bg-accent/60'),
+        transparent: cn('bg-transparent text-accent/90 hover:text-accent'),
+        link: cn('text-accent hover:underline'),
+    },
+    secondary: {
+        solid: cn('bg-surface-3/80'),
+        soft: cn('bg-surface-3/30'),
+        outline: cn('bg-surface-3/10 outline outline-surface-3'),
+        ghost: cn('hover:bg-surface-3/60'),
+        transparent: cn(
+            'bg-transparent text-text-secondary hover:text-text-primary',
+        ),
+        link: cn('hover:underline'),
+    },
+    info: {
+        solid: cn('bg-info/80'),
+        soft: cn('bg-info/30 text-text-info'),
+        outline: cn('bg-info/10 text-text-info outline outline-info'),
+        ghost: cn('text-text-info hover:bg-info/60'),
+        transparent: cn(
+            'bg-transparent text-text-info/90 hover:text-text-info',
+        ),
+        link: cn('text-text-info hover:underline'),
+    },
+    success: {
+        solid: cn('bg-success/80'),
+        soft: cn('bg-success/30 text-text-success'),
+        outline: cn('bg-success/10 text-text-success outline outline-success'),
+        ghost: cn('text-text-success hover:bg-success/60'),
+        transparent: cn(
+            'bg-transparent text-text-success/90 hover:text-text-success',
+        ),
+        link: cn('text-text-success hover:underline'),
+    },
+    warning: {
+        solid: cn('bg-warning/80'),
+        soft: cn('bg-warning/30 text-text-warning'),
+        outline: cn('bg-warning/10 text-text-warning outline outline-warning'),
+        ghost: cn('text-text-warning hover:bg-warning/60'),
+        transparent: cn(
+            'bg-transparent text-text-warning/90 hover:text-text-warning',
+        ),
+        link: cn('text-text-warning hover:underline'),
+    },
+    danger: {
+        solid: cn('bg-danger/80'),
+        soft: cn('bg-danger/30 text-text-danger'),
+        outline: cn('bg-danger/10 text-text-danger outline outline-danger'),
+        ghost: cn('text-text-danger hover:bg-danger/60'),
+        transparent: cn(
+            'bg-transparent text-text-danger/90 hover:text-text-danger',
+        ),
+        link: cn('text-text-danger hover:underline'),
+    },
+};
+
 export const Button = <T extends ValidComponent = 'button'>(
     props: PolymorphicProps<T, ButtonProps>,
 ) => {
@@ -46,82 +118,6 @@ export const Button = <T extends ValidComponent = 'button'>(
         'appearance',
         'size',
     ]);
-
-    const baseStyles = cn(
-        'flex cursor-pointer items-center gap-2 rounded-default font-medium text-sm text-text-primary leading-5 transition-colors duration-150 ease-out hover:brightness-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-current/50 active:brightness-90 disabled:pointer-events-none disabled:opacity-60',
-    );
-
-    const buttonSize: Record<ButtonSize, string> = {
-        sm: cn('p-1'),
-        md: cn('px-4 py-2'),
-        lg: cn('px-6 py-2'),
-        icon: cn('p-2'),
-    };
-
-    const buttonAppearanceStyle: ButtonStyle = {
-        primary: {
-            solid: cn('bg-accent'),
-            soft: cn('bg-accent/30'),
-            outline: cn('bg-accent/10 text-accent outline outline-accent'),
-            ghost: cn('text-accent hover:bg-accent/60'),
-            transparent: cn('bg-transparent text-accent/90 hover:text-accent'),
-            link: cn('text-accent hover:underline'),
-        },
-        secondary: {
-            solid: cn('bg-surface-3/80'),
-            soft: cn('bg-surface-3/30'),
-            outline: cn('bg-surface-3/10 outline outline-surface-3'),
-            ghost: cn('hover:bg-surface-3/60'),
-            transparent: cn(
-                'bg-transparent text-text-secondary hover:text-text-primary',
-            ),
-            link: cn('hover:underline'),
-        },
-        info: {
-            solid: cn('bg-info/80'),
-            soft: cn('bg-info/30 text-text-info'),
-            outline: cn('bg-info/10 text-text-info outline outline-info'),
-            ghost: cn('text-text-info hover:bg-info/60'),
-            transparent: cn(
-                'bg-transparent text-text-info/90 hover:text-text-info',
-            ),
-            link: cn('text-text-info hover:underline'),
-        },
-        success: {
-            solid: cn('bg-success/80'),
-            soft: cn('bg-success/30 text-text-success'),
-            outline: cn(
-                'bg-success/10 text-text-success outline outline-success',
-            ),
-            ghost: cn('text-text-success hover:bg-success/60'),
-            transparent: cn(
-                'bg-transparent text-text-success/90 hover:text-text-success',
-            ),
-            link: cn('text-text-success hover:underline'),
-        },
-        warning: {
-            solid: cn('bg-warning/80'),
-            soft: cn('bg-warning/30 text-text-warning'),
-            outline: cn(
-                'bg-warning/10 text-text-warning outline outline-warning',
-            ),
-            ghost: cn('text-text-warning hover:bg-warning/60'),
-            transparent: cn(
-                'bg-transparent text-text-warning/90 hover:text-text-warning',
-            ),
-            link: cn('text-text-warning hover:underline'),
-        },
-        danger: {
-            solid: cn('bg-danger/80'),
-            soft: cn('bg-danger/30 text-text-danger'),
-            outline: cn('bg-danger/10 text-text-danger outline outline-danger'),
-            ghost: cn('text-text-danger hover:bg-danger/60'),
-            transparent: cn(
-                'bg-transparent text-text-danger/90 hover:text-text-danger',
-            ),
-            link: cn('text-text-danger hover:underline'),
-        },
-    };
 
     const buttonStyle = createMemo(() =>
         cn(
