@@ -64,7 +64,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             soft: cn('bg-accent/30'),
             outline: cn('bg-accent/10 text-accent outline outline-accent'),
             ghost: cn('text-accent hover:bg-accent/60'),
-            transparent: cn('bg-transparent text-accent/85 hover:text-accent'),
+            transparent: cn('bg-transparent text-accent/90 hover:text-accent'),
             link: cn('text-accent hover:underline'),
         },
         secondary: {
@@ -73,7 +73,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             outline: cn('bg-surface-3/10 outline outline-surface-3'),
             ghost: cn('hover:bg-surface-3/60'),
             transparent: cn(
-                'bg-transparent text-text-primary/85 hover:text-text-primary',
+                'bg-transparent text-text-secondary hover:text-text-primary',
             ),
             link: cn('hover:underline'),
         },
@@ -83,7 +83,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             outline: cn('bg-info/10 text-text-info outline outline-info'),
             ghost: cn('text-text-info hover:bg-info/60'),
             transparent: cn(
-                'bg-transparent text-text-info/85 hover:text-text-info',
+                'bg-transparent text-text-info/90 hover:text-text-info',
             ),
             link: cn('text-text-info hover:underline'),
         },
@@ -95,7 +95,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             ),
             ghost: cn('text-text-success hover:bg-success/60'),
             transparent: cn(
-                'bg-transparent text-text-success/85 hover:text-text-success',
+                'bg-transparent text-text-success/90 hover:text-text-success',
             ),
             link: cn('text-text-success hover:underline'),
         },
@@ -107,7 +107,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             ),
             ghost: cn('text-text-warning hover:bg-warning/60'),
             transparent: cn(
-                'bg-transparent text-text-warning/85 hover:text-text-warning',
+                'bg-transparent text-text-warning/90 hover:text-text-warning',
             ),
             link: cn('text-text-warning hover:underline'),
         },
@@ -117,7 +117,7 @@ export const Button = <T extends ValidComponent = 'button'>(
             outline: cn('bg-danger/10 text-text-danger outline outline-danger'),
             ghost: cn('text-text-danger hover:bg-danger/60'),
             transparent: cn(
-                'bg-transparent text-text-danger/85 hover:text-text-danger',
+                'bg-transparent text-text-danger/90 hover:text-text-danger',
             ),
             link: cn('text-text-danger hover:underline'),
         },
