@@ -88,7 +88,7 @@ export const Alert = (rawProps: AlertProps) => {
     const closeAlert = () => setIsOpen(false);
 
     const variantStyles: Record<AlertVariant, string> = {
-        default: cn('border-text-muted bg-surface-3/30'),
+        default: cn('border-accent bg-accent/30'),
         success: cn('border-text-success bg-success/30'),
         warning: cn('border-text-warning bg-warning/30'),
         danger: cn('border-text-danger bg-danger/30'),
@@ -130,21 +130,22 @@ export const Alert = (rawProps: AlertProps) => {
                             props.class,
                         )}
                     >
-                        <Switch>
-                            <Match when={props.variant === 'default'}>
-                                <IconWarningInfo class='size-6' />
-                            </Match>
+                        <Switch
+                            fallback={
+                                <IconWarningInfo class='size-6 text-text-secondary' />
+                            }
+                        >
                             <Match when={props.variant === 'success'}>
-                                <IconInterfaceCheck class='size-6' />
+                                <IconInterfaceCheck class='size-6 text-text-success' />
                             </Match>
                             <Match when={props.variant === 'warning'}>
-                                <IconWarningCircleWarning class='size-6' />
+                                <IconWarningCircleWarning class='size-6 text-text-warning' />
                             </Match>
                             <Match when={props.variant === 'danger'}>
-                                <IconWarningCircleWarning class='size-6' />
+                                <IconWarningCircleWarning class='size-6 text-text-danger' />
                             </Match>
                             <Match when={props.variant === 'info'}>
-                                <IconWarningInfo class='size-6' />
+                                <IconWarningInfo class='size-6 text-text-info' />
                             </Match>
                         </Switch>
                         <div class='flex w-full flex-col gap-2'>
