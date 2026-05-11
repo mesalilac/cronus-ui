@@ -6,6 +6,10 @@
 ## Refactor
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
 
+## Fix
+- Progress(webkit) - wrong colors and border radius
+- Slider(webkit) - wrong hover color
+
 ## New components
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Remove `HelperText` component and `FieldLabel`
