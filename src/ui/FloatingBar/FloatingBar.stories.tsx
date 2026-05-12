@@ -43,7 +43,7 @@ const PlaceholderContent: VoidComponent = () => {
 
 const Wrapper: FlowComponent = (props) => {
     return (
-        <div class='relative size-96 overflow-y-auto rounded-default bg-surface-1 p-2 outline outline-border'>
+        <div class='relative size-124 overflow-y-auto rounded-default bg-surface-1 p-2 outline outline-border'>
             {props.children}
         </div>
     );
@@ -55,7 +55,7 @@ export const Default: Story = {
             <Wrapper>
                 <FloatingBar>
                     scroll to the bottom
-                    <Button appearance='primary'>
+                    <Button appearance='primary' size='icon'>
                         <IconArrowDownMd />
                     </Button>
                 </FloatingBar>
@@ -70,7 +70,7 @@ export const Scrollable: Story = {
             <Wrapper>
                 <FloatingBar>
                     scroll to the bottom
-                    <Button appearance='primary'>
+                    <Button appearance='primary' size='icon'>
                         <IconArrowDownMd />
                     </Button>
                 </FloatingBar>
