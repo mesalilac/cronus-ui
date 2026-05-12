@@ -1,6 +1,7 @@
 # TODO List
 
 ## Feat
+- Kbd - <https://ui.shadcn.com/docs/components/radix/kbd>
 - Input/Textarea - display min and max lengths
 
 ## Refactor
