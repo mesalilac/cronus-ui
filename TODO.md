@@ -1,7 +1,6 @@
 # TODO List
 
 ## Feat
-- FloatingBar - something like discord's "you're Viewing Older Messages 'Jump To Present'", also allow changing position, alignment and orientation
 - Input/Textarea - display min and max lengths
 
 ## Refactor
