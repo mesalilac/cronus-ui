@@ -18,7 +18,13 @@ export type FloatingBarProps = {
 
 export const FloatingBar: FlowComponent<FloatingBarProps> = (props) => {
     return (
-        <div class={cn('', props.class)} ref={props.ref}>
+        <div
+            class={cn(
+                'flex size-fit items-center gap-2 rounded-default bg-surface-2 p-2 text-text-primary outline outline-border-strong',
+                props.class,
+            )}
+            ref={props.ref}
+        >
             {props.children}
         </div>
     );
