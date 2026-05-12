@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { IconArrowDownMd } from '~/icons';
 import { Button } from '~/ui/Button';
+import { cn } from '~/utils';
 
 import { FloatingBar } from './FloatingBar';
 
@@ -198,9 +199,14 @@ const PlaceholderContent: VoidComponent = () => {
     );
 };
 
-const Wrapper: FlowComponent = (props) => {
+const Wrapper: FlowComponent<{ class?: string }> = (props) => {
     return (
-        <div class='relative size-124 overflow-y-auto rounded-default bg-surface-1 p-2 outline outline-border'>
+        <div
+            class={cn(
+                'size-124 overflow-y-auto rounded-default bg-surface-1 p-2 outline outline-border',
+                props.class,
+            )}
+        >
             {props.children}
         </div>
     );
@@ -209,7 +215,7 @@ const Wrapper: FlowComponent = (props) => {
 export const Default: Story = {
     render: () => {
         return (
-            <Wrapper>
+            <Wrapper class='relative'>
                 <FloatingBar>
                     scroll to the bottom
                     <Button appearance='primary' size='icon'>
@@ -224,15 +230,17 @@ export const Default: Story = {
 export const Scrollable: Story = {
     render: () => {
         return (
-            <Wrapper>
-                <FloatingBar>
-                    scroll to the bottom
-                    <Button appearance='primary' size='icon'>
-                        <IconArrowDownMd />
-                    </Button>
-                </FloatingBar>
-                <PlaceholderContent />
-            </Wrapper>
+            <div class='relative'>
+                <Wrapper>
+                    <FloatingBar>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                    <PlaceholderContent />
+                </Wrapper>
+            </div>
         );
     },
 };
