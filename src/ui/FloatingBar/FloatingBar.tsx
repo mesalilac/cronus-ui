@@ -1,5 +1,7 @@
 import type { FlowComponent, Ref } from 'solid-js';
 
+import { cn } from '~/utils';
+
 type FloatingBarPosition = 'top' | 'right' | 'bottom' | 'left';
 type FloatingBarAlignment = 'start' | 'center' | 'end';
 type FloatingBarOrientation = 'horizontal' | 'vertical';
@@ -15,5 +17,9 @@ export type FloatingBarProps = {
 };
 
 export const FloatingBar: FlowComponent<FloatingBarProps> = (props) => {
-    return <div>FloatingBar</div>;
+    return (
+        <div class={cn('', props.class)} ref={props.ref}>
+            {props.children}
+        </div>
+    );
 };
