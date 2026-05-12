@@ -1,7 +1,7 @@
 import type { FlowComponent, VoidComponent } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconArrowDownMd } from '~/icons';
+import { IconArrowDownMd, IconArrowUpMd } from '~/icons';
 import { Button } from '~/ui/Button';
 import { cn } from '~/utils';
 
@@ -223,6 +223,150 @@ export const Default: Story = {
                     </Button>
                 </FloatingBar>
             </Wrapper>
+        );
+    },
+};
+
+export const Top: Story = {
+    render: () => {
+        return (
+            <div class='flex flex-col gap-2'>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='start' position='top'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='center' position='top'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='end' position='top'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+            </div>
+        );
+    },
+};
+
+export const Right: Story = {
+    render: () => {
+        return (
+            <div class='flex gap-2'>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='start' position='right'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='center' position='right'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='end' position='right'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+            </div>
+        );
+    },
+};
+
+export const Bottom: Story = {
+    render: () => {
+        return (
+            <div class='flex flex-col gap-2'>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='start' position='bottom'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='center' position='bottom'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative h-48'>
+                    <FloatingBar alignment='end' position='bottom'>
+                        scroll to the bottom
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+            </div>
+        );
+    },
+};
+
+export const Left: Story = {
+    render: () => {
+        return (
+            <div class='flex gap-2'>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='start' position='left'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='center' position='left'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+                <Wrapper class='relative w-48'>
+                    <FloatingBar alignment='end' position='left'>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowUpMd />
+                        </Button>
+                        <Button appearance='primary' size='icon'>
+                            <IconArrowDownMd />
+                        </Button>
+                    </FloatingBar>
+                </Wrapper>
+            </div>
         );
     },
 };
