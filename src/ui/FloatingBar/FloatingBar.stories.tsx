@@ -55,7 +55,7 @@ export const Default: Story = {
             <Wrapper>
                 <FloatingBar>
                     scroll to the bottom
-                    <Button>
+                    <Button appearance='primary'>
                         <IconArrowDownMd />
                     </Button>
                 </FloatingBar>
