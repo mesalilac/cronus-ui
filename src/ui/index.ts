@@ -30,3 +30,4 @@ export * from './Label';
 export * from './AlertDialog';
 export * from './Spinner';
 export * from './ButtonGroup';
+export * from './FloatingBar';
