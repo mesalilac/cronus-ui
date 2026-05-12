@@ -1,7 +1,18 @@
-import type { Component } from 'solid-js';
+import type { FlowComponent, Ref } from 'solid-js';
 
-export type FloatingBarProps = {};
+type FloatingBarPosition = 'top' | 'right' | 'bottom' | 'left';
+type FloatingBarAlignment = 'start' | 'center' | 'end';
+type FloatingBarOrientation = 'horizontal' | 'vertical';
 
-export const FloatingBar: Component<FloatingBarProps> = (props) => {
+export type FloatingBarProps = {
+    position?: FloatingBarPosition;
+    alignment?: FloatingBarAlignment;
+    orientation?: FloatingBarOrientation;
+    strategy?: 'absolute' | 'fixed' | 'sticky';
+    class?: string;
+    ref?: Ref<HTMLDivElement>;
+};
+
+export const FloatingBar: FlowComponent<FloatingBarProps> = (props) => {
     return <div>FloatingBar</div>;
 };
