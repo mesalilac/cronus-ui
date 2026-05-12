@@ -59,6 +59,21 @@ export const Default: Story = {
                         <IconArrowDownMd />
                     </Button>
                 </FloatingBar>
+            </Wrapper>
+        );
+    },
+};
+
+export const Scrollable: Story = {
+    render: () => {
+        return (
+            <Wrapper>
+                <FloatingBar>
+                    scroll to the bottom
+                    <Button appearance='primary'>
+                        <IconArrowDownMd />
+                    </Button>
+                </FloatingBar>
                 <PlaceholderContent />
             </Wrapper>
         );
