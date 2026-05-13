@@ -1,9 +1,12 @@
 import {
-    type Component,
+    type Accessor,
+    createContext,
     createSignal,
+    type JSX,
     Match,
     Show,
     Switch,
+    useContext,
     type VoidComponent,
 } from 'solid-js';
 
@@ -17,19 +20,82 @@ export type CopyFieldProps = {
     value?: string;
     multiline?: boolean;
     class?: string;
+    children: JSX.Element;
+};
+
+export const CopyFieldContext = createContext<{
+    value: Accessor<string | undefined>;
+    multiline: Accessor<boolean | undefined>;
+}>();
+
+export const useCopyFieldContext = () => {
+    const context = useContext(CopyFieldContext);
+
+    if (!context) {
+        throw new Error(
+            'useCopyFieldContext must be used within the CopyFieldContext provider',
+        );
+    }
+
+    return context;
+};
+
+type CopyFieldCompound = {
+    (props: CopyFieldProps): JSX.Element;
+    Input: typeof CopyFieldInput;
+    CopyButton: typeof CopyButton;
+};
+
+export const CopyField: CopyFieldCompound = (props) => {
+    return (
+        <div
+            class={cn('flex gap-1', props.multiline && 'flex-col', props.class)}
+        >
+            <CopyFieldContext.Provider
+                value={{
+                    value: () => props.value,
+                    multiline: () => props.multiline,
+                }}
+            >
+                {props.children}
+            </CopyFieldContext.Provider>
+        </div>
+    );
+};
+
+const CopyFieldInput: VoidComponent<{
+    class?: string;
+}> = (props) => {
+    const ctx = useCopyFieldContext();
+
+    return (
+        <Show
+            fallback={
+                <Input class={props.class} readOnly value={ctx.value() ?? ''} />
+            }
+            when={ctx.multiline()}
+        >
+            <Textarea class={props.class} readOnly value={ctx.value() ?? ''} />
+        </Show>
+    );
 };
 
 type CopyButtonState = 'normal' | 'copied' | 'failed';
 
-const CopyButton: VoidComponent<{
-    value: string | undefined;
-    multiline: boolean | undefined;
-}> = (props) => {
+const copyButtonAppearance: Record<CopyButtonState, ButtonAppearance> = {
+    normal: 'secondary',
+    copied: 'success',
+    failed: 'danger',
+};
+
+const CopyButton: VoidComponent<{ class?: string }> = (props) => {
+    const ctx = useCopyFieldContext();
+
     const [copyState, setCopyState] = createSignal<CopyButtonState>('normal');
 
     const handleCopy = () => {
         navigator.clipboard
-            .writeText(props.value ?? '')
+            .writeText(ctx.value() ?? '')
             .catch(() => setCopyState('failed'));
         setCopyState('copied');
 
@@ -38,48 +104,30 @@ const CopyButton: VoidComponent<{
         }, 1000);
     };
 
-    const buttonAppearance: Record<CopyButtonState, ButtonAppearance> = {
-        normal: 'secondary',
-        copied: 'success',
-        failed: 'danger',
-    };
-
     return (
         <Button
-            appearance={buttonAppearance[copyState()]}
+            appearance={copyButtonAppearance[copyState()]}
+            class={props.class}
             onClick={handleCopy}
             variant={copyState() === 'normal' ? 'solid' : 'soft'}
         >
             <Switch>
                 <Match when={copyState() === 'normal'}>
                     <IconEditCopy />
-                    <Show when={props.multiline}>Copy into clipboard</Show>
+                    <Show when={ctx.multiline()}>Copy into clipboard</Show>
                 </Match>
                 <Match when={copyState() === 'copied'}>
                     <IconInterfaceCheck />
-                    <Show when={props.multiline}>Copied!</Show>
+                    <Show when={ctx.multiline()}>Copied!</Show>
                 </Match>
                 <Match when={copyState() === 'failed'}>
                     <IconMenuCloseMd />
-                    <Show when={props.multiline}>Failed to copy!</Show>
+                    <Show when={ctx.multiline()}>Failed to copy!</Show>
                 </Match>
             </Switch>
         </Button>
     );
 };
 
-export const CopyField: Component<CopyFieldProps> = (props) => {
-    return (
-        <div
-            class={cn('flex gap-1', props.multiline && 'flex-col', props.class)}
-        >
-            <Show
-                fallback={<Input readOnly value={props.value ?? ''} />}
-                when={props.multiline}
-            >
-                <Textarea readOnly value={props.value ?? ''} />
-            </Show>
-            <CopyButton multiline={props.multiline} value={props.value} />
-        </div>
-    );
-};
+CopyField.Input = CopyFieldInput;
+CopyField.CopyButton = CopyButton;
