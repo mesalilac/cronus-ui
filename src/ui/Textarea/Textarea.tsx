@@ -35,6 +35,7 @@ export type TextareaProps = {
 export const Textarea = (props: TextareaProps) => {
     const id = createUniqueId();
 
+    const [isFocused, setIsFocused] = createSignal(false);
     const [isDirty, setIsDirty] = createSignal(false);
 
     const [internalValue, setInternalValue] = createSignal(props.value);
@@ -63,12 +64,11 @@ export const Textarea = (props: TextareaProps) => {
     const handleInput = (value: string) => {
         setIsDirty(true);
 
-        setInternalValue(value);
         props.onInput?.(value);
     };
 
     createEffect(() => {
-        setInternalValue(props.value);
+        if (!isFocused()) setInternalValue(props.value);
     });
 
     return (
@@ -96,6 +96,8 @@ export const Textarea = (props: TextareaProps) => {
                 id={id}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
+                onBlur={() => setIsFocused(false)}
+                onFocus={() => setIsFocused(true)}
                 onInput={(e) => handleInput(e.currentTarget.value)}
                 placeholder={props.placeholder}
                 readOnly={props.readOnly}
