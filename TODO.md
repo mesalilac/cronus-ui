@@ -1,9 +1,5 @@
 # TODO List
 
-## Feat
-- Kbd - <https://ui.shadcn.com/docs/components/radix/kbd>
-- Input/Textarea - display min and max lengths
-
 ## Refactor
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
 
@@ -12,6 +8,8 @@
 - Slider(webkit) - wrong hover color
 
 ## New components
+- Kbd - <https://ui.shadcn.com/docs/components/radix/kbd>
+- Input/Textarea - display min and max lengths
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Remove `HelperText` component and `FieldLabel`
 - Tooltip - <https://corvu.dev/docs/primitives/tooltip/>
