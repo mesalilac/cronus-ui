@@ -22,4 +22,3 @@
 
 ### Ideas
 - FilePathField - component with a browse button and a check or cross to appear if the path doesn't exists
-- CopyField - component readonly text and copy button
