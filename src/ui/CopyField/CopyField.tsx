@@ -4,6 +4,7 @@ import {
     createSignal,
     type JSX,
     Match,
+    mergeProps,
     Show,
     Switch,
     useContext,
@@ -19,13 +20,15 @@ import { cn } from '~/utils';
 export type CopyFieldProps = {
     value?: string;
     multiline?: boolean;
+    readOnly?: boolean;
     class?: string;
     children: JSX.Element;
 };
 
 export const CopyFieldContext = createContext<{
     value: Accessor<string | undefined>;
-    multiline: Accessor<boolean | undefined>;
+    multiline: Accessor<boolean>;
+    readOnly: Accessor<boolean>;
 }>();
 
 export const useCopyFieldContext = () => {
@@ -46,7 +49,15 @@ type CopyFieldCompound = {
     CopyButton: typeof CopyButton;
 };
 
-export const CopyField: CopyFieldCompound = (props) => {
+export const CopyField: CopyFieldCompound = (rawProps) => {
+    const props = mergeProps(
+        {
+            multiline: false,
+            readOnly: true,
+        } satisfies Partial<CopyFieldProps>,
+        rawProps,
+    );
+
     return (
         <div
             class={cn('flex gap-1', props.multiline && 'flex-col', props.class)}
@@ -55,6 +66,7 @@ export const CopyField: CopyFieldCompound = (props) => {
                 value={{
                     value: () => props.value,
                     multiline: () => props.multiline,
+                    readOnly: () => props.readOnly,
                 }}
             >
                 {props.children}
@@ -71,11 +83,19 @@ const CopyFieldInput: VoidComponent<{
     return (
         <Show
             fallback={
-                <Input class={props.class} readOnly value={ctx.value() ?? ''} />
+                <Input
+                    class={props.class}
+                    readOnly={ctx.readOnly()}
+                    value={ctx.value() ?? ''}
+                />
             }
             when={ctx.multiline()}
         >
-            <Textarea class={props.class} readOnly value={ctx.value() ?? ''} />
+            <Textarea
+                class={props.class}
+                readOnly={ctx.readOnly()}
+                value={ctx.value() ?? ''}
+            />
         </Show>
     );
 };
