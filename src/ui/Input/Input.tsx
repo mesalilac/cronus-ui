@@ -55,6 +55,7 @@ export const Input = (rawProps: InputProps) => {
 
     const id = createUniqueId();
 
+    const [isFocused, setIsFocused] = createSignal(false);
     const [isDirty, setIsDirty] = createSignal(false);
 
     const [internalInputType, setInternalInputType] = createSignal(props.type);
@@ -84,12 +85,11 @@ export const Input = (rawProps: InputProps) => {
     const handleInput = (value: string) => {
         setIsDirty(true);
 
-        setInternalValue(value);
         props.onInput?.(value);
     };
 
     createEffect(() => {
-        setInternalValue(props.value);
+        if (!isFocused()) setInternalValue(props.value);
     });
 
     const getIcon = () =>
@@ -134,7 +134,11 @@ export const Input = (rawProps: InputProps) => {
                         id={id}
                         maxLength={props.maxLength}
                         minLength={props.minLength}
-                        onBlur={props.onBlur}
+                        onBlur={() => {
+                            setIsFocused(false);
+                            props.onBlur;
+                        }}
+                        onFocus={() => setIsFocused(true)}
                         onFocusIn={props.onFocusIn}
                         onFocusOut={props.onFocusOut}
                         onInput={(e) => handleInput(e.currentTarget.value)}
