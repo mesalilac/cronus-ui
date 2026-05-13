@@ -39,6 +39,7 @@ export type InputProps = {
     minLength?: number;
     maxLength?: number;
     disabled?: boolean;
+    readOnly?: boolean;
     badge?: JSX.Element;
     icon?: JSX.Element;
     class?: string;
@@ -141,6 +142,7 @@ export const Input = (rawProps: InputProps) => {
                             props.placeholder ??
                             (props.type === 'search' ? 'Search' : undefined)
                         }
+                        readonly={props.readOnly}
                         ref={props.ref}
                         required={props.required}
                         type={internalInputType()}
@@ -177,7 +179,7 @@ export const Input = (rawProps: InputProps) => {
                         }}
                         style={{
                             visibility:
-                                internalValue().length > 0
+                                internalValue().length > 0 && !props.readOnly
                                     ? 'visible'
                                     : 'hidden',
                         }}
