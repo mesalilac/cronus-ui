@@ -131,11 +131,14 @@ const CopyButton: VoidComponent<{ class?: string }> = (props) => {
             onClick={handleCopy}
             variant={copyState() === 'normal' ? 'solid' : 'soft'}
         >
-            <Switch>
-                <Match when={copyState() === 'normal'}>
-                    <IconEditCopy />
-                    <Show when={ctx.multiline()}>Copy into clipboard</Show>
-                </Match>
+            <Switch
+                fallback={
+                    <>
+                        <IconEditCopy />
+                        <Show when={ctx.multiline()}>Copy into clipboard</Show>
+                    </>
+                }
+            >
                 <Match when={copyState() === 'copied'}>
                     <IconInterfaceCheck />
                     <Show when={ctx.multiline()}>Copied!</Show>
