@@ -32,3 +32,4 @@ export * from './Spinner';
 export * from './ButtonGroup';
 export * from './FloatingBar';
 export * from './CopyField';
+export * from './Kbd';
