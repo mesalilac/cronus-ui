@@ -1,12 +1,14 @@
 import {
     type Component,
     createSignal,
+    Match,
     Show,
+    Switch,
     type VoidComponent,
 } from 'solid-js';
 
-import { IconEditCopy, IconInterfaceCheck } from '~/icons';
-import { Button } from '~/ui/Button';
+import { IconEditCopy, IconInterfaceCheck, IconMenuCloseMd } from '~/icons';
+import { Button, type ButtonAppearance } from '~/ui/Button';
 import { Input } from '~/ui/Input';
 import { Textarea } from '~/ui/Textarea';
 import { cn } from '~/utils';
@@ -17,40 +19,51 @@ export type CopyFieldProps = {
     class?: string;
 };
 
+type CopyButtonState = 'normal' | 'copied' | 'failed';
+
 const CopyButton: VoidComponent<{
     value: string | undefined;
     multiline: boolean | undefined;
 }> = (props) => {
-    const [isCopied, setIsCopied] = createSignal(false);
+    const [copyState, setCopyState] = createSignal<CopyButtonState>('normal');
 
     const handleCopy = () => {
-        setIsCopied(true);
-
-        // TODO: Copy
+        navigator.clipboard
+            .writeText(props.value ?? '')
+            .catch(() => setCopyState('failed'));
+        setCopyState('copied');
 
         setTimeout(() => {
-            setIsCopied(false);
-        }, 800);
+            setCopyState('normal');
+        }, 1000);
+    };
+
+    const buttonAppearance: Record<CopyButtonState, ButtonAppearance> = {
+        normal: 'secondary',
+        copied: 'success',
+        failed: 'danger',
     };
 
     return (
         <Button
-            appearance={isCopied() ? 'success' : 'secondary'}
+            appearance={buttonAppearance[copyState()]}
             onClick={handleCopy}
-            variant={isCopied() ? 'soft' : 'solid'}
+            variant={copyState() === 'normal' ? 'solid' : 'soft'}
         >
-            <Show
-                fallback={
-                    <>
-                        <IconEditCopy />
-                        <Show when={props.multiline}>Copy into clipboard</Show>
-                    </>
-                }
-                when={isCopied()}
-            >
-                <IconInterfaceCheck />
-                <Show when={props.multiline}>Copied!</Show>
-            </Show>
+            <Switch>
+                <Match when={copyState() === 'normal'}>
+                    <IconEditCopy />
+                    <Show when={props.multiline}>Copy into clipboard</Show>
+                </Match>
+                <Match when={copyState() === 'copied'}>
+                    <IconInterfaceCheck />
+                    <Show when={props.multiline}>Copied!</Show>
+                </Match>
+                <Match when={copyState() === 'failed'}>
+                    <IconMenuCloseMd />
+                    <Show when={props.multiline}>Failed to copy!</Show>
+                </Match>
+            </Switch>
         </Button>
     );
 };
