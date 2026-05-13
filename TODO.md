@@ -1,7 +1,7 @@
 # TODO List
 
 ## Feat
-- FloatingBar - something like discord's "you're Viewing Older Messages 'Jump To Present'", also allow changing position, alignment and orientation
+- Kbd - <https://ui.shadcn.com/docs/components/radix/kbd>
 - Input/Textarea - display min and max lengths
 
 ## Refactor
@@ -21,5 +21,4 @@
 - Meter - <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter>
 
 ### Ideas
-- PathInput component with a browse button and a check or cross to appear if the path doesn't exists
-- CopyInput component readonly text and copy button
+- FilePathField - component with a browse button and a check or cross to appear if the path doesn't exists
