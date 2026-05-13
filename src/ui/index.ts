@@ -31,3 +31,4 @@ export * from './AlertDialog';
 export * from './Spinner';
 export * from './ButtonGroup';
 export * from './FloatingBar';
+export * from './CopyField';
