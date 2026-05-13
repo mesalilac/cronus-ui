@@ -14,7 +14,7 @@
 - Tooltip - <https://corvu.dev/docs/primitives/tooltip/>
 - Drawer - <https://corvu.dev/docs/primitives/drawer/>
 - Tabs - <https://kobalte.dev/docs/core/components/tabs>
-    - variant - underline, segmented
+    - variant - underline, soft, segmented
 - Carousel - <https://flowbite.com/docs/components/carousel/>
 - Meter - <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter>
 
