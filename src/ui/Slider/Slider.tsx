@@ -1,3 +1,4 @@
+import gsap from 'gsap';
 import {
     type Accessor,
     type ComponentProps,
@@ -7,9 +8,13 @@ import {
     createUniqueId,
     type JSX,
     mergeProps,
+    onCleanup,
+    onMount,
     type Setter,
+    Show,
     useContext,
 } from 'solid-js';
+import { Transition } from 'solid-transition-group';
 
 import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
@@ -239,6 +244,10 @@ const SliderToolTip = (rawProps: {
         rawProps,
     );
 
+    const [isOpen, setIsOpen] = createSignal(false);
+
+    const abortCtrl = new AbortController();
+
     const thumbSize = 20; // px
 
     const calcX = () => {
@@ -265,23 +274,64 @@ const SliderToolTip = (rawProps: {
         return `${y}px`;
     };
 
+    onMount(() => {
+        ctx.inputRef()?.addEventListener(
+            'mousedown',
+            () => setIsOpen(true),
+            abortCtrl,
+        );
+
+        ctx.inputRef()?.addEventListener(
+            'mouseup',
+            () => setIsOpen(false),
+            abortCtrl,
+        );
+    });
+
+    onCleanup(() => {
+        abortCtrl.abort();
+    });
+
     return (
-        <div
-            aria-hidden
-            class={cn(
-                'absolute flex gap-1 text-nowrap rounded-default bg-accent p-2 text-sm text-text-primary shadow-default outline outline-border',
-                props.class,
-            )}
-            role='tooltip'
-            style={{
-                left: calcX(),
-                top: props.position === 'bottom' ? calcY() : '',
-                bottom: props.position === 'top' ? calcY() : '',
-                transform: `translateX(-50%)`,
+        <Transition
+            onEnter={(el, done) => {
+                gsap.from(el, {
+                    autoAlpha: 0,
+                    duration: 0.2,
+                    ease: 'power3.in',
+                    onComplete: done,
+                });
+            }}
+            onExit={(el, done) => {
+                gsap.to(el, {
+                    autoAlpha: 1,
+                    duration: 0.2,
+                    ease: 'power3.in',
+                    onComplete: done,
+                });
             }}
         >
-            {props.children ? props.children?.(ctx.value()) : ctx.value()}
-        </div>
+            <Show when={isOpen()}>
+                <div
+                    aria-hidden
+                    class={cn(
+                        'absolute flex gap-1 text-nowrap rounded-default bg-accent p-2 text-sm text-text-primary shadow-default outline outline-border',
+                        props.class,
+                    )}
+                    role='tooltip'
+                    style={{
+                        left: calcX(),
+                        top: props.position === 'bottom' ? calcY() : '',
+                        bottom: props.position === 'top' ? calcY() : '',
+                        transform: `translateX(-50%)`,
+                    }}
+                >
+                    {props.children
+                        ? props.children?.(ctx.value())
+                        : ctx.value()}
+                </div>
+            </Show>
+        </Transition>
     );
 };
 
