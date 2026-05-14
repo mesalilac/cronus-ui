@@ -151,6 +151,18 @@ export const WithMarkers: Story = {
     },
 };
 
+export const HideThumb: Story = {
+    render: () => {
+        const [value, setValue] = createSignal(30);
+
+        return (
+            <Slider onInput={setValue} value={value()}>
+                <Slider.Input hideThumb />
+            </Slider>
+        );
+    },
+};
+
 export const Disabled: Story = {
     render: () => {
         const [value, setValue] = createSignal(30);
