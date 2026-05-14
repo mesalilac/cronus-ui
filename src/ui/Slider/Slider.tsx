@@ -129,7 +129,7 @@ const SliderInput = (props: SliderInputProps) => {
     return (
         <input
             class={cn(
-                'h-4 w-full cursor-pointer appearance-none rounded-full bg-transparent',
+                'h-4 w-full cursor-pointer appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
 
                 // Webkit track
                 '[&::-webkit-slider-runnable-track]:h-2',
@@ -138,6 +138,12 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-runnable-track]:bg-[linear-gradient(90deg,var(--color-accent)_var(--p),color-mix(in_oklab,var(--color-surface-3)_30%,transparent)_var(--p))]',
 
                 // Webkit thumb
+                '[&::-webkit-slider-thumb:hover]:brightness-110',
+                '[&::-webkit-slider-thumb:active]:scale-110',
+                '[&::-webkit-slider-thumb]:transition-transform',
+                '[&::-webkit-slider-thumb]:duration-150',
+                '[&::-webkit-slider-thumb]:ease-out',
+                '[&::-webkit-slider-thumb]:transform',
                 '[&::-webkit-slider-thumb]:-mt-1.5',
                 '[&::-webkit-slider-thumb]:size-5',
                 '[&::-webkit-slider-thumb]:appearance-none',
@@ -157,6 +163,12 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-track]:bg-surface-3/30',
 
                 // Firefox thumb
+                '[&::-moz-range-thumb:hover]:brightness-110',
+                '[&::-moz-range-thumb:active]:scale-110',
+                '[&::-moz-range-thumb]:transition-transform',
+                '[&::-moz-range-thumb]:duration-150',
+                '[&::-moz-range-thumb]:ease-out',
+                '[&::-moz-range-thumb]:transform',
                 '[&::-moz-range-thumb]:size-5',
                 '[&::-moz-range-thumb]:rounded-full',
                 '[&::-moz-range-thumb]:border',
