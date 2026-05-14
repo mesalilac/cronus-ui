@@ -1,9 +1,13 @@
 import {
     type Accessor,
+    type ComponentProps,
     createContext,
     createMemo,
+    createSignal,
     createUniqueId,
     type JSX,
+    mergeProps,
+    type Setter,
     useContext,
 } from 'solid-js';
 
@@ -58,6 +62,9 @@ export const SliderContext = createContext<{
     step: Accessor<number>;
     disabled: Accessor<boolean | undefined>;
     list: Accessor<string | undefined>;
+
+    inputRef: Accessor<HTMLInputElement | undefined>;
+    setInputRef: Setter<HTMLInputElement | undefined>;
 }>();
 
 export const useSliderContext = () => {
@@ -72,7 +79,20 @@ export const useSliderContext = () => {
     return context;
 };
 
-export const Slider = (props: SliderProps) => {
+export const Slider = (rawProps: SliderProps) => {
+    const props = mergeProps(
+        {
+            min: 0,
+            max: 100,
+            step: 1,
+        } satisfies Partial<SliderProps>,
+        rawProps,
+    );
+
+    const [inputRef, setInputRef] = createSignal<
+        HTMLInputElement | undefined
+    >();
+
     const fallbackId = createUniqueId();
 
     return (
@@ -82,14 +102,16 @@ export const Slider = (props: SliderProps) => {
                 value: () => props.value,
                 onChange: props.onChange,
                 onInput: props.onInput,
-                min: () => props.min ?? 0,
-                max: () => props.max ?? 100,
-                step: () => props.step ?? 1,
+                min: () => props.min,
+                max: () => props.max,
+                step: () => props.step,
                 disabled: () => props.disabled,
                 list: () => props.list,
+                inputRef,
+                setInputRef,
             }}
         >
-            <div class={cn('flex flex-col gap-2', props.class)}>
+            <div class={cn('relative flex flex-col gap-2', props.class)}>
                 {props.children}
             </div>
         </SliderContext.Provider>
@@ -119,13 +141,9 @@ type SliderInputProps = {
 const SliderInput = (props: SliderInputProps) => {
     const ctx = useSliderContext();
 
-    const getPercent = createMemo(() => {
-        const min = ctx.min();
-        const max = ctx.max();
-        const value = ctx.value();
-
-        return ((value - min) / (max - min)) * 100;
-    });
+    const getPercent = createMemo(
+        () => ((ctx.value() - ctx.min()) / (ctx.max() - ctx.min())) * 100,
+    );
 
     return (
         <input
@@ -190,6 +208,7 @@ const SliderInput = (props: SliderInputProps) => {
             min={ctx.min()}
             onChange={(e) => ctx.onChange?.(e.currentTarget.valueAsNumber)}
             onInput={(e) => ctx.onInput?.(e.currentTarget.valueAsNumber)}
+            ref={ctx.setInputRef}
             step={ctx.step()}
             style={{
                 '--p': `${getPercent()}%`,
@@ -200,5 +219,72 @@ const SliderInput = (props: SliderInputProps) => {
     );
 };
 
+const SliderToolTip = (rawProps: {
+    class?: string;
+    position?: 'top' | 'bottom';
+    /**
+     * px offset from input
+     * @default 8
+     */
+    offset?: number;
+    children?: (value: number) => JSX.Element;
+}) => {
+    const ctx = useSliderContext();
+
+    const props = mergeProps(
+        {
+            position: 'top',
+            offset: 8,
+        } satisfies Partial<ComponentProps<typeof SliderToolTip>>,
+        rawProps,
+    );
+
+    const thumbSize = 20; // px
+
+    const calcX = () => {
+        const el = ctx.inputRef();
+        if (!el) return '0px';
+
+        const rect = el.getBoundingClientRect();
+
+        const percent = (ctx.value() - ctx.min()) / (ctx.max() - ctx.min());
+
+        const x = percent * (rect.width - thumbSize) + thumbSize / 2;
+
+        return `${x}px`;
+    };
+
+    const calcY = () => {
+        const el = ctx.inputRef();
+        if (!el) return '0px';
+
+        const rect = el.getBoundingClientRect();
+
+        const y = rect.height + props.offset;
+
+        return `${y}px`;
+    };
+
+    return (
+        <div
+            aria-hidden
+            class={cn(
+                'absolute flex gap-1 text-nowrap rounded-default bg-accent p-2 text-sm text-text-primary shadow-default outline outline-border',
+                props.class,
+            )}
+            role='tooltip'
+            style={{
+                left: calcX(),
+                top: props.position === 'bottom' ? calcY() : '',
+                bottom: props.position === 'top' ? calcY() : '',
+                transform: `translateX(-50%)`,
+            }}
+        >
+            {props.children ? props.children?.(ctx.value()) : ctx.value()}
+        </div>
+    );
+};
+
 Slider.Input = SliderInput;
 Slider.Label = SliderLabel;
+Slider.ToolTip = SliderToolTip;
