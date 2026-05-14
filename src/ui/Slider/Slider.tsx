@@ -149,8 +149,9 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-thumb]:size-5',
                 '[&::-webkit-slider-thumb]:appearance-none',
                 '[&::-webkit-slider-thumb]:rounded-full',
-                '[&::-webkit-slider-thumb]:border',
-                '[&::-webkit-slider-thumb]:border-border',
+                '[&::-webkit-slider-thumb]:border-0',
+                '[&::-webkit-slider-thumb]:outline',
+                '[&::-webkit-slider-thumb]:outline-border',
                 '[&::-webkit-slider-thumb]:bg-accent',
 
                 // Firefox progress
@@ -172,8 +173,9 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-thumb]:transform',
                 '[&::-moz-range-thumb]:size-5',
                 '[&::-moz-range-thumb]:rounded-full',
-                '[&::-moz-range-thumb]:border',
-                '[&::-moz-range-thumb]:border-border',
+                '[&::-moz-range-thumb]:border-0',
+                '[&::-moz-range-thumb]:outline',
+                '[&::-moz-range-thumb]:outline-border',
                 '[&::-moz-range-thumb]:bg-accent',
 
                 props.hideThumb &&
