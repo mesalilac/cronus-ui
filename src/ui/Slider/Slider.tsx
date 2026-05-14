@@ -16,6 +16,7 @@ import {
 } from 'solid-js';
 import { Transition } from 'solid-transition-group';
 
+import type { TimeoutHandle } from '~/types';
 import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
@@ -244,6 +245,8 @@ const SliderToolTip = (rawProps: {
         rawProps,
     );
 
+    let openTimer: TimeoutHandle;
+
     const [isOpen, setIsOpen] = createSignal(false);
 
     const abortCtrl = new AbortController();
@@ -277,13 +280,19 @@ const SliderToolTip = (rawProps: {
     onMount(() => {
         ctx.inputRef()?.addEventListener(
             'mousedown',
-            () => setIsOpen(true),
+            () => {
+                clearTimeout(openTimer);
+                openTimer = setTimeout(() => setIsOpen(true), 150);
+            },
             abortCtrl,
         );
 
         ctx.inputRef()?.addEventListener(
             'mouseup',
-            () => setIsOpen(false),
+            () => {
+                clearTimeout(openTimer);
+                setIsOpen(false);
+            },
             abortCtrl,
         );
     });
