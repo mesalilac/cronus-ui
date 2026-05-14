@@ -113,6 +113,7 @@ const SliderLabel = (props: SliderLabelProps) => {
 
 type SliderInputProps = {
     class?: string;
+    hideThumb?: boolean;
 };
 
 const SliderInput = (props: SliderInputProps) => {
@@ -174,6 +175,9 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-thumb]:border',
                 '[&::-moz-range-thumb]:border-border',
                 '[&::-moz-range-thumb]:bg-accent',
+
+                props.hideThumb &&
+                    '[&::-moz-range-thumb]:invisible [&::-webkit-slider-thumb]:invisible',
 
                 props.class,
             )}
