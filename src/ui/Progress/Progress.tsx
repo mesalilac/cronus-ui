@@ -99,7 +99,7 @@ const ProgressBar = (props: ProgressBarProps) => {
         <div class='relative w-full'>
             <progress
                 class={cn(
-                    'block w-full appearance-none overflow-hidden rounded-full bg-surface-3 outline outline-border [&::-moz-progress-bar]:bg-accent [&::-webkit-progress-bar]:appearance-none [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-surface-3 [&::-webkit-progress-value]:bg-accent',
+                    'block w-full appearance-none overflow-hidden rounded-full bg-surface-3 outline outline-border [&::-moz-progress-bar]:rounded-full [&::-moz-progress-bar]:bg-accent [&::-webkit-progress-bar]:appearance-none [&::-webkit-progress-bar]:rounded-full [&::-webkit-progress-bar]:bg-surface-3 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:bg-accent',
                     props.class,
                 )}
                 id={ctx.id()}
