@@ -151,6 +151,49 @@ export const WithMarkers: Story = {
     },
 };
 
+export const Tooltip: Story = {
+    render: () => {
+        const [value, setValue] = createSignal(30);
+
+        return (
+            <Slider onInput={setValue} value={value()}>
+                <Slider.ToolTip />
+                <Slider.Input />
+            </Slider>
+        );
+    },
+};
+
+export const TooltipBottom: Story = {
+    render: () => {
+        const [value, setValue] = createSignal(30);
+
+        return (
+            <Slider onInput={setValue} value={value()}>
+                <Slider.ToolTip position='bottom' />
+                <Slider.Input />
+            </Slider>
+        );
+    },
+};
+
+export const TooltipCustomLabel: Story = {
+    render: () => {
+        const [value, setValue] = createSignal(30);
+
+        return (
+            <Slider onInput={setValue} value={value()}>
+                <Slider.ToolTip>
+                    {(value) => {
+                        return <>value: {value}</>;
+                    }}
+                </Slider.ToolTip>
+                <Slider.Input />
+            </Slider>
+        );
+    },
+};
+
 export const HideThumb: Story = {
     render: () => {
         const [value, setValue] = createSignal(30);
