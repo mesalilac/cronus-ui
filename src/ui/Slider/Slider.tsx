@@ -118,6 +118,14 @@ type SliderInputProps = {
 const SliderInput = (props: SliderInputProps) => {
     const ctx = useSliderContext();
 
+    const getPercent = createMemo(() => {
+        const min = ctx.min();
+        const max = ctx.max();
+        const value = ctx.value();
+
+        return ((value - min) / (max - min)) * 100;
+    });
+
     return (
         <input
             class={cn(
@@ -127,6 +135,7 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-runnable-track]:h-2',
                 '[&::-webkit-slider-runnable-track]:rounded-full',
                 '[&::-webkit-slider-runnable-track]:bg-surface-3/30',
+                '[&::-webkit-slider-runnable-track]:bg-[linear-gradient(90deg,var(--color-accent)_var(--p),color-mix(in_oklab,var(--color-surface-3)_30%,transparent)_var(--p))]',
 
                 // Webkit thumb
                 '[&::-webkit-slider-thumb]:-mt-1.5',
@@ -164,6 +173,9 @@ const SliderInput = (props: SliderInputProps) => {
             onChange={(e) => ctx.onChange?.(e.currentTarget.valueAsNumber)}
             onInput={(e) => ctx.onInput?.(e.currentTarget.valueAsNumber)}
             step={ctx.step()}
+            style={{
+                '--p': `${getPercent()}%`,
+            }}
             type='range'
             value={ctx.value()}
         />
