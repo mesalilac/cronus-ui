@@ -2,19 +2,19 @@ import { type FlowComponent, mergeProps, type Ref } from 'solid-js';
 
 import { cn } from '~/utils';
 
-type FloatingBarPosition = 'top' | 'right' | 'bottom' | 'left';
+type FloatingBarPlacement = 'top' | 'right' | 'bottom' | 'left';
 type FloatingBarAlignment = 'start' | 'center' | 'end';
 type FloatingBarOrientation = 'horizontal' | 'vertical';
 
 export type FloatingBarProps = {
-    position?: FloatingBarPosition;
+    placement?: FloatingBarPlacement;
     alignment?: FloatingBarAlignment;
     orientation?: FloatingBarOrientation;
     class?: string;
     ref?: Ref<HTMLDivElement>;
 };
 
-const positionStyles: Record<FloatingBarPosition, string> = {
+const positionStyles: Record<FloatingBarPlacement, string> = {
     top: cn(`top-4  px-3 py-2 flex-row`),
     right: cn(`right-4 px-2 py-3 flex-col`),
     bottom: cn(`bottom-4 px-3 py-2 flex-row`),
@@ -23,7 +23,7 @@ const positionStyles: Record<FloatingBarPosition, string> = {
 
 const alignmentStyles: Record<
     FloatingBarAlignment,
-    Record<FloatingBarPosition, string>
+    Record<FloatingBarPlacement, string>
 > = {
     start: {
         top: cn(`left-4`),
@@ -48,7 +48,7 @@ const alignmentStyles: Record<
 export const FloatingBar: FlowComponent<FloatingBarProps> = (rawProps) => {
     const props = mergeProps(
         {
-            position: 'bottom',
+            placement: 'bottom',
             alignment: 'center',
         } satisfies Partial<FloatingBarProps>,
         rawProps,
@@ -58,8 +58,8 @@ export const FloatingBar: FlowComponent<FloatingBarProps> = (rawProps) => {
         <div
             class={cn(
                 'pointer-events-auto absolute flex max-h-[calc(100%-2rem)] w-fit max-w-[calc(100%-2rem)] items-center gap-2 rounded-default bg-surface-2 text-text-primary shadow-default outline outline-border-strong',
-                positionStyles[props.position],
-                alignmentStyles[props.alignment][props.position],
+                positionStyles[props.placement],
+                alignmentStyles[props.alignment][props.placement],
                 props.class,
             )}
             ref={props.ref}
