@@ -5,13 +5,11 @@ import { cn } from '~/utils';
 type FloatingBarPosition = 'top' | 'right' | 'bottom' | 'left';
 type FloatingBarAlignment = 'start' | 'center' | 'end';
 type FloatingBarOrientation = 'horizontal' | 'vertical';
-type FloatingBarStrategy = 'absolute' | 'fixed' | 'sticky';
 
 export type FloatingBarProps = {
     position?: FloatingBarPosition;
     alignment?: FloatingBarAlignment;
     orientation?: FloatingBarOrientation;
-    strategy?: FloatingBarStrategy;
     class?: string;
     ref?: Ref<HTMLDivElement>;
 };
@@ -47,18 +45,11 @@ const alignmentStyles: Record<
     },
 };
 
-const strategyStyles: Record<FloatingBarStrategy, string> = {
-    absolute: cn('absolute'),
-    fixed: cn('fixed'),
-    sticky: cn('sticky'),
-};
-
 export const FloatingBar: FlowComponent<FloatingBarProps> = (rawProps) => {
     const props = mergeProps(
         {
             position: 'bottom',
             alignment: 'center',
-            strategy: 'absolute',
         } satisfies Partial<FloatingBarProps>,
         rawProps,
     );
@@ -66,8 +57,7 @@ export const FloatingBar: FlowComponent<FloatingBarProps> = (rawProps) => {
     return (
         <div
             class={cn(
-                'apy-2 pointer-events-auto flex max-h-[calc(100%-2rem)] w-fit max-w-[calc(100%-2rem)] items-center gap-2 rounded-default bg-surface-2 text-text-primary shadow-default outline outline-border-strong',
-                strategyStyles[props.strategy],
+                'pointer-events-auto absolute flex max-h-[calc(100%-2rem)] w-fit max-w-[calc(100%-2rem)] items-center gap-2 rounded-default bg-surface-2 text-text-primary shadow-default outline outline-border-strong',
                 positionStyles[props.position],
                 alignmentStyles[props.alignment][props.position],
                 props.class,
