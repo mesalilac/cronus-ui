@@ -222,7 +222,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                             <div class='absolute bottom-0 left-0 h-1 w-full overflow-hidden'>
                                 <div
                                     class={cn(
-                                        'h-full origin-left bg-current',
+                                        'h-full origin-left rounded-full bg-current',
                                         props.variant === 'default' &&
                                             'bg-white/60',
                                     )}
