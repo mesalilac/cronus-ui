@@ -60,11 +60,11 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
     );
 
     const variantStyles: Record<BannerVariant, string> = {
-        default: cn('border-accent'),
-        success: cn('border-success'),
-        warning: cn('border-warning'),
-        danger: cn('border-danger'),
-        info: cn('border-info'),
+        default: cn('border-accent text-text-accent'),
+        success: cn('border-success text-text-success'),
+        warning: cn('border-warning text-text-warning'),
+        danger: cn('border-danger text-text-danger'),
+        info: cn('border-info text-text-info'),
     };
 
     const strategyStyles: Record<BannerStrategy, string> = {
