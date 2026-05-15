@@ -156,6 +156,8 @@ const SliderInput = (props: SliderInputProps) => {
             class={cn(
                 'h-4 w-full cursor-pointer appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
 
+                'active:[&::-moz-range-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-110',
+
                 // Webkit track
                 '[&::-webkit-slider-runnable-track]:h-2',
                 '[&::-webkit-slider-runnable-track]:rounded-full',
@@ -164,7 +166,6 @@ const SliderInput = (props: SliderInputProps) => {
 
                 // Webkit thumb
                 '[&::-webkit-slider-thumb:hover]:brightness-110',
-                '[&::-webkit-slider-thumb:active]:scale-110',
                 '[&::-webkit-slider-thumb]:transition-transform',
                 '[&::-webkit-slider-thumb]:duration-150',
                 '[&::-webkit-slider-thumb]:ease-out',
@@ -190,7 +191,6 @@ const SliderInput = (props: SliderInputProps) => {
 
                 // Firefox thumb
                 '[&::-moz-range-thumb:hover]:brightness-110',
-                '[&::-moz-range-thumb:active]:scale-110',
                 '[&::-moz-range-thumb]:transition-transform',
                 '[&::-moz-range-thumb]:duration-150',
                 '[&::-moz-range-thumb]:ease-out',
