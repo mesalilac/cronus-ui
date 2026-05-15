@@ -14,7 +14,7 @@ export type FloatingBarProps = {
     ref?: Ref<HTMLDivElement>;
 };
 
-const positionStyles: Record<FloatingBarPlacement, string> = {
+const placementStyles: Record<FloatingBarPlacement, string> = {
     top: cn(`top-4  px-3 py-2 flex-row`),
     right: cn(`right-4 px-2 py-3 flex-col`),
     bottom: cn(`bottom-4 px-3 py-2 flex-row`),
@@ -58,7 +58,7 @@ export const FloatingBar: FlowComponent<FloatingBarProps> = (rawProps) => {
         <div
             class={cn(
                 'pointer-events-auto absolute flex max-h-[calc(100%-2rem)] w-fit max-w-[calc(100%-2rem)] items-center gap-2 rounded-default bg-surface-2 text-text-primary shadow-default outline outline-border-strong',
-                positionStyles[props.placement],
+                placementStyles[props.placement],
                 alignmentStyles[props.alignment][props.placement],
                 props.class,
             )}
