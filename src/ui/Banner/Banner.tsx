@@ -1,7 +1,6 @@
 import { gsap } from 'gsap';
 import {
     createComputed,
-    createMemo,
     createSignal,
     type FlowComponent,
     Match,
@@ -74,7 +73,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         sticky: cn('sticky'),
     };
 
-    const variantIcon = createMemo(() => {
+    const VariantIcon = () => {
         return (
             <Switch
                 fallback={
@@ -95,7 +94,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                 </Match>
             </Switch>
         );
-    });
+    };
 
     const [open, setOpen] = createSignal(props.open ?? true);
 
@@ -206,7 +205,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                         }
                         role='none'
                     >
-                        {variantIcon()}
+                        <VariantIcon />
                         {props.children}
                         <Show when={props.dismissible}>
                             <div
