@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 import {
     createComputed,
+    createMemo,
     createSignal,
     type FlowComponent,
     Match,
@@ -36,6 +37,7 @@ export type BannerProps = {
     variant?: BannerVariant;
     dismissible?: boolean;
     onDismiss?: () => void;
+    displace?: boolean;
     autoDismissMs?: number;
     pauseOnHover?: boolean;
     class?: string;
@@ -61,6 +63,25 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         danger: cn('border-danger'),
         info: cn('border-info'),
     };
+
+    const variantIcon = createMemo(() => {
+        switch (props.variant) {
+            case 'success':
+                return <IconInterfaceCheck class='size-5 text-text-success' />;
+            case 'warning':
+                return (
+                    <IconWarningCircleWarning class='size-5 text-text-warning' />
+                );
+            case 'danger':
+                return (
+                    <IconWarningCircleWarning class='size-5 text-text-danger' />
+                );
+            case 'info':
+                return <IconWarningInfo class='size-5 text-text-info' />;
+            default:
+                return <IconWarningInfo class='size-5 text-text-secondary' />;
+        }
+    });
 
     const [open, setOpen] = createSignal(props.open ?? true);
 
@@ -97,8 +118,8 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
 
     onCleanup(() => killDismissTimeline());
 
-    return (
-        <Portal>
+    const Content = () => {
+        return (
             <Transition
                 onEnter={(el, done) => {
                     killDismissTimeline();
@@ -148,7 +169,8 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'fixed z-50 flex min-h-12 w-full items-center justify-center gap-2 bg-accent p-2 text-text-primary backdrop-blur-xs',
+                            'flex min-h-12 w-full items-center justify-center gap-2 bg-accent p-2 text-text-primary backdrop-blur-xs',
+                            !props.displace && 'fixed z-50',
                             props.placement === 'top'
                                 ? 'top-0 border-b-2'
                                 : 'bottom-0 border-t-2',
@@ -163,24 +185,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                         }
                         role='none'
                     >
-                        <Switch
-                            fallback={
-                                <IconWarningInfo class='size-5 text-text-secondary' />
-                            }
-                        >
-                            <Match when={props.variant === 'success'}>
-                                <IconInterfaceCheck class='size-5 text-text-success' />
-                            </Match>
-                            <Match when={props.variant === 'warning'}>
-                                <IconWarningCircleWarning class='size-5 text-text-warning' />
-                            </Match>
-                            <Match when={props.variant === 'danger'}>
-                                <IconWarningCircleWarning class='size-5 text-text-danger' />
-                            </Match>
-                            <Match when={props.variant === 'info'}>
-                                <IconWarningInfo class='size-5 text-text-info' />
-                            </Match>
-                        </Switch>
+                        {variantIcon()}
                         {props.children}
                         <Show when={props.dismissible}>
                             <div
@@ -217,6 +222,19 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                     </div>
                 </Show>
             </Transition>
-        </Portal>
+        );
+    };
+
+    return (
+        <Show
+            fallback={
+                <Portal>
+                    <Content />
+                </Portal>
+            }
+            when={props.displace}
+        >
+            <Content />
+        </Show>
     );
 };
