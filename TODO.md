@@ -4,8 +4,6 @@
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
 
 ## Fix
-- Progress(webkit) - wrong colors and border radius
-- Slider(webkit) - wrong hover color
 
 ## New components
 - Input/Textarea - display min and max lengths
