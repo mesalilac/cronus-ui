@@ -126,6 +126,8 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
 
     onCleanup(() => killDismissTimeline());
 
+    const isFloating = () => !props.displace;
+
     const Content = () => {
         return (
             <Transition
@@ -177,14 +179,16 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'z-50 flex min-h-12 items-center justify-center gap-2 bg-surface-3 p-2 text-text-primary shadow-default backdrop-blur-xs',
+                            'flex min-h-12 items-center justify-center gap-2 bg-surface-2 p-2 text-text-primary shadow-default backdrop-blur-xs',
                             !props.displace && strategyStyles[props.strategy],
-                            props.displace
-                                ? 'w-full'
-                                : 'inset-x-4 rounded-b-default',
-                            props.placement === 'top'
-                                ? 'top-0 border-x-2 border-b-2'
-                                : 'bottom-0 border-x-2 border-t-2',
+                            isFloating()
+                                ? [
+                                      'inset-x-4 z-50',
+                                      props.placement === 'top'
+                                          ? 'top-0 rounded-b-default border-x-2 border-b-2'
+                                          : 'bottom-0 rounded-t-default border-x-2 border-t-2',
+                                  ]
+                                : ['w-full border-2'],
                             variantStyles[props.variant],
                             props.class,
                         )}
