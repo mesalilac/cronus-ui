@@ -208,9 +208,24 @@ export const Default: Story = {
 export const Displace: Story = {
     render: () => {
         return (
-            <div>
+            <div class='flex h-screen flex-col'>
                 <Banner displace>Banner Content</Banner>
-                <PlaceholderText />
+                <div class='flex-1 overflow-y-auto'>
+                    <PlaceholderText />
+                </div>
+            </div>
+        );
+    },
+};
+
+export const DisplaceBottom: Story = {
+    render: () => {
+        return (
+            <div class='flex h-screen flex-col'>
+                <div class='flex-1 overflow-y-auto'>
+                    <PlaceholderText />
+                </div>
+                <Banner displace>Banner Content</Banner>
             </div>
         );
     },
