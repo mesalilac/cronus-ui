@@ -170,7 +170,7 @@ export const TooltipBottom: Story = {
 
         return (
             <Slider onInput={setValue} value={value()}>
-                <Slider.ToolTip position='bottom' />
+                <Slider.ToolTip placement='bottom' />
                 <Slider.Input />
             </Slider>
         );

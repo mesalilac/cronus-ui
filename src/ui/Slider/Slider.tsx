@@ -227,7 +227,7 @@ const SliderInput = (props: SliderInputProps) => {
 
 const SliderToolTip = (rawProps: {
     class?: string;
-    position?: 'top' | 'bottom';
+    placement?: 'top' | 'bottom';
     /**
      * px offset from input
      * @default 8
@@ -239,7 +239,7 @@ const SliderToolTip = (rawProps: {
 
     const props = mergeProps(
         {
-            position: 'top',
+            placement: 'top',
             offset: 8,
         } satisfies Partial<ComponentProps<typeof SliderToolTip>>,
         rawProps,
@@ -330,8 +330,8 @@ const SliderToolTip = (rawProps: {
                     role='tooltip'
                     style={{
                         left: calcX(),
-                        top: props.position === 'bottom' ? calcY() : '',
-                        bottom: props.position === 'top' ? calcY() : '',
+                        top: props.placement === 'bottom' ? calcY() : '',
+                        bottom: props.placement === 'top' ? calcY() : '',
                         transform: `translateX(-50%)`,
                     }}
                 >
