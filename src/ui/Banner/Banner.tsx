@@ -4,12 +4,10 @@ import {
     createMemo,
     createSignal,
     type FlowComponent,
-    Match,
     mergeProps,
     on,
     onCleanup,
     Show,
-    Switch,
 } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
@@ -30,10 +28,13 @@ export type BannerVariant =
     | 'danger'
     | 'info';
 
+type BannerStrategy = 'absolute' | 'fixed' | 'sticky';
+
 export type BannerProps = {
     open?: boolean;
     onOpenChange?: (value: boolean) => void;
     placement?: 'top' | 'bottom';
+    strategy?: BannerStrategy;
     variant?: BannerVariant;
     dismissible?: boolean;
     onDismiss?: () => void;
@@ -50,6 +51,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         {
             variant: 'default',
             placement: 'top',
+            strategy: 'fixed',
             dismissible: true,
             pauseOnHover: true,
         } satisfies Partial<BannerProps>,
@@ -62,6 +64,12 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         warning: cn('border-warning'),
         danger: cn('border-danger'),
         info: cn('border-info'),
+    };
+
+    const strategyStyles: Record<BannerStrategy, string> = {
+        absolute: cn('absolute'),
+        fixed: cn('fixed'),
+        sticky: cn('sticky'),
     };
 
     const variantIcon = createMemo(() => {
@@ -169,11 +177,14 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'flex min-h-12 w-full items-center justify-center gap-2 bg-accent p-2 text-text-primary backdrop-blur-xs',
-                            !props.displace && 'fixed z-50',
+                            'z-50 flex min-h-12 items-center justify-center gap-2 bg-surface-3 p-2 text-text-primary shadow-default backdrop-blur-xs',
+                            !props.displace && strategyStyles[props.strategy],
+                            props.displace
+                                ? 'w-full'
+                                : 'inset-x-4 rounded-b-default',
                             props.placement === 'top'
-                                ? 'top-0 border-b-2'
-                                : 'bottom-0 border-t-2',
+                                ? 'top-0 border-x-2 border-b-2'
+                                : 'bottom-0 border-x-2 border-t-2',
                             variantStyles[props.variant],
                             props.class,
                         )}
