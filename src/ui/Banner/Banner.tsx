@@ -29,13 +29,10 @@ export type BannerVariant =
     | 'danger'
     | 'info';
 
-type BannerStrategy = 'absolute' | 'fixed' | 'sticky';
-
 export type BannerProps = {
     open?: boolean;
     onOpenChange?: (value: boolean) => void;
     placement?: 'top' | 'bottom';
-    strategy?: BannerStrategy;
     variant?: BannerVariant;
     dismissible?: boolean;
     onDismiss?: () => void;
@@ -52,7 +49,6 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         {
             variant: 'default',
             placement: 'top',
-            strategy: 'fixed',
             dismissible: true,
             pauseOnHover: true,
         } satisfies Partial<BannerProps>,
@@ -65,12 +61,6 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
         warning: cn('border-warning text-text-warning'),
         danger: cn('border-danger text-text-danger'),
         info: cn('border-info text-text-info'),
-    };
-
-    const strategyStyles: Record<BannerStrategy, string> = {
-        absolute: cn('absolute'),
-        fixed: cn('fixed'),
-        sticky: cn('sticky'),
     };
 
     const VariantIcon = () => {
@@ -185,10 +175,9 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                     <div
                         class={cn(
                             'flex min-h-12 items-center justify-center gap-2 bg-surface-2 p-2 text-text-primary shadow-default backdrop-blur-xs',
-                            !props.displace && strategyStyles[props.strategy],
                             isFloating()
                                 ? [
-                                      'inset-x-4 z-50',
+                                      'fixed inset-x-4 z-50',
                                       props.placement === 'top'
                                           ? 'top-0 rounded-b-default border-x-2 border-b-2'
                                           : 'bottom-0 rounded-t-default border-x-2 border-t-2',
