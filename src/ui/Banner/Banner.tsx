@@ -4,10 +4,12 @@ import {
     createMemo,
     createSignal,
     type FlowComponent,
+    Match,
     mergeProps,
     on,
     onCleanup,
     Show,
+    Switch,
 } from 'solid-js';
 import { Portal } from 'solid-js/web';
 import { Transition } from 'solid-transition-group';
@@ -73,22 +75,26 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
     };
 
     const variantIcon = createMemo(() => {
-        switch (props.variant) {
-            case 'success':
-                return <IconInterfaceCheck class='size-5 text-text-success' />;
-            case 'warning':
-                return (
+        return (
+            <Switch
+                fallback={
+                    <IconWarningInfo class='size-5 text-text-secondary' />
+                }
+            >
+                <Match when={props.variant === 'info'}>
+                    <IconWarningInfo class='size-5 text-text-info' />
+                </Match>
+                <Match when={props.variant === 'success'}>
+                    <IconInterfaceCheck class='size-5 text-text-success' />
+                </Match>
+                <Match when={props.variant === 'warning'}>
                     <IconWarningCircleWarning class='size-5 text-text-warning' />
-                );
-            case 'danger':
-                return (
+                </Match>
+                <Match when={props.variant === 'danger'}>
                     <IconWarningCircleWarning class='size-5 text-text-danger' />
-                );
-            case 'info':
-                return <IconWarningInfo class='size-5 text-text-info' />;
-            default:
-                return <IconWarningInfo class='size-5 text-text-secondary' />;
-        }
+                </Match>
+            </Switch>
+        );
     });
 
     const [open, setOpen] = createSignal(props.open ?? true);
