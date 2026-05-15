@@ -205,6 +205,17 @@ export const Default: Story = {
     },
 };
 
+export const Displace: Story = {
+    render: () => {
+        return (
+            <div>
+                <Banner displace>Banner Content</Banner>
+                <PlaceholderText />
+            </div>
+        );
+    },
+};
+
 export const Success: Story = {
     render: () => {
         return (
