@@ -90,24 +90,6 @@ export const Horizontal: Story = {
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
                     </Tabs>
                 </Wrapper>
-                <Wrapper>
-                    <Tabs
-                        defaultValue='overview'
-                        orientation='horizontal'
-                        variant='segmented'
-                    >
-                        <Tabs.List>
-                            <Tabs.Tab value='overview' />
-                            <Tabs.Tab value='analytics' />
-                            <Tabs.Tab value='reports' />
-                            <Tabs.Tab value='settings' />
-                        </Tabs.List>
-                        <Tabs.Panel value='overview'>Overview</Tabs.Panel>
-                        <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
-                        <Tabs.Panel value='reports'>Reports</Tabs.Panel>
-                        <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
-                </Wrapper>
             </div>
         );
     },
@@ -140,24 +122,6 @@ export const Vertical: Story = {
                         defaultValue='overview'
                         orientation='vertical'
                         variant='soft'
-                    >
-                        <Tabs.List>
-                            <Tabs.Tab value='overview' />
-                            <Tabs.Tab value='analytics' />
-                            <Tabs.Tab value='reports' />
-                            <Tabs.Tab value='settings' />
-                        </Tabs.List>
-                        <Tabs.Panel value='overview'>Overview</Tabs.Panel>
-                        <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
-                        <Tabs.Panel value='reports'>Reports</Tabs.Panel>
-                        <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
-                </Wrapper>
-                <Wrapper>
-                    <Tabs
-                        defaultValue='overview'
-                        orientation='vertical'
-                        variant='segmented'
                     >
                         <Tabs.List>
                             <Tabs.Tab value='overview' />
