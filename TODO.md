@@ -6,6 +6,7 @@
 ## Fix
 
 ## New components
+- StatusDot - <https://daisyui.com/components/status/>
 - Input/Textarea - display min and max lengths
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
 - Fieldset - <https://headlessui.com/react/fieldset>
