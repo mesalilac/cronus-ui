@@ -22,7 +22,7 @@ export type TabsProps = {
     value?: string;
     defaultValue?: string;
     onChange?: (value: string) => void;
-    orientation?: TabsOrientation;
+    vertical?: boolean;
     variant?: TabsVariant;
     disabled?: boolean;
     children: JSXElement;
@@ -31,7 +31,7 @@ export type TabsProps = {
 export const TabsContext = createContext<{
     value: Accessor<string | undefined>;
     onChange: (value: string) => void;
-    orientation: Accessor<TabsOrientation>;
+    vertical: Accessor<boolean | undefined>;
     variant: Accessor<TabsVariant>;
     disabled: Accessor<boolean | undefined>;
 }>();
@@ -52,7 +52,7 @@ export const Tabs: TabsCompound = (rawProps) => {
     const props = mergeProps(
         {
             variant: 'underline',
-            orientation: 'horizontal',
+            vertical: false,
         } satisfies PartialComponentProps<typeof Tabs>,
         rawProps,
     );
@@ -81,7 +81,7 @@ export const Tabs: TabsCompound = (rawProps) => {
             value={{
                 value,
                 onChange,
-                orientation: () => props.orientation,
+                vertical: () => props.vertical,
                 variant: () => props.variant,
                 disabled: () => props.disabled,
             }}
