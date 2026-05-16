@@ -98,10 +98,12 @@ const Tab: ParentComponent<{
 }> = (props) => {
     const ctx = useTabsContext();
 
+    const isDisabled = () => ctx.disabled() || props.disabled;
+
     return (
         <Button
             class={cn('capitalize', props.class)}
-            disabled={props.disabled}
+            disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
         >
             {props.children ?? props.value}
