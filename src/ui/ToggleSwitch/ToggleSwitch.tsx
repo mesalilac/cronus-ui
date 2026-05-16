@@ -1,4 +1,4 @@
-import { type JSX, Show } from 'solid-js';
+import { type JSXElement, Show } from 'solid-js';
 
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
@@ -6,8 +6,8 @@ import { cn } from '~/utils';
 export type ToggleSwitchProps = {
     checked?: boolean;
     onChange: (value: boolean) => void;
-    label?: JSX.Element;
-    helper?: JSX.Element;
+    label?: JSXElement;
+    helper?: JSXElement;
     disabled?: boolean;
     class?: string;
     trackClass?: string;

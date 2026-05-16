@@ -1,4 +1,4 @@
-import { type JSX, Show } from 'solid-js';
+import { type JSXElement, Show } from 'solid-js';
 
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
@@ -8,10 +8,10 @@ import { useRadioGroupContext } from './context';
 export type RadioGroupItemProps = {
     value: string;
     disabled?: boolean;
-    helper?: JSX.Element;
+    helper?: JSXElement;
     onSelect?: () => void;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Item = (props: RadioGroupItemProps) => {

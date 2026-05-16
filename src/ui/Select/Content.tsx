@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import {
     createEffect,
     type FlowComponent,
-    type JSX,
+    type JSXElement,
     mergeProps,
     onCleanup,
 } from 'solid-js';
@@ -18,7 +18,7 @@ export interface SelectContentProps
         'targetPosition' | 'targetPositionArea' | 'positionTryFallbacks'
     > {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 }
 
 export const Content = (rawProps: SelectContentProps) => {
@@ -85,7 +85,7 @@ export const Content = (rawProps: SelectContentProps) => {
     );
 };
 
-export const SelectList: FlowComponent<{ class?: string }, JSX.Element> = (
+export const SelectList: FlowComponent<{ class?: string }, JSXElement> = (
     props,
 ) => {
     return (

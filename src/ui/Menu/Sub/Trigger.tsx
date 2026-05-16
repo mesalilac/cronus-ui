@@ -8,7 +8,7 @@ import { useSubMenuContext } from './context';
 
 export type DropdownMenuSubTriggerProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Trigger = (props: DropdownMenuSubTriggerProps) => {

@@ -3,7 +3,7 @@ import {
     createMemo,
     createSignal,
     createUniqueId,
-    type JSX,
+    type JSXElement,
     Match,
     Show,
     Switch,
@@ -23,9 +23,9 @@ export type NumberStepperProps = {
     max?: number;
     step?: number;
     disabled?: boolean;
-    label?: JSX.Element;
+    label?: JSXElement;
     required?: boolean;
-    helperText?: JSX.Element;
+    helperText?: JSXElement;
     validate?: (value: number, isDirty: boolean) => string | undefined;
     class?: string;
 };

@@ -1,4 +1,4 @@
-import { createMemo, type JSX } from 'solid-js';
+import { createMemo, type JSXElement } from 'solid-js';
 
 import { cn } from '~/utils';
 
@@ -20,7 +20,7 @@ type MultipleProps = {
 type BaseProps = {
     class?: string;
     disabled?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export type ToggleGroupProps = BaseProps & (SingleProps | MultipleProps);

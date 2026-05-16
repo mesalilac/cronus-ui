@@ -7,7 +7,7 @@ export type DropdownMenuRadioGroupProps = {
     value: string;
     onChange: (value: string) => void;
     disabled?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const RadioGroup = (props: DropdownMenuRadioGroupProps) => {

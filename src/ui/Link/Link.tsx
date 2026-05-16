@@ -1,7 +1,7 @@
 import {
     type ComponentProps,
     createMemo,
-    type JSX,
+    type JSXElement,
     type ParentComponent,
     Show,
     splitProps,
@@ -15,7 +15,7 @@ export interface LinkProps extends ComponentProps<'a'> {
     href: string;
     disabled?: boolean;
     hideIcon?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 }
 
 export const Link: ParentComponent<LinkProps> = (rawProps) => {

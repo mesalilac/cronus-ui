@@ -5,7 +5,7 @@ import {
     createContext,
     createMemo,
     createSignal,
-    type JSX,
+    type JSXElement,
     Match,
     mergeProps,
     on,
@@ -57,7 +57,7 @@ export type AlertProps = {
     description?: string;
     class?: string;
     dismissible?: boolean;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 export const Alert = (rawProps: AlertProps) => {
@@ -183,7 +183,7 @@ export const Alert = (rawProps: AlertProps) => {
 export type AlertActionProps = {
     onClick?: (closeAlert: () => void) => void;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 Alert.Action = (props: AlertActionProps) => {

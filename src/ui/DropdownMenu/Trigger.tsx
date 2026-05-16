@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
 import { Button, type ButtonProps } from '~/ui/Button';
 import { useMenuContext } from '~/ui/Menu/context';
@@ -7,7 +7,7 @@ import { cn } from '~/utils';
 export interface DropdownMenuTriggerProps
     extends Pick<ButtonProps, 'variant' | 'appearance'> {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 }
 
 export const Trigger = (props: DropdownMenuTriggerProps) => {

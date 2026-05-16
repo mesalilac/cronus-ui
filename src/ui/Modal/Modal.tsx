@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 import { createComputed, createSignal, on } from 'solid-js';
 
 import { Body, CloseButton, Content } from '~/ui/Modal/Content';
@@ -13,7 +13,7 @@ export type ModalProps = {
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
     size?: ModalSize;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Modal = (props: ModalProps) => {

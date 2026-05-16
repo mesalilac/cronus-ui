@@ -1,12 +1,12 @@
 import { gsap } from 'gsap';
-import { createEffect, type JSX, onCleanup } from 'solid-js';
+import { createEffect, type JSXElement, onCleanup } from 'solid-js';
 
 import { Popover } from '~/ui/Popover';
 
 import { useSubMenuContext } from './context';
 
 export type DropdownMenuSubContentProps = {
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Content = (props: DropdownMenuSubContentProps) => {

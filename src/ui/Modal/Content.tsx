@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { createEffect, type JSX, onCleanup, onMount } from 'solid-js';
+import { createEffect, type JSXElement, onCleanup, onMount } from 'solid-js';
 import { Portal } from 'solid-js/web';
 
 import { IconMenuCloseMd } from '~/icons';
@@ -10,7 +10,7 @@ import { cn } from '~/utils';
 
 export type ModalContentProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Content = (props: ModalContentProps) => {
@@ -120,7 +120,7 @@ export const Content = (props: ModalContentProps) => {
 
 export type ModalCloseButtonProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 export const CloseButton = (props: ModalCloseButtonProps) => {
@@ -140,7 +140,7 @@ export const CloseButton = (props: ModalCloseButtonProps) => {
 
 export type ModalBodyProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Body = (props: ModalBodyProps) => {

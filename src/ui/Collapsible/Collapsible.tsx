@@ -3,7 +3,7 @@ import {
     createComputed,
     createContext,
     createSignal,
-    type JSX,
+    type JSXElement,
     on,
     Show,
     useContext,
@@ -20,7 +20,7 @@ export type CollapsibleProps = {
     defaultOpen?: boolean;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const CollapsibleContext = createContext<{
@@ -86,7 +86,7 @@ export const Collapsible = (props: CollapsibleProps) => {
 
 type CollapsibleTriggerProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
@@ -119,7 +119,7 @@ const CollapsibleTrigger = (props: CollapsibleTriggerProps) => {
 
 type CollapsibleContentProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const CollapsibleContent = (props: CollapsibleContentProps) => {

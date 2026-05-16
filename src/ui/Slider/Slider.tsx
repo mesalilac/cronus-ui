@@ -6,7 +6,7 @@ import {
     createMemo,
     createSignal,
     createUniqueId,
-    type JSX,
+    type JSXElement,
     mergeProps,
     onCleanup,
     onMount,
@@ -55,7 +55,7 @@ export type SliderProps = {
     list?: string;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const SliderContext = createContext<{
@@ -126,7 +126,7 @@ export const Slider = (rawProps: SliderProps) => {
 
 type SliderLabelProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const SliderLabel = (props: SliderLabelProps) => {
@@ -233,7 +233,7 @@ const SliderToolTip = (rawProps: {
      * @default 8
      */
     offset?: number;
-    children?: (value: number) => JSX.Element;
+    children?: (value: number) => JSXElement;
 }) => {
     const ctx = useSliderContext();
 

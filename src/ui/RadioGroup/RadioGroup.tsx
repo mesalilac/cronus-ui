@@ -1,4 +1,4 @@
-import { createMemo, type JSX, mergeProps, Show } from 'solid-js';
+import { createMemo, type JSXElement, mergeProps, Show } from 'solid-js';
 
 import { cn } from '~/utils';
 
@@ -11,8 +11,8 @@ export type RadioGroupProps = {
     disabled?: boolean;
     class?: string;
     direction?: 'row' | 'column';
-    label?: JSX.Element;
-    children: JSX.Element;
+    label?: JSXElement;
+    children: JSXElement;
 };
 
 export const RadioGroup = (rawProps: RadioGroupProps) => {

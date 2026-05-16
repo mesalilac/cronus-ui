@@ -9,10 +9,10 @@ export type DropdownMenuItemSwitchProps = {
     checked?: boolean;
     onChange: (value: boolean) => void;
     disabled?: boolean;
-    helper?: JSX.Element;
-    label?: JSX.Element;
+    helper?: JSXElement;
+    label?: JSXElement;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const ItemSwitch = (props: DropdownMenuItemSwitchProps) => {

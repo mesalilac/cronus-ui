@@ -3,7 +3,7 @@ import {
     createContext,
     createMemo,
     createUniqueId,
-    type JSX,
+    type JSXElement,
     Show,
     useContext,
 } from 'solid-js';
@@ -34,11 +34,11 @@ export type ProgressProps = {
     value: number;
     max?: number;
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 type ProgressCompound = {
-    (props: ProgressProps): JSX.Element;
+    (props: ProgressProps): JSXElement;
 
     Label: typeof ProgressLabel;
     Bar: typeof ProgressBar;
@@ -73,7 +73,7 @@ export const Progress: ProgressCompound = (props) => {
 
 type ProgressLabelProps = {
     class?: string;
-    children: JSX.Element | ((percent: number) => JSX.Element);
+    children: JSXElement | ((percent: number) => JSXElement);
 };
 
 const ProgressLabel = (props: ProgressLabelProps) => {

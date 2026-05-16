@@ -1,6 +1,6 @@
 import {
     createMemo,
-    type JSX,
+    type JSXElement,
     splitProps,
     type ValidComponent,
 } from 'solid-js';
@@ -34,7 +34,7 @@ export type ButtonProps = {
     size?: ButtonSize;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const baseStyles = cn(

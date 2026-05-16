@@ -1,4 +1,4 @@
-import { type JSX, mergeProps, Show } from 'solid-js';
+import { type JSXElement, mergeProps, Show } from 'solid-js';
 
 import { Button } from '~/ui/Button';
 import { HelperText } from '~/ui/HelperText';
@@ -10,9 +10,9 @@ export type DropdownMenuItemProps = {
     onClick?: () => void;
     class?: string;
     autoClose?: boolean;
-    helper?: JSX.Element;
+    helper?: JSXElement;
     disabled?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Item = (rawProps: DropdownMenuItemProps) => {

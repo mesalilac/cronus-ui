@@ -1,11 +1,11 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
 import { Separator } from '~/ui/Separator';
 import { cn } from '~/utils';
 
 export type ModalFooterProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Footer = (props: ModalFooterProps) => {

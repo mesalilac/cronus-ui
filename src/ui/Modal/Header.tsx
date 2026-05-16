@@ -1,11 +1,11 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
 import { Separator } from '~/ui/Separator';
 import { cn } from '~/utils';
 
 export type ModalHeaderProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Header = (props: ModalHeaderProps) => {
@@ -19,7 +19,7 @@ export const Header = (props: ModalHeaderProps) => {
 
 export type ModalTitleProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Title = (props: ModalTitleProps) => {
@@ -32,7 +32,7 @@ export const Title = (props: ModalTitleProps) => {
 
 export type ModalDescriptionProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Description = (props: ModalDescriptionProps) => {

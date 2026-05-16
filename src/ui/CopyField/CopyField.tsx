@@ -2,7 +2,7 @@ import {
     type Accessor,
     createContext,
     createSignal,
-    type JSX,
+    type JSXElement,
     Match,
     mergeProps,
     Show,
@@ -22,7 +22,7 @@ export type CopyFieldProps = {
     multiline?: boolean;
     readOnly?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const CopyFieldContext = createContext<{
@@ -44,7 +44,7 @@ export const useCopyFieldContext = () => {
 };
 
 type CopyFieldCompound = {
-    (props: CopyFieldProps): JSX.Element;
+    (props: CopyFieldProps): JSXElement;
     Input: typeof CopyFieldInput;
     CopyButton: typeof CopyButton;
 };

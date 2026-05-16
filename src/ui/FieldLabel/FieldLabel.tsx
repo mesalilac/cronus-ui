@@ -1,10 +1,10 @@
-import { type JSX, Show, type VoidComponent } from 'solid-js';
+import { type JSXElement, Show, type VoidComponent } from 'solid-js';
 
 import { Label } from '~/ui/Label';
 
 export type FieldLabelProps = {
     id?: string;
-    label: JSX.Element;
+    label: JSXElement;
     required?: boolean;
 };
 

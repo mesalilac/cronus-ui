@@ -4,7 +4,7 @@ import {
     createEffect,
     createSignal,
     createUniqueId,
-    type JSX,
+    type JSXElement,
     type Setter,
     useContext,
 } from 'solid-js';
@@ -17,7 +17,7 @@ export type AccordionProps = {
     multiple?: boolean;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const AccordionContext = createContext<{
@@ -62,7 +62,7 @@ type AccordionItemProps = {
     value?: string;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const AccordionItem = (props: AccordionItemProps) => {
@@ -122,7 +122,7 @@ const AccordionItem = (props: AccordionItemProps) => {
 
 type AccordionTriggerProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const AccordionTrigger = (props: AccordionTriggerProps) => {
@@ -135,7 +135,7 @@ const AccordionTrigger = (props: AccordionTriggerProps) => {
 
 type AccordionContentProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const AccordionContent = (props: AccordionContentProps) => {

@@ -32,19 +32,19 @@ export type InputProps = {
     onFocusIn?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     onFocusOut?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     placeholder?: string;
-    label?: JSX.Element;
+    label?: JSXElement;
     required?: boolean;
     autoFocus?: boolean;
-    helper?: JSX.Element;
+    helper?: JSXElement;
     minLength?: number;
     maxLength?: number;
     disabled?: boolean;
     readOnly?: boolean;
-    badge?: JSX.Element;
-    icon?: JSX.Element;
+    badge?: JSXElement;
+    icon?: JSXElement;
     class?: string;
     ref?: Ref<HTMLInputElement>;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 export const Input = (rawProps: InputProps) => {

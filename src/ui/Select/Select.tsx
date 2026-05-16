@@ -1,7 +1,7 @@
 import {
     createMemo,
     createSignal,
-    type JSX,
+    type JSXElement,
     mergeProps,
     onMount,
 } from 'solid-js';
@@ -23,7 +23,7 @@ export type SelectProps = {
     value?: string;
     /** Enables persistence of the selected value after refresh */
     persistKey?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const getItemKey = (persistKey: string | undefined): string | undefined => {

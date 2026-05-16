@@ -4,7 +4,7 @@ import {
     createEffect,
     createSignal,
     type FlowComponent,
-    type JSX,
+    type JSXElement,
     onCleanup,
     onMount,
     type Setter,
@@ -35,11 +35,11 @@ export const useShowMoreContext = () => {
 export type ShowMoreProps = {
     class?: string;
     defaultExpanded?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 type ShowMoreCompound = {
-    (props: ShowMoreProps): JSX.Element;
+    (props: ShowMoreProps): JSXElement;
 
     Trigger: typeof ShowMoreTrigger;
     ReadMore: typeof ShowMoreReadMoreTrigger;
@@ -128,7 +128,7 @@ type ShowMoreTriggerProps = {
     children?: (
         isExpanded: boolean,
         setIsExpanded: Setter<boolean>,
-    ) => JSX.Element;
+    ) => JSXElement;
 };
 
 const ShowMoreTrigger = (props: ShowMoreTriggerProps) => {

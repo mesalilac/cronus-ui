@@ -3,7 +3,7 @@ import {
     type Accessor,
     createEffect,
     createMemo,
-    type JSX,
+    type JSXElement,
     onCleanup,
 } from 'solid-js';
 
@@ -17,7 +17,7 @@ import {
 export type DropdownMenuContentProps = {
     targetPositionArea?: TargetPositionArea;
     positionTryFallbacks?: (anchorName: string) => PositionArea[];
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Content = (props: DropdownMenuContentProps) => {

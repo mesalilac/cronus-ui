@@ -1,10 +1,10 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
 import { useMenuContext } from '~/ui/Menu/context';
 
 export type ContextMenuTriggerProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 export const ContextMenuTrigger = (props: ContextMenuTriggerProps) => {

@@ -5,6 +5,7 @@
 import {
     type ComponentProps,
     type JSX,
+    type JSXElement,
     mergeProps,
     splitProps,
     type ValidComponent,
@@ -83,7 +84,7 @@ export type PolymorphicCallbackProps<
  */
 export function Polymorphic<RenderProps>(
     props: RenderProps & PolymorphicAttributes<ValidComponent>,
-): JSX.Element {
+): JSXElement {
     const [local, others] = splitProps(props, ['as']);
 
     if (!local.as) {

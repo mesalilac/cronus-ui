@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { createSignal, type JSX, Show } from 'solid-js';
+import { createSignal, type JSXElement, Show } from 'solid-js';
 import { Transition } from 'solid-transition-group';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
@@ -9,7 +9,7 @@ import { Label } from '~/ui/Label';
 export type SelectOptionGroupProps = {
     label: string;
     open?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const OptionGroup = (props: SelectOptionGroupProps) => {

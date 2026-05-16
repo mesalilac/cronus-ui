@@ -14,7 +14,7 @@ import { Popover, type TargetPositionArea } from '~/ui/Popover';
 
 export type ContextMenuContentProps = {
     disableEventDelegation?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Content = (props: ContextMenuContentProps) => {

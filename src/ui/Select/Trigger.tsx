@@ -1,4 +1,4 @@
-import type { JSX } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
 import { IconArrowCaretDownMd, IconArrowCaretUpMd } from '~/icons';
 import { Button, type ButtonProps } from '~/ui/Button';
@@ -9,7 +9,7 @@ import { useSelectContext } from './context';
 export type SelectTriggerProps = {
     class?: string;
     disabled?: boolean;
-    children?: JSX.Element;
+    children?: JSXElement;
 } & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 export const Trigger = (props: SelectTriggerProps) => {

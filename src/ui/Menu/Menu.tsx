@@ -21,11 +21,11 @@ export type MenuProps = {
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
     disabled?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export type MenuCompound = {
-    (props: MenuProps): JSX.Element;
+    (props: MenuProps): JSXElement;
 
     Item: typeof Item;
     ItemSwitch: typeof ItemSwitch;

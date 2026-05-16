@@ -1,4 +1,4 @@
-import { type JSX, Show, type VoidComponent } from 'solid-js';
+import { type JSXElement, Show, type VoidComponent } from 'solid-js';
 
 import { IconInterfaceCheck } from '~/icons';
 import { HelperText } from '~/ui/HelperText';
@@ -7,8 +7,8 @@ import { cn } from '~/utils';
 export type CheckboxProps = {
     checked?: boolean;
     onChange: (checked: boolean) => void;
-    helper?: JSX.Element;
-    label?: JSX.Element;
+    helper?: JSXElement;
+    label?: JSXElement;
 };
 
 export const Checkbox: VoidComponent<CheckboxProps> = (props) => {

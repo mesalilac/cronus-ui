@@ -1,4 +1,4 @@
-import { type JSX, Show } from 'solid-js';
+import { type JSXElement, Show } from 'solid-js';
 
 import { IconInterfaceCheck } from '~/icons';
 import { Button } from '~/ui/Button';
@@ -8,10 +8,10 @@ import { cn } from '~/utils';
 export type DropdownMenuItemCheckboxProps = {
     checked: boolean;
     onChange: (value: boolean) => void;
-    helper?: JSX.Element;
+    helper?: JSXElement;
     disabled?: boolean;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const ItemCheckbox = (props: DropdownMenuItemCheckboxProps) => {

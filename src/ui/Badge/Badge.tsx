@@ -1,4 +1,4 @@
-import { type JSX, mergeProps, type ParentComponent } from 'solid-js';
+import { type JSXElement, mergeProps, type ParentComponent } from 'solid-js';
 
 import { cn } from '~/utils';
 
@@ -13,7 +13,7 @@ export type BadgeProps = {
     ref?: HTMLSpanElement | ((el: HTMLSpanElement) => void);
     variant?: BadgeVariant;
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Badge: ParentComponent<BadgeProps> = (rawProps) => {

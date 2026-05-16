@@ -30,7 +30,7 @@ export type AlertDialogProps = {
     variant?: AlertDialogVariant;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const AlertDialogContext = createContext<{
@@ -51,7 +51,7 @@ export const useAlertDialogContext = () => {
 };
 
 type AlertDialogCompound = {
-    (props: AlertDialogProps): JSX.Element;
+    (props: AlertDialogProps): JSXElement;
 
     Trigger: typeof AlertDialogTrigger;
     Content: typeof AlertDialogContent;
@@ -107,7 +107,7 @@ export const AlertDialog: AlertDialogCompound = (rawProps) => {
 
 type AlertDialogTriggerProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 } & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 const AlertDialogTrigger = (props: AlertDialogTriggerProps) => {
@@ -127,7 +127,7 @@ const AlertDialogTrigger = (props: AlertDialogTriggerProps) => {
 
 type AlertDialogContentProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogContent = (props: AlertDialogContentProps) => {
@@ -234,7 +234,7 @@ const AlertDialogContent = (props: AlertDialogContentProps) => {
 
 type AlertDialogHeaderProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
@@ -247,7 +247,7 @@ const AlertDialogHeader = (props: AlertDialogHeaderProps) => {
 
 type AlertDialogBodyProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogBody = (props: AlertDialogBodyProps) => {
@@ -265,7 +265,7 @@ const AlertDialogBody = (props: AlertDialogBodyProps) => {
 
 type AlertDialogIconProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogIcon = (props: AlertDialogIconProps) => {
@@ -296,7 +296,7 @@ const AlertDialogIcon = (props: AlertDialogIconProps) => {
 
 type AlertDialogTitleProps = {
     class?: string;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 const AlertDialogTitle = (props: AlertDialogTitleProps) => {
@@ -314,7 +314,7 @@ const AlertDialogTitle = (props: AlertDialogTitleProps) => {
 
 type AlertDialogFooterProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogFooter = (props: AlertDialogFooterProps) => {
@@ -332,7 +332,7 @@ const AlertDialogFooter = (props: AlertDialogFooterProps) => {
 
 type AlertDialogCancelProps = {
     class?: string;
-    children?: JSX.Element;
+    children?: JSXElement;
 };
 
 const AlertDialogCancel = (props: AlertDialogCancelProps) => {
@@ -352,7 +352,7 @@ const AlertDialogCancel = (props: AlertDialogCancelProps) => {
 type AlertDialogActionProps = {
     class?: string;
     onClick?: () => void;
-    children?: JSX.Element;
+    children?: JSXElement;
 } & Pick<ButtonProps, 'variant' | 'appearance'>;
 
 const AlertDialogAction = (props: AlertDialogActionProps) => {

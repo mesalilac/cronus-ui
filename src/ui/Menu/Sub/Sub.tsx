@@ -1,11 +1,11 @@
-import { createSignal, type JSX } from 'solid-js';
+import { createSignal, type JSXElement } from 'solid-js';
 
 import { Content } from './Content';
 import { SubMenuContext } from './context';
 import { Trigger } from './Trigger';
 
 export type DropdownMenuSubProps = {
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Sub = (props: DropdownMenuSubProps) => {

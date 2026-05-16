@@ -1,4 +1,4 @@
-import { type JSX, Show } from 'solid-js';
+import { type JSXElement, Show } from 'solid-js';
 
 import { IconInterfaceCheck } from '~/icons';
 import { Button } from '~/ui/Button';
@@ -11,7 +11,7 @@ export type SelectOptionProps = {
     class?: string;
     disabled?: boolean;
     selected?: boolean;
-    children: JSX.Element;
+    children: JSXElement;
 };
 
 export const Option = (props: SelectOptionProps) => {
