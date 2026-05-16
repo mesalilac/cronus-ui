@@ -33,3 +33,4 @@ export * from './ButtonGroup';
 export * from './FloatingBar';
 export * from './CopyField';
 export * from './Kbd';
+export * from './Tabs';
