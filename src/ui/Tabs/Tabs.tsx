@@ -7,6 +7,7 @@ import {
     mergeProps,
     on,
     type ParentComponent,
+    Show,
     useContext,
 } from 'solid-js';
 
@@ -95,8 +96,14 @@ const Tab: ParentComponent<{
     value: string;
     disabled?: boolean;
 }> = (props) => {
+    const ctx = useTabsContext();
+
     return (
-        <Button class={cn('capitalize', props.class)} disabled={props.disabled}>
+        <Button
+            class={cn('capitalize', props.class)}
+            disabled={props.disabled}
+            onClick={() => ctx.onChange(props.value)}
+        >
             {props.children ?? props.value}
         </Button>
     );
@@ -107,7 +114,13 @@ const List: ParentComponent<{ class?: string }> = (props) => {
 };
 
 const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
-    return <div>{props.children}</div>;
+    const ctx = useTabsContext();
+
+    return (
+        <Show when={props.value === ctx.value()}>
+            <div>{props.children}</div>
+        </Show>
+    );
 };
 
 type TabsCompound = {
