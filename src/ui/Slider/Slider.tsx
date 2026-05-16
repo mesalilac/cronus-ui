@@ -16,6 +16,7 @@ import {
 } from 'solid-js';
 import { Transition } from 'solid-transition-group';
 
+import type { TimeoutHandle } from '~/types';
 import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
@@ -155,6 +156,8 @@ const SliderInput = (props: SliderInputProps) => {
             class={cn(
                 'h-4 w-full cursor-pointer appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
 
+                'active:[&::-moz-range-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-110',
+
                 // Webkit track
                 '[&::-webkit-slider-runnable-track]:h-2',
                 '[&::-webkit-slider-runnable-track]:rounded-full',
@@ -163,7 +166,6 @@ const SliderInput = (props: SliderInputProps) => {
 
                 // Webkit thumb
                 '[&::-webkit-slider-thumb:hover]:brightness-110',
-                '[&::-webkit-slider-thumb:active]:scale-110',
                 '[&::-webkit-slider-thumb]:transition-transform',
                 '[&::-webkit-slider-thumb]:duration-150',
                 '[&::-webkit-slider-thumb]:ease-out',
@@ -189,7 +191,6 @@ const SliderInput = (props: SliderInputProps) => {
 
                 // Firefox thumb
                 '[&::-moz-range-thumb:hover]:brightness-110',
-                '[&::-moz-range-thumb:active]:scale-110',
                 '[&::-moz-range-thumb]:transition-transform',
                 '[&::-moz-range-thumb]:duration-150',
                 '[&::-moz-range-thumb]:ease-out',
@@ -226,7 +227,7 @@ const SliderInput = (props: SliderInputProps) => {
 
 const SliderToolTip = (rawProps: {
     class?: string;
-    position?: 'top' | 'bottom';
+    placement?: 'top' | 'bottom';
     /**
      * px offset from input
      * @default 8
@@ -238,11 +239,13 @@ const SliderToolTip = (rawProps: {
 
     const props = mergeProps(
         {
-            position: 'top',
+            placement: 'top',
             offset: 8,
         } satisfies Partial<ComponentProps<typeof SliderToolTip>>,
         rawProps,
     );
+
+    let openTimer: TimeoutHandle;
 
     const [isOpen, setIsOpen] = createSignal(false);
 
@@ -277,13 +280,19 @@ const SliderToolTip = (rawProps: {
     onMount(() => {
         ctx.inputRef()?.addEventListener(
             'mousedown',
-            () => setIsOpen(true),
+            () => {
+                clearTimeout(openTimer);
+                openTimer = setTimeout(() => setIsOpen(true), 150);
+            },
             abortCtrl,
         );
 
         ctx.inputRef()?.addEventListener(
             'mouseup',
-            () => setIsOpen(false),
+            () => {
+                clearTimeout(openTimer);
+                setIsOpen(false);
+            },
             abortCtrl,
         );
     });
@@ -321,8 +330,8 @@ const SliderToolTip = (rawProps: {
                     role='tooltip'
                     style={{
                         left: calcX(),
-                        top: props.position === 'bottom' ? calcY() : '',
-                        bottom: props.position === 'top' ? calcY() : '',
+                        top: props.placement === 'bottom' ? calcY() : '',
+                        bottom: props.placement === 'top' ? calcY() : '',
                         transform: `translateX(-50%)`,
                     }}
                 >

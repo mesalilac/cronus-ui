@@ -36,6 +36,7 @@ export type BannerProps = {
     variant?: BannerVariant;
     dismissible?: boolean;
     onDismiss?: () => void;
+    displace?: boolean;
     autoDismissMs?: number;
     pauseOnHover?: boolean;
     class?: string;
@@ -56,10 +57,33 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
 
     const variantStyles: Record<BannerVariant, string> = {
         default: cn('border-accent'),
-        success: cn('border-success'),
-        warning: cn('border-warning'),
-        danger: cn('border-danger'),
-        info: cn('border-info'),
+        success: cn('border-success text-text-success'),
+        warning: cn('border-warning text-text-warning'),
+        danger: cn('border-danger text-text-danger'),
+        info: cn('border-info text-text-info'),
+    };
+
+    const VariantIcon = () => {
+        return (
+            <Switch
+                fallback={
+                    <IconWarningInfo class='size-5 text-text-secondary' />
+                }
+            >
+                <Match when={props.variant === 'info'}>
+                    <IconWarningInfo class='size-5 text-text-info' />
+                </Match>
+                <Match when={props.variant === 'success'}>
+                    <IconInterfaceCheck class='size-5 text-text-success' />
+                </Match>
+                <Match when={props.variant === 'warning'}>
+                    <IconWarningCircleWarning class='size-5 text-text-warning' />
+                </Match>
+                <Match when={props.variant === 'danger'}>
+                    <IconWarningCircleWarning class='size-5 text-text-danger' />
+                </Match>
+            </Switch>
+        );
     };
 
     const [open, setOpen] = createSignal(props.open ?? true);
@@ -97,8 +121,10 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
 
     onCleanup(() => killDismissTimeline());
 
-    return (
-        <Portal>
+    const isFloating = () => !props.displace;
+
+    const Content = () => {
+        return (
             <Transition
                 onEnter={(el, done) => {
                     killDismissTimeline();
@@ -148,10 +174,15 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                 <Show when={open()}>
                     <div
                         class={cn(
-                            'fixed z-50 flex min-h-12 w-full items-center justify-center gap-2 bg-accent p-2 text-text-primary backdrop-blur-xs',
-                            props.placement === 'top'
-                                ? 'top-0 border-b-2'
-                                : 'bottom-0 border-t-2',
+                            'flex min-h-12 items-center justify-center gap-2 bg-surface-2 p-2 text-text-primary shadow-default backdrop-blur-xs',
+                            isFloating()
+                                ? [
+                                      'fixed inset-x-4 z-50',
+                                      props.placement === 'top'
+                                          ? 'top-0 rounded-b-default border-x-2 border-b-2'
+                                          : 'bottom-0 rounded-t-default border-x-2 border-t-2',
+                                  ]
+                                : ['w-full border-2'],
                             variantStyles[props.variant],
                             props.class,
                         )}
@@ -163,24 +194,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                         }
                         role='none'
                     >
-                        <Switch
-                            fallback={
-                                <IconWarningInfo class='size-5 text-text-secondary' />
-                            }
-                        >
-                            <Match when={props.variant === 'success'}>
-                                <IconInterfaceCheck class='size-5 text-text-success' />
-                            </Match>
-                            <Match when={props.variant === 'warning'}>
-                                <IconWarningCircleWarning class='size-5 text-text-warning' />
-                            </Match>
-                            <Match when={props.variant === 'danger'}>
-                                <IconWarningCircleWarning class='size-5 text-text-danger' />
-                            </Match>
-                            <Match when={props.variant === 'info'}>
-                                <IconWarningInfo class='size-5 text-text-info' />
-                            </Match>
-                        </Switch>
+                        <VariantIcon />
                         {props.children}
                         <Show when={props.dismissible}>
                             <div
@@ -206,7 +220,7 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                             <div class='absolute bottom-0 left-0 h-1 w-full overflow-hidden'>
                                 <div
                                     class={cn(
-                                        'h-full origin-left bg-current',
+                                        'h-full origin-left rounded-full bg-current',
                                         props.variant === 'default' &&
                                             'bg-white/60',
                                     )}
@@ -217,6 +231,19 @@ export const Banner: FlowComponent<BannerProps> = (rawProps) => {
                     </div>
                 </Show>
             </Transition>
-        </Portal>
+        );
+    };
+
+    return (
+        <Show
+            fallback={
+                <Portal>
+                    <Content />
+                </Portal>
+            }
+            when={props.displace}
+        >
+            <Content />
+        </Show>
     );
 };

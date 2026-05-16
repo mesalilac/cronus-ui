@@ -205,6 +205,32 @@ export const Default: Story = {
     },
 };
 
+export const Displace: Story = {
+    render: () => {
+        return (
+            <div class='flex h-screen flex-col'>
+                <Banner displace>Banner Content</Banner>
+                <div class='flex-1 overflow-y-auto'>
+                    <PlaceholderText />
+                </div>
+            </div>
+        );
+    },
+};
+
+export const DisplaceBottom: Story = {
+    render: () => {
+        return (
+            <div class='flex h-screen flex-col'>
+                <div class='flex-1 overflow-y-auto'>
+                    <PlaceholderText />
+                </div>
+                <Banner displace>Banner Content</Banner>
+            </div>
+        );
+    },
+};
+
 export const Success: Story = {
     render: () => {
         return (
@@ -280,14 +306,14 @@ export const NotDismissible: Story = {
 export const ExternalControl: Story = {
     render: () => {
         const [open, setOpen] = createSignal(false);
-        const [position, setPosition] = createSignal<'top' | 'bottom'>('top');
+        const [placement, setPlacement] = createSignal<'top' | 'bottom'>('top');
 
         return (
             <div class='flex h-screen items-center justify-center align-middle'>
                 <Banner
                     onOpenChange={setOpen}
                     open={open()}
-                    placement={position()}
+                    placement={placement()}
                 >
                     Banner Content
                 </Banner>
@@ -300,12 +326,12 @@ export const ExternalControl: Story = {
                     </Button>
                     <Button
                         onClick={() =>
-                            setPosition((prev) =>
+                            setPlacement((prev) =>
                                 prev === 'top' ? 'bottom' : 'top',
                             )
                         }
                     >
-                        Position ({position()})
+                        Position ({placement()})
                     </Button>
                 </div>
             </div>

@@ -232,7 +232,7 @@ export const Top: Story = {
         return (
             <div class='flex flex-col gap-2'>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='start' position='top'>
+                    <FloatingBar alignment='start' placement='top'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -240,7 +240,7 @@ export const Top: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='center' position='top'>
+                    <FloatingBar alignment='center' placement='top'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -248,7 +248,7 @@ export const Top: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='end' position='top'>
+                    <FloatingBar alignment='end' placement='top'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -265,7 +265,7 @@ export const Right: Story = {
         return (
             <div class='flex gap-2'>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='start' position='right'>
+                    <FloatingBar alignment='start' placement='right'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
@@ -275,7 +275,7 @@ export const Right: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='center' position='right'>
+                    <FloatingBar alignment='center' placement='right'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
@@ -285,7 +285,7 @@ export const Right: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='end' position='right'>
+                    <FloatingBar alignment='end' placement='right'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
@@ -304,7 +304,7 @@ export const Bottom: Story = {
         return (
             <div class='flex flex-col gap-2'>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='start' position='bottom'>
+                    <FloatingBar alignment='start' placement='bottom'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -312,7 +312,7 @@ export const Bottom: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='center' position='bottom'>
+                    <FloatingBar alignment='center' placement='bottom'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -320,7 +320,7 @@ export const Bottom: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative h-48'>
-                    <FloatingBar alignment='end' position='bottom'>
+                    <FloatingBar alignment='end' placement='bottom'>
                         scroll to the bottom
                         <Button appearance='primary' size='icon'>
                             <IconArrowDownMd />
@@ -337,7 +337,7 @@ export const Left: Story = {
         return (
             <div class='flex gap-2'>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='start' position='left'>
+                    <FloatingBar alignment='start' placement='left'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
@@ -347,7 +347,7 @@ export const Left: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='center' position='left'>
+                    <FloatingBar alignment='center' placement='left'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
@@ -357,7 +357,7 @@ export const Left: Story = {
                     </FloatingBar>
                 </Wrapper>
                 <Wrapper class='relative w-48'>
-                    <FloatingBar alignment='end' position='left'>
+                    <FloatingBar alignment='end' placement='left'>
                         <Button appearance='primary' size='icon'>
                             <IconArrowUpMd />
                         </Button>
