@@ -102,6 +102,7 @@ const Tab: ParentComponent<{
     return (
         <Button
             class={cn('capitalize', props.class)}
+            data-slot='tab'
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
         >
@@ -111,7 +112,7 @@ const Tab: ParentComponent<{
 };
 
 const List: ParentComponent<{ class?: string }> = (props) => {
-    return <div>{props.children}</div>;
+    return <div data-slot='list'>{props.children}</div>;
 };
 
 const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
@@ -119,7 +120,7 @@ const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
 
     return (
         <Show when={props.value === ctx.value()}>
-            <div>{props.children}</div>
+            <div data-slot='panel'>{props.children}</div>
         </Show>
     );
 };
