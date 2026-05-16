@@ -7,6 +7,7 @@
 
 ## New components
 - Input/Textarea - display min and max lengths
+- InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Remove `HelperText` component and `FieldLabel`
 - Tooltip - <https://corvu.dev/docs/primitives/tooltip/>
