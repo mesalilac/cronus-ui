@@ -34,6 +34,8 @@ export const TabsContext = createContext<{
     orientation: Accessor<TabsOrientation>;
     variant: Accessor<TabsVariant>;
     disabled: Accessor<boolean | undefined>;
+
+    isSelected: (val: string) => boolean;
 }>();
 
 export const useTabsContext = () => {
@@ -76,6 +78,8 @@ export const Tabs: TabsCompound = (rawProps) => {
         props.onChange?.(val);
     };
 
+    const isSelected = (val: string) => value() === val;
+
     return (
         <TabsContext.Provider
             value={{
@@ -84,9 +88,10 @@ export const Tabs: TabsCompound = (rawProps) => {
                 orientation: () => props.orientation,
                 variant: () => props.variant,
                 disabled: () => props.disabled,
+                isSelected,
             }}
         >
-            <div>{props.children}</div>
+            <div data-orientation={props.orientation}>{props.children}</div>
         </TabsContext.Provider>
     );
 };
@@ -98,11 +103,14 @@ const Tab: ParentComponent<{
 }> = (props) => {
     const ctx = useTabsContext();
 
+    const isSelected = () => ctx.isSelected(props.value);
     const isDisabled = () => ctx.disabled() || props.disabled;
 
     return (
         <Button
             class={cn('capitalize', props.class)}
+            data-orientation={ctx.orientation()}
+            data-selected={isSelected()}
             data-slot='tab'
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
@@ -113,15 +121,29 @@ const Tab: ParentComponent<{
 };
 
 const List: ParentComponent<{ class?: string }> = (props) => {
-    return <div data-slot='list'>{props.children}</div>;
+    const ctx = useTabsContext();
+
+    return (
+        <div data-orientation={ctx.orientation()} data-slot='list'>
+            {props.children}
+        </div>
+    );
 };
 
 const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
     const ctx = useTabsContext();
 
+    const isSelected = () => ctx.isSelected(props.value);
+
     return (
-        <Show when={props.value === ctx.value()}>
-            <div data-slot='panel'>{props.children}</div>
+        <Show when={isSelected()}>
+            <div
+                data-orientation={ctx.orientation()}
+                data-selected={isSelected()}
+                data-slot='panel'
+            >
+                {props.children}
+            </div>
         </Show>
     );
 };
