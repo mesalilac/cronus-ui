@@ -12,10 +12,15 @@ import {
 } from 'solid-js';
 
 import type { PartialComponentProps } from '~/types';
-import { Button, type ButtonSize, type ButtonVariant } from '~/ui/Button';
+import {
+    Button,
+    type ButtonAppearance,
+    type ButtonSize,
+    type ButtonVariant,
+} from '~/ui/Button';
 import { cn } from '~/utils';
 
-type TabsVariant = 'underline' | 'soft';
+type TabsVariant = 'underline' | 'soft' | 'subtle';
 type TabsOrientation = 'horizontal' | 'vertical';
 
 export type TabsProps = {
@@ -123,19 +128,34 @@ const Tab: ParentComponent<{
     const buttonVariant: Record<TabsVariant, ButtonVariant> = {
         underline: 'transparent',
         soft: 'soft',
+        subtle: 'soft',
+    };
+
+    const buttonAppearance: Record<TabsVariant, ButtonAppearance> = {
+        underline: isSelected() ? 'primary' : 'secondary',
+        soft: isSelected() ? 'primary' : 'secondary',
+        subtle: 'secondary',
     };
 
     return (
         <Button
-            appearance={isSelected() ? 'primary' : 'secondary'}
+            appearance={buttonAppearance[ctx.variant()]}
             class={cn(
-                'text-text-muted capitalize hover:text-text-secondary data-[selected=true]:text-accent',
+                'text-text-muted capitalize hover:text-text-secondary',
 
                 // underline
                 'data-[variant=underline]:rounded-none',
                 'data-[variant=underline]:border-transparent',
                 'data-[variant=underline]:border-b-2',
                 'data-[variant=underline]:data-[selected=true]:border-current',
+                'data-[variant=underline]:data-[selected=true]:text-accent',
+
+                // soft
+                'data-[variant=soft]:data-[selected=true]:text-accent',
+
+                // subtle
+                'data-[variant=subtle]:data-[selected=true]:text-text-secondary',
+                'data-[variant=subtle]:data-[selected=true]:outline-text-secondary',
 
                 props.class,
             )}
