@@ -25,6 +25,7 @@ export type TabsProps = {
     orientation?: TabsOrientation;
     variant?: TabsVariant;
     disabled?: boolean;
+    class?: string;
     children: JSXElement;
 };
 
@@ -91,7 +92,12 @@ export const Tabs: TabsCompound = (rawProps) => {
                 isSelected,
             }}
         >
-            <div data-orientation={props.orientation}>{props.children}</div>
+            <div
+                class={cn('flex flex-col gap-1', props.class)}
+                data-orientation={props.orientation}
+            >
+                {props.children}
+            </div>
         </TabsContext.Provider>
     );
 };
@@ -124,7 +130,11 @@ const List: ParentComponent<{ class?: string }> = (props) => {
     const ctx = useTabsContext();
 
     return (
-        <div data-orientation={ctx.orientation()} data-slot='list'>
+        <div
+            class={cn('flex gap-1', props.class)}
+            data-orientation={ctx.orientation()}
+            data-slot='list'
+        >
             {props.children}
         </div>
     );
