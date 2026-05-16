@@ -12,10 +12,10 @@ import {
 } from 'solid-js';
 
 import type { PartialComponentProps } from '~/types';
-import { Button } from '~/ui/Button';
+import { Button, type ButtonVariant } from '~/ui/Button';
 import { cn } from '~/utils';
 
-type TabsVariant = 'underline' | 'soft' | 'segmented';
+type TabsVariant = 'underline' | 'soft';
 type TabsOrientation = 'horizontal' | 'vertical';
 
 export type TabsProps = {
@@ -112,14 +112,34 @@ const Tab: ParentComponent<{
     const isSelected = () => ctx.isSelected(props.value);
     const isDisabled = () => ctx.disabled() || props.disabled;
 
+    const buttonVariant: Record<TabsVariant, ButtonVariant> = {
+        underline: 'transparent',
+        soft: 'soft',
+    };
+
     return (
         <Button
-            class={cn('capitalize', props.class)}
+            appearance={isSelected() ? 'primary' : 'secondary'}
+            class={cn(
+                'text-text-muted capitalize hover:text-text-secondary data-[selected=true]:text-accent',
+
+                // underline
+                'data-[variant=underline]:rounded-none',
+                'data-[variant=underline]:border-transparent',
+                'data-[variant=underline]:border-b-2',
+                'data-[variant=underline]:data-[selected=true]:border-current',
+
+                props.class,
+            )}
             data-orientation={ctx.orientation()}
             data-selected={isSelected()}
             data-slot='tab'
+            data-variant={ctx.variant()}
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
+            variant={
+                isSelected() ? buttonVariant[ctx.variant()] : 'transparent'
+            }
         >
             {props.children ?? props.value}
         </Button>
