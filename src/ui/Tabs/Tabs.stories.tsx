@@ -22,7 +22,7 @@ type Story = StoryObj<StoryComponent>;
 const Wrapper: ParentComponent<{ class?: string }> = (props) => {
     return (
         <div
-            class={cn('size-124 rounded-default bg-surface-1 p-2', props.class)}
+            class={cn('size-156 rounded-default bg-surface-1 p-2', props.class)}
         >
             {props.children}
         </div>
