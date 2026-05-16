@@ -92,11 +92,18 @@ export const Tabs: TabsCompound = (rawProps) => {
                 isSelected,
             }}
         >
-            <div
-                class={cn('flex flex-col gap-1', props.class)}
-                data-orientation={props.orientation}
-            >
-                {props.children}
+            <div class='@container/tabs h-full w-full'>
+                <div
+                    class={cn(
+                        'flex h-full w-full flex-col flex-wrap gap-1',
+                        'data-[orientation=vertical]:flex-row',
+                        'data-[orientation=vertical]:@max-sm/tabs:flex-col',
+                        props.class,
+                    )}
+                    data-orientation={props.orientation}
+                >
+                    {props.children}
+                </div>
             </div>
         </TabsContext.Provider>
     );
@@ -151,7 +158,25 @@ const List: ParentComponent<{ class?: string }> = (props) => {
 
     return (
         <div
-            class={cn('flex gap-1', props.class)}
+            class={cn(
+                'flex flex-wrap',
+
+                // vertical
+                'data-[orientation=vertical]:flex-col',
+                'data-[orientation=vertical]:bg-surface-base/60',
+                'data-[orientation=vertical]:p-2',
+                'data-[orientation=vertical]:rounded-default',
+                'data-[orientation=vertical]:basis-44',
+                'data-[orientation=vertical]:shrink-0',
+
+                // container queries
+                'data-[orientation=vertical]:@max-sm/tabs:flex-row',
+                'data-[orientation=vertical]:@max-sm/tabs:basis-auto',
+                'data-[orientation=vertical]:@max-sm/tabs:p-0',
+                'data-[orientation=vertical]:@max-sm/tabs:bg-transparent',
+
+                props.class,
+            )}
             data-orientation={ctx.orientation()}
             data-slot='list'
         >
@@ -168,6 +193,7 @@ const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
     return (
         <Show when={isSelected()}>
             <div
+                class={cn('grow p-2', props.class)}
                 data-orientation={ctx.orientation()}
                 data-selected={isSelected()}
                 data-slot='panel'
