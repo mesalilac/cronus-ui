@@ -16,12 +16,13 @@ import { Button } from '~/ui/Button';
 import { cn } from '~/utils';
 
 type TabsVariant = 'underline' | 'soft' | 'segmented';
+type TabsOrientation = 'horizontal' | 'vertical';
 
 export type TabsProps = {
     value?: string;
     defaultValue?: string;
     onChange?: (value: string) => void;
-    vertical?: boolean;
+    orientation?: TabsOrientation;
     variant?: TabsVariant;
     disabled?: boolean;
     children: JSXElement;
@@ -30,7 +31,7 @@ export type TabsProps = {
 export const TabsContext = createContext<{
     value: Accessor<string | undefined>;
     onChange: (value: string) => void;
-    vertical: Accessor<boolean | undefined>;
+    orientation: Accessor<TabsOrientation>;
     variant: Accessor<TabsVariant>;
     disabled: Accessor<boolean | undefined>;
 }>();
@@ -51,7 +52,7 @@ export const Tabs: TabsCompound = (rawProps) => {
     const props = mergeProps(
         {
             variant: 'underline',
-            vertical: false,
+            orientation: 'horizontal',
         } satisfies PartialComponentProps<typeof Tabs>,
         rawProps,
     );
@@ -80,7 +81,7 @@ export const Tabs: TabsCompound = (rawProps) => {
             value={{
                 value,
                 onChange,
-                vertical: () => props.vertical,
+                orientation: () => props.orientation,
                 variant: () => props.variant,
                 disabled: () => props.disabled,
             }}
