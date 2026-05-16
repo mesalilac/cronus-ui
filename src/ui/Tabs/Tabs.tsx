@@ -29,6 +29,7 @@ export type TabsProps = {
     onChange?: (value: string) => void;
     orientation?: TabsOrientation;
     variant?: TabsVariant;
+    size?: ButtonSize;
     disabled?: boolean;
     class?: string;
     children: JSXElement;
@@ -40,6 +41,7 @@ export const TabsContext = createContext<{
     orientation: Accessor<TabsOrientation>;
     variant: Accessor<TabsVariant>;
     disabled: Accessor<boolean | undefined>;
+    size: Accessor<ButtonSize | undefined>;
 
     isSelected: (val: string) => boolean;
 }>();
@@ -94,6 +96,7 @@ export const Tabs: TabsCompound = (rawProps) => {
                 orientation: () => props.orientation,
                 variant: () => props.variant,
                 disabled: () => props.disabled,
+                size: () => props.size,
                 isSelected,
             }}
         >
@@ -165,7 +168,7 @@ const Tab: ParentComponent<{
             data-variant={ctx.variant()}
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
-            size={props.size}
+            size={ctx.size() ?? props.size}
             variant={
                 isSelected() ? buttonVariant[ctx.variant()] : 'transparent'
             }

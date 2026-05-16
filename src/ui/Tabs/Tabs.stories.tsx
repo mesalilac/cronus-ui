@@ -50,6 +50,27 @@ export const Default: Story = {
     },
 };
 
+export const Size: Story = {
+    render: () => {
+        return (
+            <Wrapper>
+                <Tabs defaultValue='overview' size='sm'>
+                    <Tabs.List>
+                        <Tabs.Tab value='overview' />
+                        <Tabs.Tab value='analytics' />
+                        <Tabs.Tab value='reports' />
+                        <Tabs.Tab value='settings' />
+                    </Tabs.List>
+                    <Tabs.Panel value='overview'>Overview</Tabs.Panel>
+                    <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
+                    <Tabs.Panel value='reports'>Reports</Tabs.Panel>
+                    <Tabs.Panel value='settings'>Settings</Tabs.Panel>
+                </Tabs>
+            </Wrapper>
+        );
+    },
+};
+
 export const Horizontal: Story = {
     render: () => {
         return (
