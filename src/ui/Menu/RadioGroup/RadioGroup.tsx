@@ -1,4 +1,4 @@
-import { createMemo, type JSX } from 'solid-js';
+import { createMemo, type JSXElement } from 'solid-js';
 
 import { RadioGroupContext } from './context';
 import { Item } from './Item';

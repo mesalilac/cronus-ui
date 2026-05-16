@@ -4,7 +4,7 @@ import {
     createEffect,
     createMemo,
     createSignal,
-    type JSX,
+    type JSXElement,
     onCleanup,
     onMount,
 } from 'solid-js';

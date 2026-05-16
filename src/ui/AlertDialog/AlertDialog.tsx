@@ -5,7 +5,7 @@ import {
     createContext,
     createEffect,
     createSignal,
-    type JSX,
+    type JSXElement,
     Match,
     mergeProps,
     on,

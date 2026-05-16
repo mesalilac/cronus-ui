@@ -1,4 +1,4 @@
-import { type JSX, Show } from 'solid-js';
+import { type JSXElement, Show } from 'solid-js';
 
 import { Button } from '~/ui/Button';
 import { HelperText } from '~/ui/HelperText';

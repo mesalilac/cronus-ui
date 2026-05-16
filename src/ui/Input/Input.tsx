@@ -4,6 +4,7 @@ import {
     createSignal,
     createUniqueId,
     type JSX,
+    type JSXElement,
     Match,
     mergeProps,
     type Ref,

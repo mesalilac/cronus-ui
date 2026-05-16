@@ -2,7 +2,7 @@ import {
     createComputed,
     createEffect,
     createSignal,
-    type JSX,
+    type JSXElement,
     on,
     onCleanup,
 } from 'solid-js';
