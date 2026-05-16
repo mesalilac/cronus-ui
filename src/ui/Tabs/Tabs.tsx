@@ -16,7 +16,6 @@ import { Button } from '~/ui/Button';
 import { cn } from '~/utils';
 
 type TabsVariant = 'underline' | 'soft' | 'segmented';
-type TabsOrientation = 'horizontal' | 'vertical';
 
 export type TabsProps = {
     value?: string;
