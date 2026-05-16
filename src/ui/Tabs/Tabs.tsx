@@ -12,7 +12,7 @@ import {
 } from 'solid-js';
 
 import type { PartialComponentProps } from '~/types';
-import { Button, type ButtonVariant } from '~/ui/Button';
+import { Button, type ButtonSize, type ButtonVariant } from '~/ui/Button';
 import { cn } from '~/utils';
 
 type TabsVariant = 'underline' | 'soft';
@@ -112,6 +112,7 @@ export const Tabs: TabsCompound = (rawProps) => {
 const Tab: ParentComponent<{
     class?: string;
     value: string;
+    size?: ButtonSize;
     disabled?: boolean;
 }> = (props) => {
     const ctx = useTabsContext();
@@ -144,6 +145,7 @@ const Tab: ParentComponent<{
             data-variant={ctx.variant()}
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
+            size={props.size}
             variant={
                 isSelected() ? buttonVariant[ctx.variant()] : 'transparent'
             }
