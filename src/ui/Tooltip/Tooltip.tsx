@@ -17,7 +17,8 @@ import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
 import type { PartialComponentProps } from '~/types';
 import type { ButtonProps } from '~/ui/Button';
 import { Button } from '~/ui/Button';
-import { Popover } from '~/ui/Popover';
+import { Popover, type PositionArea } from '~/ui/Popover';
+import { cn } from '~/utils';
 
 type TooltipTriggerEvent = 'any' | 'hover' | 'click';
 
@@ -124,8 +125,25 @@ export const Trigger = <T extends ValidComponent = typeof Button>(
     );
 };
 
-export const Content: ParentComponent<{ class?: string }> = (props) => {
+type ContentPlacement = 'top' | 'right' | 'bottom' | 'left';
+
+const contentPlacement: Record<ContentPlacement, PositionArea> = {
+    top: 'block-start center',
+    right: 'center inline-end',
+    bottom: 'block-end center',
+    left: 'center inline-start',
+};
+
+export const Content: ParentComponent<{
+    placement?: ContentPlacement;
+    class?: string;
+}> = (rawProps) => {
     const ctx = useTooltipContext();
+
+    const props = mergeProps(
+        { placement: 'top' } satisfies PartialComponentProps<typeof Content>,
+        rawProps,
+    );
 
     const getEvent = () => {
         switch (ctx.triggerEvent()) {
@@ -138,16 +156,31 @@ export const Content: ParentComponent<{ class?: string }> = (props) => {
         }
     };
 
+    const getPlacement = () => contentPlacement[props.placement];
+
     return (
         <Popover
             closeDelay={ctx.closeDelayMs()}
             onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
             openDelay={ctx.openDelayMs()}
+            positionTryFallbacks={() => [
+                contentPlacement.top,
+                contentPlacement.right,
+                contentPlacement.bottom,
+                contentPlacement.left,
+            ]}
+            targetPosition='fixed'
+            targetPositionArea={getPlacement()}
             triggerElement={ctx.triggerRef()}
             triggerEvents={getEvent()}
         >
-            <div class='m-2 text-nowrap rounded-default bg-surface-2 p-2 text-sm text-text-primary shadow-default outline outline-border'>
+            <div
+                class={cn(
+                    'm-2 text-nowrap rounded-default bg-surface-2 p-2 text-sm text-text-primary shadow-default outline outline-border',
+                    props.class,
+                )}
+            >
                 {props.children}
             </div>
         </Popover>
