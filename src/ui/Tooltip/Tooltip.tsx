@@ -4,10 +4,17 @@ import {
     createContext,
     createSignal,
     type JSXElement,
+    mergeProps,
     on,
     type ParentComponent,
+    type Setter,
     useContext,
 } from 'solid-js';
+
+import type { PartialComponentProps } from '~/types';
+import { Popover } from '~/ui/Popover';
+
+type TooltipTriggerEvent = 'any' | 'hover' | 'click';
 
 export type TooltipProps = {
     open?: boolean;
@@ -15,15 +22,22 @@ export type TooltipProps = {
     onOpenChange?: (open: boolean) => void;
     openDelayMs?: number;
     closeDelayMs?: number;
+    /**
+     * @default 'hover'
+     */
+    triggerEvent?: TooltipTriggerEvent;
     children: JSXElement;
 };
 
 export const TooltipContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
-
     openDelayMs: Accessor<number | undefined>;
     closeDelayMs: Accessor<number | undefined>;
+    triggerEvent: Accessor<TooltipTriggerEvent>;
+
+    triggerRef: Accessor<HTMLElement | undefined>;
+    setTriggerRef: Setter<HTMLElement | undefined>;
 }>();
 
 export const useTooltipContext = () => {
@@ -38,7 +52,15 @@ export const useTooltipContext = () => {
     return context;
 };
 
-export const Tooltip: TooltipCompound = (props) => {
+export const Tooltip: TooltipCompound = (rawProps) => {
+    const props = mergeProps(
+        {
+            openDelayMs: 600,
+            triggerEvent: 'hover',
+        } satisfies PartialComponentProps<typeof Tooltip>,
+        rawProps,
+    );
+
     const [isOpen, setInternalIsOpen] = createSignal(
         props.open ?? props.defaultOpen ?? false,
     );
@@ -58,6 +80,8 @@ export const Tooltip: TooltipCompound = (props) => {
         props.onOpenChange?.(open);
     };
 
+    const [triggerRef, setTriggerRef] = createSignal<HTMLElement | undefined>();
+
     return (
         <TooltipContext.Provider
             value={{
@@ -65,6 +89,9 @@ export const Tooltip: TooltipCompound = (props) => {
                 setIsOpen,
                 openDelayMs: () => props.openDelayMs,
                 closeDelayMs: () => props.closeDelayMs,
+                triggerEvent: () => props.triggerEvent,
+                triggerRef,
+                setTriggerRef,
             }}
         >
             {props.children}
@@ -73,11 +100,39 @@ export const Tooltip: TooltipCompound = (props) => {
 };
 
 export const Trigger: ParentComponent<{ class?: string }> = (props) => {
-    return <div>Tooltip</div>;
+    const ctx = useTooltipContext();
+
+    return <div ref={ctx.setTriggerRef}>Tooltip</div>;
 };
 
 export const Content: ParentComponent<{ class?: string }> = (props) => {
-    return <div>{props.children}</div>;
+    const ctx = useTooltipContext();
+
+    const getEvent = () => {
+        switch (ctx.triggerEvent()) {
+            case 'click':
+                return 'click';
+            case 'hover':
+                return 'mouseenter|mouseleave';
+            default:
+                return 'click|mouseenter|mouseleave';
+        }
+    };
+
+    return (
+        <Popover
+            closeDelay={ctx.closeDelayMs()}
+            onOpenChange={ctx.setIsOpen}
+            open={ctx.isOpen()}
+            openDelay={ctx.openDelayMs()}
+            triggerElement={ctx.triggerRef()}
+            triggerEvents={getEvent()}
+        >
+            <div class='m-2 text-nowrap rounded-default bg-surface-2 p-2 text-sm text-text-primary shadow-default outline outline-border'>
+                {props.children}
+            </div>
+        </Popover>
+    );
 };
 
 type TooltipCompound = {
