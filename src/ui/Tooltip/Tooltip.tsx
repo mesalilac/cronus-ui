@@ -8,10 +8,15 @@ import {
     on,
     type ParentComponent,
     type Setter,
+    splitProps,
     useContext,
+    type ValidComponent,
 } from 'solid-js';
 
+import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
 import type { PartialComponentProps } from '~/types';
+import type { ButtonProps } from '~/ui/Button';
+import { Button } from '~/ui/Button';
 import { Popover } from '~/ui/Popover';
 
 type TooltipTriggerEvent = 'any' | 'hover' | 'click';
@@ -99,10 +104,24 @@ export const Tooltip: TooltipCompound = (rawProps) => {
     );
 };
 
-export const Trigger: ParentComponent<{ class?: string }> = (props) => {
+type TriggerProps<T extends ValidComponent> = T extends typeof Button
+    ? PolymorphicProps<T, ButtonProps>
+    : PolymorphicProps<T>;
+
+export const Trigger = <T extends ValidComponent = typeof Button>(
+    props: TriggerProps<T>,
+) => {
     const ctx = useTooltipContext();
 
-    return <div ref={ctx.setTriggerRef}>Tooltip</div>;
+    const [local, others] = splitProps(props, ['as']);
+
+    return (
+        <Polymorphic
+            as={local.as ?? Button}
+            ref={ctx.setTriggerRef}
+            {...others}
+        />
+    );
 };
 
 export const Content: ParentComponent<{ class?: string }> = (props) => {
