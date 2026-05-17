@@ -1,5 +1,8 @@
 # TODO List
 
+## Feat
+- Input/Textarea - display min and max lengths
+
 ## Refactor
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
 
@@ -7,7 +10,6 @@
 
 ## New components
 - StatusDot - <https://daisyui.com/components/status/>
-- Input/Textarea - display min and max lengths
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Remove `HelperText` component and `FieldLabel`
