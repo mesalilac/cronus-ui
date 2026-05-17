@@ -26,6 +26,7 @@ export type TooltipProps = {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
+    placement?: ContentPlacement;
     openDelayMs?: number;
     closeDelayMs?: number;
     /**
@@ -38,10 +39,10 @@ export type TooltipProps = {
 export const TooltipContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
+    placement: Accessor<ContentPlacement>;
     openDelayMs: Accessor<number | undefined>;
     closeDelayMs: Accessor<number | undefined>;
     triggerEvent: Accessor<TooltipTriggerEvent>;
-
     triggerRef: Accessor<HTMLElement | undefined>;
     setTriggerRef: Setter<HTMLElement | undefined>;
 }>();
@@ -63,6 +64,7 @@ export const Tooltip: TooltipCompound = (rawProps) => {
         {
             openDelayMs: 600,
             triggerEvent: 'hover',
+            placement: 'top',
         } satisfies PartialComponentProps<typeof Tooltip>,
         rawProps,
     );
@@ -93,6 +95,7 @@ export const Tooltip: TooltipCompound = (rawProps) => {
             value={{
                 isOpen,
                 setIsOpen,
+                placement: () => props.placement,
                 openDelayMs: () => props.openDelayMs,
                 closeDelayMs: () => props.closeDelayMs,
                 triggerEvent: () => props.triggerEvent,
@@ -135,15 +138,9 @@ const contentPlacement: Record<ContentPlacement, PositionArea> = {
 };
 
 export const Content: ParentComponent<{
-    placement?: ContentPlacement;
     class?: string;
-}> = (rawProps) => {
+}> = (props) => {
     const ctx = useTooltipContext();
-
-    const props = mergeProps(
-        { placement: 'top' } satisfies PartialComponentProps<typeof Content>,
-        rawProps,
-    );
 
     const getEvent = () => {
         switch (ctx.triggerEvent()) {
@@ -156,7 +153,7 @@ export const Content: ParentComponent<{
         }
     };
 
-    const getPlacement = () => contentPlacement[props.placement];
+    const getPlacement = () => contentPlacement[ctx.placement()];
 
     return (
         <Popover

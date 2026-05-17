@@ -33,29 +33,21 @@ export const Placement: Story = {
     render: () => {
         return (
             <div class='flex flex-col gap-8'>
-                <Tooltip>
+                <Tooltip placement='top'>
                     <Tooltip.Trigger>Top</Tooltip.Trigger>
-                    <Tooltip.Content placement='top'>
-                        tooltip content
-                    </Tooltip.Content>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
-                <Tooltip>
+                <Tooltip placement='right'>
                     <Tooltip.Trigger>Right</Tooltip.Trigger>
-                    <Tooltip.Content placement='right'>
-                        tooltip content
-                    </Tooltip.Content>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
-                <Tooltip>
+                <Tooltip placement='bottom'>
                     <Tooltip.Trigger>Bottom</Tooltip.Trigger>
-                    <Tooltip.Content placement='bottom'>
-                        tooltip content
-                    </Tooltip.Content>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
-                <Tooltip>
+                <Tooltip placement='left'>
                     <Tooltip.Trigger>Left</Tooltip.Trigger>
-                    <Tooltip.Content placement='left'>
-                        tooltip content
-                    </Tooltip.Content>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
             </div>
         );
@@ -68,7 +60,7 @@ export const CustomTrigger: Story = {
             <Tooltip>
                 <Tooltip.Trigger
                     as='div'
-                    class='w-64 rounded-default bg-surface-2 p-2'
+                    class='size-64 rounded-default bg-surface-2 p-2'
                 >
                     Trigger
                 </Tooltip.Trigger>
