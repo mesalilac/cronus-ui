@@ -6,7 +6,6 @@ import {
     type JSXElement,
     on,
     type ParentComponent,
-    type Setter,
     useContext,
 } from 'solid-js';
 
