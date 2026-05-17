@@ -53,9 +53,6 @@ type PositionAreaInline =
     | 'inline-end'
     | 'self-start'
     | 'self-end'
-    | 'inline-start'
-    | 'inline-end'
-    | 'inline-center'
     | SpanInline;
 
 export type PositionArea = `${PositionAreaBlock} ${PositionAreaInline}`;
