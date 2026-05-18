@@ -35,3 +35,4 @@ export * from './CopyField';
 export * from './Kbd';
 export * from './Tabs';
 export * from './StatusDot';
+export * from './Tooltip';
