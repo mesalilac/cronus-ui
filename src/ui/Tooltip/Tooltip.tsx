@@ -135,13 +135,33 @@ export const Trigger = <T extends ValidComponent = typeof Button>(
     );
 };
 
-type ContentPlacement = 'top' | 'right' | 'bottom' | 'left';
+type ContentPlacement =
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
 
 const contentPlacement: Record<ContentPlacement, PositionArea> = {
     top: 'block-start center',
+    'top-start': 'block-start span-inline-end',
+    'top-end': 'block-start span-inline-start',
     right: 'center inline-end',
+    'right-start': 'span-block-end inline-end',
+    'right-end': 'span-block-start inline-end',
     bottom: 'block-end center',
+    'bottom-start': 'block-end span-inline-end',
+    'bottom-end': 'block-end span-inline-start',
     left: 'center inline-start',
+    'left-start': 'span-block-end inline-start',
+    'left-end': 'span-block-start inline-start',
 };
 
 export const Content: ParentComponent<{

@@ -43,21 +43,77 @@ export const Noninteractive: Story = {
 export const Placement: Story = {
     render: () => {
         return (
-            <div class='flex flex-col gap-8'>
+            <div class='m-16 flex flex-col gap-8'>
                 <Tooltip placement='top'>
-                    <Tooltip.Trigger>Top</Tooltip.Trigger>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Top
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='top-start'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Top Start
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='top-end'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Top End
+                    </Tooltip.Trigger>
                     <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
                 <Tooltip placement='right'>
-                    <Tooltip.Trigger>Right</Tooltip.Trigger>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Right
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='right-start'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Right Start
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='right-end'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Right End
+                    </Tooltip.Trigger>
                     <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
                 <Tooltip placement='bottom'>
-                    <Tooltip.Trigger>Bottom</Tooltip.Trigger>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Bottom
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='bottom-start'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Bottom Start
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='bottom-end'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Bottom End
+                    </Tooltip.Trigger>
                     <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
                 <Tooltip placement='left'>
-                    <Tooltip.Trigger>Left</Tooltip.Trigger>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Left
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='left-start'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Left Start
+                    </Tooltip.Trigger>
+                    <Tooltip.Content>tooltip content</Tooltip.Content>
+                </Tooltip>
+                <Tooltip placement='left-end'>
+                    <Tooltip.Trigger class='size-52 justify-center'>
+                        Left End
+                    </Tooltip.Trigger>
                     <Tooltip.Content>tooltip content</Tooltip.Content>
                 </Tooltip>
             </div>
