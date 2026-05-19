@@ -5,7 +5,13 @@ import { cn } from '~/utils';
 
 import { Tabs } from './Tabs';
 
-type StoryComponent = typeof Tabs;
+type TestingTabs = 'overview' |
+|'overview'
+|'analytics'
+|'reports'
+|'settings'
+
+type StoryComponent = typeof Root;
 
 const meta = {
     title: 'Ui/Tabs',

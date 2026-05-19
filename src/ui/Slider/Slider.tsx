@@ -154,7 +154,7 @@ const SliderInput = (props: SliderInputProps) => {
     return (
         <input
             class={cn(
-                'h-4 w-full cursor-pointer appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
+                'h-4 w-full appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
 
                 'active:[&::-moz-range-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-110',
 
@@ -165,6 +165,7 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-runnable-track]:bg-[linear-gradient(90deg,var(--color-accent)_var(--p),color-mix(in_oklab,var(--color-surface-3)_30%,transparent)_var(--p))]',
 
                 // Webkit thumb
+                '[&::-webkit-slider-thumb]:cursor-ew-resize',
                 '[&::-webkit-slider-thumb:hover]:brightness-110',
                 '[&::-webkit-slider-thumb]:transition-transform',
                 '[&::-webkit-slider-thumb]:duration-150',
@@ -176,8 +177,8 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-thumb]:rounded-full',
                 '[&::-webkit-slider-thumb]:border-0',
                 '[&::-webkit-slider-thumb]:outline',
-                '[&::-webkit-slider-thumb]:outline-border',
-                '[&::-webkit-slider-thumb]:bg-accent',
+                '[&::-webkit-slider-thumb]:outline-border-subtle',
+                '[&::-webkit-slider-thumb]:bg-white',
 
                 // Firefox progress
                 '[&::-moz-range-progress]:h-2',
@@ -190,6 +191,7 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-track]:bg-surface-3/30',
 
                 // Firefox thumb
+                '[&::-moz-range-thumb]:cursor-ew-resize',
                 '[&::-moz-range-thumb:hover]:brightness-110',
                 '[&::-moz-range-thumb]:transition-transform',
                 '[&::-moz-range-thumb]:duration-150',
@@ -199,8 +201,8 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-thumb]:rounded-full',
                 '[&::-moz-range-thumb]:border-0',
                 '[&::-moz-range-thumb]:outline',
-                '[&::-moz-range-thumb]:outline-border',
-                '[&::-moz-range-thumb]:bg-accent',
+                '[&::-moz-range-thumb]:outline-border-subtle',
+                '[&::-moz-range-thumb]:bg-white',
 
                 props.hideThumb &&
                     '[&::-moz-range-thumb]:invisible [&::-webkit-slider-thumb]:invisible',
