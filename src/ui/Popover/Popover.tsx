@@ -77,6 +77,11 @@ export type PopoverProps = {
      * Note: if your trigger element has `disabled` state (like button or input), popover also won't be triggered
      */
     disabled?: boolean;
+    /*
+     * Keeps the popover open while the cursor is inside the popover content
+     * when using mouseenter/mouseleave `triggerEvents`
+     */
+    interactive?: boolean;
     /**
      * Delay in ms before opening popover (mouseenter|mouseleave)
      * @default 150
@@ -185,6 +190,7 @@ const DEFAULT_PROPS = Object.freeze({
     dataAttributeName: 'data-popover-open',
     closeOnEscape: true,
     closeOnOutsideInteraction: true,
+    interactive: true,
     openDelay: 150,
     closeDelay: 150,
     targetPosition: 'fixed',
@@ -321,7 +327,7 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
                     if (!(anchorElement instanceof HTMLElement))
                         throw new Error('Unable to find anchor element');
 
-                    if (openTimer) {
+                    if (openTimer && props.interactive) {
                         const contentAbortController = new AbortController();
 
                         content.addEventListener(
