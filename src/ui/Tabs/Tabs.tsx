@@ -6,7 +6,6 @@ import {
     type JSXElement,
     mergeProps,
     on,
-    type ParentComponent,
     Show,
     useContext,
 } from 'solid-js';
@@ -23,10 +22,10 @@ import { cn } from '~/utils';
 type TabsVariant = 'underline' | 'soft' | 'subtle';
 type TabsOrientation = 'horizontal' | 'vertical';
 
-export type TabsProps = {
-    value?: string;
-    defaultValue?: string;
-    onChange?: (value: string) => void;
+type RootProps<T extends string> = {
+    value?: T;
+    defaultValue?: T;
+    onChange?: (value: T) => void;
     orientation?: TabsOrientation;
     variant?: TabsVariant;
     size?: ButtonSize;
@@ -35,7 +34,7 @@ export type TabsProps = {
     children: JSXElement;
 };
 
-export const TabsContext = createContext<{
+type TabsContextValue = {
     value: Accessor<string | undefined>;
     onChange: (value: string) => void;
     orientation: Accessor<TabsOrientation>;
@@ -44,9 +43,11 @@ export const TabsContext = createContext<{
     size: Accessor<ButtonSize | undefined>;
 
     isSelected: (val: string) => boolean;
-}>();
+};
 
-export const useTabsContext = () => {
+const TabsContext = createContext<TabsContextValue>();
+
+const useTabsContext = () => {
     const context = useContext(TabsContext);
 
     if (!context) {
@@ -58,16 +59,16 @@ export const useTabsContext = () => {
     return context;
 };
 
-export const Tabs: TabsCompound = (rawProps) => {
+const Root = <T extends string>(rawProps: RootProps<T>) => {
     const props = mergeProps(
         {
             variant: 'underline',
             orientation: 'horizontal',
-        } satisfies PartialComponentProps<typeof Tabs>,
+        } satisfies PartialComponentProps<typeof Root>,
         rawProps,
     );
 
-    const [value, setValue] = createSignal<string | undefined>(
+    const [value, setValue] = createSignal<T | undefined>(
         props.value ?? props.defaultValue,
     );
 
@@ -75,15 +76,15 @@ export const Tabs: TabsCompound = (rawProps) => {
         on(
             () => props.value,
             (val) => {
-                setValue(val);
+                setValue(() => val);
             },
             { defer: true },
         ),
     );
 
     const onChange = (val: string) => {
-        if (props.value === undefined) setValue(val);
-        props.onChange?.(val);
+        if (props.value === undefined) setValue(() => val as T);
+        props.onChange?.(val as T);
     };
 
     const isSelected = (val: string) => value() === val;
@@ -117,12 +118,15 @@ export const Tabs: TabsCompound = (rawProps) => {
     );
 };
 
-const Tab: ParentComponent<{
+type TabProps<T extends string> = {
     class?: string;
-    value: string;
+    value: T;
     size?: ButtonSize;
     disabled?: boolean;
-}> = (props) => {
+    children?: JSXElement;
+};
+
+const Tab = <T extends string>(props: TabProps<T>) => {
     const ctx = useTabsContext();
 
     const isSelected = () => ctx.isSelected(props.value);
@@ -178,7 +182,12 @@ const Tab: ParentComponent<{
     );
 };
 
-const List: ParentComponent<{ class?: string }> = (props) => {
+type ListProps = {
+    class?: string;
+    children?: JSXElement;
+};
+
+const List = (props: ListProps) => {
     const ctx = useTabsContext();
 
     return (
@@ -210,7 +219,13 @@ const List: ParentComponent<{ class?: string }> = (props) => {
     );
 };
 
-const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
+type PanelProps<T extends string> = {
+    value: T;
+    class?: string;
+    children?: JSXElement;
+};
+
+const Panel = <T extends string>(props: PanelProps<T>) => {
     const ctx = useTabsContext();
 
     const isSelected = () => ctx.isSelected(props.value);
@@ -229,13 +244,18 @@ const Panel: ParentComponent<{ class?: string; value: string }> = (props) => {
     );
 };
 
-type TabsCompound = {
-    (props: TabsProps): JSXElement;
-    Tab: typeof Tab;
-    List: typeof List;
-    Panel: typeof Panel;
+type TabsCompound<T extends string> = {
+    Root: (props: RootProps<T>) => JSXElement;
+    Tab: (props: TabProps<T>) => JSXElement;
+    List: (props: ListProps) => JSXElement;
+    Panel: (props: PanelProps<T>) => JSXElement;
 };
 
-Tabs.Tab = Tab;
-Tabs.List = List;
-Tabs.Panel = Panel;
+// biome-ignore-start lint/style/useNamingConvention: Component
+export const createTabs = <T extends string>(): TabsCompound<T> => ({
+    Root,
+    Tab,
+    List,
+    Panel,
+});
+// biome-ignore-end lint/style/useNamingConvention: Component

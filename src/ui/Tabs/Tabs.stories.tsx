@@ -3,19 +3,15 @@ import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { cn } from '~/utils';
 
-import { Tabs } from './Tabs';
+import { createTabs } from './Tabs';
 
-type TestingTabs = 'overview' |
-|'overview'
-|'analytics'
-|'reports'
-|'settings'
+const Tabs = createTabs<'overview' | 'analytics' | 'reports' | 'settings'>();
 
-type StoryComponent = typeof Root;
+type StoryComponent = typeof Tabs.Root;
 
 const meta = {
     title: 'Ui/Tabs',
-    component: Tabs,
+    component: Tabs.Root,
     parameters: {
         layout: 'centered',
     },
@@ -39,7 +35,7 @@ export const Default: Story = {
     render: () => {
         return (
             <Wrapper>
-                <Tabs defaultValue='overview'>
+                <Tabs.Root defaultValue='overview'>
                     <Tabs.List>
                         <Tabs.Tab value='overview' />
                         <Tabs.Tab value='analytics' />
@@ -50,7 +46,7 @@ export const Default: Story = {
                     <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                     <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                     <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                </Tabs>
+                </Tabs.Root>
             </Wrapper>
         );
     },
@@ -60,7 +56,7 @@ export const Size: Story = {
     render: () => {
         return (
             <Wrapper>
-                <Tabs defaultValue='overview' size='sm'>
+                <Tabs.Root defaultValue='overview' size='sm'>
                     <Tabs.List>
                         <Tabs.Tab value='overview' />
                         <Tabs.Tab value='analytics' />
@@ -71,7 +67,7 @@ export const Size: Story = {
                     <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                     <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                     <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                </Tabs>
+                </Tabs.Root>
             </Wrapper>
         );
     },
@@ -82,7 +78,7 @@ export const Horizontal: Story = {
         return (
             <div class='flex flex-wrap place-content-center gap-1'>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='underline'
@@ -97,10 +93,10 @@ export const Horizontal: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='soft'
@@ -115,10 +111,10 @@ export const Horizontal: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='subtle'
@@ -133,7 +129,7 @@ export const Horizontal: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
             </div>
         );
@@ -145,7 +141,7 @@ export const Vertical: Story = {
         return (
             <div class='flex flex-wrap place-content-center gap-1'>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='vertical'
                         variant='underline'
@@ -160,10 +156,10 @@ export const Vertical: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='vertical'
                         variant='soft'
@@ -178,10 +174,10 @@ export const Vertical: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='vertical'
                         variant='subtle'
@@ -196,7 +192,7 @@ export const Vertical: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
             </div>
         );
@@ -208,7 +204,7 @@ export const DisabledTabs: Story = {
         return (
             <div class='flex flex-wrap place-content-center gap-1'>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='underline'
@@ -223,10 +219,10 @@ export const DisabledTabs: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='soft'
@@ -241,10 +237,10 @@ export const DisabledTabs: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         orientation='horizontal'
                         variant='subtle'
@@ -259,7 +255,7 @@ export const DisabledTabs: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
             </div>
         );
@@ -271,7 +267,7 @@ export const Disabled: Story = {
         return (
             <div class='flex flex-wrap place-content-center gap-1'>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         disabled
                         orientation='horizontal'
@@ -287,10 +283,10 @@ export const Disabled: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         disabled
                         orientation='horizontal'
@@ -306,10 +302,10 @@ export const Disabled: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
                 <Wrapper>
-                    <Tabs
+                    <Tabs.Root
                         defaultValue='overview'
                         disabled
                         orientation='horizontal'
@@ -325,7 +321,7 @@ export const Disabled: Story = {
                         <Tabs.Panel value='analytics'>Analytics</Tabs.Panel>
                         <Tabs.Panel value='reports'>Reports</Tabs.Panel>
                         <Tabs.Panel value='settings'>Settings</Tabs.Panel>
-                    </Tabs>
+                    </Tabs.Root>
                 </Wrapper>
             </div>
         );
