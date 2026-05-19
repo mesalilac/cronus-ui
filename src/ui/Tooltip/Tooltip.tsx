@@ -27,6 +27,10 @@ export type TooltipProps = {
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
     placement?: ContentPlacement;
+    /*
+     * Keeps the `Tooltip` open while the cursor is inside the `Tooltip` content
+     */
+    interactive?: boolean;
     openDelayMs?: number;
     closeDelayMs?: number;
     /**
@@ -40,6 +44,7 @@ export const TooltipContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
     placement: Accessor<ContentPlacement>;
+    interactive: Accessor<boolean>;
     openDelayMs: Accessor<number | undefined>;
     closeDelayMs: Accessor<number | undefined>;
     triggerEvent: Accessor<TooltipTriggerEvent>;
@@ -65,6 +70,7 @@ export const Tooltip: TooltipCompound = (rawProps) => {
             openDelayMs: 600,
             triggerEvent: 'hover',
             placement: 'top',
+            interactive: true,
         } satisfies PartialComponentProps<typeof Tooltip>,
         rawProps,
     );
@@ -96,6 +102,7 @@ export const Tooltip: TooltipCompound = (rawProps) => {
                 isOpen,
                 setIsOpen,
                 placement: () => props.placement,
+                interactive: () => props.interactive,
                 openDelayMs: () => props.openDelayMs,
                 closeDelayMs: () => props.closeDelayMs,
                 triggerEvent: () => props.triggerEvent,
@@ -158,6 +165,7 @@ export const Content: ParentComponent<{
     return (
         <Popover
             closeDelay={ctx.closeDelayMs()}
+            interactive={ctx.interactive()}
             onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
             openDelay={ctx.openDelayMs()}

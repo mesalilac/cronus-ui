@@ -29,6 +29,17 @@ export const Default: Story = {
     },
 };
 
+export const Noninteractive: Story = {
+    render: () => {
+        return (
+            <Tooltip interactive={false}>
+                <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+                <Tooltip.Content>tooltip content</Tooltip.Content>
+            </Tooltip>
+        );
+    },
+};
+
 export const Placement: Story = {
     render: () => {
         return (
