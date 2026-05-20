@@ -9,11 +9,9 @@
 ## Fix
 
 ## New components
-- StatusDot - <https://daisyui.com/components/status/>
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Remove `HelperText` component and `FieldLabel`
-- Tooltip - <https://corvu.dev/docs/primitives/tooltip/>
 - Drawer - <https://corvu.dev/docs/primitives/drawer/>
 - Carousel - <https://flowbite.com/docs/components/carousel/>
 - Meter - <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter>
