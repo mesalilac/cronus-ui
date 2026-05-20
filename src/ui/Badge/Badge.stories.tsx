@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { IconInterfaceCheck } from '~/icons';
+
 import { Badge } from './Badge';
 
 const meta = {
@@ -45,5 +47,28 @@ export const Outline: Story = {
     args: {
         variant: 'outline',
         children: 'Badge Label',
+    },
+};
+
+export const Sizes: Story = {
+    render: () => {
+        return (
+            <div class='flex flex-col items-start gap-4'>
+                <Badge size='sm'>Sm</Badge>
+                <Badge size='md'>Md</Badge>
+                <Badge size='lg'>Lg awdawdawd</Badge>
+                <Badge size='icon'>Icon</Badge>
+            </div>
+        );
+    },
+};
+
+export const WithIcon: Story = {
+    render: () => {
+        return (
+            <Badge size='icon' variant='success'>
+                <IconInterfaceCheck />
+            </Badge>
+        );
     },
 };
