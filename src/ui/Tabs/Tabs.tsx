@@ -193,13 +193,10 @@ const List = (props: ListProps) => {
     return (
         <div
             class={cn(
-                'flex flex-wrap',
+                'flex flex-wrap rounded-default bg-surface-base/60 p-2',
 
                 // vertical
                 'data-[orientation=vertical]:flex-col',
-                'data-[orientation=vertical]:bg-surface-base/60',
-                'data-[orientation=vertical]:p-2',
-                'data-[orientation=vertical]:rounded-default',
                 'data-[orientation=vertical]:basis-44',
                 'data-[orientation=vertical]:shrink-0',
 
