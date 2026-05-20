@@ -132,21 +132,34 @@ const Tab = <T extends string>(props: TabProps<T>) => {
     const isSelected = () => ctx.isSelected(props.value);
     const isDisabled = () => ctx.disabled() || props.disabled;
 
-    const buttonVariant: Record<TabsVariant, ButtonVariant> = {
-        underline: 'transparent',
-        soft: 'soft',
-        subtle: 'soft',
+    const getButtonVariant = (): Extract<
+        ButtonVariant,
+        'transparent' | 'soft'
+    > => {
+        if (!isSelected()) return 'transparent';
+
+        switch (ctx.variant()) {
+            case 'underline':
+                return 'transparent';
+            case 'soft':
+            case 'subtle':
+                return 'soft';
+        }
     };
 
-    const buttonAppearance: Record<TabsVariant, ButtonAppearance> = {
-        underline: isSelected() ? 'primary' : 'secondary',
-        soft: isSelected() ? 'primary' : 'secondary',
-        subtle: 'secondary',
+    const getButtonAppearance = (): ButtonAppearance => {
+        switch (ctx.variant()) {
+            case 'subtle':
+                return 'secondary';
+            case 'underline':
+            case 'soft':
+                return isSelected() ? 'primary' : 'secondary';
+        }
     };
 
     return (
         <Button
-            appearance={buttonAppearance[ctx.variant()]}
+            appearance={getButtonAppearance()}
             class={cn(
                 'text-text-muted capitalize hover:text-text-secondary',
 
@@ -173,9 +186,7 @@ const Tab = <T extends string>(props: TabProps<T>) => {
             disabled={isDisabled()}
             onClick={() => ctx.onChange(props.value)}
             size={ctx.size() ?? props.size}
-            variant={
-                isSelected() ? buttonVariant[ctx.variant()] : 'transparent'
-            }
+            variant={getButtonVariant()}
         >
             {props.children ?? props.value}
         </Button>
