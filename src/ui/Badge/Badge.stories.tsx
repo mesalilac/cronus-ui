@@ -57,7 +57,9 @@ export const Sizes: Story = {
                 <Badge size='sm'>Sm</Badge>
                 <Badge size='md'>Md</Badge>
                 <Badge size='lg'>Lg</Badge>
-                <Badge size='icon'>Icon</Badge>
+                <Badge size='icon' title='Icon'>
+                    <IconInterfaceCheck />
+                </Badge>
             </div>
         );
     },

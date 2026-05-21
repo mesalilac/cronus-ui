@@ -1,4 +1,10 @@
-import { type JSXElement, mergeProps, type ParentComponent } from 'solid-js';
+import {
+    type ComponentProps,
+    type JSXElement,
+    mergeProps,
+    type ParentComponent,
+    splitProps,
+} from 'solid-js';
 
 import { cn } from '~/utils';
 
@@ -10,7 +16,7 @@ export type BadgeVariant =
     | 'outline';
 export type BadgeSize = 'icon' | 'sm' | 'md' | 'lg';
 
-export type BadgeProps = {
+export type BadgeProps = ComponentProps<'span'> & {
     ref?: HTMLSpanElement | ((el: HTMLSpanElement) => void);
     variant?: BadgeVariant;
     size?: BadgeSize;
@@ -39,6 +45,13 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
         rawProps,
     );
 
+    const [local, others] = splitProps(props, [
+        'class',
+        'ref',
+        'variant',
+        'size',
+    ]);
+
     const baseStyles = cn(
         'inline-flex select-none items-center justify-center gap-1 rounded-default border border-current/30 py-1 font-medium text-xs',
     );
@@ -47,13 +60,12 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
         <span
             class={cn(
                 baseStyles,
-                VARIANT_STYLES[props.variant],
-                SIZE_STYLES[props.size],
-                props.class,
+                VARIANT_STYLES[local.variant],
+                SIZE_STYLES[local.size],
+                local.class,
             )}
-            ref={props.ref}
-        >
-            {props.children}
-        </span>
+            ref={local.ref}
+            {...others}
+        />
     );
 };
