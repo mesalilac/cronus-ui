@@ -59,6 +59,38 @@ export type TargetPositionArea =
           bottom?: (anchorName: string) => string;
       };
 
+export type CommonPositionArea =
+    | 'top'
+    | 'top-start'
+    | 'top-end'
+    | 'right'
+    | 'right-start'
+    | 'right-end'
+    | 'bottom'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'left'
+    | 'left-start'
+    | 'left-end';
+
+export const COMMON_POSITION_AREA = Object.freeze({
+    top: 'block-start center',
+    'top-start': 'block-start span-inline-end',
+    'top-end': 'block-start span-inline-start',
+
+    right: 'center inline-end',
+    'right-start': 'span-block-end inline-end',
+    'right-end': 'span-block-start inline-end',
+
+    bottom: 'block-end center',
+    'bottom-start': 'block-end span-inline-end',
+    'bottom-end': 'block-end span-inline-start',
+
+    left: 'center inline-start',
+    'left-start': 'span-block-end inline-start',
+    'left-end': 'span-block-start inline-start',
+} satisfies Record<CommonPositionArea, PositionArea>);
+
 export type PopoverProps = {
     /**
      * HTML Element or CSS selector to find trigger element which triggers popover
