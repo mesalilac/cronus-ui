@@ -17,7 +17,11 @@ import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
 import type { PartialComponentProps } from '~/types';
 import type { ButtonProps } from '~/ui/Button';
 import { Button } from '~/ui/Button';
-import { Popover, type PositionArea } from '~/ui/Popover';
+import {
+    COMMON_POSITION_AREA,
+    type CommonPositionArea,
+    Popover,
+} from '~/ui/Popover';
 import { cn } from '~/utils';
 
 type TooltipTriggerEvent = 'any' | 'hover' | 'click';
@@ -26,7 +30,7 @@ export type TooltipProps = {
     open?: boolean;
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
-    placement?: ContentPlacement;
+    placement?: CommonPositionArea;
     /*
      * Keeps the `Tooltip` open while the cursor is inside the `Tooltip` content
      */
@@ -43,7 +47,7 @@ export type TooltipProps = {
 export const TooltipContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
-    placement: Accessor<ContentPlacement>;
+    placement: Accessor<CommonPositionArea>;
     interactive: Accessor<boolean>;
     openDelayMs: Accessor<number | undefined>;
     closeDelayMs: Accessor<number | undefined>;
@@ -135,35 +139,6 @@ export const Trigger = <T extends ValidComponent = typeof Button>(
     );
 };
 
-type ContentPlacement =
-    | 'top'
-    | 'top-start'
-    | 'top-end'
-    | 'right'
-    | 'right-start'
-    | 'right-end'
-    | 'bottom'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'left'
-    | 'left-start'
-    | 'left-end';
-
-const contentPlacement: Record<ContentPlacement, PositionArea> = {
-    top: 'block-start center',
-    'top-start': 'block-start span-inline-end',
-    'top-end': 'block-start span-inline-start',
-    right: 'center inline-end',
-    'right-start': 'span-block-end inline-end',
-    'right-end': 'span-block-start inline-end',
-    bottom: 'block-end center',
-    'bottom-start': 'block-end span-inline-end',
-    'bottom-end': 'block-end span-inline-start',
-    left: 'center inline-start',
-    'left-start': 'span-block-end inline-start',
-    'left-end': 'span-block-start inline-start',
-};
-
 export const Content: ParentComponent<{
     class?: string;
 }> = (props) => {
@@ -180,7 +155,7 @@ export const Content: ParentComponent<{
         }
     };
 
-    const getPlacement = () => contentPlacement[ctx.placement()];
+    const getPlacement = () => COMMON_POSITION_AREA[ctx.placement()];
 
     return (
         <Popover
@@ -190,10 +165,10 @@ export const Content: ParentComponent<{
             open={ctx.isOpen()}
             openDelay={ctx.openDelayMs()}
             positionTryFallbacks={() => [
-                contentPlacement.top,
-                contentPlacement.right,
-                contentPlacement.bottom,
-                contentPlacement.left,
+                COMMON_POSITION_AREA.top,
+                COMMON_POSITION_AREA.right,
+                COMMON_POSITION_AREA.bottom,
+                COMMON_POSITION_AREA.left,
             ]}
             targetPosition='fixed'
             targetPositionArea={getPlacement()}
