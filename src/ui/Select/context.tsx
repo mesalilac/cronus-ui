@@ -5,10 +5,14 @@ import {
     useContext,
 } from 'solid-js';
 
+import type { CommonPositionArea } from '~/ui/Popover';
+
 export type SelectContext = {
     onChange: (value: string) => void;
-    autoClose?: boolean;
+    autoClose: Accessor<boolean | undefined>;
     value: Accessor<string | undefined>;
+    placement: Accessor<CommonPositionArea>;
+    placementFallback: Accessor<CommonPositionArea[]>;
 
     isOpen: Accessor<boolean>;
     setIsOpen: Setter<boolean>;

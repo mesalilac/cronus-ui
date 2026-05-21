@@ -6,6 +6,8 @@ import {
     onMount,
 } from 'solid-js';
 
+import type { CommonPositionArea } from '~/ui/Popover';
+
 import { Content, SelectList } from './Content';
 import { SelectContext } from './context';
 import { Filter } from './Filter';
@@ -21,6 +23,8 @@ export type SelectProps = {
      */
     autoClose?: boolean;
     value?: string;
+    placement?: CommonPositionArea;
+    placementFallback?: CommonPositionArea[];
     /** Enables persistence of the selected value after refresh */
     persistKey?: string;
     children: JSXElement;
@@ -37,6 +41,13 @@ export const Select = (rawProps: SelectProps) => {
     const props = mergeProps(
         {
             autoClose: true,
+            placement: 'bottom-start',
+            placementFallback: [
+                'right-start',
+                'left-start',
+                'top-start',
+                'bottom-start',
+            ],
         } satisfies Partial<SelectProps>,
         rawProps,
     );
@@ -70,10 +81,12 @@ export const Select = (rawProps: SelectProps) => {
         <SelectContext.Provider
             value={{
                 onChange,
-                autoClose: props.autoClose,
+                autoClose: () => props.autoClose,
                 value,
                 isOpen,
                 setIsOpen,
+                placement: () => props.placement,
+                placementFallback: () => props.placementFallback,
                 triggerRef: triggerRef,
                 setTriggerRef: setTriggerRef,
             }}

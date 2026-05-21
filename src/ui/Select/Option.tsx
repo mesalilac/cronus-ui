@@ -30,7 +30,7 @@ export const Option = (props: SelectOptionProps) => {
             onClick={() => {
                 ctx.onChange(props.value);
 
-                if (ctx.autoClose) ctx.setIsOpen(false);
+                if (ctx.autoClose()) ctx.setIsOpen(false);
             }}
             variant={isSelected() ? 'solid' : 'ghost'}
         >

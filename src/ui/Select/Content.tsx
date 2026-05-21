@@ -3,37 +3,23 @@ import {
     createEffect,
     type FlowComponent,
     type JSXElement,
-    mergeProps,
     onCleanup,
 } from 'solid-js';
 
-import { Popover, type PopoverProps } from '~/ui/Popover';
+import { COMMON_POSITION_AREA, Popover } from '~/ui/Popover';
 import { cn } from '~/utils';
 
 import { useSelectContext } from './context';
 
-export interface SelectContentProps
-    extends Pick<
-        PopoverProps,
-        'targetPosition' | 'targetPositionArea' | 'positionTryFallbacks'
-    > {
+export type SelectContentProps = {
     class?: string;
     children: JSXElement;
-}
+};
 
-export const Content = (rawProps: SelectContentProps) => {
-    const props = mergeProps(
-        {
-            targetPosition: 'fixed',
-            targetPositionArea: 'block-end span-inline-end',
-            positionTryFallbacks: () => ['block-start span-inline-end'],
-        } satisfies Partial<SelectContentProps>,
-        rawProps,
-    );
+export const Content = (props: SelectContentProps) => {
+    const ctx = useSelectContext();
 
     let divRef!: HTMLDivElement;
-
-    const ctx = useSelectContext();
 
     createEffect(() => {
         if (ctx.isOpen() && divRef) {
@@ -59,18 +45,35 @@ export const Content = (rawProps: SelectContentProps) => {
         return 'auto';
     };
 
+    const getMargin = () => {
+        if (
+            ctx.placement().startsWith('top') ||
+            ctx.placement().startsWith('bottom')
+        ) {
+            return cn('my-1');
+        } else if (
+            ctx.placement().startsWith('right') ||
+            ctx.placement().startsWith('left')
+        ) {
+            return cn('mx-1');
+        }
+    };
+
     return (
         <Popover
             onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
-            positionTryFallbacks={props.positionTryFallbacks}
-            targetPosition={props.targetPosition}
-            targetPositionArea={props.targetPositionArea}
+            positionTryFallbacks={() =>
+                ctx.placementFallback().map((f) => COMMON_POSITION_AREA[f])
+            }
+            targetPosition='fixed'
+            targetPositionArea={COMMON_POSITION_AREA[ctx.placement()]}
             triggerElement={ctx.triggerRef()}
         >
             <div
                 class={cn(
-                    'mt-1 mb-1 flex max-h-80 flex-col gap-2 rounded-default bg-surface-2 p-2 text-text-primary shadow-default outline outline-accent',
+                    'flex max-h-80 flex-col gap-2 rounded-default bg-surface-2 p-2 text-text-primary shadow-default outline outline-accent',
+                    getMargin(),
                     props.class,
                 )}
                 ref={divRef}
