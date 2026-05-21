@@ -56,7 +56,7 @@ export const Sizes: Story = {
             <div class='flex flex-col items-start gap-4'>
                 <Badge size='sm'>Sm</Badge>
                 <Badge size='md'>Md</Badge>
-                <Badge size='lg'>Lg awdawdawd</Badge>
+                <Badge size='lg'>Lg</Badge>
                 <Badge size='icon'>Icon</Badge>
             </div>
         );
