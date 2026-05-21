@@ -1,29 +1,37 @@
 import gsap from 'gsap';
-import {
-    type Accessor,
-    createEffect,
-    createMemo,
-    type JSXElement,
-    onCleanup,
-} from 'solid-js';
+import { createEffect, type JSXElement, mergeProps, onCleanup } from 'solid-js';
 
+import type { PartialComponentProps } from '~/types';
 import { useMenuContext } from '~/ui/Menu/context';
 import {
+    COMMON_POSITION_AREA,
+    type CommonPositionArea,
     Popover,
-    type PositionArea,
-    type TargetPositionArea,
 } from '~/ui/Popover';
 
 export type DropdownMenuContentProps = {
-    targetPositionArea?: TargetPositionArea;
-    positionTryFallbacks?: (anchorName: string) => PositionArea[];
+    placement?: CommonPositionArea;
+    placementFallback?: CommonPositionArea[];
     children: JSXElement;
 };
 
-export const Content = (props: DropdownMenuContentProps) => {
-    let divRef!: HTMLDivElement;
-
+export const Content = (rawProps: DropdownMenuContentProps) => {
     const ctx = useMenuContext();
+
+    const props = mergeProps(
+        {
+            placement: 'bottom-start',
+            placementFallback: [
+                'top-start',
+                'bottom-start',
+                'right-start',
+                'left-start',
+            ] as CommonPositionArea[],
+        } satisfies PartialComponentProps<typeof Content>,
+        rawProps,
+    );
+
+    let divRef!: HTMLDivElement;
 
     createEffect(() => {
         if (ctx.isOpen() && divRef) {
@@ -40,20 +48,15 @@ export const Content = (props: DropdownMenuContentProps) => {
         }
     });
 
-    const targetPositionArea: Accessor<TargetPositionArea> = createMemo(
-        () => props.targetPositionArea ?? 'block-end span-inline-end',
-    );
-
     return (
         <Popover
             onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
-            positionTryFallbacks={
-                props.positionTryFallbacks ??
-                (() => ['block-start span-inline-end'])
+            positionTryFallbacks={() =>
+                props.placementFallback.map((f) => COMMON_POSITION_AREA[f])
             }
             targetPosition='fixed'
-            targetPositionArea={targetPositionArea()}
+            targetPositionArea={COMMON_POSITION_AREA[props.placement]}
             triggerElement={ctx.triggerRef()}
         >
             <div

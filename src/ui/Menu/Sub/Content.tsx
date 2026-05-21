@@ -1,7 +1,7 @@
 import { gsap } from 'gsap';
 import { createEffect, type JSXElement, onCleanup } from 'solid-js';
 
-import { Popover } from '~/ui/Popover';
+import { COMMON_POSITION_AREA, Popover } from '~/ui/Popover';
 
 import { useSubMenuContext } from './context';
 
@@ -34,14 +34,10 @@ export const Content = (props: DropdownMenuSubContentProps) => {
         <Popover
             onOpenChange={ctx.setIsOpen}
             open={ctx.isOpen()}
-            positionTryFallbacks={() => [
-                'span-block-start inline-end', // right top
-                'span-block-end inline-start', // left bottom
-                'span-block-start inline-start', // left top
-                'block-start span-inline-end', // top
-                'block-end span-inline-end', // bottom
-            ]}
-            targetPositionArea='span-block-end inline-end' // right bottom
+            positionTryFallbacks={() =>
+                ctx.placementFallback().map((f) => COMMON_POSITION_AREA[f])
+            }
+            targetPositionArea={COMMON_POSITION_AREA[ctx.placement()]}
             triggerElement={ctx.triggerRef()}
             triggerEvents='mouseenter|mouseleave|click'
         >

@@ -47,7 +47,7 @@ export const Select = (rawProps: SelectProps) => {
                 'left-start',
                 'top-start',
                 'bottom-start',
-            ],
+            ] as CommonPositionArea[],
         } satisfies Partial<SelectProps>,
         rawProps,
     );

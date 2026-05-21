@@ -5,10 +5,14 @@ import {
     useContext,
 } from 'solid-js';
 
+import type { CommonPositionArea } from '~/ui/Popover';
+
 export const SubMenuContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: Setter<boolean>;
     closeMenu: () => void;
+    placement: Accessor<CommonPositionArea>;
+    placementFallback: Accessor<CommonPositionArea[]>;
     triggerRef: Accessor<HTMLButtonElement | undefined>;
     setTriggerRef: Setter<HTMLButtonElement | undefined>;
 }>();
