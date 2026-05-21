@@ -8,10 +8,12 @@ import {
     type CommonPositionArea,
     Popover,
 } from '~/ui/Popover';
+import { cn } from '~/utils';
 
 export type DropdownMenuContentProps = {
     placement?: CommonPositionArea;
     placementFallback?: CommonPositionArea[];
+    class?: string;
     children: JSXElement;
 };
 
@@ -48,6 +50,20 @@ export const Content = (rawProps: DropdownMenuContentProps) => {
         }
     });
 
+    const getMargin = () => {
+        if (
+            props.placement.startsWith('top') ||
+            props.placement.startsWith('bottom')
+        ) {
+            return cn('my-1');
+        } else if (
+            props.placement.startsWith('right') ||
+            props.placement.startsWith('left')
+        ) {
+            return cn('mx-1');
+        }
+    };
+
     return (
         <Popover
             onOpenChange={ctx.setIsOpen}
@@ -60,7 +76,11 @@ export const Content = (rawProps: DropdownMenuContentProps) => {
             triggerElement={ctx.triggerRef()}
         >
             <div
-                class='mt-1 mb-1 max-h-[85vh] min-w-30 overflow-y-auto rounded-default border border-border bg-surface-2 p-2 text-text-primary shadow-default'
+                class={cn(
+                    'max-h-[85vh] min-w-30 overflow-y-auto rounded-default border border-border bg-surface-2 p-2 text-text-primary shadow-default',
+                    getMargin(),
+                    props.class,
+                )}
                 ref={divRef}
             >
                 {props.children}
