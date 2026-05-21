@@ -1,18 +1,16 @@
 import {
     type Accessor,
+    type ComponentProps,
     createContext,
-    createSignal,
     type JSXElement,
-    Match,
     mergeProps,
     Show,
-    Switch,
+    splitProps,
     useContext,
     type VoidComponent,
 } from 'solid-js';
 
-import { IconEditCopy, IconInterfaceCheck, IconMenuCloseMd } from '~/icons';
-import { Button, type ButtonAppearance } from '~/ui/Button';
+import { CopyButton } from '~/ui/CopyButton';
 import { Input } from '~/ui/Input';
 import { Textarea } from '~/ui/Textarea';
 import { cn } from '~/utils';
@@ -46,7 +44,7 @@ export const useCopyFieldContext = () => {
 type CopyFieldCompound = {
     (props: CopyFieldProps): JSXElement;
     Input: typeof CopyFieldInput;
-    CopyButton: typeof CopyButton;
+    CopyButton: typeof CopyFieldCopyButton;
 };
 
 export const CopyField: CopyFieldCompound = (rawProps) => {
@@ -100,57 +98,21 @@ const CopyFieldInput: VoidComponent<{
     );
 };
 
-type CopyButtonState = 'normal' | 'copied' | 'failed';
+const CopyFieldCopyButton: VoidComponent<ComponentProps<typeof CopyButton>> = (
+    props,
+) => {
+    const [local, others] = splitProps(props, ['value', 'compact']);
 
-const copyButtonAppearance: Record<CopyButtonState, ButtonAppearance> = {
-    normal: 'secondary',
-    copied: 'success',
-    failed: 'danger',
-};
-
-const CopyButton: VoidComponent<{ class?: string }> = (props) => {
     const ctx = useCopyFieldContext();
 
-    const [copyState, setCopyState] = createSignal<CopyButtonState>('normal');
-
-    const handleCopy = () => {
-        navigator.clipboard
-            .writeText(ctx.value() ?? '')
-            .catch(() => setCopyState('failed'));
-        setCopyState('copied');
-
-        setTimeout(() => {
-            setCopyState('normal');
-        }, 1000);
-    };
-
     return (
-        <Button
-            appearance={copyButtonAppearance[copyState()]}
-            class={props.class}
-            onClick={handleCopy}
-            variant={copyState() === 'normal' ? 'solid' : 'soft'}
-        >
-            <Switch
-                fallback={
-                    <>
-                        <IconEditCopy />
-                        <Show when={ctx.multiline()}>Copy into clipboard</Show>
-                    </>
-                }
-            >
-                <Match when={copyState() === 'copied'}>
-                    <IconInterfaceCheck />
-                    <Show when={ctx.multiline()}>Copied!</Show>
-                </Match>
-                <Match when={copyState() === 'failed'}>
-                    <IconMenuCloseMd />
-                    <Show when={ctx.multiline()}>Failed to copy!</Show>
-                </Match>
-            </Switch>
-        </Button>
+        <CopyButton
+            compact={local.compact ?? !ctx.multiline()}
+            value={local.value ?? ctx.value()}
+            {...others}
+        />
     );
 };
 
 CopyField.Input = CopyFieldInput;
-CopyField.CopyButton = CopyButton;
+CopyField.CopyButton = CopyFieldCopyButton;
