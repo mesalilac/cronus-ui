@@ -1,0 +1,10 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{N as t,P as n,R as r,f as i,o as a,p as o}from"./web-BVRQcnZI.js";var s,c,l=e((()=>{a(),t(),s=o(`<svg class=shrink-0 role=img aria-label="Interface Dummy Square Small"viewBox="0 0 24 24"fill=none><path d="M8 11.2002V12.8002C8 13.9203 8 14.4801 8.21799 14.9079C8.40973 15.2842 8.71547 15.5905 9.0918 15.7822C9.5192 16 10.079 16 11.1969 16H12.8031C13.921 16 14.48 16 14.9074 15.7822C15.2837 15.5905 15.5905 15.2842 15.7822 14.9079C16 14.4805 16 13.9215 16 12.8036V11.1969C16 10.079 16 9.5192 15.7822 9.0918C15.5905 8.71547 15.2837 8.40973 14.9074 8.21799C14.4796 8 13.9203 8 12.8002 8H11.2002C10.0801 8 9.51962 8 9.0918 8.21799C8.71547 8.40973 8.40973 8.71547 8.21799 9.0918C8 9.51962 8 10.0801 8 11.2002Z"stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round>`),c=e=>{let[t,a]=r(e,[`size`]);return(()=>{var e=s();return i(e,n({get width(){return t.size||`1rem`},get height(){return t.size||`1rem`}},a),!0,!0),e})()};try{c.displayName=`IconInterfaceDummySquareSmall`,c.__docgenInfo={description:`Interface
+\`\`\`
+         ░░░░░░
+       ▒▓▓▓▓▓▓▓▓▒
+       ██      ██
+       ██      ██
+       ██      ██
+       ▒▓▓▓▓▓▓▓▓▒
+         ░░░░░░
+\`\`\``,displayName:`IconInterfaceDummySquareSmall`,filePath:`C:/Users/bmjfd/Documents/Dev/cronus-ui/src/icons/Interface/IconInterfaceDummySquareSmall.tsx`,methods:[],props:{size:{defaultValue:null,declarations:[{fileName:`cronus-ui/src/icons/Interface/IconInterfaceDummySquareSmall.tsx`,name:`IconProps`}],description:``,name:`size`,parent:{fileName:`cronus-ui/src/icons/Interface/IconInterfaceDummySquareSmall.tsx`,name:`IconProps`},required:!1,tags:{},type:{name:`string | undefined`}}},tags:{}}}catch{}}));export{l as n,c as t};

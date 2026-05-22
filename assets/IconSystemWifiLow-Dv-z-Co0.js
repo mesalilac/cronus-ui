@@ -1,0 +1,8 @@
+import{n as e}from"./chunk-BneVvdWh.js";import{N as t,P as n,R as r,f as i,o as a,p as o}from"./web-BVRQcnZI.js";var s,c,l=e((()=>{a(),t(),s=o(`<svg class=shrink-0 role=img aria-label="System Wifi Low"viewBox="0 0 24 24"fill=none><path d="M8.34277 14.5898C8.80861 14.0903 9.37187 13.6915 9.9978 13.418C10.6237 13.1445 11.2995 13.0024 11.9826 13C12.6656 12.9976 13.3418 13.1353 13.9697 13.4044C14.5975 13.6735 15.1637 14.0683 15.633 14.5645M12 19C11.4477 19 11 18.5523 11 18C11 17.4477 11.4477 17 12 17C12.5523 17 13 17.4477 13 18C13 18.5523 12.5523 19 12 19Z"stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round>`),c=e=>{let[t,a]=r(e,[`size`]);return(()=>{var e=s();return i(e,n({get width(){return t.size||`1rem`},get height(){return t.size||`1rem`}},a),!0,!0),e})()};try{c.displayName=`IconSystemWifiLow`,c.__docgenInfo={description:`System
+\`\`\`
+         ░▒▒▒▒░
+       ░▓█▓▒▒▓█▓░
+       ░▒░ ░░ ░▒░
+          ▓██▓
+          ▒▓▓▒
+\`\`\``,displayName:`IconSystemWifiLow`,filePath:`C:/Users/bmjfd/Documents/Dev/cronus-ui/src/icons/System/IconSystemWifiLow.tsx`,methods:[],props:{size:{defaultValue:null,declarations:[{fileName:`cronus-ui/src/icons/System/IconSystemWifiLow.tsx`,name:`IconProps`}],description:``,name:`size`,parent:{fileName:`cronus-ui/src/icons/System/IconSystemWifiLow.tsx`,name:`IconProps`},required:!1,tags:{},type:{name:`string | undefined`}}},tags:{}}}catch{}}));export{l as n,c as t};
