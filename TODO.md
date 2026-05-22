@@ -5,6 +5,7 @@
 
 ## Refactor
 - Input - offload error and label to `Fieldset`, also make sure autofocus is working again
+- Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
 
