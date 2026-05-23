@@ -10,6 +10,7 @@ import {
 
 import { IconWarningTriangleWarning } from '~/icons';
 import { Label } from '~/ui/Label';
+import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 export const FieldContext = createContext<{
@@ -63,20 +64,9 @@ const FieldLabel: ParentComponent<{ required?: boolean; class?: string }> = (
 
 const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
     return (
-        <span class={cn('text-text-muted text-xs', props.class)}>
+        <Text as='p' class={cn('text-xs', props.class)} variant='muted'>
             {props.children}
-        </span>
-    );
-};
-
-const FieldError: ParentComponent<{
-    class?: string;
-}> = (props) => {
-    return (
-        <span class={cn('flex gap-1 text-text-danger text-xs', props.class)}>
-            <IconWarningTriangleWarning />
-            {props.children}
-        </span>
+        </Text>
     );
 };
 
@@ -84,10 +74,29 @@ const FieldWarning: ParentComponent<{
     class?: string;
 }> = (props) => {
     return (
-        <span class={cn('flex gap-1 text-text-warning text-xs', props.class)}>
+        <Text
+            as='p'
+            class={cn('flex gap-1 text-xs', props.class)}
+            variant='warning'
+        >
             <IconWarningTriangleWarning />
             {props.children}
-        </span>
+        </Text>
+    );
+};
+
+const FieldError: ParentComponent<{
+    class?: string;
+}> = (props) => {
+    return (
+        <Text
+            as='p'
+            class={cn('flex gap-1 text-xs', props.class)}
+            variant='danger'
+        >
+            <IconWarningTriangleWarning />
+            {props.children}
+        </Text>
     );
 };
 
