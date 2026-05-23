@@ -1,6 +1,7 @@
 import {
     type Accessor,
     createContext,
+    createUniqueId,
     type JSXElement,
     type ParentComponent,
     useContext,
@@ -22,7 +23,19 @@ export type FieldProps = {
 };
 
 export const Field: FieldCompound = (props) => {
-    return <div>{props.children}</div>;
+    const fallbackId = createUniqueId();
+
+    return (
+        <div>
+            <FieldContext.Provider
+                value={{
+                    id: () => props.id ?? fallbackId,
+                }}
+            >
+                {props.children}
+            </FieldContext.Provider>
+        </div>
+    );
 };
 
 const Label: ParentComponent<{ class?: string }> = (props) => {
