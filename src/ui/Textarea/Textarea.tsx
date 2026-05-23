@@ -8,6 +8,7 @@ import {
     Switch,
 } from 'solid-js';
 
+import { useFieldContext } from '~/ui/Field';
 import { FieldLabel } from '~/ui/FieldLabel';
 import { HelperText } from '~/ui/HelperText';
 import { cn } from '~/utils';
@@ -33,6 +34,8 @@ export type TextareaProps = {
 };
 
 export const Textarea = (props: TextareaProps) => {
+    const fieldCtx = useFieldContext();
+
     const id = createUniqueId();
 
     const [isFocused, setIsFocused] = createSignal(false);
@@ -93,7 +96,7 @@ export const Textarea = (props: TextareaProps) => {
                 )}
                 cols={props.cols}
                 disabled={props.disabled}
-                id={id}
+                id={fieldCtx?.id() ?? id}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
                 onBlur={() => setIsFocused(false)}
