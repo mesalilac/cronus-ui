@@ -1,7 +1,49 @@
-import type { Component } from 'solid-js';
+import {
+    type Accessor,
+    createContext,
+    type JSXElement,
+    type ParentComponent,
+    useContext,
+} from 'solid-js';
 
-export type FieldProps = {};
+export const FieldContext = createContext<{
+    id: Accessor<string>;
+}>();
 
-export const Field: Component<FieldProps> = (props) => {
-    return <div>Field</div>;
+export const useFieldContext = () => {
+    const context = useContext(FieldContext);
+
+    return context;
 };
+
+export type FieldProps = {
+    id?: string;
+    children: JSXElement;
+};
+
+export const Field: FieldCompound = (props) => {
+    return <div>{props.children}</div>;
+};
+
+const Label: ParentComponent<{ class?: string }> = (props) => {
+    return <div>{props.children}</div>;
+};
+
+const Description: ParentComponent<{ class?: string }> = (props) => {
+    return <div>{props.children}</div>;
+};
+
+const FieldError: ParentComponent<{ class?: string }> = (props) => {
+    return <div>{props.children}</div>;
+};
+
+type FieldCompound = {
+    (props: FieldProps): JSXElement;
+    Label: typeof Label;
+    Description: typeof Description;
+    Error: typeof FieldError;
+};
+
+Field.Label = Label;
+Field.Description = Description;
+Field.Error = FieldError;
