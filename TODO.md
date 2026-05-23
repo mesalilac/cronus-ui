@@ -5,6 +5,7 @@
 
 ## Refactor
 - Input - offload error and label to `Field`, also make sure autofocus is working again
+    - Remove `HelperText` component and `FieldLabel`
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
@@ -15,7 +16,6 @@
     - Label
     - Description
     - Error
-    - Remove `HelperText` component and `FieldLabel`
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Legend
     - Description
