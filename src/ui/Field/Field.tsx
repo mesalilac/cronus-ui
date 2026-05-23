@@ -7,6 +7,7 @@ import {
     useContext,
 } from 'solid-js';
 
+import { IconWarningTriangleWarning } from '~/icons';
 import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
@@ -64,7 +65,8 @@ const FieldError: ParentComponent<{
     class?: string;
 }> = (props) => {
     return (
-        <span class={cn('text-text-danger/80 text-xs', props.class)}>
+        <span class={cn('flex gap-1 text-text-danger/80 text-xs', props.class)}>
+            <IconWarningTriangleWarning />
             {props.children}
         </span>
     );
@@ -74,7 +76,10 @@ const FieldWarning: ParentComponent<{
     class?: string;
 }> = (props) => {
     return (
-        <span class={cn('text-text-warning/80 text-xs', props.class)}>
+        <span
+            class={cn('flex gap-1 text-text-warning/80 text-xs', props.class)}
+        >
+            <IconWarningTriangleWarning />
             {props.children}
         </span>
     );
