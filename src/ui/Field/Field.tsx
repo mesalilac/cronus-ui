@@ -4,6 +4,7 @@ import {
     createUniqueId,
     type JSXElement,
     type ParentComponent,
+    Show,
     useContext,
 } from 'solid-js';
 
@@ -43,12 +44,19 @@ export const Field: FieldCompound = (props) => {
     );
 };
 
-const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
+const FieldLabel: ParentComponent<{ required?: boolean; class?: string }> = (
+    props,
+) => {
     const ctx = useFieldContext();
 
     return (
         <Label class={props.class} for={ctx?.id()}>
-            {props.children}
+            <span>{props.children}</span>
+            <Show when={props.required}>
+                <span class='text-text-danger' title='Required!'>
+                    *
+                </span>
+            </Show>
         </Label>
     );
 };
