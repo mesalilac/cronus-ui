@@ -7,6 +7,8 @@ import {
     useContext,
 } from 'solid-js';
 
+import { cn } from '~/utils';
+
 export const FieldContext = createContext<{
     id: Accessor<string>;
 }>();
@@ -19,6 +21,7 @@ export const useFieldContext = () => {
 
 export type FieldProps = {
     id?: string;
+    class?: string;
     children: JSXElement;
 };
 
@@ -26,7 +29,7 @@ export const Field: FieldCompound = (props) => {
     const fallbackId = createUniqueId();
 
     return (
-        <div>
+        <div class={cn('flex flex-col gap-1', props.class)}>
             <FieldContext.Provider
                 value={{
                     id: () => props.id ?? fallbackId,
