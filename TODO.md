@@ -12,10 +12,6 @@
 
 ## New components
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
-- Field
-    - Label
-    - Description
-    - Error
 - Fieldset - <https://headlessui.com/react/fieldset>
     - Legend
     - Description
