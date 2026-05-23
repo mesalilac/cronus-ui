@@ -54,7 +54,11 @@ const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
 };
 
 const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
-    return <div>{props.children}</div>;
+    return (
+        <span class={cn('text-text-muted/80 text-xs', props.class)}>
+            {props.children}
+        </span>
+    );
 };
 
 const FieldError: ParentComponent<{
