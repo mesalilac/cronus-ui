@@ -46,22 +46,6 @@ export const WithDescription: Story = {
     },
 };
 
-export const Errors: Story = {
-    render: () => {
-        const [value, setValue] = createSignal<string>('');
-
-        return (
-            <Field class='size-96'>
-                <Field.Label>Simple Field</Field.Label>
-                <Input onInput={setValue} value={value()} />
-                <Show when={value().trim().length === 0}>
-                    <Field.Error>This is an error</Field.Error>
-                </Show>
-            </Field>
-        );
-    },
-};
-
 export const Warning: Story = {
     render: () => {
         const [value, setValue] = createSignal<string>('');
@@ -72,6 +56,22 @@ export const Warning: Story = {
                 <Input onInput={setValue} value={value()} />
                 <Show when={value().trim().length === 0}>
                     <Field.Warning>This is a warning</Field.Warning>
+                </Show>
+            </Field>
+        );
+    },
+};
+
+export const Errors: Story = {
+    render: () => {
+        const [value, setValue] = createSignal<string>('');
+
+        return (
+            <Field class='size-96'>
+                <Field.Label>Simple Field</Field.Label>
+                <Input onInput={setValue} value={value()} />
+                <Show when={value().trim().length === 0}>
+                    <Field.Error>This is an error</Field.Error>
                 </Show>
             </Field>
         );
