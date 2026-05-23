@@ -4,6 +4,7 @@ import {
     createUniqueId,
     type JSXElement,
     type ParentComponent,
+    Show,
     useContext,
 } from 'solid-js';
 
@@ -56,8 +57,17 @@ const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
     return <div>{props.children}</div>;
 };
 
-const FieldError: ParentComponent<{ class?: string }> = (props) => {
-    return <div>{props.children}</div>;
+const FieldError: ParentComponent<{
+    show: boolean | null | undefined;
+    class?: string;
+}> = (props) => {
+    return (
+        <Show when={props.show}>
+            <span class={cn('text-text-danger/80 text-xs', props.class)}>
+                {props.children}
+            </span>
+        </Show>
+    );
 };
 
 type FieldCompound = {
