@@ -4,15 +4,22 @@
 - Input/Textarea - display min and max lengths
 
 ## Refactor
-- Input - offload error and label to `Fieldset`, also make sure autofocus is working again
+- Input - offload error and label to `Field`, also make sure autofocus is working again
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
 
 ## New components
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
-- Fieldset - <https://headlessui.com/react/fieldset>
+- Field
+    - Label
+    - Description
+    - Error
     - Remove `HelperText` component and `FieldLabel`
+- Fieldset - <https://headlessui.com/react/fieldset>
+    - Legend
+    - Description
+    - FieldGroup
 - Drawer - <https://corvu.dev/docs/primitives/drawer/>
 - Carousel - <https://flowbite.com/docs/components/carousel/>
 - Meter - <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter>
