@@ -7,6 +7,7 @@ import {
     useContext,
 } from 'solid-js';
 
+import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
 export const FieldContext = createContext<{
@@ -41,11 +42,17 @@ export const Field: FieldCompound = (props) => {
     );
 };
 
-const Label: ParentComponent<{ class?: string }> = (props) => {
-    return <div>{props.children}</div>;
+const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
+    const ctx = useFieldContext();
+
+    return (
+        <Label class={props.class} for={ctx?.id()}>
+            {props.children}
+        </Label>
+    );
 };
 
-const Description: ParentComponent<{ class?: string }> = (props) => {
+const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
     return <div>{props.children}</div>;
 };
 
@@ -55,11 +62,11 @@ const FieldError: ParentComponent<{ class?: string }> = (props) => {
 
 type FieldCompound = {
     (props: FieldProps): JSXElement;
-    Label: typeof Label;
-    Description: typeof Description;
+    Label: typeof FieldLabel;
+    Description: typeof FieldDescription;
     Error: typeof FieldError;
 };
 
-Field.Label = Label;
-Field.Description = Description;
+Field.Label = FieldLabel;
+Field.Description = FieldDescription;
 Field.Error = FieldError;
