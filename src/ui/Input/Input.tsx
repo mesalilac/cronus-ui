@@ -18,6 +18,7 @@ import {
     IconInterfaceSearchMagnifyingGlass,
     IconMenuCloseMd,
 } from '~/icons';
+import { useFieldContext } from '~/ui/Field';
 import { FieldLabel } from '~/ui/FieldLabel';
 import { HelperText } from '~/ui/HelperText';
 import { Label } from '~/ui/Label';
@@ -53,6 +54,8 @@ export const Input = (rawProps: InputProps) => {
         { type: 'text' } satisfies Partial<InputProps>,
         rawProps,
     );
+
+    const fieldCtx = useFieldContext();
 
     const id = createUniqueId();
 
@@ -132,7 +135,7 @@ export const Input = (rawProps: InputProps) => {
                             props.readOnly && 'text-text-muted',
                         )}
                         disabled={props.disabled}
-                        id={id}
+                        id={fieldCtx?.id() ?? id}
                         maxLength={props.maxLength}
                         minLength={props.minLength}
                         onBlur={() => {
