@@ -55,7 +55,7 @@ const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
 
 const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
     return (
-        <span class={cn('text-text-muted/80 text-xs', props.class)}>
+        <span class={cn('text-text-muted text-xs', props.class)}>
             {props.children}
         </span>
     );
@@ -65,7 +65,7 @@ const FieldError: ParentComponent<{
     class?: string;
 }> = (props) => {
     return (
-        <span class={cn('flex gap-1 text-text-danger/80 text-xs', props.class)}>
+        <span class={cn('flex gap-1 text-text-danger text-xs', props.class)}>
             <IconWarningTriangleWarning />
             {props.children}
         </span>
@@ -76,9 +76,7 @@ const FieldWarning: ParentComponent<{
     class?: string;
 }> = (props) => {
     return (
-        <span
-            class={cn('flex gap-1 text-text-warning/80 text-xs', props.class)}
-        >
+        <span class={cn('flex gap-1 text-text-warning text-xs', props.class)}>
             <IconWarningTriangleWarning />
             {props.children}
         </span>
