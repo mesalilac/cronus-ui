@@ -30,7 +30,7 @@ export const Field: FieldCompound = (props) => {
     const fallbackId = createUniqueId();
 
     return (
-        <div class={cn('flex flex-col gap-1', props.class)}>
+        <div class={cn('flex size-full flex-col gap-1', props.class)}>
             <FieldContext.Provider
                 value={{
                     id: () => props.id ?? fallbackId,
