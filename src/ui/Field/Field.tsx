@@ -62,15 +62,22 @@ const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
 };
 
 const FieldError: ParentComponent<{
-    show: boolean | null | undefined;
     class?: string;
 }> = (props) => {
     return (
-        <Show when={props.show}>
-            <span class={cn('text-text-danger/80 text-xs', props.class)}>
-                {props.children}
-            </span>
-        </Show>
+        <span class={cn('text-text-danger/80 text-xs', props.class)}>
+            {props.children}
+        </span>
+    );
+};
+
+const FieldWarning: ParentComponent<{
+    class?: string;
+}> = (props) => {
+    return (
+        <span class={cn('text-text-warning/80 text-xs', props.class)}>
+            {props.children}
+        </span>
     );
 };
 
@@ -78,9 +85,11 @@ type FieldCompound = {
     (props: FieldProps): JSXElement;
     Label: typeof FieldLabel;
     Description: typeof FieldDescription;
+    Warning: typeof FieldWarning;
     Error: typeof FieldError;
 };
 
 Field.Label = FieldLabel;
 Field.Description = FieldDescription;
+Field.Warning = FieldWarning;
 Field.Error = FieldError;
