@@ -39,8 +39,8 @@ export const WithDescription: Story = {
         return (
             <Field class='size-96'>
                 <Field.Label>Simple Field</Field.Label>
-                <Field.Description>Description</Field.Description>
                 <Input onInput={setValue} value={value()} />
+                <Field.Description>Description</Field.Description>
             </Field>
         );
     },
