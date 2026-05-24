@@ -89,9 +89,12 @@ export const Textarea = (props: TextareaProps) => {
                 aria-invalid={Boolean(error())}
                 autofocus={props.autoFocus}
                 class={cn(
-                    'h-32 max-h-32 resize-none rounded-default border border-border bg-surface-3/30 px-3 py-2.5 text-sm caret-accent placeholder:text-text-muted focus-within:border-transparent focus:outline-none focus:ring-2 focus:ring-accent',
+                    'h-32 max-h-32 resize-none rounded-default border border-border bg-surface-3/30 px-3 py-2.5 text-sm caret-accent placeholder:text-text-muted invalid:border-danger focus-within:border-transparent focus:outline-none focus:ring-2 focus:ring-accent focus:invalid:ring-danger',
                     props.readOnly && 'text-text-muted',
-                    error() && 'bg-danger/30 focus:ring-danger',
+                    (error() || fieldCtx?.hasError()) &&
+                        'border-danger bg-danger/30 focus:ring-danger',
+                    fieldCtx?.hasWarning() &&
+                        'border-warning bg-warning/30 focus:ring-warning',
                     props.class,
                 )}
                 cols={props.cols}
