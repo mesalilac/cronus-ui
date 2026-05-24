@@ -39,3 +39,4 @@ export * from './Tooltip';
 export * from './CopyButton';
 export * from './Field';
 export * from './Text';
+export * from './Fieldset';
