@@ -117,7 +117,10 @@ export const Input = (rawProps: InputProps) => {
                 <div
                     class={cn(
                         'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:ring-danger',
-                        error() && 'bg-danger/30 focus-within:ring-danger',
+                        (error() || fieldCtx?.hasError()) &&
+                            'bg-danger/30 focus-within:ring-danger',
+                        fieldCtx?.hasWarning() &&
+                            'bg-warning/30 focus-within:ring-warning',
                         props.class,
                     )}
                 >

@@ -91,7 +91,10 @@ export const Textarea = (props: TextareaProps) => {
                 class={cn(
                     'h-32 max-h-32 resize-none rounded-default border border-border bg-surface-3/30 px-3 py-2.5 text-sm caret-accent placeholder:text-text-muted focus-within:border-transparent focus:outline-none focus:ring-2 focus:ring-accent',
                     props.readOnly && 'text-text-muted',
-                    error() && 'bg-danger/30 focus:ring-danger',
+                    (error() || fieldCtx?.hasError()) &&
+                        'bg-danger/30 focus-within:ring-danger',
+                    fieldCtx?.hasWarning() &&
+                        'bg-warning/30 focus-within:ring-warning',
                     props.class,
                 )}
                 cols={props.cols}
