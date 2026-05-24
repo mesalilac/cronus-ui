@@ -116,11 +116,11 @@ export const Input = (rawProps: InputProps) => {
             <div class='flex flex-row @max-3xs/input:flex-col gap-2 rounded-[inherit]'>
                 <div
                     class={cn(
-                        'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:ring-danger',
+                        'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
                         (error() || fieldCtx?.hasError()) &&
-                            'bg-danger/30 focus-within:ring-danger',
+                            'border-danger bg-danger/30 focus-within:ring-danger',
                         fieldCtx?.hasWarning() &&
-                            'bg-warning/30 focus-within:ring-warning',
+                            'border-warning bg-warning/30 focus-within:ring-warning',
                         props.class,
                     )}
                 >
