@@ -134,7 +134,7 @@ export const Input = (rawProps: InputProps) => {
                         autocomplete='off'
                         autofocus={props.autoFocus}
                         class={cn(
-                            'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
+                            'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                             props.readOnly && 'text-text-muted',
                         )}
                         disabled={props.disabled}
