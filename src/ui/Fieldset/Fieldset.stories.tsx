@@ -114,3 +114,26 @@ export const LegendEnd: Story = {
         );
     },
 };
+
+export const Disabled: Story = {
+    render: () => {
+        return (
+            <div class='size-96'>
+                <Fieldset disabled>
+                    <Fieldset.Legend>Shipping details</Fieldset.Legend>
+                    <Fieldset.Description>
+                        Without this your odds of getting your order are low.
+                    </Fieldset.Description>
+                    <Field>
+                        <Field.Label>Full name</Field.Label>
+                        <Input value='' />
+                    </Field>
+                    <Field>
+                        <Field.Label>Street address</Field.Label>
+                        <Input value='' />
+                    </Field>
+                </Fieldset>
+            </div>
+        );
+    },
+};
