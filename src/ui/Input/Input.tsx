@@ -1,15 +1,11 @@
 import {
     createEffect,
-    createMemo,
     createSignal,
     createUniqueId,
     type JSX,
-    type JSXElement,
-    Match,
     mergeProps,
     type Ref,
     Show,
-    Switch,
 } from 'solid-js';
 
 import {
@@ -19,8 +15,6 @@ import {
     IconMenuCloseMd,
 } from '~/icons';
 import { useFieldContext } from '~/ui/Field';
-import { FieldLabel } from '~/ui/FieldLabel';
-import { HelperText } from '~/ui/HelperText';
 import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
@@ -28,25 +22,19 @@ export type InputProps = {
     type?: 'text' | 'search' | 'email' | 'password' | 'url';
     value: string;
     onInput?: (value: string) => void;
-    validate?: (value: string, isDirty: boolean) => string | undefined;
     onKeyDown?: JSX.EventHandlerUnion<HTMLInputElement, KeyboardEvent>;
     onBlur?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     onFocusIn?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     onFocusOut?: JSX.FocusEventHandlerUnion<HTMLInputElement, FocusEvent>;
     placeholder?: string;
-    label?: JSXElement;
     required?: boolean;
     autoFocus?: boolean;
-    helper?: JSXElement;
     minLength?: number;
     maxLength?: number;
     disabled?: boolean;
     readOnly?: boolean;
-    badge?: JSXElement;
-    icon?: JSXElement;
     class?: string;
     ref?: Ref<HTMLInputElement>;
-    children?: JSXElement;
 };
 
 export const Input = (rawProps: InputProps) => {
@@ -60,153 +48,96 @@ export const Input = (rawProps: InputProps) => {
     const id = createUniqueId();
 
     const [isFocused, setIsFocused] = createSignal(false);
-    const [isDirty, setIsDirty] = createSignal(false);
 
     const [internalInputType, setInternalInputType] = createSignal(props.type);
     const [internalValue, setInternalValue] = createSignal(props.value);
 
-    const error = createMemo(() => {
-        const validationError = props.validate?.(internalValue(), isDirty());
-
-        if (props.required && internalValue().length === 0)
-            return 'This field is required';
-
-        if (
-            props.minLength !== undefined &&
-            internalValue().length < props.minLength
-        )
-            return `This field must be at least ${props.minLength} characters long`;
-
-        if (
-            props.maxLength !== undefined &&
-            internalValue().length > props.maxLength
-        )
-            return `This field must be at most ${props.maxLength} characters long`;
-
-        return validationError;
-    });
-
-    const handleInput = (value: string) => {
-        setIsDirty(true);
-
-        props.onInput?.(value);
-    };
+    const handleInput = (value: string) => props.onInput?.(value);
 
     createEffect(() => {
         if (!isFocused()) setInternalValue(props.value);
     });
 
-    const getIcon = () =>
-        props.icon ??
-        (props.type === 'search' ? (
-            <IconInterfaceSearchMagnifyingGlass />
-        ) : null);
-
     return (
-        <div class='@container/input flex min-w-32 flex-col gap-2 rounded-default'>
-            <Show when={props.label}>
-                {(label) => (
-                    <FieldLabel
-                        id={id}
-                        label={label()}
-                        required={props.required}
-                    />
-                )}
+        <div
+            class={cn(
+                'flex flex-1 flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
+                fieldCtx?.hasError() &&
+                    'border-danger bg-danger/30 focus-within:ring-danger',
+                fieldCtx?.hasWarning() &&
+                    'border-warning bg-warning/30 focus-within:ring-warning',
+                props.class,
+            )}
+        >
+            <Show when={props.type === 'search'}>
+                <Label for={id}>
+                    <IconInterfaceSearchMagnifyingGlass class='size-5 text-text-muted' />
+                </Label>
             </Show>
-            <div class='flex flex-row @max-3xs/input:flex-col gap-2 rounded-[inherit]'>
-                <div
-                    class={cn(
-                        'flex flex-1 flex-row items-center gap-2 rounded-[inherit] border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
-                        (error() || fieldCtx?.hasError()) &&
-                            'border-danger bg-danger/30 focus-within:ring-danger',
-                        fieldCtx?.hasWarning() &&
-                            'border-warning bg-warning/30 focus-within:ring-warning',
-                        props.class,
-                    )}
+            <input
+                aria-invalid={fieldCtx?.hasError()}
+                autocomplete='off'
+                autofocus={props.autoFocus}
+                class={cn(
+                    'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
+                    props.readOnly && 'text-text-muted',
+                )}
+                disabled={props.disabled}
+                id={fieldCtx?.id() ?? id}
+                maxLength={props.maxLength}
+                minLength={props.minLength}
+                onBlur={() => {
+                    setIsFocused(false);
+                    props.onBlur;
+                }}
+                onFocus={() => setIsFocused(true)}
+                onFocusIn={props.onFocusIn}
+                onFocusOut={props.onFocusOut}
+                onInput={(e) => handleInput(e.currentTarget.value)}
+                onKeyDown={props.onKeyDown}
+                placeholder={
+                    props.placeholder ??
+                    (props.type === 'search' ? 'Search' : undefined)
+                }
+                readonly={props.readOnly}
+                ref={props.ref}
+                required={props.required}
+                type={internalInputType()}
+                value={internalValue()}
+            />
+            <Show when={props.type === 'password'}>
+                <Show
+                    fallback={
+                        <IconEditShow
+                            aria-label='Show password'
+                            class='cursor-pointer text-text-muted hover:text-text-secondary'
+                            onClick={() => setInternalInputType('password')}
+                        />
+                    }
+                    when={internalInputType() === 'password'}
                 >
-                    <Show when={getIcon()}>
-                        <Label class='opacity-50 *:size-5' for={id}>
-                            {getIcon()}
-                        </Label>
-                    </Show>
-                    <input
-                        aria-invalid={Boolean(error())}
-                        autocomplete='off'
-                        autofocus={props.autoFocus}
-                        class={cn(
-                            'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
-                            props.readOnly && 'text-text-muted',
-                        )}
-                        disabled={props.disabled}
-                        id={fieldCtx?.id() ?? id}
-                        maxLength={props.maxLength}
-                        minLength={props.minLength}
-                        onBlur={() => {
-                            setIsFocused(false);
-                            props.onBlur;
-                        }}
-                        onFocus={() => setIsFocused(true)}
-                        onFocusIn={props.onFocusIn}
-                        onFocusOut={props.onFocusOut}
-                        onInput={(e) => handleInput(e.currentTarget.value)}
-                        onKeyDown={props.onKeyDown}
-                        placeholder={
-                            props.placeholder ??
-                            (props.type === 'search' ? 'Search' : undefined)
-                        }
-                        readonly={props.readOnly}
-                        ref={props.ref}
-                        required={props.required}
-                        type={internalInputType()}
-                        value={internalValue()}
+                    <IconEditHide
+                        aria-label='Hide password'
+                        class='cursor-pointer text-text-muted hover:text-text-secondary'
+                        onClick={() => setInternalInputType('text')}
                     />
-                    {props.badge}
-                    <Show when={props.type === 'password'}>
-                        <Show
-                            fallback={
-                                <IconEditShow
-                                    aria-label='Show password'
-                                    class='cursor-pointer opacity-50 hover:opacity-100'
-                                    onClick={() =>
-                                        setInternalInputType('password')
-                                    }
-                                />
-                            }
-                            when={internalInputType() === 'password'}
-                        >
-                            <IconEditHide
-                                aria-label='Hide password'
-                                class='cursor-pointer opacity-50 hover:opacity-100'
-                                onClick={() => setInternalInputType('text')}
-                            />
-                        </Show>
-                    </Show>
-                    <IconMenuCloseMd
-                        class='cursor-pointer opacity-50 hover:opacity-100'
-                        onClick={() => {
-                            const value = '';
+                </Show>
+            </Show>
+            <IconMenuCloseMd
+                class='cursor-pointer text-text-muted hover:text-text-secondary'
+                onClick={() => {
+                    const value = '';
 
-                            setInternalValue(value);
-                            props.onInput?.(value);
-                        }}
-                        style={{
-                            visibility:
-                                internalValue().length > 0 && !props.readOnly
-                                    ? 'visible'
-                                    : 'hidden',
-                        }}
-                    />
-                </div>
-                {props.children}
-            </div>
-            <Switch>
-                <Match when={error()}>
-                    <HelperText variant='danger'>{error()}</HelperText>
-                </Match>
-                <Match when={props.helper}>
-                    <HelperText>{props.helper}</HelperText>
-                </Match>
-            </Switch>
+                    setInternalValue(value);
+                    props.onInput?.(value);
+                }}
+                style={{
+                    visibility:
+                        props.value.length > 0 && !props.readOnly
+                            ? 'visible'
+                            : 'hidden',
+                }}
+            />
         </div>
     );
 };
