@@ -4,6 +4,7 @@ import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 export type FieldsetProps = {
+    disabled?: boolean;
     class?: string;
     children?: JSXElement;
 };
@@ -15,6 +16,7 @@ export const Fieldset: FieldsetCompound = (props) => {
                 'flex flex-col gap-8 rounded-default border border-border p-4',
                 props.class,
             )}
+            disabled={props.disabled}
         >
             {props.children}
         </fieldset>
