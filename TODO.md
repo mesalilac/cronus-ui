@@ -2,6 +2,7 @@
 
 ## Feat
 - Input/Textarea - display min and max lengths
+- add required to Fieldset
 
 ## Refactor
 - Input - offload error and label to `Field`, also make sure autofocus is working again
