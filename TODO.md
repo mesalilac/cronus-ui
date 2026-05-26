@@ -2,6 +2,9 @@
 
 ## Feat
 - Input/Textarea - display min and max lengths
+- add id to Fieldset
+- add required to Fieldset
+- EditableText - add minimal prop to hide save and discard buttons
 
 ## Refactor
 - Input - offload error and label to `Field`, also make sure autofocus is working again
@@ -12,10 +15,6 @@
 
 ## New components
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
-- Fieldset - <https://headlessui.com/react/fieldset>
-    - Legend
-    - Description
-    - FieldGroup
 - Drawer - <https://corvu.dev/docs/primitives/drawer/>
 - Carousel - <https://flowbite.com/docs/components/carousel/>
 - Meter - <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meter>

@@ -86,28 +86,27 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
                     onKeyDown={handleKeydown}
                     ref={inputRef}
                     value={internalInput()}
+                />
+                <Button
+                    appearance='success'
+                    class='p-2'
+                    data-slot='save'
+                    onClick={handleSave}
+                    size='icon'
+                    variant='ghost'
                 >
-                    <Button
-                        appearance='success'
-                        class='p-2'
-                        data-slot='save'
-                        onClick={handleSave}
-                        size='icon'
-                        variant='ghost'
-                    >
-                        <IconInterfaceCheck />
-                    </Button>
-                    <Button
-                        appearance='secondary'
-                        class='p-2'
-                        data-slot='cancel'
-                        onClick={handleCancel}
-                        size='icon'
-                        variant='ghost'
-                    >
-                        <IconMenuCloseMd />
-                    </Button>
-                </Input>
+                    <IconInterfaceCheck />
+                </Button>
+                <Button
+                    appearance='secondary'
+                    class='p-2'
+                    data-slot='cancel'
+                    onClick={handleCancel}
+                    size='icon'
+                    variant='ghost'
+                >
+                    <IconMenuCloseMd />
+                </Button>
             </Show>
         </div>
     );

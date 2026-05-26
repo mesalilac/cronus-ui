@@ -1,10 +1,6 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
-import { IconNavigationCompass } from '~/icons';
-import { Badge } from '~/ui/Badge';
-import { Button } from '~/ui/Button';
-
 import { Input } from './Input';
 
 const meta = {
@@ -90,22 +86,6 @@ export const Url: Story = {
     },
 };
 
-export const WithBadge: Story = {
-    args: {
-        type: 'search',
-        badge: <Badge>1</Badge>,
-    },
-    render: (args) => {
-        const [value, setValue] = createSignal('apple');
-
-        return (
-            <div class='w-96'>
-                <Input {...args} onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
 export const WithAutoFocus: Story = {
     render: () => {
         const [value, setValue] = createSignal('');
@@ -113,36 +93,6 @@ export const WithAutoFocus: Story = {
         return (
             <div class='w-96'>
                 <Input onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
-export const WithCustomIcon: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input
-                    icon={<IconNavigationCompass />}
-                    onInput={setValue}
-                    value={value()}
-                />
-            </div>
-        );
-    },
-};
-
-export const WithSiblingButton: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input onInput={setValue} value={value()}>
-                    <Button>Button</Button>
-                </Input>
             </div>
         );
     },
@@ -173,71 +123,6 @@ export const WithMaxLength: Story = {
         return (
             <div class='w-96'>
                 <Input {...args} onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
-export const WithLabel: Story = {
-    args: {
-        label: 'Label',
-    },
-    render: (args) => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input {...args} onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
-export const WithLabelAndRequired: Story = {
-    args: {
-        label: 'Label',
-        required: true,
-    },
-    render: (args) => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input {...args} onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
-export const WithHelperText: Story = {
-    args: {
-        helper: 'Helper Text',
-    },
-    render: (args) => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input {...args} onInput={setValue} value={value()} />
-            </div>
-        );
-    },
-};
-
-export const WithError: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('');
-
-        return (
-            <div class='w-96'>
-                <Input
-                    onInput={setValue}
-                    validate={(v) => {
-                        if (v.length < 10)
-                            return 'Must be at least 10 characters long';
-                    }}
-                    value={value()}
-                />
             </div>
         );
     },
