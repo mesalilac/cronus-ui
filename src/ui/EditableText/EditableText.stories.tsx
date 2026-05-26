@@ -21,3 +21,11 @@ export const Default: Story = {
         return <EditableText onSave={setValue} value={value()} />;
     },
 };
+
+export const Compact: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('Example Text');
+
+        return <EditableText compact onSave={setValue} value={value()} />;
+    },
+};
