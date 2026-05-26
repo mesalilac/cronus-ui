@@ -33,10 +33,10 @@ const VARIANT_STYLES: Record<BadgeVariant, string> = {
 };
 
 const SIZE_STYLES: Record<BadgeSize, string> = {
-    sm: cn('px-1'),
-    md: cn('px-2'),
-    lg: cn('px-4'),
-    icon: cn('rounded-full px-1'),
+    sm: cn('px-0.5'),
+    md: cn('px-1'),
+    lg: cn('px-2'),
+    icon: cn('rounded-full px-0.5'),
 };
 
 export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
@@ -53,7 +53,7 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'inline-flex select-none items-center justify-center gap-1 rounded-default border border-current/30 py-1 font-medium text-xs',
+        'inline-flex select-none items-center justify-center gap-1 rounded-default border border-current/30 py-0.5 font-medium text-xs',
     );
 
     return (
