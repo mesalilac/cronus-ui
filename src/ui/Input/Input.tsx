@@ -87,9 +87,14 @@ export const Input = (rawProps: InputProps) => {
                 id={fieldCtx?.id() ?? id}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
-                onBlur={() => {
+                onBlur={(e) => {
                     setIsFocused(false);
-                    props.onBlur;
+                    (
+                        props.onBlur as JSX.FocusEventHandler<
+                            HTMLInputElement,
+                            FocusEvent
+                        >
+                    )?.(e);
                 }}
                 onFocus={() => setIsFocused(true)}
                 onFocusIn={props.onFocusIn}
