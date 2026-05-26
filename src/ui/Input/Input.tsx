@@ -61,7 +61,7 @@ export const Input = (rawProps: InputProps) => {
     return (
         <div
             class={cn(
-                'flex flex-1 flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
+                'flex flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
                 fieldCtx?.hasError() &&
                     'border-danger bg-danger/30 focus-within:ring-danger',
                 fieldCtx?.hasWarning() &&
