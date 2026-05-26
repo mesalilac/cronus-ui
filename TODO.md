@@ -8,7 +8,6 @@
 - Form - <https://github.com/pureliani/formix>
 
 ## Refactor
-- Remove `HelperText` component and `FieldLabel` always use `Field`
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
