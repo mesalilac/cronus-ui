@@ -19,6 +19,7 @@ import { cn } from '~/utils';
 
 export const FieldContext = createContext<{
     id: Accessor<string>;
+    required: Accessor<boolean | undefined>;
 
     warningCount: Accessor<number>;
     setWarningCount: Setter<number>;
@@ -38,6 +39,7 @@ export const useFieldContext = () => {
 
 export type FieldProps = {
     id?: string;
+    required?: boolean;
     class?: string;
     children: JSXElement;
 };
@@ -53,6 +55,7 @@ export const Field: FieldCompound = (props) => {
             <FieldContext.Provider
                 value={{
                     id: () => props.id ?? fallbackId,
+                    required: () => props.required,
                     warningCount,
                     setWarningCount,
                     errorCount,
@@ -67,15 +70,13 @@ export const Field: FieldCompound = (props) => {
     );
 };
 
-const FieldLabel: ParentComponent<{ required?: boolean; class?: string }> = (
-    props,
-) => {
+const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
     const ctx = useFieldContext();
 
     return (
         <Label class={props.class} for={ctx?.id()}>
             <span>{props.children}</span>
-            <Show when={props.required}>
+            <Show when={ctx?.required()}>
                 <span class='text-text-danger' title='Required!'>
                     *
                 </span>
