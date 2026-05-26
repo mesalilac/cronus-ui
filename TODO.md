@@ -2,6 +2,7 @@
 
 ## Feat
 - Input/Textarea - display min and max lengths
+- add id to Fieldset
 - add required to Fieldset
 
 ## Refactor
