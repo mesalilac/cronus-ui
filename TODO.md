@@ -5,6 +5,7 @@
 - add id to Fieldset
 - add required to Fieldset
 - EditableText - add minimal prop to hide save and discard buttons
+- Form - <https://github.com/pureliani/formix>
 
 ## Refactor
 - Remove `HelperText` component and `FieldLabel` always use `Field`
