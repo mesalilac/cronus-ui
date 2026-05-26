@@ -1,5 +1,6 @@
 import {
     createEffect,
+    createMemo,
     createSignal,
     createUniqueId,
     type JSX,
@@ -45,7 +46,9 @@ export const Input = (rawProps: InputProps) => {
 
     const fieldCtx = useFieldContext();
 
-    const id = createUniqueId();
+    const fallbackId = createUniqueId();
+
+    const getId = createMemo(() => fieldCtx?.id() ?? fallbackId);
 
     const [isFocused, setIsFocused] = createSignal(false);
 
@@ -71,7 +74,7 @@ export const Input = (rawProps: InputProps) => {
             inert={props.disabled}
         >
             <Show when={props.type === 'search'}>
-                <Label for={id}>
+                <Label for={getId()}>
                     <IconInterfaceSearchMagnifyingGlass class='size-5 text-text-muted' />
                 </Label>
             </Show>
@@ -84,7 +87,7 @@ export const Input = (rawProps: InputProps) => {
                     props.readOnly && 'text-text-muted',
                 )}
                 disabled={props.disabled}
-                id={fieldCtx?.id() ?? id}
+                id={getId()}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
                 onBlur={(e) => {
