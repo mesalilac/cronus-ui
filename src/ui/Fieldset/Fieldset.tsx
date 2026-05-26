@@ -17,6 +17,7 @@ export const Fieldset: FieldsetCompound = (props) => {
                 props.class,
             )}
             disabled={props.disabled}
+            inert={props.disabled}
         >
             {props.children}
         </fieldset>
