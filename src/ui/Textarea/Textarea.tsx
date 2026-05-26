@@ -1,4 +1,9 @@
-import { createEffect, createSignal, createUniqueId } from 'solid-js';
+import {
+    createEffect,
+    createMemo,
+    createSignal,
+    createUniqueId,
+} from 'solid-js';
 
 import { useFieldContext } from '~/ui/Field';
 import { cn } from '~/utils';
@@ -23,7 +28,9 @@ export type TextareaProps = {
 export const Textarea = (props: TextareaProps) => {
     const fieldCtx = useFieldContext();
 
-    const id = createUniqueId();
+    const fallbackId = createUniqueId();
+
+    const getId = createMemo(() => fieldCtx?.id() ?? fallbackId);
 
     const [isFocused, setIsFocused] = createSignal(false);
 
@@ -53,7 +60,7 @@ export const Textarea = (props: TextareaProps) => {
                 )}
                 cols={props.cols}
                 disabled={props.disabled}
-                id={fieldCtx?.id() ?? id}
+                id={getId()}
                 maxLength={props.maxLength}
                 minLength={props.minLength}
                 onBlur={() => setIsFocused(false)}
