@@ -53,7 +53,7 @@ export const Badge: ParentComponent<BadgeProps> = (rawProps) => {
     ]);
 
     const baseStyles = cn(
-        'inline-flex select-none items-center justify-center gap-1 rounded-default border border-current/30 py-1 font-medium text-xs',
+        'inline-flex select-none items-center justify-center gap-1 rounded-default border border-current/30 py-0.5 font-medium text-xs',
     );
 
     return (
