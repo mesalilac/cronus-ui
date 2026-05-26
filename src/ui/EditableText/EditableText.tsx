@@ -18,6 +18,7 @@ import { cn } from '~/utils';
 export type EditableTextProps = {
     value: string;
     onSave: (value: string) => void;
+    compact?: boolean;
     class?: string;
     showEditIcon?: boolean;
 };
@@ -58,7 +59,7 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
     });
 
     return (
-        <div class={cn('flex flex-row items-center gap-1', props.class)}>
+        <div class={cn('flex flex-row items-center gap-2', props.class)}>
             <Show
                 fallback={
                     <>
@@ -87,26 +88,30 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
                     ref={inputRef}
                     value={internalInput()}
                 />
-                <Button
-                    appearance='success'
-                    class='p-2'
-                    data-slot='save'
-                    onClick={handleSave}
-                    size='icon'
-                    variant='ghost'
-                >
-                    <IconInterfaceCheck />
-                </Button>
-                <Button
-                    appearance='secondary'
-                    class='p-2'
-                    data-slot='cancel'
-                    onClick={handleCancel}
-                    size='icon'
-                    variant='ghost'
-                >
-                    <IconMenuCloseMd />
-                </Button>
+                <Show when={!props.compact}>
+                    <div class='flex items-center gap-1'>
+                        <Button
+                            appearance='success'
+                            class='p-2'
+                            data-slot='save'
+                            onClick={handleSave}
+                            size='icon'
+                            variant='ghost'
+                        >
+                            <IconInterfaceCheck />
+                        </Button>
+                        <Button
+                            appearance='secondary'
+                            class='p-2'
+                            data-slot='cancel'
+                            onClick={handleCancel}
+                            size='icon'
+                            variant='ghost'
+                        >
+                            <IconMenuCloseMd />
+                        </Button>
+                    </div>
+                </Show>
             </Show>
         </div>
     );
