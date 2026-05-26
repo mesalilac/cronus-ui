@@ -4,6 +4,7 @@
 - Input/Textarea - display min and max lengths
 - add id to Fieldset
 - add required to Fieldset
+- EditableText - add minimal prop to hide save and discard buttons
 
 ## Refactor
 - Input - offload error and label to `Field`, also make sure autofocus is working again
