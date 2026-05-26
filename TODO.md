@@ -2,7 +2,6 @@
 
 ## Feat
 - Input/Textarea - display min and max lengths
-- EditableText - add minimal prop to hide save and discard buttons
 - Form - <https://github.com/pureliani/formix>
 
 ## Refactor
