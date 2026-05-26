@@ -2,7 +2,7 @@ import { type JSXElement, Show } from 'solid-js';
 
 import { IconInterfaceCheck } from '~/icons';
 import { Button } from '~/ui/Button';
-import { HelperText } from '~/ui/HelperText';
+import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 export type DropdownMenuItemCheckboxProps = {
@@ -51,7 +51,7 @@ export const ItemCheckbox = (props: DropdownMenuItemCheckboxProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <HelperText>{props.helper}</HelperText>
+                    <Text variant='muted'>{props.helper}</Text>
                 </Show>
             </div>
         </Button>

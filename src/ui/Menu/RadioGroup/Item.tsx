@@ -1,7 +1,7 @@
 import { type JSXElement, Show } from 'solid-js';
 
 import { Button } from '~/ui/Button';
-import { HelperText } from '~/ui/HelperText';
+import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 import { useRadioGroupContext } from './context';
@@ -58,7 +58,7 @@ export const Item = (props: DropdownMenuRadioGroupItemProps) => {
                 </div>
 
                 <Show when={props.helper}>
-                    <HelperText>{props.helper}</HelperText>
+                    <Text variant='muted'>{props.helper}</Text>
                 </Show>
             </div>
         </Button>
