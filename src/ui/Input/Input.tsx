@@ -61,13 +61,14 @@ export const Input = (rawProps: InputProps) => {
     return (
         <div
             class={cn(
-                'flex flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
+                'inert:pointer-events-none flex flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 inert:opacity-50 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
                 fieldCtx?.hasError() &&
                     'border-danger bg-danger/30 focus-within:ring-danger',
                 fieldCtx?.hasWarning() &&
                     'border-warning bg-warning/30 focus-within:ring-warning',
                 props.class,
             )}
+            inert={props.disabled}
         >
             <Show when={props.type === 'search'}>
                 <Label for={id}>
@@ -79,7 +80,7 @@ export const Input = (rawProps: InputProps) => {
                 autocomplete='off'
                 autofocus={props.autoFocus}
                 class={cn(
-                    'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none disabled:opacity-50 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
+                    'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                     props.readOnly && 'text-text-muted',
                 )}
                 disabled={props.disabled}
