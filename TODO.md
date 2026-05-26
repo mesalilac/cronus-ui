@@ -7,11 +7,11 @@
 - EditableText - add minimal prop to hide save and discard buttons
 
 ## Refactor
-- Input - offload error and label to `Field`, also make sure autofocus is working again
-    - Remove `HelperText` component and `FieldLabel`
+- Remove `HelperText` component and `FieldLabel` always use `Field`
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
+- Input - autofocus is not working
 
 ## New components
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
