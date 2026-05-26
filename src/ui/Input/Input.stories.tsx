@@ -127,3 +127,18 @@ export const WithMaxLength: Story = {
         );
     },
 };
+
+export const Disabled: Story = {
+    args: {
+        type: 'email',
+    },
+    render: (args) => {
+        const [value, setValue] = createSignal('example@domain.com');
+
+        return (
+            <div class='w-96'>
+                <Input disabled {...args} onInput={setValue} value={value()} />
+            </div>
+        );
+    },
+};
