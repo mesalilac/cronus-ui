@@ -5,6 +5,7 @@ import {
     createUniqueId,
     type JSX,
     mergeProps,
+    onMount,
     type Ref,
     Show,
 } from 'solid-js';
@@ -63,6 +64,17 @@ export const Input = (rawProps: InputProps) => {
         if (!isFocused()) setInternalValue(props.value);
     });
 
+    // NOTE: `autofocus` prop doesn't work if `Input` is inside a container with a mount transition
+    onMount(() => {
+        if (!inputRef) return;
+
+        if (props.autoFocus) {
+            requestAnimationFrame(() => {
+                inputRef.focus();
+            });
+        }
+    });
+
     return (
         <div
             class={cn(
@@ -91,7 +103,6 @@ export const Input = (rawProps: InputProps) => {
             <input
                 aria-invalid={fieldCtx?.hasError()}
                 autocomplete='off'
-                autofocus={props.autoFocus}
                 class={cn(
                     'w-full grow text-sm caret-accent placeholder:text-text-muted focus:outline-none [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden',
                     props.readOnly && 'text-text-muted',
