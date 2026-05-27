@@ -39,6 +39,8 @@ export type InputProps = {
 };
 
 export const Input = (rawProps: InputProps) => {
+    let inputRef!: HTMLInputElement;
+
     const props = mergeProps(
         { type: 'text' } satisfies Partial<InputProps>,
         rawProps,
@@ -64,7 +66,7 @@ export const Input = (rawProps: InputProps) => {
     return (
         <div
             class={cn(
-                'flex flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 inert:opacity-50 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
+                'flex cursor-text flex-row items-center gap-2 rounded-default border border-border bg-surface-3/30 p-1 px-3 py-2.5 inert:opacity-50 focus-within:border-transparent focus-within:ring-2 focus-within:ring-accent has-invalid:border-danger has-invalid:ring-danger',
                 fieldCtx?.hasError() &&
                     'border-danger bg-danger/30 focus-within:ring-danger',
                 fieldCtx?.hasWarning() &&
@@ -72,6 +74,14 @@ export const Input = (rawProps: InputProps) => {
                 props.class,
             )}
             inert={props.disabled}
+            onMouseDown={(e) => {
+                if (e.target !== e.currentTarget) return;
+
+                e.preventDefault();
+
+                inputRef?.focus();
+            }}
+            role='none'
         >
             <Show when={props.type === 'search'}>
                 <Label for={getId()}>
@@ -109,7 +119,11 @@ export const Input = (rawProps: InputProps) => {
                     (props.type === 'search' ? 'Search' : undefined)
                 }
                 readonly={props.readOnly}
-                ref={props.ref}
+                ref={(el) => {
+                    inputRef = el;
+
+                    if (typeof props.ref === 'function') props.ref(el);
+                }}
                 required={props.required}
                 type={internalInputType()}
                 value={internalValue()}
