@@ -307,6 +307,10 @@ export const Popover: ParentComponent<PopoverProps> = (initialProps) => {
                         startOpenTimer();
                     } else if (eventName === 'mouseleave') {
                         startCloseTimer();
+                    } else if (eventName === 'mouseover') {
+                        startOpenTimer();
+                    } else if (eventName === 'mouseout') {
+                        startCloseTimer();
                     } else {
                         const newOpenValue = !open();
                         handleOpenChange(newOpenValue);
