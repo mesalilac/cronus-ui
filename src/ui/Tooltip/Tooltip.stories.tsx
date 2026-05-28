@@ -44,7 +44,12 @@ export const FollowMouse: Story = {
     render: () => {
         return (
             <Tooltip followMouse>
-                <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+                <Tooltip.Trigger
+                    as='div'
+                    class='size-64 rounded-default bg-surface-1 p-2'
+                >
+                    Trigger
+                </Tooltip.Trigger>
                 <Tooltip.Content>tooltip content</Tooltip.Content>
             </Tooltip>
         );
@@ -146,7 +151,7 @@ export const CustomTrigger: Story = {
             <Tooltip>
                 <Tooltip.Trigger
                     as='div'
-                    class='size-64 rounded-default bg-surface-2 p-2'
+                    class='size-64 rounded-default bg-surface-1 p-2'
                 >
                     Trigger
                 </Tooltip.Trigger>
