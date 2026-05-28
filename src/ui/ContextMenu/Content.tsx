@@ -9,6 +9,7 @@ import {
     onMount,
 } from 'solid-js';
 
+import type { Position2D } from '~/types';
 import { useMenuContext } from '~/ui/Menu/context';
 import { Popover, type TargetPositionArea } from '~/ui/Popover';
 
@@ -22,7 +23,10 @@ export const Content = (props: ContextMenuContentProps) => {
 
     const ctx = useMenuContext();
 
-    const [mousePos, setMousePos] = createSignal({ x: 0, y: 0 });
+    const [mousePos, setMousePos] = createSignal<Position2D>({
+        x: 0,
+        y: 0,
+    });
 
     createEffect(() => {
         if (ctx.isOpen() && divRef) {
@@ -56,8 +60,7 @@ export const Content = (props: ContextMenuContentProps) => {
             e.preventDefault();
             e.stopPropagation();
 
-            const { clientX, clientY } = e;
-            setMousePos({ x: clientX, y: clientY });
+            setMousePos({ x: e.clientX, y: e.clientY });
             ctx.setIsOpen(true);
         });
 

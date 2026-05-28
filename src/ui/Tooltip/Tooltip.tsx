@@ -16,7 +16,7 @@ import {
 } from 'solid-js';
 
 import { Polymorphic, type PolymorphicProps } from '~/polymorphic';
-import type { PartialComponentProps } from '~/types';
+import type { PartialComponentProps, Position2D } from '~/types';
 import type { ButtonProps } from '~/ui/Button';
 import { Button } from '~/ui/Button';
 import {
@@ -152,10 +152,7 @@ export const Content: ParentComponent<{
 
     const abortCtrl = new AbortController();
 
-    const [mousePosition, setMousePosition] = createSignal<{
-        x: number;
-        y: number;
-    }>({
+    const [mousePosition, setMousePosition] = createSignal<Position2D>({
         x: 0,
         y: 0,
     });
