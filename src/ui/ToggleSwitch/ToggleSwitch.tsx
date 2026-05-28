@@ -51,7 +51,7 @@ export const ToggleSwitch: ToggleSwitchCompound = (props) => {
         >
             <div
                 class={cn(
-                    'flex select-none gap-2 inert:opacity-50',
+                    'flex select-none items-center gap-2 inert:opacity-50',
                     props.class,
                 )}
                 data-checked={props.checked}
