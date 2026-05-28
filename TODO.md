@@ -2,7 +2,6 @@
 
 ## Feat
 - Input/Textarea - display min and max lengths
-- Tooltip - add mousepostion placement
 - Form - <https://github.com/pureliani/formix>
 
 ## Refactor
