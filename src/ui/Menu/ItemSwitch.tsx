@@ -32,7 +32,9 @@ export const ItemSwitch = (props: DropdownMenuItemSwitchProps) => {
                         checked={props.checked}
                         disabled={props.disabled}
                         onChange={() => {}}
-                    />
+                    >
+                        <ToggleSwitch.Control />
+                    </ToggleSwitch>
                 </div>
 
                 <Show when={props.helper}>
