@@ -1,38 +1,107 @@
-import { type JSXElement, Show, type VoidComponent } from 'solid-js';
+import {
+    type Accessor,
+    createContext,
+    type JSXElement,
+    type ParentComponent,
+    useContext,
+} from 'solid-js';
 
 import { IconInterfaceCheck } from '~/icons';
 import { cn } from '~/utils';
 
+export const CheckboxContext = createContext<{
+    checked: Accessor<boolean | undefined>;
+    onChange: (value: boolean) => void;
+    handleToggle: () => void;
+    disabled: Accessor<boolean | undefined>;
+}>();
+
+export const useCheckboxContext = () => {
+    const context = useContext(CheckboxContext);
+
+    if (!context) {
+        throw new Error(
+            'useCheckboxContext must be used within the CheckboxContext provider',
+        );
+    }
+
+    return context;
+};
+
 export type CheckboxProps = {
     checked?: boolean;
     onChange: (checked: boolean) => void;
-    helper?: JSXElement;
-    label?: JSXElement;
+    disabled?: boolean;
+    class?: string;
+    children?: JSXElement;
 };
 
-export const Checkbox: VoidComponent<CheckboxProps> = (props) => {
+export const Checkbox: CheckboxCompound = (props) => {
+    const handleToggle = () => {
+        props.onChange(!props.checked);
+    };
+
     return (
-        <div
-            class='flex select-none items-center gap-2'
-            onClick={() => props.onChange(!props.checked)}
-            role='none'
+        <CheckboxContext.Provider
+            value={{
+                checked: () => props.checked,
+                onChange: props.onChange,
+                disabled: () => props.disabled,
+                handleToggle,
+            }}
         >
             <div
                 class={cn(
-                    'flex size-4 cursor-pointer items-center rounded-sm border transition-colors duration-200 ease-out',
-                    props.checked ? 'border-accent bg-accent' : 'border-border',
+                    'flex select-none items-center gap-2 inert:opacity-50',
+                    props.class,
                 )}
+                data-checked={props.checked}
+                inert={props.disabled}
+                onClick={() => props.onChange(!props.checked)}
+                role='none'
             >
-                <IconInterfaceCheck
-                    class={cn(
-                        'invisible size-4 text-white transition-opacity duration-100 ease-in-out',
-                        props.checked && 'visible',
-                    )}
-                />
+                {props.children}
             </div>
-            <Show when={props.label}>
-                <span class='select-none text-sm'>{props.label}</span>
-            </Show>
+        </CheckboxContext.Provider>
+    );
+};
+
+const CheckboxControl: ParentComponent<{ class?: string }> = (props) => {
+    const ctx = useCheckboxContext();
+
+    return (
+        <div
+            aria-checked={ctx.checked()}
+            aria-disabled={ctx.disabled()}
+            class={cn(
+                'flex size-4 shrink-0 cursor-pointer items-center rounded-sm border border-border transition-colors duration-200 ease-out data-[checked=true]:border-accent data-[checked=true]:bg-accent',
+                props.class,
+            )}
+            data-checked={ctx.checked()}
+            data-slot='container'
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    ctx.handleToggle();
+                }
+            }}
+            role='switch'
+            tabIndex={0}
+        >
+            <IconInterfaceCheck
+                class={
+                    'invisible size-4 text-white transition-opacity duration-100 ease-in-out data-[checked=true]:visible'
+                }
+                data-checked={ctx.checked()}
+                data-slot='icon'
+            />
         </div>
     );
 };
+
+type CheckboxCompound = {
+    (props: CheckboxProps): JSXElement;
+    Control: typeof CheckboxControl;
+};
+
+Checkbox.Control = CheckboxControl;
