@@ -1,6 +1,8 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Label } from '~/ui/Label';
+
 import { ToggleSwitch } from './ToggleSwitch';
 
 const meta = {
@@ -27,26 +29,10 @@ export const WithLabel: Story = {
         const [checked, setChecked] = createSignal(false);
 
         return (
-            <ToggleSwitch
-                checked={checked()}
-                label='Label'
-                onChange={setChecked}
-            />
-        );
-    },
-};
-
-export const WithHelperText: Story = {
-    render: () => {
-        const [checked, setChecked] = createSignal(false);
-
-        return (
-            <ToggleSwitch
-                checked={checked()}
-                helper='Helper Text'
-                label='Label'
-                onChange={setChecked}
-            />
+            <div class='flex items-center gap-2'>
+                <ToggleSwitch checked={checked()} onChange={setChecked} />
+                <Label>Label</Label>
+            </div>
         );
     },
 };
@@ -56,13 +42,7 @@ export const Disabled: Story = {
         const [checked, setChecked] = createSignal(false);
 
         return (
-            <ToggleSwitch
-                checked={checked()}
-                disabled
-                helper='Helper Text'
-                label='Label'
-                onChange={setChecked}
-            />
+            <ToggleSwitch checked={checked()} disabled onChange={setChecked} />
         );
     },
 };

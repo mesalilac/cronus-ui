@@ -1,12 +1,8 @@
-import { type JSXElement, Show } from 'solid-js';
-
 import { cn } from '~/utils';
 
 export type ToggleSwitchProps = {
     checked?: boolean;
     onChange: (value: boolean) => void;
-    label?: JSXElement;
-    helper?: JSXElement;
     disabled?: boolean;
     class?: string;
     trackClass?: string;
@@ -25,8 +21,10 @@ export const ToggleSwitch = (props: ToggleSwitchProps) => {
             aria-checked={props.checked}
             aria-disabled={props.disabled}
             class={cn(
-                'flex flex-row items-center gap-2 outline-none focus-visible:ring-2 focus-visible:ring-accent',
-                props.disabled && 'opacity-60',
+                'flex h-5 w-9 cursor-pointer items-center rounded-full border border-border bg-surface-3/30 p-0.5 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-accent',
+                props.checked && 'border-accent bg-accent',
+                props.disabled && 'cursor-auto opacity-60',
+                props.trackClass,
                 props.class,
             )}
             onClick={handleToggle}
@@ -41,23 +39,11 @@ export const ToggleSwitch = (props: ToggleSwitchProps) => {
         >
             <div
                 class={cn(
-                    'flex h-5 w-9 cursor-pointer items-center rounded-full border border-border bg-surface-3/30 p-0.5 transition-colors',
-                    props.checked && 'border-accent bg-accent',
-                    props.disabled && 'cursor-auto',
-                    props.trackClass,
+                    'h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-out',
+                    props.checked && 'translate-x-4',
+                    props.thumbClass,
                 )}
-            >
-                <div
-                    class={cn(
-                        'h-4 w-4 rounded-full bg-white transition-transform duration-200 ease-out',
-                        props.checked && 'translate-x-4',
-                        props.thumbClass,
-                    )}
-                />
-            </div>
-            <Show when={props.label}>
-                <span class='select-none text-sm'>{props.label}</span>
-            </Show>
+            />
         </div>
     );
 };

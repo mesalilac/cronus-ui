@@ -10,7 +10,6 @@ export type DropdownMenuItemSwitchProps = {
     onChange: (value: boolean) => void;
     disabled?: boolean;
     helper?: JSXElement;
-    label?: JSXElement;
     class?: string;
     children: JSXElement;
 };
@@ -32,7 +31,6 @@ export const ItemSwitch = (props: DropdownMenuItemSwitchProps) => {
                     <ToggleSwitch
                         checked={props.checked}
                         disabled={props.disabled}
-                        label={props.label}
                         onChange={() => {}}
                     />
                 </div>
