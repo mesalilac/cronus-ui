@@ -40,6 +40,17 @@ export const Noninteractive: Story = {
     },
 };
 
+export const FollowMouse: Story = {
+    render: () => {
+        return (
+            <Tooltip followMouse>
+                <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+                <Tooltip.Content>tooltip content</Tooltip.Content>
+            </Tooltip>
+        );
+    },
+};
+
 export const Placement: Story = {
     render: () => {
         return (

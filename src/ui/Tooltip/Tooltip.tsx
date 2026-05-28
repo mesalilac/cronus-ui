@@ -6,6 +6,8 @@ import {
     type JSXElement,
     mergeProps,
     on,
+    onCleanup,
+    onMount,
     type ParentComponent,
     type Setter,
     splitProps,
@@ -21,6 +23,7 @@ import {
     COMMON_POSITION_AREA,
     type CommonPositionArea,
     Popover,
+    type TargetPositionArea,
 } from '~/ui/Popover';
 import { cn } from '~/utils';
 
@@ -31,6 +34,7 @@ export type TooltipProps = {
     defaultOpen?: boolean;
     onOpenChange?: (open: boolean) => void;
     placement?: CommonPositionArea;
+    followMouse?: boolean;
     /*
      * Keeps the `Tooltip` open while the cursor is inside the `Tooltip` content
      */
@@ -48,6 +52,7 @@ export const TooltipContext = createContext<{
     isOpen: Accessor<boolean>;
     setIsOpen: (open: boolean) => void;
     placement: Accessor<CommonPositionArea>;
+    followMouse: Accessor<boolean | undefined>;
     interactive: Accessor<boolean>;
     openDelayMs: Accessor<number | undefined>;
     closeDelayMs: Accessor<number | undefined>;
@@ -106,6 +111,7 @@ export const Tooltip: TooltipCompound = (rawProps) => {
                 isOpen,
                 setIsOpen,
                 placement: () => props.placement,
+                followMouse: () => props.followMouse,
                 interactive: () => props.interactive,
                 openDelayMs: () => props.openDelayMs,
                 closeDelayMs: () => props.closeDelayMs,
@@ -144,6 +150,16 @@ export const Content: ParentComponent<{
 }> = (props) => {
     const ctx = useTooltipContext();
 
+    const abortCtrl = new AbortController();
+
+    const [mousePosition, setMousePosition] = createSignal<{
+        x: number;
+        y: number;
+    }>({
+        x: 0,
+        y: 0,
+    });
+
     const getEvent = () => {
         switch (ctx.triggerEvent()) {
             case 'click':
@@ -155,7 +171,40 @@ export const Content: ParentComponent<{
         }
     };
 
-    const getPlacement = () => COMMON_POSITION_AREA[ctx.placement()];
+    onMount(() => {
+        if (!ctx.triggerRef() && ctx.followMouse()) return;
+
+        ctx.triggerRef()?.addEventListener(
+            'pointermove',
+            (e) => {
+                setMousePosition({
+                    x: e.clientX,
+                    y: e.clientY,
+                });
+            },
+            abortCtrl,
+        );
+    });
+
+    onCleanup(() => {
+        abortCtrl.abort();
+    });
+
+    const getPlacement = (): TargetPositionArea => {
+        if (ctx.followMouse()) {
+            const offset = 2;
+
+            const x = mousePosition().x + offset;
+            const y = mousePosition().y + offset;
+
+            return {
+                top: () => `${y}px`,
+                left: () => `${x}px`,
+            };
+        }
+
+        return COMMON_POSITION_AREA[ctx.placement()];
+    };
 
     return (
         <Popover
