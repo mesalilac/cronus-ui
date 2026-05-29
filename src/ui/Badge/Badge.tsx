@@ -33,8 +33,8 @@ const VARIANT_STYLES: Record<BadgeVariant, string> = {
 };
 
 const SIZE_STYLES: Record<BadgeSize, string> = {
-    sm: cn('px-0.5'),
-    md: cn('px-1'),
+    sm: cn('px-1'),
+    md: cn('px-2'),
     lg: cn('px-2'),
     icon: cn('rounded-full px-0.5'),
 };
