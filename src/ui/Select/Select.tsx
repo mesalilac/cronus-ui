@@ -153,14 +153,14 @@ const SelectTrigger: ParentComponent<
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(
-                'min-w-52 justify-between bg-surface-3/30 p-1 px-3 py-2.5 capitalize outline outline-border',
-                ctx.isOpen() && 'outline-accent',
+                'min-w-52 justify-between p-1 px-3 py-2.5 capitalize outline outline-border data-[open=true]:outline-accent',
                 props.class,
             )}
+            data-open={ctx.isOpen()}
             disabled={props.disabled}
             ref={ctx.setTriggerRef}
             role='combobox'
-            variant={props.variant}
+            variant={props.variant ?? 'soft'}
         >
             <div class='flex flex-row gap-2'>
                 {props.children ?? (ctx.value() || 'Choose an option')}
