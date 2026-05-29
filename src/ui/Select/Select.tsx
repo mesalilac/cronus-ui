@@ -1,3 +1,4 @@
+import { gsap } from 'gsap';
 import {
     type Accessor,
     createContext,
