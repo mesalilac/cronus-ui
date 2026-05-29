@@ -328,7 +328,7 @@ export const SelectContent: FlowComponent<{ class?: string }> = (props) => {
         >
             <div
                 class={cn(
-                    'flex max-h-80 flex-col gap-2 rounded-default bg-surface-1 p-2 text-text-primary shadow-default outline outline-accent',
+                    'flex max-h-80 flex-col gap-2 rounded-default bg-surface-2 p-2 text-text-primary shadow-default outline outline-accent',
                     getMargin(),
                     props.class,
                 )}
