@@ -74,14 +74,8 @@ export const OptionGroup: Story = {
                 <Select.Trigger>{displayOption(value())}</Select.Trigger>
                 <Select.Content>
                     <Select.List>
-                        <For each={OptionsList}>
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                        <Select.OptionGroup label='Group 1'>
+                        <Select.Group>
+                            <Select.Label>Group 1</Select.Label>
                             <For
                                 each={[
                                     'g-1-option-1',
@@ -95,8 +89,10 @@ export const OptionGroup: Story = {
                                     </Select.Option>
                                 )}
                             </For>
-                        </Select.OptionGroup>
-                        <Select.OptionGroup label='Group 2'>
+                        </Select.Group>
+                        <Select.Separator />
+                        <Select.Group>
+                            <Select.Label>Group 2</Select.Label>
                             <For
                                 each={[
                                     'g-2-option-1',
@@ -110,8 +106,10 @@ export const OptionGroup: Story = {
                                     </Select.Option>
                                 )}
                             </For>
-                        </Select.OptionGroup>
-                        <Select.OptionGroup label='Group 3'>
+                        </Select.Group>
+                        <Select.Separator />
+                        <Select.Group>
+                            <Select.Label>Group 3</Select.Label>
                             <For
                                 each={[
                                     'g-3-option-1',
@@ -125,8 +123,10 @@ export const OptionGroup: Story = {
                                     </Select.Option>
                                 )}
                             </For>
-                        </Select.OptionGroup>
-                        <Select.OptionGroup label='Group 4'>
+                        </Select.Group>
+                        <Select.Separator />
+                        <Select.Group>
+                            <Select.Label>Group 4</Select.Label>
                             <For
                                 each={[
                                     'g-4-option-1',
@@ -140,90 +140,7 @@ export const OptionGroup: Story = {
                                     </Select.Option>
                                 )}
                             </For>
-                        </Select.OptionGroup>
-                    </Select.List>
-                </Select.Content>
-            </Select>
-        );
-    },
-};
-
-export const NestedOptionGroup: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('option-1');
-
-        return (
-            <Select onChange={setValue} value={value()}>
-                <Select.Trigger>{displayOption(value())}</Select.Trigger>
-                <Select.Content>
-                    <Select.List>
-                        <For each={OptionsList}>
-                            {(option) => (
-                                <Select.Option value={option}>
-                                    {displayOption(option)}
-                                </Select.Option>
-                            )}
-                        </For>
-                        <Select.OptionGroup label='Group 1'>
-                            <For
-                                each={[
-                                    'g-1-option-1',
-                                    'g-1-option-2',
-                                    'g-1-option-3',
-                                ]}
-                            >
-                                {(option) => (
-                                    <Select.Option value={option}>
-                                        {displayOption(option)}
-                                    </Select.Option>
-                                )}
-                            </For>
-                            <Select.OptionGroup label='Group 2'>
-                                <For
-                                    each={[
-                                        'g-2-option-1',
-                                        'g-2-option-2',
-                                        'g-2-option-3',
-                                    ]}
-                                >
-                                    {(option) => (
-                                        <Select.Option value={option}>
-                                            {displayOption(option)}
-                                        </Select.Option>
-                                    )}
-                                </For>
-                            </Select.OptionGroup>
-                        </Select.OptionGroup>
-                        <Select.OptionGroup label='Group 3'>
-                            <For
-                                each={[
-                                    'g-3-option-1',
-                                    'g-3-option-2',
-                                    'g-3-option-3',
-                                ]}
-                            >
-                                {(option) => (
-                                    <Select.Option value={option}>
-                                        {displayOption(option)}
-                                    </Select.Option>
-                                )}
-                            </For>
-                        </Select.OptionGroup>
-                        <Select.OptionGroup label='Group 4'>
-                            <For
-                                each={[
-                                    'g-4-option-1',
-                                    'g-4-option-2',
-                                    'g-4-option-3',
-                                ]}
-                            >
-                                {(option) => (
-                                    <Select.Option value={option}>
-                                        {displayOption(option)}
-                                    </Select.Option>
-                                )}
-                            </For>
-                        </Select.OptionGroup>
+                        </Select.Group>
                     </Select.List>
                 </Select.Content>
             </Select>
