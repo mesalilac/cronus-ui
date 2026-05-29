@@ -140,10 +140,7 @@ export const Select: SelectCompound = (rawProps) => {
 };
 
 const SelectTrigger: ParentComponent<
-    {
-        class?: string;
-        disabled?: boolean;
-    } & Pick<ButtonProps, 'variant' | 'appearance'>
+    Pick<ButtonProps, 'appearance' | 'variant' | 'size' | 'class' | 'disabled'>
 > = (props) => {
     const ctx = useSelectContext();
 
@@ -160,6 +157,7 @@ const SelectTrigger: ParentComponent<
             disabled={props.disabled}
             ref={ctx.setTriggerRef}
             role='combobox'
+            size={props.size}
             variant={props.variant ?? 'soft'}
         >
             <div class='flex flex-row gap-2'>
