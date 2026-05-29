@@ -7,6 +7,7 @@ import {
     IconMediaVolumeOff,
 } from '~/icons';
 import { Button } from '~/ui/Button';
+import { Label } from '~/ui/Label';
 
 import { Slider } from './Slider';
 
@@ -26,9 +27,11 @@ export const Default: Story = {
         const [value, setValue] = createSignal(30);
 
         return (
-            <Slider onInput={setValue} value={value()}>
-                <Slider.Input />
-            </Slider>
+            <div class='flex flex-col gap-2'>
+                <Slider onInput={setValue} value={value()}>
+                    <Slider.Input />
+                </Slider>
+            </div>
         );
     },
 };
@@ -38,15 +41,15 @@ export const WithLabel: Story = {
         const [value, setValue] = createSignal(20);
 
         return (
-            <Slider onInput={setValue} value={value()}>
-                <Slider.Label>
-                    <div class='flex justify-between'>
-                        <span>Volume</span>
-                        <span>{value()}%</span>
-                    </div>
-                </Slider.Label>
-                <Slider.Input />
-            </Slider>
+            <div class='flex flex-col gap-2'>
+                <Label class='flex justify-between'>
+                    <span>Volume</span>
+                    <span>{value()}%</span>
+                </Label>
+                <Slider onInput={setValue} value={value()}>
+                    <Slider.Input />
+                </Slider>
+            </div>
         );
     },
 };
@@ -56,11 +59,11 @@ export const WithIcon: Story = {
         const [value, setValue] = createSignal(20);
 
         return (
-            <Slider onInput={setValue} value={value()}>
-                <Slider.Label>
+            <div class='flex flex-col gap-2'>
+                <Label>
                     <span>Volume</span>
-                </Slider.Label>
-                <div class='flex gap-1'>
+                </Label>
+                <div class='flex items-center gap-2'>
                     <Switch>
                         <Match when={value() === 0}>
                             <IconMediaVolumeOff class='size-5' />
@@ -72,12 +75,14 @@ export const WithIcon: Story = {
                             <IconMediaVolumeMin class='size-5' />
                         </Match>
                     </Switch>
-                    <Slider.Input class='flex-1' />
+                    <Slider onInput={setValue} value={value()}>
+                        <Slider.Input />
+                    </Slider>
                     <span class='w-8 text-right text-sm tabular-nums'>
                         {value()}%
                     </span>
                 </div>
-            </Slider>
+            </div>
         );
     },
 };
@@ -95,11 +100,11 @@ export const WithExternalButton: Story = {
         };
 
         return (
-            <Slider onInput={setValue} value={value()}>
-                <Slider.Label>
+            <div class='flex flex-col gap-2'>
+                <Label>
                     <span>Volume</span>
-                </Slider.Label>
-                <div class='flex items-center gap-1'>
+                </Label>
+                <div class='flex items-center gap-2'>
                     <Button onClick={toggleMute} size='icon' variant='ghost'>
                         <Switch>
                             <Match when={value() === 0}>
@@ -113,13 +118,15 @@ export const WithExternalButton: Story = {
                             </Match>
                         </Switch>
                     </Button>
-
-                    <Slider.Input class='flex-1' />
+                    <Slider onInput={setValue} value={value()}>
+                        <Slider.ToolTip />
+                        <Slider.Input />
+                    </Slider>
                     <span class='w-8 text-right text-sm tabular-nums'>
                         {value()}%
                     </span>
                 </div>
-            </Slider>
+            </div>
         );
     },
 };
@@ -129,14 +136,12 @@ export const WithMarkers: Story = {
         const [value, setValue] = createSignal(20);
 
         return (
-            <>
+            <div class='flex flex-col gap-2'>
+                <Label class='flex justify-between'>
+                    <span>Volume</span>
+                    <span>{value()}%</span>
+                </Label>
                 <Slider list='markers' onInput={setValue} value={value()}>
-                    <Slider.Label>
-                        <div class='flex justify-between'>
-                            <span>Volume</span>
-                            <span>{value()}%</span>
-                        </div>
-                    </Slider.Label>
                     <Slider.Input />
                 </Slider>
                 <datalist id='markers'>
@@ -146,7 +151,7 @@ export const WithMarkers: Story = {
                     <option value='75' />
                     <option value='100' />
                 </datalist>
-            </>
+            </div>
         );
     },
 };

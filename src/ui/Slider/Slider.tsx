@@ -17,7 +17,6 @@ import {
 import { Transition } from 'solid-transition-group';
 
 import type { TimeoutHandle } from '~/types';
-import { Label } from '~/ui/Label';
 import { cn } from '~/utils';
 
 export type SliderProps = {
@@ -117,25 +116,16 @@ export const Slider = (rawProps: SliderProps) => {
                 setInputRef,
             }}
         >
-            <div class={cn('relative flex flex-col gap-2', props.class)}>
+            <div
+                class={cn(
+                    'relative flex flex-row items-center gap-2 inert:opacity-50',
+                    props.class,
+                )}
+                inert={props.disabled}
+            >
                 {props.children}
             </div>
         </SliderContext.Provider>
-    );
-};
-
-type SliderLabelProps = {
-    class?: string;
-    children: JSXElement;
-};
-
-const SliderLabel = (props: SliderLabelProps) => {
-    const ctx = useSliderContext();
-
-    return (
-        <Label class={props.class} for={ctx.id()}>
-            {props.children}
-        </Label>
     );
 };
 
@@ -154,7 +144,7 @@ const SliderInput = (props: SliderInputProps) => {
     return (
         <input
             class={cn(
-                'h-4 w-full appearance-none rounded-full bg-transparent disabled:cursor-auto disabled:opacity-50',
+                'h-4 w-full appearance-none rounded-full bg-transparent',
 
                 'active:[&::-moz-range-thumb]:scale-110 active:[&::-webkit-slider-thumb]:scale-110',
 
@@ -205,7 +195,6 @@ const SliderInput = (props: SliderInputProps) => {
 
                 props.class,
             )}
-            disabled={ctx.disabled()}
             id={ctx.id()}
             list={ctx.list()}
             max={ctx.max()}
@@ -343,5 +332,4 @@ const SliderToolTip = (rawProps: {
 };
 
 Slider.Input = SliderInput;
-Slider.Label = SliderLabel;
 Slider.ToolTip = SliderToolTip;
