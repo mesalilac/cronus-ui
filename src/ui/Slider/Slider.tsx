@@ -165,8 +165,6 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-webkit-slider-runnable-track]:bg-[linear-gradient(90deg,var(--color-accent)_var(--p),color-mix(in_oklab,var(--color-surface-3)_30%,transparent)_var(--p))]',
 
                 // Webkit thumb
-                '[&::-webkit-slider-thumb]:cursor-ew-resize',
-                '[&::-webkit-slider-thumb:hover]:brightness-110',
                 '[&::-webkit-slider-thumb]:transition-transform',
                 '[&::-webkit-slider-thumb]:duration-150',
                 '[&::-webkit-slider-thumb]:ease-out',
@@ -191,8 +189,6 @@ const SliderInput = (props: SliderInputProps) => {
                 '[&::-moz-range-track]:bg-surface-3/30',
 
                 // Firefox thumb
-                '[&::-moz-range-thumb]:cursor-ew-resize',
-                '[&::-moz-range-thumb:hover]:brightness-110',
                 '[&::-moz-range-thumb]:transition-transform',
                 '[&::-moz-range-thumb]:duration-150',
                 '[&::-moz-range-thumb]:ease-out',
