@@ -4,20 +4,16 @@ import {
     createSignal,
     type JSXElement,
     Match,
-    mergeProps,
-    Show,
     Switch,
 } from 'solid-js';
 
 import { IconEditCopy, IconInterfaceCheck, IconMenuCloseMd } from '~/icons';
-import type { PartialComponentProps } from '~/types';
 import { Button, type ButtonAppearance, type ButtonProps } from '~/ui/Button';
 
 type CopyButtonState = 'normal' | 'copied' | 'failed';
 
 export type CopyButtonProps = {
     value?: string;
-    compact?: boolean;
     delayMs?: number;
     variant?: (state: Accessor<CopyButtonState>) => ButtonProps['variant'];
     appearance?: (
@@ -35,14 +31,7 @@ const copyButtonAppearance: Record<CopyButtonState, ButtonAppearance> = {
     failed: 'danger',
 };
 
-export const CopyButton: Component<CopyButtonProps> = (rawProps) => {
-    const props = mergeProps(
-        {
-            compact: true,
-        } satisfies PartialComponentProps<typeof CopyButton>,
-        rawProps,
-    );
-
+export const CopyButton: Component<CopyButtonProps> = (props) => {
     const [copyState, setCopyState] = createSignal<CopyButtonState>('normal');
 
     const handleCopy = () => {
@@ -66,6 +55,7 @@ export const CopyButton: Component<CopyButtonProps> = (rawProps) => {
             disabled={props.disabled}
             onClick={handleCopy}
             size={props.size?.(copyState)}
+            title='Copy into clipboard'
             variant={
                 (props.variant?.(copyState) ?? copyState() === 'normal')
                     ? 'solid'
@@ -78,15 +68,12 @@ export const CopyButton: Component<CopyButtonProps> = (rawProps) => {
                 </Match>
                 <Match when={copyState() === 'normal'}>
                     <IconEditCopy />
-                    <Show when={!props.compact}>Copy into clipboard</Show>
                 </Match>
                 <Match when={copyState() === 'copied'}>
                     <IconInterfaceCheck />
-                    <Show when={!props.compact}>Copied!</Show>
                 </Match>
                 <Match when={copyState() === 'failed'}>
                     <IconMenuCloseMd />
-                    <Show when={!props.compact}>Failed to copy!</Show>
                 </Match>
             </Switch>
         </Button>

@@ -23,12 +23,6 @@ export const Default: Story = {
     },
 };
 
-export const NotCompact: Story = {
-    render: () => {
-        return <CopyButton compact={false} value='copy button value' />;
-    },
-};
-
 export const CustomDelay: Story = {
     render: () => {
         return <CopyButton delayMs={4000} value='copy button value' />;
