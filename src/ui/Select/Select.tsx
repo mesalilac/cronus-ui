@@ -150,7 +150,7 @@ const SelectTrigger: ParentComponent<
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(
-                'min-w-52 justify-between p-1 px-3 py-2.5 capitalize outline outline-border data-[open=true]:outline-accent',
+                'min-w-52 justify-between px-3 py-2.5 capitalize outline outline-border data-[open=true]:outline-accent',
                 props.class,
             )}
             data-open={ctx.isOpen()}
