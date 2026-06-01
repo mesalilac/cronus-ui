@@ -1,6 +1,8 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Description } from '~/ui/Description';
+
 import { AlertDialog } from './AlertDialog';
 
 type StoryComponent = typeof AlertDialog;
@@ -27,7 +29,9 @@ export const Default: Story = {
                         <AlertDialog.Icon />
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
-                    <AlertDialog.Body>Save Changes</AlertDialog.Body>
+                    <AlertDialog.Body>
+                        <Description>Save Changes</Description>
+                    </AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
                         <AlertDialog.Action />
@@ -50,7 +54,7 @@ export const Warning: Story = {
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
                     <AlertDialog.Body>
-                        Overwrite existing file?
+                        <Description>Overwrite existing file?</Description>
                     </AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
@@ -73,7 +77,9 @@ export const Danger: Story = {
                         <AlertDialog.Icon />
                         <AlertDialog.Title>Are you sure?</AlertDialog.Title>
                     </AlertDialog.Header>
-                    <AlertDialog.Body>Delete your account?</AlertDialog.Body>
+                    <AlertDialog.Body>
+                        <Description>Delete your account?</Description>
+                    </AlertDialog.Body>
                     <AlertDialog.Footer>
                         <AlertDialog.Cancel />
                         <AlertDialog.Action />
