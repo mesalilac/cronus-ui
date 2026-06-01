@@ -8,7 +8,7 @@ export const Kbd = (rawProps: ComponentProps<'kbd'>) => {
     return (
         <kbd
             class={cn(
-                "pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-default border border-border bg-surface-3/30 px-1 font-medium font-sans text-text-muted text-xs [&_svg:not([class*='size-'])]:size-3",
+                "pointer-events-none inline-flex h-5 w-fit min-w-5 select-none items-center justify-center gap-1 rounded-default border border-border border-b-2 bg-surface-3/30 px-1 font-medium font-sans text-text-muted text-xs [&_svg:not([class*='size-'])]:size-3",
                 local.class,
             )}
             data-slot='kbd'
