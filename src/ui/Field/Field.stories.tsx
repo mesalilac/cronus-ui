@@ -2,6 +2,7 @@ import { createSignal, Show } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
 import { Input } from '~/ui/Input';
+import { Select } from '~/ui/Select';
 
 import { Field } from './Field';
 
@@ -72,6 +73,37 @@ export const Errors: Story = {
                 <Input onInput={setValue} value={value()} />
                 <Show when={value().trim().length === 0}>
                     <Field.Error>This is an error</Field.Error>
+                </Show>
+            </Field>
+        );
+    },
+};
+
+export const SelectMenu: Story = {
+    render: () => {
+        const [value, setValue] = createSignal<string | undefined>();
+
+        return (
+            <Field class='size-96'>
+                <Field.Label>Fruit</Field.Label>
+                <Select onChange={setValue} value={value()}>
+                    <Select.Trigger>
+                        <Show fallback={value()} when={value() === undefined}>
+                            Select a fruit
+                        </Show>
+                    </Select.Trigger>
+                    <Select.Content>
+                        <Select.List>
+                            <Select.Option value='apple'>Apple</Select.Option>
+                            <Select.Option value='banana'>Banana</Select.Option>
+                            <Select.Option value='blueberry'>
+                                Blueberry
+                            </Select.Option>
+                        </Select.List>
+                    </Select.Content>
+                </Select>
+                <Show when={value() === undefined}>
+                    <Field.Error>Please select a fruit.</Field.Error>
                 </Show>
             </Field>
         );
