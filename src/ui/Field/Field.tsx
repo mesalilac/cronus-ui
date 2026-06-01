@@ -92,7 +92,7 @@ const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
 
 const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
     return (
-        <Text as='p' class={cn('text-xs', props.class)} variant='muted'>
+        <Text as='p' class={cn('text-sm', props.class)} variant='muted'>
             {props.children}
         </Text>
     );
@@ -114,7 +114,7 @@ const FieldWarning: ParentComponent<{
     return (
         <Text
             as='p'
-            class={cn('flex gap-1 text-xs', props.class)}
+            class={cn('flex gap-1 text-sm', props.class)}
             variant='warning'
         >
             <IconWarningTriangleWarning />
@@ -139,7 +139,7 @@ const FieldError: ParentComponent<{
     return (
         <Text
             as='p'
-            class={cn('flex gap-1 text-xs', props.class)}
+            class={cn('flex gap-1 text-sm', props.class)}
             variant='danger'
         >
             <IconWarningTriangleWarning />

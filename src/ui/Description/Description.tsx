@@ -7,6 +7,6 @@ export const Description = (rawProps: TextProps) => {
     const [local, others] = splitProps(rawProps, ['class']);
 
     return (
-        <Text class={cn('text-xs', local.class)} variant='muted' {...others} />
+        <Text class={cn('text-sm', local.class)} variant='muted' {...others} />
     );
 };
