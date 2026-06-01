@@ -40,6 +40,8 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
     });
 
     const handleSave = () => {
+        if (!internalInput().trim()) return;
+
         props.onSave(internalInput());
         setIsEditing(false);
     };
@@ -94,6 +96,7 @@ export const EditableText: Component<EditableTextProps> = (rawProps) => {
                             appearance='success'
                             class='p-2'
                             data-slot='save'
+                            disabled={!internalInput().trim()}
                             onClick={handleSave}
                             size='icon'
                             variant='ghost'
