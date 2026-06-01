@@ -1,9 +1,9 @@
-import { splitProps } from 'solid-js';
+import { type ComponentProps, splitProps } from 'solid-js';
 
-import { Text, type TextProps } from '~/ui/Text';
+import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
-export const Description = (rawProps: TextProps) => {
+export const Description = (rawProps: ComponentProps<typeof Text>) => {
     const [local, others] = splitProps(rawProps, ['class']);
 
     return (
