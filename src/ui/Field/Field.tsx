@@ -14,7 +14,7 @@ import {
 
 import { IconWarningTriangleWarning } from '~/icons';
 import { Label } from '~/ui/Label';
-import { Text } from '~/ui/Text';
+import { Text, type TextVariant } from '~/ui/Text';
 import { cn } from '~/utils';
 
 export const FieldContext = createContext<{
@@ -73,9 +73,14 @@ export const Field: FieldCompound = (props) => {
 const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
     const ctx = useFieldContext();
 
+    const getLabelVariant = (): TextVariant | undefined => {
+        if (ctx?.hasError()) return 'danger';
+        if (ctx?.hasWarning()) return 'warning';
+    };
+
     return (
         <Label class={props.class} for={ctx?.id()}>
-            <span>{props.children}</span>
+            <Text variant={getLabelVariant()}>{props.children}</Text>
             <Show when={ctx?.required()}>
                 <span class='text-text-danger' title='Required!'>
                     *
