@@ -1,6 +1,7 @@
 import { createSignal, Show } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Description } from '~/ui/Description';
 import { Input } from '~/ui/Input';
 import { Select } from '~/ui/Select';
 
@@ -41,7 +42,7 @@ export const WithDescription: Story = {
             <Field class='size-96'>
                 <Field.Label>Simple Field</Field.Label>
                 <Input onInput={setValue} value={value()} />
-                <Field.Description>Description</Field.Description>
+                <Description>Description</Description>
             </Field>
         );
     },

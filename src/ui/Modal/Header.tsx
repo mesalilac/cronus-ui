@@ -29,16 +29,3 @@ export const Title = (props: ModalTitleProps) => {
         </h1>
     );
 };
-
-export type ModalDescriptionProps = {
-    class?: string;
-    children: JSXElement;
-};
-
-export const Description = (props: ModalDescriptionProps) => {
-    return (
-        <p class={cn('text-sm text-text-muted', props.class)}>
-            {props.children}
-        </p>
-    );
-};

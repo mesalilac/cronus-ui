@@ -1,6 +1,5 @@
 import type { JSXElement, ParentComponent } from 'solid-js';
 
-import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 export type FieldsetProps = {
@@ -49,19 +48,9 @@ const FieldsetLegend: ParentComponent<{
     );
 };
 
-const FieldsetDescription: ParentComponent<{ class?: string }> = (props) => {
-    return (
-        <Text class={props.class} variant='muted'>
-            {props.children}
-        </Text>
-    );
-};
-
 type FieldsetCompound = {
     (props: FieldsetProps): JSXElement;
     Legend: typeof FieldsetLegend;
-    Description: typeof FieldsetDescription;
 };
 
 Fieldset.Legend = FieldsetLegend;
-Fieldset.Description = FieldsetDescription;

@@ -90,14 +90,6 @@ const FieldLabel: ParentComponent<{ class?: string }> = (props) => {
     );
 };
 
-const FieldDescription: ParentComponent<{ class?: string }> = (props) => {
-    return (
-        <Text as='p' class={cn('text-sm', props.class)} variant='muted'>
-            {props.children}
-        </Text>
-    );
-};
-
 const FieldWarning: ParentComponent<{
     class?: string;
 }> = (props) => {
@@ -151,12 +143,10 @@ const FieldError: ParentComponent<{
 type FieldCompound = {
     (props: FieldProps): JSXElement;
     Label: typeof FieldLabel;
-    Description: typeof FieldDescription;
     Warning: typeof FieldWarning;
     Error: typeof FieldError;
 };
 
 Field.Label = FieldLabel;
-Field.Description = FieldDescription;
 Field.Warning = FieldWarning;
 Field.Error = FieldError;

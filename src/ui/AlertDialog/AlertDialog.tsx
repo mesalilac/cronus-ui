@@ -254,7 +254,7 @@ const AlertDialogBody = (props: AlertDialogBodyProps) => {
     return (
         <div
             class={cn(
-                'flex max-h-64 flex-col gap-2 overflow-y-auto text-sm text-text-muted',
+                'flex max-h-64 flex-col gap-2 overflow-y-auto text-sm text-text-secondary',
                 props.class,
             )}
         >

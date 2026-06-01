@@ -1,6 +1,8 @@
 import { createSignal } from 'solid-js';
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Description } from '~/ui/Description';
+
 import { Modal } from './Modal';
 
 const meta = {
@@ -25,7 +27,7 @@ export const Default: Story = {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>
@@ -48,7 +50,7 @@ export const Sm: Story = {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>
@@ -71,7 +73,7 @@ export const Md: Story = {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>
@@ -94,7 +96,7 @@ export const Lg: Story = {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>
@@ -117,7 +119,7 @@ export const Xl: Story = {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>

@@ -22,6 +22,7 @@ import {
     IconWarningInfo,
 } from '~/icons';
 import { Button, type ButtonAppearance } from '~/ui/Button';
+import { Description } from '~/ui/Description';
 import { cn } from '~/utils';
 
 export type AlertVariant =
@@ -150,7 +151,7 @@ export const Alert = (rawProps: AlertProps) => {
                         </Switch>
                         <div class='flex w-full flex-col gap-2'>
                             <h1 class='font-semibold text-lg'>{props.title}</h1>
-                            <p class='text-text-muted'>{props.description}</p>
+                            <Description>{props.description}</Description>
                             <Show when={props.children}>
                                 <div class='mt-2 flex flex-row items-center gap-2'>
                                     {props.children}

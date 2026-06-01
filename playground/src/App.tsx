@@ -1,6 +1,6 @@
 import { createSignal, For } from 'solid-js';
 
-import { Badge, Button, DropdownMenu, Modal, Select } from '~/ui';
+import { Badge, Button, Description, DropdownMenu, Modal, Select } from '~/ui';
 
 export function App() {
     const NumbersList = [
@@ -38,7 +38,7 @@ export function App() {
                     <Modal.CloseButton />
                     <Modal.Header>
                         <Modal.Title>Modal Title</Modal.Title>
-                        <Modal.Description>Modal Description</Modal.Description>
+                        <Description>Modal Description</Description>
                     </Modal.Header>
                     <Modal.Body>
                         <p>Modal Content</p>

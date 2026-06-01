@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs-vite';
 
+import { Description } from '~/ui/Description';
 import { Field } from '~/ui/Field';
 import { Input } from '~/ui/Input';
 
@@ -25,9 +26,9 @@ export const Default: Story = {
             <div class='size-96'>
                 <Fieldset>
                     <Fieldset.Legend>Shipping details</Fieldset.Legend>
-                    <Fieldset.Description>
+                    <Description>
                         Without this your odds of getting your order are low.
-                    </Fieldset.Description>
+                    </Description>
                     <Field>
                         <Field.Label>Full name</Field.Label>
                         <Input value='' />
@@ -50,9 +51,9 @@ export const LegendStart: Story = {
                     <Fieldset.Legend placement='start'>
                         Shipping details
                     </Fieldset.Legend>
-                    <Fieldset.Description>
+                    <Description>
                         Without this your odds of getting your order are low.
-                    </Fieldset.Description>
+                    </Description>
                     <Field>
                         <Field.Label>Full name</Field.Label>
                         <Input value='' />
@@ -74,9 +75,9 @@ export const LegendCenter: Story = {
                     <Fieldset.Legend placement='center'>
                         Shipping details
                     </Fieldset.Legend>
-                    <Fieldset.Description>
+                    <Description>
                         Without this your odds of getting your order are low.
-                    </Fieldset.Description>
+                    </Description>
                     <Field>
                         <Field.Label>Full name</Field.Label>
                         <Input value='' />
@@ -98,9 +99,9 @@ export const LegendEnd: Story = {
                     <Fieldset.Legend placement='end'>
                         Shipping details
                     </Fieldset.Legend>
-                    <Fieldset.Description>
+                    <Description>
                         Without this your odds of getting your order are low.
-                    </Fieldset.Description>
+                    </Description>
                     <Field>
                         <Field.Label>Full name</Field.Label>
                         <Input value='' />
@@ -121,9 +122,9 @@ export const Disabled: Story = {
             <div class='size-96'>
                 <Fieldset disabled>
                     <Fieldset.Legend>Shipping details</Fieldset.Legend>
-                    <Fieldset.Description>
+                    <Description>
                         Without this your odds of getting your order are low.
-                    </Fieldset.Description>
+                    </Description>
                     <Field>
                         <Field.Label>Full name</Field.Label>
                         <Input value='' />
