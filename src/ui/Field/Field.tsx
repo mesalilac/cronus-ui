@@ -114,7 +114,7 @@ const FieldWarning: ParentComponent<{
     return (
         <Text
             as='p'
-            class={cn('flex gap-1 text-sm', props.class)}
+            class={cn('flex items-center gap-1 text-sm', props.class)}
             variant='warning'
         >
             <IconWarningTriangleWarning />
@@ -139,7 +139,7 @@ const FieldError: ParentComponent<{
     return (
         <Text
             as='p'
-            class={cn('flex gap-1 text-sm', props.class)}
+            class={cn('flex items-center gap-1 text-sm', props.class)}
             variant='danger'
         >
             <IconWarningTriangleWarning />
