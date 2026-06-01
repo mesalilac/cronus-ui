@@ -179,7 +179,7 @@ const SelectTrigger: ParentComponent<
     );
 };
 
-export const SelectGroup: FlowComponent<{
+const SelectGroup: FlowComponent<{
     class?: string;
 }> = (props) => {
     return (
@@ -189,7 +189,7 @@ export const SelectGroup: FlowComponent<{
     );
 };
 
-export const SelectSearchbar: VoidComponent<{
+const SelectSearchbar: VoidComponent<{
     query: string;
     setQuery: (query: string) => void;
     onCreateNewOption?: (value: string) => void;
@@ -235,7 +235,7 @@ export const SelectSearchbar: VoidComponent<{
     );
 };
 
-export const SelectOption: FlowComponent<{
+const SelectOption: FlowComponent<{
     value: string;
     disabled?: boolean;
     selected?: boolean;
@@ -268,7 +268,7 @@ export const SelectOption: FlowComponent<{
     );
 };
 
-export const SelectFilter: FlowComponent<{ class?: string }> = (props) => {
+const SelectFilter: FlowComponent<{ class?: string }> = (props) => {
     return (
         <>
             <div class={cn('flex flex-col gap-2 bg-surface-2', props.class)}>
@@ -279,7 +279,7 @@ export const SelectFilter: FlowComponent<{ class?: string }> = (props) => {
     );
 };
 
-export const SelectContent: FlowComponent<{ class?: string }> = (props) => {
+const SelectContent: FlowComponent<{ class?: string }> = (props) => {
     const ctx = useSelectContext();
 
     let divRef!: HTMLDivElement;
@@ -351,7 +351,7 @@ export const SelectContent: FlowComponent<{ class?: string }> = (props) => {
     );
 };
 
-export const SelectList: FlowComponent<{ class?: string }> = (props) => {
+const SelectList: FlowComponent<{ class?: string }> = (props) => {
     return (
         <div
             class={cn(
