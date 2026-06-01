@@ -8,7 +8,6 @@
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
-- AlertDialog - align icon and title and description
 - Input - autofocus is not working
 
 ## New components
