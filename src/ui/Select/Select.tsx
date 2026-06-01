@@ -24,6 +24,7 @@ import {
     IconInterfaceCheck,
 } from '~/icons';
 import { Button, type ButtonProps } from '~/ui/Button';
+import { useFieldContext } from '~/ui/Field';
 import { Input } from '~/ui/Input';
 import { Label } from '~/ui/Label';
 import {
@@ -144,16 +145,23 @@ const SelectTrigger: ParentComponent<
 > = (props) => {
     const ctx = useSelectContext();
 
+    const fieldCtx = useFieldContext();
+
     return (
         <Button
             appearance={props.appearance}
             aria-expanded={ctx.isOpen()}
             aria-haspopup='listbox'
             class={cn(
-                'min-w-52 justify-between px-3 py-2.5 capitalize outline outline-border data-[open=true]:outline-accent',
+                'min-w-52 justify-between px-3 py-2.5 capitalize outline outline-border',
+                'data-[open=true]:outline-accent',
+                'data-[invalid=true]:outline-danger',
+                'data-[warning=true]:outline-warning',
                 props.class,
             )}
+            data-invalid={fieldCtx?.hasError()}
             data-open={ctx.isOpen()}
+            data-warning={fieldCtx?.hasWarning()}
             disabled={props.disabled}
             ref={ctx.setTriggerRef}
             role='combobox'
