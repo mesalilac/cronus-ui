@@ -9,6 +9,7 @@ export * from './Checkbox';
 export * from './Collapsible';
 export * from './ContextMenu';
 export * from './CopyButton';
+export * from './Description';
 export * from './DropdownMenu';
 export * from './EditableText';
 export * from './Field';
