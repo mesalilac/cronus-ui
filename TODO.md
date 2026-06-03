@@ -11,6 +11,7 @@
 - Input - autofocus is not working
 
 ## New components
+- Card
 - Combobox - <https://ui.shadcn.com/docs/components/radix/combobox>
 - InputGroup - <https://ui.shadcn.com/docs/components/radix/input-group>
 - Drawer - <https://corvu.dev/docs/primitives/drawer/>
