@@ -1,6 +1,7 @@
 # TODO List
 
 ## Feat
+- use one y padding to fix layout shift
 - Input/Textarea - display min and max lengths
 - Form - <https://github.com/pureliani/formix>
 
