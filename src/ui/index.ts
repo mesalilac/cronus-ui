@@ -15,6 +15,7 @@ export * from './EditableText';
 export * from './Field';
 export * from './Fieldset';
 export * from './FloatingBar';
+export * from './InlineEditor';
 export * from './Input';
 export * from './Kbd';
 export * from './Label';
