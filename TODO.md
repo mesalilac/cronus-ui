@@ -9,7 +9,6 @@
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
-- Input - autofocus is not working
 
 ## New components
 - Combobox - <https://ui.shadcn.com/docs/components/radix/combobox>
