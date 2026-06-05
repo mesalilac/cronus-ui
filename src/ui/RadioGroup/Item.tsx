@@ -8,7 +8,6 @@ import { useRadioGroupContext } from './context';
 export type RadioGroupItemProps = {
     value: string;
     disabled?: boolean;
-    helper?: JSXElement;
     onSelect?: () => void;
     class?: string;
     children: JSXElement;
@@ -30,16 +29,16 @@ export const Item = (props: RadioGroupItemProps) => {
     return (
         <div
             class={cn(
-                'flex select-none flex-row items-center gap-1 text-nowrap text-text-secondary capitalize disabled:bg-transparent',
-                props.class,
+                'flex select-none items-center gap-1 text-nowrap text-text-secondary capitalize',
                 isDisabled() && 'opacity-50',
+                props.class,
             )}
             onClick={handleClick}
             role='none'
         >
             <div
                 class={cn(
-                    'flex size-4 items-center justify-center rounded-full border bg-surface-3 transition-colors duration-200 ease-in-out',
+                    'flex size-4 items-center justify-center rounded-full border bg-surface-3/30 transition-colors duration-200 ease-in-out',
                     isSelected() ? 'border-accent bg-accent' : 'border-border',
                 )}
             >
@@ -50,16 +49,7 @@ export const Item = (props: RadioGroupItemProps) => {
                     }}
                 />
             </div>
-
-            <div class='flex flex-col items-start gap-1'>
-                <div class='flex flex-row items-start gap-1'>
-                    {props.children}
-                </div>
-
-                <Show when={props.helper}>
-                    <Text variant='muted'>{props.helper}</Text>
-                </Show>
-            </div>
+            {props.children}
         </div>
     );
 };
