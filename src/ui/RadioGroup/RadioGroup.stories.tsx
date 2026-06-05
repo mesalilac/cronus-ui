@@ -28,44 +28,14 @@ export const Default: Story = {
     },
 };
 
-export const DirectionRow: Story = {
+export const DirectionCol: Story = {
     render: () => {
         const [value, setValue] = createSignal('1');
 
         return (
-            <RadioGroup direction='row' onChange={setValue} value={value()}>
+            <RadioGroup class='flex-col' onChange={setValue} value={value()}>
                 <RadioGroup.Item value='1'>Option 1</RadioGroup.Item>
                 <RadioGroup.Item value='2'>Option 2</RadioGroup.Item>
-                <RadioGroup.Item value='3'>Option 3</RadioGroup.Item>
-            </RadioGroup>
-        );
-    },
-};
-
-export const WithLabel: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('1');
-
-        return (
-            <RadioGroup label='Label' onChange={setValue} value={value()}>
-                <RadioGroup.Item value='1'>Option 1</RadioGroup.Item>
-                <RadioGroup.Item value='2'>Option 2</RadioGroup.Item>
-                <RadioGroup.Item value='3'>Option 3</RadioGroup.Item>
-            </RadioGroup>
-        );
-    },
-};
-
-export const WithHelperText: Story = {
-    render: () => {
-        const [value, setValue] = createSignal('1');
-
-        return (
-            <RadioGroup onChange={setValue} value={value()}>
-                <RadioGroup.Item value='1'>Option 1</RadioGroup.Item>
-                <RadioGroup.Item helper='Option 2' value='2'>
-                    Option 2
-                </RadioGroup.Item>
                 <RadioGroup.Item value='3'>Option 3</RadioGroup.Item>
             </RadioGroup>
         );
