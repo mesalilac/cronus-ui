@@ -1,6 +1,5 @@
-import { type JSXElement, Show } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 
-import { Text } from '~/ui/Text';
 import { cn } from '~/utils';
 
 import { useRadioGroupContext } from './context';
