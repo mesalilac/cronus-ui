@@ -1,4 +1,4 @@
-import { createMemo, type JSXElement, mergeProps, Show } from 'solid-js';
+import { createMemo, type JSXElement } from 'solid-js';
 
 import { cn } from '~/utils';
 
@@ -10,16 +10,10 @@ export type RadioGroupProps = {
     onChange: (value: string) => void;
     disabled?: boolean;
     class?: string;
-    direction?: 'row' | 'column';
-    label?: JSXElement;
     children: JSXElement;
 };
 
-export const RadioGroup = (rawProps: RadioGroupProps) => {
-    const props = mergeProps(
-        { direction: 'column' } satisfies Partial<RadioGroupProps>,
-        rawProps,
-    );
+export const RadioGroup = (props: RadioGroupProps) => {
     const value = createMemo(() => props.value);
     const disabled = createMemo(() => props.disabled);
 
@@ -31,22 +25,7 @@ export const RadioGroup = (rawProps: RadioGroupProps) => {
                 disabled: disabled,
             }}
         >
-            <div class='flex flex-col gap-1'>
-                <Show when={props.label}>
-                    <div class='flex gap-1 font-bold text-sm text-text-secondary capitalize'>
-                        {props.label}
-                    </div>
-                </Show>
-                <div
-                    class={cn(
-                        'flex gap-4',
-                        props.direction === 'row' ? 'flex-row' : 'flex-col',
-                        props.class,
-                    )}
-                >
-                    {props.children}
-                </div>
-            </div>
+            <div class={cn('flex gap-4', props.class)}>{props.children}</div>
         </RadioGroupContext.Provider>
     );
 };
