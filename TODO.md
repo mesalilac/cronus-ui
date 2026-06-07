@@ -1,7 +1,6 @@
 # TODO List
 
 ## Feat
-- use one y padding to fix layout shift
 - Input/Textarea - display min and max lengths
 - Form - <https://github.com/pureliani/formix>
 
@@ -9,6 +8,7 @@
 - Floating-ui - use @floating-ui/dom for popover implementation.
 
 ## Fix
+- use one y padding to fix layout shift
 
 ## New components
 - FilePathField - component with a browse button and a check or cross to appear if the path doesn't exists
