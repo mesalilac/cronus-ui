@@ -249,7 +249,7 @@ const SelectOption: FlowComponent<{
         <Button
             appearance={isSelected() ? 'primary' : 'secondary'}
             class={cn(
-                'relative justify-between text-nowrap px-2 py-1 text-text-primary before:absolute before:inset-x-0 before:inset-y-1 before:size-full before:content-[""]',
+                'relative justify-between text-nowrap px-2 text-text-primary before:absolute before:inset-x-0 before:inset-y-1 before:size-full before:content-[""]',
                 props.class,
             )}
             disabled={props.disabled}
