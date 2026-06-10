@@ -11,7 +11,7 @@
 - use one y padding to fix layout shift
 
 ## New components
-- FilePathField - component with a browse button and a check or cross to appear if the path doesn't exists
+- PathPickerField - component with a browse button and a check or cross to appear if the path doesn't exists
     - variants - folder image file
 - Combobox - <https://ui.shadcn.com/docs/components/radix/combobox>
     - trigger is div with arrow icon and an input inside and also display selected options in trigger with the ability to click to remove from list on open focus searchbar in trigger on input hide the label and open menu on empty state display a message inside the menu "No results for "x""
