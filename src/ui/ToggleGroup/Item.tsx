@@ -21,9 +21,18 @@ export const Item: FlowComponent<ToggleGroupItemProps> = (props) => {
         <Button
             appearance='secondary'
             class={cn(
-                'rounded-none first:rounded-l-lg last:rounded-r-lg disabled:bg-transparent',
+                'rounded-none',
+
+                // horizontal
+                'data-[orientation=horizontal]:first:rounded-l-lg',
+                'data-[orientation=horizontal]:last:rounded-r-lg',
+
+                // vertical
+                'data-[orientation=vertical]:first:rounded-t-lg',
+                'data-[orientation=vertical]:last:rounded-b-lg',
                 props.class,
             )}
+            data-orientation={ctx.orientation()}
             disabled={isDisabled()}
             onClick={() => ctx.toggle(props.value)}
             variant={isSelected() ? 'soft' : 'ghost'}

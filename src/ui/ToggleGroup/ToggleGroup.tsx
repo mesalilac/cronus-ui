@@ -1,9 +1,11 @@
-import { createMemo, type JSXElement } from 'solid-js';
+import { createMemo, type JSXElement, mergeProps } from 'solid-js';
 
 import { cn } from '~/utils';
 
 import { ToggleGroupContext } from './context';
 import { Item } from './Item';
+
+export type ToggleGroupOrientation = 'horizontal' | 'vertical';
 
 type SingleProps = {
     type: 'single';
@@ -18,6 +20,7 @@ type MultipleProps = {
 };
 
 type BaseProps = {
+    orientation?: ToggleGroupOrientation;
     class?: string;
     disabled?: boolean;
     children: JSXElement;
@@ -25,7 +28,13 @@ type BaseProps = {
 
 export type ToggleGroupProps = BaseProps & (SingleProps | MultipleProps);
 
-export const ToggleGroup = (props: ToggleGroupProps) => {
+export const ToggleGroup = (rawProps: ToggleGroupProps) => {
+    const props = mergeProps(
+        {
+            orientation: 'horizontal',
+        } satisfies Partial<BaseProps>,
+        rawProps,
+    );
     const disabled = () => createMemo(() => props.disabled);
 
     const isSelected = (value: string): boolean => {
@@ -56,13 +65,17 @@ export const ToggleGroup = (props: ToggleGroupProps) => {
                 isSelected: isSelected,
                 toggle: toggle,
                 disabled: disabled(),
+                orientation: () => props.orientation,
             }}
         >
             <div
                 class={cn(
-                    'flex flex-row divide-x-2 divide-border rounded-default outline outline-border',
+                    'flex rounded-default outline outline-border',
+                    'data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:divide-x data-[orientation=horizontal]:divide-border',
+                    'data-[orientation=vertical]:flex-col data-[orientation=vertical]:divide-y data-[orientation=vertical]:divide-border',
                     props.class,
                 )}
+                data-orientation={props.orientation}
             >
                 {props.children}
             </div>

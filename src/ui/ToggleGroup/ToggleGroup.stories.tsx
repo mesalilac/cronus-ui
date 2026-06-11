@@ -28,6 +28,25 @@ export const Simple: Story = {
     },
 };
 
+export const Vertical: Story = {
+    render: () => {
+        const [value, setValue] = createSignal('');
+
+        return (
+            <ToggleGroup
+                onChange={setValue}
+                orientation='vertical'
+                type='single'
+                value={value()}
+            >
+                <ToggleGroup.Item value='a'>A</ToggleGroup.Item>
+                <ToggleGroup.Item value='b'>B</ToggleGroup.Item>
+                <ToggleGroup.Item value='c'>C</ToggleGroup.Item>
+            </ToggleGroup>
+        );
+    },
+};
+
 export const Multiple: Story = {
     render: () => {
         const [value, setValue] = createSignal<string[]>([]);

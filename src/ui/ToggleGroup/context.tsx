@@ -1,9 +1,12 @@
 import { type Accessor, createContext, useContext } from 'solid-js';
 
+import type { ToggleGroupOrientation } from '~/ui/ToggleGroup';
+
 export const ToggleGroupContext = createContext<{
     isSelected: (value: string) => boolean;
     toggle: (value: string) => void;
     disabled: Accessor<boolean | undefined>;
+    orientation: Accessor<ToggleGroupOrientation>;
 }>();
 
 export const useToggleGroupContext = () => {
